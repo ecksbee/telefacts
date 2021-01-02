@@ -1,0 +1,22 @@
+package types
+
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/label")] Label,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/verboseLabel")] VerboseLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/terseLabel")] TerseLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/totalLabel")] TotalLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/periodEndLabel")] PeriodEndLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/periodStartLabel")] PeriodStartLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2009/role/negatedLabel")] NegatedLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2009/role/negatedTerseLabel")] NegatedTerseLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2009/role/negatedTotalLabel")] NegatedTotalLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/positiveLabel")] PositiveLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/positiveTerseLabel")] PositiveTerseLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/positiveVerboseLabel")] PositiveVerboseLabel,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/definitionGuidance")] DefinitionGuidance,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/disclosureGuidance")] DisclosureGuidance,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/presentationGuidance")] PresentationGuidance,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/placementGuidance")] PlacementGuidance,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/measurementGuidance")] MeasurementGuidance,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/documentation")] Documentation,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/commentary")] Commentary,
+// [PreferredLabelRoleTypeUri("http://www.xbrl.org/2003/role/example")] Example
