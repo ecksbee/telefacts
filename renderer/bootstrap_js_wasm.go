@@ -32,7 +32,7 @@ func initializeRenderer() error {
 	defer setIsLoading(false)
 	catalog, err := fetchCatalog()
 	if err != nil {
-		msg := "cannot connect to the view"
+		msg := fmt.Sprintf("cannot fetch catalog: %v", err)
 		consoleError(msg)
 		alert(msg)
 		//todo render error UI

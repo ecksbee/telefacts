@@ -131,28 +131,22 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 
 func getPresentationContexts(schemedEntity string, instance *xbrl.Instance,
 	schema *xbrl.Schema, indentedLabels []IndentedLabel, maxIndentation int) ([]RelevantContext, int) {
-	edgeHrefs := make([]string, 0, len(indentedLabels))
+	factuaHrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
-		if indentedLabel.Indentation != maxIndentation-1 {
-			continue
-		}
-		edgeHrefs = append(edgeHrefs, indentedLabel.Href)
-	}
-	factualEdgeHrefs := make([]string, 0, len(edgeHrefs))
-	for _, edgeHref := range edgeHrefs {
-		var edgeConcept *xbrl.Concept
-		_, edgeConcept, _ = xbrl.HashQuery(schema, edgeHref) //todo catch errors
-		if !edgeConcept.Abstract {
-			factualEdgeHrefs = append(factualEdgeHrefs, edgeHref)
+		var c *xbrl.Concept
+		_, c, _ = xbrl.HashQuery(schema, indentedLabel.Href) //todo catch errors
+		if !c.Abstract {
+			factuaHrefs = append(factuaHrefs, indentedLabel.Href)
 		}
 	}
-	if len(factualEdgeHrefs) <= 0 {
+	if len(factuaHrefs) <= 0 {
 		return []RelevantContext{}, 0
 	}
+
 	maxDepth := 0
 	contextRefTaken := make(map[string]bool)
 	ret := make([]RelevantContext, 0, len(instance.Context)>>1)
-	for _, factualEdgeHref := range factualEdgeHrefs {
+	for _, factualEdgeHref := range factuaHrefs {
 		for _, fact := range instance.Facts { //todo parallelize nlogn
 			if _, taken := contextRefTaken[fact.ContextRef]; taken {
 				continue

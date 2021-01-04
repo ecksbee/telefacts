@@ -68,8 +68,7 @@ type Fact struct {
 	UnitRef    string `xml:"unitRef,attr"`
 	Decimals   string `xml:"decimals,attr"`
 	Precision  string `xml:"precision,attr"`
-	Text       string `xml:",chardata"`
-	XMLInner   string `xml:",innerxml"` //todo tuples
+	XMLInner   string `xml:",innerxml"`
 }
 
 type Context struct {

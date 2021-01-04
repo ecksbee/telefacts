@@ -77,5 +77,5 @@ func render(fact *xbrl.Fact) string {
 	} else {
 		precision = fact.Precision
 	}
-	return precision + " " + fact.Text + " " + fact.UnitRef
+	return precision + " " + fact.XMLInner + " " + fact.UnitRef
 }
