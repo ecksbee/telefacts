@@ -6,34 +6,46 @@ import (
 	"ecks-bee.com/telefacts/xbrl"
 )
 
-func mapLocatorToHref(linkbaseSelected string, relationshipSetCurrentlyViewing string, presentation *xbrl.PresentationLinkbase, locator string) string {
-	switch linkbaseSelected {
-	case "pre":
-		roleRefs := presentation.RoleRef
-		for _, roleRef := range roleRefs {
-			if relationshipSetCurrentlyViewing == roleRef.RoleURI {
-				presentationLinks := presentation.PresentationLinks
-				for _, presentationLink := range presentationLinks {
-					if presentationLink.Role == relationshipSetCurrentlyViewing {
-						for _, loc := range presentationLink.Loc {
-							if loc.Label == locator {
-								i := strings.Index(loc.Href, "#")
-								if i >= 0 {
-									return loc.Href
-								}
+func mapPLocatorToHref(relationshipSetCurrentlyViewing string, presentation *xbrl.PresentationLinkbase, locator string) string {
+	roleRefs := presentation.RoleRef
+	for _, roleRef := range roleRefs {
+		if relationshipSetCurrentlyViewing == roleRef.RoleURI {
+			presentationLinks := presentation.PresentationLinks
+			for _, presentationLink := range presentationLinks {
+				if presentationLink.Role == relationshipSetCurrentlyViewing {
+					for _, loc := range presentationLink.Loc {
+						if loc.Label == locator {
+							i := strings.Index(loc.Href, "#")
+							if i >= 0 {
+								return loc.Href
 							}
 						}
 					}
 				}
 			}
 		}
-		break
-	case "def":
-		break
-	case "cal":
-		break
-	default:
-		return "!!!unknown linkbase!!!"
+	}
+	return "#" + locator
+}
+
+func mapCLocatorToHref(relationshipSetCurrentlyViewing string, calculation *xbrl.CalculationLinkbase, locator string) string {
+	roleRefs := calculation.RoleRef
+	for _, roleRef := range roleRefs {
+		if relationshipSetCurrentlyViewing == roleRef.RoleURI {
+			calculationLinks := calculation.CalculationLinks
+			for _, calculationLink := range calculationLinks {
+				if calculationLink.Role == relationshipSetCurrentlyViewing {
+					for _, loc := range calculationLink.Loc {
+						if loc.Label == locator {
+							i := strings.Index(loc.Href, "#")
+							if i >= 0 {
+								return loc.Href
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 	return "#" + locator
 }

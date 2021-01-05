@@ -10,6 +10,34 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
+const CalculationArcrole = `http://www.xbrl.org/2003/arcrole/summation-item`
+
+type CalculationLink struct {
+	XMLName xml.Name
+	Role    string `xml:"role,attr"`
+	Type    string `xml:"type,attr"`
+	Title   string `xml:"title,attr"`
+	Loc     []struct {
+		Href  string `xml:"href,attr"`
+		Label string `xml:"label,attr"`
+		Type  string `xml:"locator,attr"`
+	} `xml:"loc"`
+	ArcroleRef []struct {
+		Href       string `xml:"href,attr"`
+		Type       string `xml:"locator,attr"`
+		ArcroleURI string `xml:"arcroleURI,attr"`
+	} `xml:"arcroleRef"`
+	CalculationArc []struct {
+		XMLName xml.Name
+		Order   string `xml:"order,attr"`
+		Weight  string `xml:"weight,attr"`
+		Arcrole string `xml:"arcrole,attr"`
+		Type    string `xml:"type,attr"`
+		From    string `xml:"from,attr"`
+		To      string `xml:"to,attr"`
+	} `xml:"calculationArc"`
+}
+
 type CalculationLinkbase struct {
 	XMLName  xml.Name   `xml:"linkbase"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
@@ -19,31 +47,7 @@ type CalculationLinkbase struct {
 		Href    string `xml:"href,attr"`
 		Type    string `xml:"type,attr"`
 	} `xml:"roleRef"`
-	CalculationtionLink []struct {
-		XMLName xml.Name
-		Role    string `xml:"role,attr"`
-		Type    string `xml:"type,attr"`
-		Title   string `xml:"title,attr"`
-		Loc     []struct {
-			Href  string `xml:"href,attr"`
-			Label string `xml:"label,attr"`
-			Type  string `xml:"locator,attr"`
-		} `xml:"loc"`
-		ArcroleRef []struct {
-			Href       string `xml:"href,attr"`
-			Type       string `xml:"locator,attr"`
-			ArcroleURI string `xml:"arcroleURI,attr"`
-		} `xml:"arcroleRef"`
-		CalculationArc []struct {
-			XMLName xml.Name
-			Order   string `xml:"order,attr"`
-			Weight  string `xml:"weight,attr"`
-			Arcrole string `xml:"arcrole,attr"`
-			Type    string `xml:"type,attr"`
-			From    string `xml:"from,attr"`
-			To      string `xml:"to,attr"`
-		} `xml:"calculationArc"`
-	} `xml:"calculationLink"`
+	CalculationLinks []CalculationLink `xml:"calculationLink"`
 }
 
 func ReadCalculationLinkbase(file os.FileInfo, workingDir string) (*CalculationLinkbase, error) {
