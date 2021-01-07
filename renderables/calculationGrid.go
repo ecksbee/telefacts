@@ -11,16 +11,16 @@ import (
 
 type SummationItem struct {
 	Href                 string
-	DomainMemberHeaders  []string
-	PeriodHeaders        []string
-	PeriodLabels         []string
+	RelevantContexts     []RelevantContext
+	MaxDepth             int
 	ContributingConcepts []ContributingConcept
 	FactualQuadrant      [][]string
 }
 
 type ContributingConcept struct {
-	Weight string
-	Href   string
+	Weight          string
+	Href            string
+	IsSummationItem bool
 }
 
 type CGrid struct {
@@ -39,16 +39,18 @@ func MarshalCGrid(entityIndex int, relationshipSetIndex int, schema *xbrl.Schema
 		return nil, fmt.Errorf("invalid relationship set index")
 	}
 	linkroleURI := linkroleURIs[relationshipSetIndex]
-	// schemedEntity := schemedEntities[entityIndex]
+	schemedEntity := schemedEntities[entityIndex]
 
-	summationItems := getSummationItems(linkroleURI, schema, calculation)
-	// factualQuadrant := getFactualQuadrant(indentedLabels, relevantContexts, factFinder)
+	summationItems := getSummationItems(schemedEntity, linkroleURI, schema, instance,
+		calculation, factFinder)
 	return json.Marshal(CGrid{
 		SummationItems: summationItems,
 	})
 }
 
-func getSummationItems(linkroleURI string, schema *xbrl.Schema, calculation *xbrl.CalculationLinkbase) []SummationItem {
+func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Schema,
+	instance *xbrl.Instance, calculation *xbrl.CalculationLinkbase,
+	factFinder FactFinder) []SummationItem {
 	var calculationLinks []xbrl.CalculationLink
 	for _, roleRef := range calculation.RoleRef {
 		if linkroleURI == roleRef.RoleURI {
@@ -69,7 +71,8 @@ func getSummationItems(linkroleURI string, schema *xbrl.Schema, calculation *xbr
 				if arc.Arcrole == xbrl.CalculationArcrole {
 					order, _ := strconv.ParseFloat(arc.Order, 64)
 					weight, _ := strconv.ParseFloat(arc.Weight, 64)
-					cMap[arc.From] = append(cMap[arc.From],
+					fromHref := mapCLocatorToHref(linkroleURI, calculation, arc.From)
+					cMap[fromHref] = append(cMap[fromHref],
 						cStruct{
 							Href:   mapCLocatorToHref(linkroleURI, calculation, arc.To),
 							Order:  order,
@@ -84,29 +87,53 @@ func getSummationItems(linkroleURI string, schema *xbrl.Schema, calculation *xbr
 			}
 			ret := make([]SummationItem, 0, len(cMap))
 			for from, slice := range cMap {
-				href := mapCLocatorToHref(linkroleURI, calculation, from)
 				contributingConcepts := make([]ContributingConcept, 0, len(slice))
 				for _, cstruct := range slice {
+					_, isSummationItem := cMap[cstruct.Href]
 					contributingConcepts = append(contributingConcepts, ContributingConcept{
-						Href:   cstruct.Href,
-						Weight: fmt.Sprintf("%.1f", cstruct.Weight),
+						Href:            cstruct.Href,
+						Weight:          fmt.Sprintf("%.1f", cstruct.Weight),
+						IsSummationItem: isSummationItem,
 					})
 				}
-				dms := make([]string, 0)
-				periodHeaders := make([]string, 0)
-				periodLabels := make([]string, 0)
-				fq := make([][]string, 0)
+				maxDepth := 0
+				relevantContexts := make([]RelevantContext, 0)
+				factualQuadrant := getCFactualQuadrant(from, contributingConcepts, relevantContexts, factFinder)
 				ret = append(ret, SummationItem{
-					Href:                 href,
+					Href:                 from,
 					ContributingConcepts: contributingConcepts,
-					DomainMemberHeaders:  dms,
-					PeriodHeaders:        periodHeaders,
-					PeriodLabels:         periodLabels,
-					FactualQuadrant:      fq,
+					MaxDepth:             maxDepth,
+					RelevantContexts:     relevantContexts,
+					FactualQuadrant:      factualQuadrant,
 				})
 			}
+			//todo sort ret alpha
 			return ret
 		}
 	}
 	return nil
+}
+
+func getCFactualQuadrant(summationItem string, contributingConcepts []ContributingConcept,
+	relevantContexts []RelevantContext,
+	factFinder FactFinder) [][]string {
+	rowCount := len(contributingConcepts)
+	colCount := len(relevantContexts)
+	if rowCount <= 0 || colCount <= 0 {
+		return [][]string{{}}
+	}
+	var ret [][]string
+	for i := 0; i < rowCount; i++ {
+		var row []string
+		href := contributingConcepts[i].Href
+		for j := 0; j < colCount; j++ {
+			var fact *xbrl.Fact
+			contextRef := relevantContexts[j].ContextRef
+			fact = factFinder.FindFact(href, contextRef)
+			row = append(row, render(fact))
+		}
+		ret = append(ret, row)
+	}
+	//todo summationItem facts
+	return ret
 }
