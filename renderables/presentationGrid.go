@@ -131,55 +131,11 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 
 func getPresentationContexts(schemedEntity string, instance *xbrl.Instance,
 	schema *xbrl.Schema, indentedLabels []IndentedLabel, maxIndentation int) ([]RelevantContext, int) {
-	factuaHrefs := make([]string, 0, len(indentedLabels))
-	for _, indentedLabel := range indentedLabels {
-		var c *xbrl.Concept
-		_, c, _ = xbrl.HashQuery(schema, indentedLabel.Href) //todo catch errors
-		if !c.Abstract {
-			factuaHrefs = append(factuaHrefs, indentedLabel.Href)
-		}
+	hrefs := make([]string, len(indentedLabels))
+	for i, indentedLabel := range indentedLabels {
+		hrefs[i] = indentedLabel.Href
 	}
-	if len(factuaHrefs) <= 0 {
-		return []RelevantContext{}, 0
-	}
-
-	maxDepth := 0
-	contextRefTaken := make(map[string]bool)
-	ret := make([]RelevantContext, 0, len(instance.Context)>>1)
-	for _, factualEdgeHref := range factuaHrefs {
-		for _, fact := range instance.Facts { //todo parallelize nlogn
-			if _, taken := contextRefTaken[fact.ContextRef]; taken {
-				continue
-			}
-			factualHref, _, err := xbrl.NameQuery(schema, fact.XMLName.Space, fact.XMLName.Local)
-			if err != nil {
-				continue
-			}
-			if factualEdgeHref == factualHref {
-				var context *xbrl.Context
-				context = getContext(instance, fact.ContextRef)
-				if len(context.Entity.Identitifier) <= 0 {
-					continue
-				}
-				contextualSchemedEntity := context.Entity.Identitifier[0].Scheme + "/" + context.Entity.Identitifier[0].Text
-				if contextualSchemedEntity != schemedEntity {
-					continue
-				}
-				dommems := domainMembersString(context)
-				if len(dommems) > maxDepth {
-					maxDepth = len(dommems)
-				}
-				ret = append(ret, RelevantContext{
-					ContextRef:          context.ID,
-					PeriodHeader:        periodString(context),
-					DomainMemberHeaders: dommems,
-				})
-				contextRefTaken[fact.ContextRef] = true
-			}
-		}
-	}
-	sortContexts(ret)
-	return ret, maxDepth
+	return getRelevantContexts(schemedEntity, instance, schema, hrefs, maxIndentation)
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,

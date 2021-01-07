@@ -117,8 +117,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 }
 
 func getCFactualQuadrant(summationItem string, contributingConcepts []ContributingConcept,
-	relevantContexts []RelevantContext,
-	factFinder FactFinder) [][]string {
+	relevantContexts []RelevantContext, factFinder FactFinder) [][]string {
 	rowCount := len(contributingConcepts)
 	colCount := len(relevantContexts)
 	if rowCount <= 0 || colCount <= 0 {
