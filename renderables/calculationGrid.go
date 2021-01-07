@@ -107,7 +107,9 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 					FactualQuadrant:      factualQuadrant,
 				})
 			}
-			//todo sort ret alpha
+			sort.SliceStable(ret, func(i, j int) bool {
+				return ret[i].Href < ret[j].Href
+			})
 			return ret
 		}
 	}
