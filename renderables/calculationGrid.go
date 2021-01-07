@@ -88,6 +88,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 			ret := make([]SummationItem, 0, len(cMap))
 			for from, slice := range cMap {
 				contributingConcepts := make([]ContributingConcept, 0, len(slice))
+				fqLabels := make([]string, 0, len(slice)+1)
 				for _, cstruct := range slice {
 					_, isSummationItem := cMap[cstruct.Href]
 					contributingConcepts = append(contributingConcepts, ContributingConcept{
@@ -95,10 +96,11 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 						Weight:          fmt.Sprintf("%.1f", cstruct.Weight),
 						IsSummationItem: isSummationItem,
 					})
+					fqLabels = append(fqLabels, cstruct.Href)
 				}
-				maxDepth := 0
-				relevantContexts := make([]RelevantContext, 0)
-				factualQuadrant := getCFactualQuadrant(from, contributingConcepts, relevantContexts, factFinder)
+				fqLabels = append(fqLabels, from)
+				relevantContexts, maxDepth := getRelevantContexts(schemedEntity, instance, schema, fqLabels)
+				factualQuadrant := getCFactualQuadrant(fqLabels, relevantContexts, factFinder)
 				ret = append(ret, SummationItem{
 					Href:                 from,
 					ContributingConcepts: contributingConcepts,
@@ -116,9 +118,9 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 	return nil
 }
 
-func getCFactualQuadrant(summationItem string, contributingConcepts []ContributingConcept,
-	relevantContexts []RelevantContext, factFinder FactFinder) [][]string {
-	rowCount := len(contributingConcepts)
+func getCFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
+	factFinder FactFinder) [][]string {
+	rowCount := len(hrefs)
 	colCount := len(relevantContexts)
 	if rowCount <= 0 || colCount <= 0 {
 		return [][]string{{}}
@@ -126,7 +128,7 @@ func getCFactualQuadrant(summationItem string, contributingConcepts []Contributi
 	var ret [][]string
 	for i := 0; i < rowCount; i++ {
 		var row []string
-		href := contributingConcepts[i].Href
+		href := hrefs[i]
 		for j := 0; j < colCount; j++ {
 			var fact *xbrl.Fact
 			contextRef := relevantContexts[j].ContextRef
@@ -135,6 +137,5 @@ func getCFactualQuadrant(summationItem string, contributingConcepts []Contributi
 		}
 		ret = append(ret, row)
 	}
-	//todo summationItem facts
 	return ret
 }

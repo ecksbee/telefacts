@@ -36,7 +36,7 @@ func MarshalPGrid(entityIndex int, relationshipSetIndex int, schema *xbrl.Schema
 	linkroleURI := linkroleURIs[relationshipSetIndex]
 	schemedEntity := schemedEntities[entityIndex]
 	indentedLabels, maxIndentation := getIndentedLabels(linkroleURI, schema, presentation)
-	relevantContexts, maxDepth := getPresentationContexts(schemedEntity, instance, schema, indentedLabels, maxIndentation)
+	relevantContexts, maxDepth := getPresentationContexts(schemedEntity, instance, schema, indentedLabels)
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder)
 	return json.Marshal(PGrid{
 		IndentedLabels:   indentedLabels,
@@ -130,12 +130,12 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 }
 
 func getPresentationContexts(schemedEntity string, instance *xbrl.Instance,
-	schema *xbrl.Schema, indentedLabels []IndentedLabel, maxIndentation int) ([]RelevantContext, int) {
+	schema *xbrl.Schema, indentedLabels []IndentedLabel) ([]RelevantContext, int) {
 	hrefs := make([]string, len(indentedLabels))
 	for i, indentedLabel := range indentedLabels {
 		hrefs[i] = indentedLabel.Href
 	}
-	return getRelevantContexts(schemedEntity, instance, schema, hrefs, maxIndentation)
+	return getRelevantContexts(schemedEntity, instance, schema, hrefs)
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,

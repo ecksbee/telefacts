@@ -85,7 +85,7 @@ func sortedEntities(instance *xbrl.Instance) []string {
 }
 
 func getRelevantContexts(schemedEntity string, instance *xbrl.Instance,
-	schema *xbrl.Schema, hrefs []string, maxIndentation int) ([]RelevantContext, int) {
+	schema *xbrl.Schema, hrefs []string) ([]RelevantContext, int) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
 		var c *xbrl.Concept
