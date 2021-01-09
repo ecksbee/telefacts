@@ -102,40 +102,11 @@ func selectedPGrid() *renderables.PGrid {
 		})
 	}
 	ret.MaxIndentation = jsVal.Get("MaxIndentation").Int()
-	relevantContexts := jsVal.Get("RelevantContexts")
-	rcLen := relevantContexts.Length()
-	for i := 0; i < rcLen; i++ {
-		jsRC := relevantContexts.Index(i)
-		jsRCDM := jsRC.Get("DomainMemberHeaders")
-		jsRCDMLen := jsRCDM.Length()
-		domainMemberHeaders := make([]string, jsRCDMLen)
-		for j := 0; j < jsRCDMLen; j++ {
-			jsDM := jsRCDM.Index(j)
-			domainMemberHeaders = append(domainMemberHeaders, jsDM.String())
-		}
-		ret.RelevantContexts = append(ret.RelevantContexts, renderables.RelevantContext{
-			ContextRef:          jsRC.Get("ContextRef").String(),
-			PeriodHeader:        jsRC.Get("PeriodHeader").String(),
-			DomainMemberHeaders: domainMemberHeaders,
-		})
-	}
+	ret.RelevantContexts = convertJSRelevantContexts(jsVal.Get("RelevantContexts"))
+	ret.FactualQuadrant = convertJSFactualQuadrant(jsVal.Get("FactualQuadrant"))
 	ret.MaxDepth = jsVal.Get("MaxDepth").Int()
-	jsFQ := jsVal.Get("FactualQuadrant")
-	jsFQLen := jsFQ.Length()
-	goFQ := make([][]string, jsFQLen)
-	for i := 0; i < jsFQLen; i++ {
-		jsFQRow := jsFQ.Index(i)
-		jsFQRowLen := jsFQRow.Length()
-		goFQ[i] = make([]string, jsFQRowLen)
-		for j := 0; j < jsFQRowLen; j++ {
-			jsFQCell := jsFQRow.Index(j)
-			goFQ[i][j] = jsFQCell.String()
-		}
-	}
-	ret.FactualQuadrant = goFQ
 	return &ret
 }
-
 func setPGrid(v *renderables.PGrid) {
 	jsMap := make(map[string]interface{})
 	indentedLabels := make([]interface{}, len(v.IndentedLabels))
@@ -147,8 +118,105 @@ func setPGrid(v *renderables.PGrid) {
 	}
 	jsMap["IndentedLabels"] = indentedLabels
 	jsMap["MaxIndentation"] = v.MaxIndentation
-	relevantContexts := make([]interface{}, len(v.RelevantContexts))
-	for j, goRC := range v.RelevantContexts {
+	jsMap["RelevantContexts"] = convertRelevantContextsToJS(v.RelevantContexts)
+	jsMap["MaxDepth"] = v.MaxDepth
+	jsMap["FactualQuadrant"] = convertFactualQuadrantToJS(v.FactualQuadrant)
+	view.Set("pGrid", jsMap)
+}
+func selectedCGrid() *renderables.CGrid {
+	var ret renderables.CGrid
+	jsVal := view.Get("cGrid")
+	jsSummationItems := jsVal.Get("SummationItems")
+	siLen := jsSummationItems.Length()
+	for i := 0; i < siLen; i++ {
+		jsSI := jsSummationItems.Index(i)
+		jsContributingConcepts := jsSI.Get("ContributingConcepts")
+		ccLen := jsContributingConcepts.Length()
+		contributingConcepts := make([]renderables.ContributingConcept, ccLen)
+		for j := 0; j < ccLen; j++ {
+			jsCC := jsContributingConcepts.Index(j)
+			contributingConcepts[j] = renderables.ContributingConcept{
+				Sign:            jsCC.Get("Sign").String(),
+				Scale:           jsCC.Get("Scale").String(),
+				Href:            jsCC.Get("Href").String(),
+				IsSummationItem: jsCC.Get("IsSummationItem").Bool(),
+			}
+		}
+		relevantContexts := convertJSRelevantContexts(jsSI.Get("RelevantContexts"))
+		maxDepth := jsSI.Get("MaxDepth").Int()
+		factualQuadrant := convertJSFactualQuadrant(jsSI.Get("FactualQuadrant"))
+		ret.SummationItems = append(ret.SummationItems, renderables.SummationItem{
+			Href:                 jsSI.Get("Href").String(),
+			ContributingConcepts: contributingConcepts,
+			MaxDepth:             maxDepth,
+			RelevantContexts:     relevantContexts,
+			FactualQuadrant:      factualQuadrant,
+		})
+	}
+	return &ret
+}
+func setCGrid(v *renderables.CGrid) {
+	jsMap := make(map[string]interface{})
+	summationItems := make([]interface{}, len(v.SummationItems))
+	for j, goSI := range v.SummationItems {
+		jsSI := make(map[string]interface{})
+		jsSI["Href"] = goSI.Href
+		contributingConcepts := make([]interface{}, len(goSI.ContributingConcepts))
+		for j, goCC := range goSI.ContributingConcepts {
+			jsCC := make(map[string]interface{})
+			jsCC["Href"] = goCC.Href
+			jsCC["Scale"] = goCC.Scale
+			jsCC["Sign"] = goCC.Sign
+			jsCC["IsSummationItem"] = goCC.IsSummationItem
+			contributingConcepts[j] = jsCC
+		}
+		jsSI["ContributingConcepts"] = contributingConcepts
+		jsSI["MaxDepth"] = goSI.MaxDepth
+		jsSI["RelevantContexts"] = convertRelevantContextsToJS(goSI.RelevantContexts)
+		jsSI["FactualQuadrant"] = convertFactualQuadrantToJS(goSI.FactualQuadrant)
+		summationItems[j] = jsSI
+	}
+	jsMap["SummationItems"] = summationItems
+	view.Set("cGrid", jsMap)
+}
+func convertJSRelevantContexts(jsRelevantContexts js.Value) []renderables.RelevantContext {
+	var ret []renderables.RelevantContext
+	rcLen := jsRelevantContexts.Length()
+	ret = make([]renderables.RelevantContext, 0, rcLen)
+	for i := 0; i < rcLen; i++ {
+		jsRC := jsRelevantContexts.Index(i)
+		jsRCDM := jsRC.Get("DomainMemberHeaders")
+		jsRCDMLen := jsRCDM.Length()
+		domainMemberHeaders := make([]string, jsRCDMLen)
+		for j := 0; j < jsRCDMLen; j++ {
+			jsDM := jsRCDM.Index(j)
+			domainMemberHeaders = append(domainMemberHeaders, jsDM.String())
+		}
+		ret[i] = renderables.RelevantContext{
+			ContextRef:          jsRC.Get("ContextRef").String(),
+			PeriodHeader:        jsRC.Get("PeriodHeader").String(),
+			DomainMemberHeaders: domainMemberHeaders,
+		}
+	}
+	return ret
+}
+func convertJSFactualQuadrant(jsFactualQuadrant js.Value) [][]string {
+	jsFQLen := jsFactualQuadrant.Length()
+	goFQ := make([][]string, jsFQLen)
+	for i := 0; i < jsFQLen; i++ {
+		jsFQRow := jsFactualQuadrant.Index(i)
+		jsFQRowLen := jsFQRow.Length()
+		goFQ[i] = make([]string, jsFQRowLen)
+		for j := 0; j < jsFQRowLen; j++ {
+			jsFQCell := jsFQRow.Index(j)
+			goFQ[i][j] = jsFQCell.String()
+		}
+	}
+	return goFQ
+}
+func convertRelevantContextsToJS(relevantContexts []renderables.RelevantContext) []interface{} {
+	ret := make([]interface{}, len(relevantContexts))
+	for j, goRC := range relevantContexts {
 		jsRC := make(map[string]interface{})
 		jsRC["ContextRef"] = goRC.ContextRef
 		jsRC["PeriodHeader"] = goRC.PeriodHeader
@@ -157,18 +225,18 @@ func setPGrid(v *renderables.PGrid) {
 			jsRCDM[jj] = goDM
 		}
 		jsRC["DomainMemberHeaders"] = jsRCDM
-		relevantContexts[j] = jsRC
+		ret[j] = jsRC
 	}
-	jsMap["RelevantContexts"] = relevantContexts
-	jsMap["MaxDepth"] = v.MaxDepth
-	factualQuadrant := make([]interface{}, len(v.FactualQuadrant))
-	for j, goFQRow := range v.FactualQuadrant {
+	return ret
+}
+func convertFactualQuadrantToJS(factualQuadrant [][]string) []interface{} {
+	ret := make([]interface{}, len(factualQuadrant))
+	for j, goFQRow := range factualQuadrant {
 		jsFQRow := make([]interface{}, len(goFQRow))
 		for jj, fqCell := range goFQRow {
 			jsFQRow[jj] = fqCell
 		}
-		factualQuadrant[j] = jsFQRow
+		ret[j] = jsFQRow
 	}
-	jsMap["FactualQuadrant"] = factualQuadrant
-	view.Set("pGrid", jsMap)
+	return ret
 }

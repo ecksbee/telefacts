@@ -54,7 +54,8 @@ func changeEntity() js.Func {
 		selectEntity(e)
 		if selectedRelationshipSet() != "" {
 			go func() {
-				refreshPGrid()
+				// refreshDataGrid("pre")
+				refreshDataGrid("cal")
 			}()
 		}
 		return ret
@@ -62,7 +63,14 @@ func changeEntity() js.Func {
 	return ret
 }
 
-func refreshPGrid() error {
+func refreshDataGrid(network string) error {
+	switch network {
+	case "pre":
+	case "cal":
+		break
+	default:
+		return fmt.Errorf("invalid concept network")
+	}
 	if isLoading() {
 		return nil
 	}
@@ -110,16 +118,35 @@ func refreshPGrid() error {
 		//todo render error UI
 		return fmt.Errorf(msg)
 	}
-	pGrid, err := fetchPGrid(i, j)
-	if err != nil {
-		msg := "cannot fetch pGrid"
-		consoleError(msg)
-		alert(msg)
-		//todo render error UI
-		return fmt.Errorf(msg)
+	switch network {
+	case "pre":
+		pGrid, err := fetchPGrid(i, j)
+		if err != nil {
+			msg := "cannot fetch pGrid"
+			consoleError(msg)
+			alert(msg)
+			//todo render error UI
+			return fmt.Errorf(msg)
+		}
+		setPGrid(pGrid)
+		return nil
+		break
+	case "cal":
+		cGrid, err := fetchCGrid(i, j)
+		if err != nil {
+			msg := "cannot fetch cGrid"
+			consoleError(msg)
+			alert(msg)
+			//todo render error UI
+			return fmt.Errorf(msg)
+		}
+		setCGrid(cGrid)
+		return nil
+		break
+	default:
+		return fmt.Errorf("invalid concept network")
 	}
-	setPGrid(pGrid)
-	return nil
+	return fmt.Errorf("data grid refresh failed")
 }
 
 func changeRelationshipSet() js.Func {
@@ -132,7 +159,8 @@ func changeRelationshipSet() js.Func {
 		selectRelationshipSet(rset)
 		if selectedEntity() != "" {
 			go func() {
-				refreshPGrid()
+				// refreshDataGrid("pre")
+				refreshDataGrid("cal")
 			}()
 		}
 		return ret

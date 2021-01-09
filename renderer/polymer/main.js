@@ -24,7 +24,8 @@ class TeleFactsRenderer extends LitElement {
         selectedEntity: {type: String, reflect: true },
         relationshipSets: {type: Array, reflect: false },
         selectedRelationshipSet: {type: String, reflect: true },
-        pGrid: {type: Object, reflect: false }
+        pGrid: {type: Object, reflect: false },
+        cGrid: {type: Object, reflect: false }
       }
     }
     constructor() {
@@ -37,6 +38,7 @@ class TeleFactsRenderer extends LitElement {
       this.relationshipSets = [];
       this.selectedRelationshipSet = '';
       this.pGrid = null;
+      this.cGrid = null;
     }
     renderLoader() {
       return html`
@@ -141,7 +143,7 @@ class TeleFactsRenderer extends LitElement {
     }
     renderPGrid() {
       if (this.pGrid) {
-        const labelQuadrant = [];
+        const grid = [];
         const maxRow = this.pGrid.IndentedLabels.length + this.pGrid.MaxDepth + 1;
         const maxCol = this.pGrid.RelevantContexts.length + this.pGrid.MaxIndentation;
         for(let i = 0; i < maxRow; i++) {
@@ -177,17 +179,17 @@ class TeleFactsRenderer extends LitElement {
                   row.push(null);
                 }
                 else {
-                  const fact = this.pGrid.FactualQuadrant[index][j - this.pGrid.MaxIndentation]
+                  const fact = this.pGrid.FactualQuadrant[index][j - this.pGrid.MaxIndentation];
                   row.push(fact);
                 }
               }
             }
           }
-          labelQuadrant.push(row);
+          grid.push(row);
         }
         return html`<table>
           ${
-            labelQuadrant.map(
+            grid.map(
               row => html`<tr>${
                 row.map(cell => html`<td>${cell ? cell : html`&nbsp; &nbsp; &nbsp;`}</td>`)
               }</tr>`
@@ -195,7 +197,81 @@ class TeleFactsRenderer extends LitElement {
           }
         </table>`;
       }
-      return html`no data grid`;
+      return html``;
+    }
+    renderCGrid() {
+      if (this.cGrid) {
+        const summationItems = this.cGrid.SummationItems;
+        return html`${
+          summationItems.map(
+            summationItem => {
+              const grid = []
+              const maxRow = summationItem.ContributingConcepts.length + summationItem.MaxDepth + 1;
+              const maxCol = summationItem.RelevantContexts.length + 1;
+              for(let i = 0; i < maxRow; i++) {
+                const row = [];
+                if (i < summationItem.MaxDepth + 1) {
+                  for(let j = 0; j < maxCol; j++) {
+                    if (j < 1) {
+                      if (i === summationItem.MaxDepth) {
+                        row.push(summationItem.Href);
+                      }
+                      else{
+                        row.push(null);
+                      }
+                    }
+                    else {
+                      const index = j - 1;
+                      const rc = summationItem.RelevantContexts[index];
+                      if (i === 0) {
+                        row.push(rc.PeriodHeader);
+                      }
+                      else {
+                        const dmIndex = i - 1;
+                        row.push(rc.DomainMemberHeaders[dmIndex]);
+                      }
+                    }
+                  }
+                }
+                else {
+                  for(let j = 0; j < maxCol; j++) {
+                    const index = i - summationItem.MaxDepth - 1;
+                    const cc = summationItem.ContributingConcepts[index];
+                    if (cc && j < 1) {
+                      row.push(cc.Href);
+                    }
+                    else {
+                      const fact = summationItem.FactualQuadrant[index][j - 1];
+                      row.push(fact);
+                    }
+                  }
+                }
+                grid.push(row);
+              }
+              const bottomRow = [];
+              for(let j = 0; j < maxCol; j++) {
+                if (j < 1) {
+                  bottomRow.push(null);
+                }
+                else {
+                  const index = maxRow - summationItem.MaxDepth - 1;
+                  const fact = summationItem.FactualQuadrant[index][j - 1];
+                  bottomRow.push(fact);
+                }
+              }
+              grid.push(bottomRow);
+              return html`<table style="margin: 15px;">${
+                grid.map(
+                  row => html`<tr>${
+                    row.map(cell => html`<td>${cell ? cell : html`&nbsp; &nbsp; &nbsp;`}</td>`)
+                  }</tr>`
+                )
+              }</table>`
+            }
+          )
+        }`
+      }
+      return html``;
     }
     render() {
       return html`
@@ -214,6 +290,7 @@ class TeleFactsRenderer extends LitElement {
             </div>
             <div>
               ${this.renderPGrid()}
+              ${this.renderCGrid()}
             </div>
           </div>
         </mwc-top-app-bar-fixed>
