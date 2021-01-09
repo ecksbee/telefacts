@@ -20,6 +20,8 @@ class TeleFactsRenderer extends LitElement {
         isLoading: {type: Boolean, reflect: true },
         isLabelled: {type: Boolean, reflect: true },
         isLabelHovered: {type: Boolean},
+        networks: {type: Array, reflect: false },
+        selectedNetwork: {type: String, reflect: true },
         entities: {type: Array, reflect: false },
         selectedEntity: {type: String, reflect: true },
         relationshipSets: {type: Array, reflect: false },
@@ -33,6 +35,17 @@ class TeleFactsRenderer extends LitElement {
       this.isLoading = true;
       this.isLabelled = false;
       this.isLabelHovered = false;
+      this.selectedNetwork = '';
+      this.networks = [ //todo should be initialized by wasm
+        {
+          label: 'Presentation',
+          value: 'pre'
+        },
+        {
+          label: 'Calculation',
+          value: 'cal'
+        }
+      ]
       this.entities = [];
       this.selectedEntity = '';
       this.relationshipSets = [];
@@ -141,6 +154,26 @@ class TeleFactsRenderer extends LitElement {
       }
       this.changeRelationshipSet(e.currentTarget.value);
     }
+    renderNetworkSelect() {
+      if (this.isLoading) {
+        return html`
+          <mwc-select disabled naturalMenuWidth="auto" label="Network" value="${this.selectedNetwork}" slot="actionItems" id="network-select" @change="${this._handleNetworkSelect}" >
+            ${this.networks.map(network => html`<mwc-list-item value="${network.value}">${network.label}</mwc-list-item>`)}
+          </mwc-select>
+        `;
+      }
+      return html`
+        <mwc-select naturalMenuWidth="auto" label="Network" value="${this.selectedNetwork}" slot="actionItems" id="network-select" @change="${this._handleNetworkSelect}" >
+          ${this.networks.map(network => html`<mwc-list-item value="${network.value}">${network.label}</mwc-list-item>`)}
+        </mwc-select>
+      `;
+    }
+    _handleNetworkSelect(e) {
+      if (this.selectedNetwork === e.currentTarget.value) {
+        return;
+      }
+      this.changeNetwork(e.currentTarget.value);
+    }
     renderPGrid() {
       if (this.pGrid) {
         const grid = [];
@@ -238,7 +271,7 @@ class TeleFactsRenderer extends LitElement {
                     const index = i - summationItem.MaxDepth - 1;
                     const cc = summationItem.ContributingConcepts[index];
                     if (cc && j < 1) {
-                      row.push(cc.Href);
+                      row.push(cc.Sign + " " + cc.Scale + " " + cc.Href);
                     }
                     else {
                       const fact = summationItem.FactualQuadrant[index][j - 1];
@@ -287,6 +320,9 @@ class TeleFactsRenderer extends LitElement {
             </div>
             <div style="width: 100%">
               ${this.renderEntitySelect()}
+            </div>
+            <div style="width: 100%">
+              ${this.renderNetworkSelect()}
             </div>
             <div>
               ${this.renderPGrid()}

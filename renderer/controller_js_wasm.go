@@ -36,9 +36,13 @@ func changeNetwork() js.Func {
 		if isLoading() {
 			return ret
 		}
-		v := args[0].String()
-		consoleLog(v)
-		//todo
+		e := args[0].String()
+		selectNetwork(e)
+		if selectedRelationshipSet() != "" && selectedEntity() != "" {
+			go func() {
+				refreshDataGrid()
+			}()
+		}
 		return ret
 	})
 	return ret
@@ -54,8 +58,7 @@ func changeEntity() js.Func {
 		selectEntity(e)
 		if selectedRelationshipSet() != "" {
 			go func() {
-				// refreshDataGrid("pre")
-				refreshDataGrid("cal")
+				refreshDataGrid()
 			}()
 		}
 		return ret
@@ -63,7 +66,26 @@ func changeEntity() js.Func {
 	return ret
 }
 
-func refreshDataGrid(network string) error {
+func changeRelationshipSet() js.Func {
+	var ret js.Func
+	ret = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
+		if isLoading() {
+			return ret
+		}
+		rset := args[0].String()
+		selectRelationshipSet(rset)
+		if selectedEntity() != "" {
+			go func() {
+				refreshDataGrid()
+			}()
+		}
+		return ret
+	})
+	return ret
+}
+
+func refreshDataGrid() error {
+	network := selectedNetwork()
 	switch network {
 	case "pre":
 	case "cal":
@@ -129,6 +151,7 @@ func refreshDataGrid(network string) error {
 			return fmt.Errorf(msg)
 		}
 		setPGrid(pGrid)
+		setPGrid(nil)
 		return nil
 		break
 	case "cal":
@@ -141,29 +164,11 @@ func refreshDataGrid(network string) error {
 			return fmt.Errorf(msg)
 		}
 		setCGrid(cGrid)
+		setPGrid(nil)
 		return nil
 		break
 	default:
 		return fmt.Errorf("invalid concept network")
 	}
 	return fmt.Errorf("data grid refresh failed")
-}
-
-func changeRelationshipSet() js.Func {
-	var ret js.Func
-	ret = js.FuncOf(func(this js.Value, args []js.Value) interface{} {
-		if isLoading() {
-			return ret
-		}
-		rset := args[0].String()
-		selectRelationshipSet(rset)
-		if selectedEntity() != "" {
-			go func() {
-				// refreshDataGrid("pre")
-				refreshDataGrid("cal")
-			}()
-		}
-		return ret
-	})
-	return ret
 }

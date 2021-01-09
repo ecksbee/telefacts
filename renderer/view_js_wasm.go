@@ -62,6 +62,14 @@ func setEntities(v []string) {
 	view.Set("entities", s)
 }
 
+func selectedNetwork() string {
+	return view.Get("selectedNetwork").String()
+}
+
+func selectNetwork(v string) {
+	view.Set("selectedNetwork", v)
+}
+
 func selectedRelationshipSet() string {
 	return view.Get("selectedRelationshipSet").String()
 }
