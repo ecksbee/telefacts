@@ -3,6 +3,7 @@ package renderables
 import (
 	"encoding/json"
 	"fmt"
+	"math"
 	"sort"
 	"strconv"
 
@@ -18,7 +19,8 @@ type SummationItem struct {
 }
 
 type ContributingConcept struct {
-	Weight          string
+	Sign            string
+	Scale           string
 	Href            string
 	IsSummationItem bool
 }
@@ -62,9 +64,10 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 		if calculationLink.Role == linkroleURI {
 			arcs := calculationLink.CalculationArc
 			type cStruct struct {
-				Href   string
-				Order  float64
-				Weight float64
+				Href  string
+				Order float64
+				Sign  rune
+				Scale float64
 			}
 			cMap := make(map[string][]cStruct)
 			for _, arc := range arcs {
@@ -72,11 +75,17 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 					order, _ := strconv.ParseFloat(arc.Order, 64)
 					weight, _ := strconv.ParseFloat(arc.Weight, 64)
 					fromHref := mapCLocatorToHref(linkroleURI, calculation, arc.From)
+					sign := '+'
+					if weight < 0 {
+						sign = '-'
+					}
+					scale := math.Abs(weight)
 					cMap[fromHref] = append(cMap[fromHref],
 						cStruct{
-							Href:   mapCLocatorToHref(linkroleURI, calculation, arc.To),
-							Order:  order,
-							Weight: weight,
+							Href:  mapCLocatorToHref(linkroleURI, calculation, arc.To),
+							Order: order,
+							Sign:  sign,
+							Scale: scale,
 						})
 				}
 			}
@@ -91,9 +100,12 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 				fqLabels := make([]string, 0, len(slice)+1)
 				for _, cstruct := range slice {
 					_, isSummationItem := cMap[cstruct.Href]
+					sign := fmt.Sprintf("%c", cstruct.Sign)
+					scale := fmt.Sprintf("%.1f", cstruct.Scale)
 					contributingConcepts = append(contributingConcepts, ContributingConcept{
 						Href:            cstruct.Href,
-						Weight:          fmt.Sprintf("%.1f", cstruct.Weight),
+						Scale:           scale,
+						Sign:            sign,
 						IsSummationItem: isSummationItem,
 					})
 					fqLabels = append(fqLabels, cstruct.Href)
