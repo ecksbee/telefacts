@@ -1,7 +1,6 @@
 package server
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 	"path"
@@ -39,8 +38,7 @@ func getProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *h
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/zip")
-	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s.zip\"", id))
+	w.Header().Set("Content-Type", "application/json")
 	w.Write(data)
 }
 
@@ -74,8 +72,7 @@ func postProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *
 		return
 	}
 	w.WriteHeader(http.StatusOK)
-	w.Header().Set("Content-Type", "application/zip")
-	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=\"%s.zip\"", id))
+	w.Header().Set("Content-Type", "application/json")
 	w.Write(data)
 }
 
