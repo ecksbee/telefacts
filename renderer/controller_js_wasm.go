@@ -151,7 +151,7 @@ func refreshDataGrid() error {
 			return fmt.Errorf(msg)
 		}
 		setPGrid(pGrid)
-		setPGrid(nil)
+		setCGrid(nil)
 		return nil
 		break
 	case "cal":
