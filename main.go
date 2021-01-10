@@ -35,8 +35,6 @@ func setupServer() *http.Server {
 	appcache := server.NewCache()
 	xbrl.InjectCache(appcache)
 	r := mux.NewRouter()
-	rendererServer := renderer.LoadServer()
-	r.PathPrefix("/renderer").Handler(http.StripPrefix("/renderer/", rendererServer)).Methods("GET")
 	r.HandleFunc("/projects", server.Project(appcache)).Methods("GET", "POST")
 	projectsRoute := r.PathPrefix("/projects").Subrouter()
 	projectIdPrefix := projectsRoute.PathPrefix("/{id}")
@@ -45,6 +43,8 @@ func setupServer() *http.Server {
 	projectIdRoute.HandleFunc("/serializables", server.ProjectSerializable(appcache)).Methods("GET", "POST")
 	projectIdRoute.HandleFunc("/renderables", server.ProjectRenderableIndex(appcache)).Methods("GET", "POST")
 	projectIdRoute.HandleFunc("/renderables/{l}/{i}/{j}", server.ProjectRenderable(appcache)).Methods("GET", "POST")
+	rendererServer := renderer.LoadServer()
+	r.PathPrefix("/").Handler(rendererServer).Methods("GET")
 
 	return &http.Server{
 		Addr:         "0.0.0.0:8080",
