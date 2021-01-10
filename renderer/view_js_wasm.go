@@ -106,6 +106,7 @@ func selectedPGrid() *renderables.PGrid {
 		jsIL := indentedLabels.Index(i)
 		ret.IndentedLabels = append(ret.IndentedLabels, renderables.IndentedLabel{
 			Href:        jsIL.Get("Href").String(),
+			Label:       jsIL.Get("Label").String(),
 			Indentation: jsIL.Get("Indentation").Int(),
 		})
 	}
@@ -116,11 +117,16 @@ func selectedPGrid() *renderables.PGrid {
 	return &ret
 }
 func setPGrid(v *renderables.PGrid) {
+	if v == nil {
+		view.Set("pGrid", js.Null())
+		return
+	}
 	jsMap := make(map[string]interface{})
 	indentedLabels := make([]interface{}, len(v.IndentedLabels))
 	for j, goIL := range v.IndentedLabels {
 		jsIL := make(map[string]interface{})
 		jsIL["Href"] = goIL.Href
+		jsIL["Label"] = goIL.Label
 		jsIL["Indentation"] = goIL.Indentation
 		indentedLabels[j] = jsIL
 	}
@@ -147,6 +153,7 @@ func selectedCGrid() *renderables.CGrid {
 				Sign:            jsCC.Get("Sign").String(),
 				Scale:           jsCC.Get("Scale").String(),
 				Href:            jsCC.Get("Href").String(),
+				Label:           jsCC.Get("Label").String(),
 				IsSummationItem: jsCC.Get("IsSummationItem").Bool(),
 			}
 		}
@@ -155,6 +162,7 @@ func selectedCGrid() *renderables.CGrid {
 		factualQuadrant := convertJSFactualQuadrant(jsSI.Get("FactualQuadrant"))
 		ret.SummationItems = append(ret.SummationItems, renderables.SummationItem{
 			Href:                 jsSI.Get("Href").String(),
+			Label:                jsSI.Get("Label").String(),
 			ContributingConcepts: contributingConcepts,
 			MaxDepth:             maxDepth,
 			RelevantContexts:     relevantContexts,
@@ -164,15 +172,21 @@ func selectedCGrid() *renderables.CGrid {
 	return &ret
 }
 func setCGrid(v *renderables.CGrid) {
+	if v == nil {
+		view.Set("cGrid", js.Null())
+		return
+	}
 	jsMap := make(map[string]interface{})
 	summationItems := make([]interface{}, len(v.SummationItems))
 	for j, goSI := range v.SummationItems {
 		jsSI := make(map[string]interface{})
 		jsSI["Href"] = goSI.Href
+		jsSI["Label"] = goSI.Label
 		contributingConcepts := make([]interface{}, len(goSI.ContributingConcepts))
 		for j, goCC := range goSI.ContributingConcepts {
 			jsCC := make(map[string]interface{})
 			jsCC["Href"] = goCC.Href
+			jsCC["Label"] = goCC.Label
 			jsCC["Scale"] = goCC.Scale
 			jsCC["Sign"] = goCC.Sign
 			jsCC["IsSummationItem"] = goCC.IsSummationItem

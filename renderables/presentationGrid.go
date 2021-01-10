@@ -11,6 +11,7 @@ import (
 
 type IndentedLabel struct {
 	Href        string
+	Label       string
 	Indentation int
 }
 
@@ -117,6 +118,7 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 					href := mapPLocatorToHref(linkroleURI, presentation, c.Locator)
 					ret = append(ret, IndentedLabel{
 						Href:        href,
+						Label:       href,
 						Indentation: level,
 					})
 					makeIndents(c, level+1)

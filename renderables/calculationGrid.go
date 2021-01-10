@@ -12,6 +12,7 @@ import (
 
 type SummationItem struct {
 	Href                 string
+	Label                string
 	RelevantContexts     []RelevantContext
 	MaxDepth             int
 	ContributingConcepts []ContributingConcept
@@ -22,6 +23,7 @@ type ContributingConcept struct {
 	Sign            string
 	Scale           string
 	Href            string
+	Label           string
 	IsSummationItem bool
 }
 
@@ -104,6 +106,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 					scale := fmt.Sprintf("%.1f", cstruct.Scale)
 					contributingConcepts = append(contributingConcepts, ContributingConcept{
 						Href:            cstruct.Href,
+						Label:           cstruct.Href,
 						Scale:           scale,
 						Sign:            sign,
 						IsSummationItem: isSummationItem,
@@ -115,6 +118,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 				factualQuadrant := getCFactualQuadrant(fqLabels, relevantContexts, factFinder)
 				ret = append(ret, SummationItem{
 					Href:                 from,
+					Label:                from,
 					ContributingConcepts: contributingConcepts,
 					MaxDepth:             maxDepth,
 					RelevantContexts:     relevantContexts,
@@ -122,7 +126,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 				})
 			}
 			sort.SliceStable(ret, func(i, j int) bool {
-				return ret[i].Href < ret[j].Href
+				return ret[i].Label < ret[j].Label
 			})
 			return ret
 		}

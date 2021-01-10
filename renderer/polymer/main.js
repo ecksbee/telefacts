@@ -205,7 +205,7 @@ class TeleFactsRenderer extends LitElement {
               const index = i - this.pGrid.MaxDepth - 1;
               const il = this.pGrid.IndentedLabels[index];
               if (il && j == il.Indentation) {
-                row.push(il.Href);
+                row.push(il.Label);
               }
               else {
                 if (j < this.pGrid.MaxIndentation) {
@@ -247,7 +247,7 @@ class TeleFactsRenderer extends LitElement {
                   for(let j = 0; j < maxCol; j++) {
                     if (j < 1) {
                       if (i === summationItem.MaxDepth) {
-                        row.push(summationItem.Href);
+                        row.push(summationItem.Label);
                       }
                       else{
                         row.push(null);
@@ -271,7 +271,7 @@ class TeleFactsRenderer extends LitElement {
                     const index = i - summationItem.MaxDepth - 1;
                     const cc = summationItem.ContributingConcepts[index];
                     if (cc && j < 1) {
-                      row.push(cc.Sign + " " + cc.Scale + " " + cc.Href);
+                      row.push(cc.Sign + " " + cc.Scale + " " + cc.Label);
                     }
                     else {
                       const fact = summationItem.FactualQuadrant[index][j - 1];

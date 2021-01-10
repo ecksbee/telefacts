@@ -50,7 +50,7 @@ func domainMembersString(context *xbrl.Context) []string {
 	if len(context.Entity.Segment.ExplicitMember) > 0 {
 		ret := make([]string, 0, len(context.Entity.Segment.ExplicitMember))
 		for _, explicitMember := range context.Entity.Segment.ExplicitMember {
-			ret = append(ret, explicitMember.Text+"<"+explicitMember.Dimension+"<segment") //use href through namequery
+			ret = append(ret, explicitMember.Text+"<"+explicitMember.Dimension+"<segment")
 		}
 		sort.SliceStable(ret, func(i int, j int) bool {
 			return ret[i] < ret[j]
