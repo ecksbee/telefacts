@@ -130,6 +130,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, schema *xbrl.Schem
 						&dimensionDomainNetwork, primaryItemNetwork,
 						explicitDomainNetwork, &exclusiveHypercubeNetwork, &inclusiveHypercubeNetwork,
 						&hypercubeDimensionNetwork, &defaultDimensionsNetwork, locToHref),
+					Hypercubes: getHypercubes(root.Locator, arcs, linkroleURI, definition),
 				}
 				rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder)
 				ret = append(ret, rootDomain)
