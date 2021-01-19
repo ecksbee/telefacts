@@ -97,24 +97,6 @@ type Context struct {
 				XMLInner string `xml:",innerxml"` //todo nested elements in segments
 			} `xml:",any"`
 		} `xml:"segment"`
-		Scenario struct {
-			XMLName        xml.Name
-			XMLAttrs       []xml.Attr `xml:",any,attr"`
-			ExplicitMember []struct {
-				XMLName   xml.Name
-				Dimension string `xml:"dimension,attr"`
-				Text      string `xml:",chardata"`
-			} `xml:"explicitMember"`
-			TypedMember []struct {
-				XMLName   xml.Name
-				Dimension string `xml:"dimension,attr"`
-				XMLInner  string `xml:",innerxml"` //todo nested elements in typedMembers
-			} `xml:"typedMember"`
-			ScenarioConcepts []struct {
-				XMLName  xml.Name
-				XMLInner string `xml:",innerxml"` //todo nested elements in scenarios
-			} `xml:",any"`
-		} `xml:"scenario"`
 	} `xml:"entity"`
 	Period struct {
 		XMLName   xml.Name
@@ -122,6 +104,24 @@ type Context struct {
 		StartDate string `xml:"startDate"`
 		EndDate   string `xml:"endDate"`
 	} `xml:"period"`
+	Scenario struct {
+		XMLName        xml.Name
+		XMLAttrs       []xml.Attr `xml:",any,attr"`
+		ExplicitMember []struct {
+			XMLName   xml.Name
+			Dimension string `xml:"dimension,attr"`
+			Text      string `xml:",chardata"`
+		} `xml:"explicitMember"`
+		TypedMember []struct {
+			XMLName   xml.Name
+			Dimension string `xml:"dimension,attr"`
+			XMLInner  string `xml:",innerxml"` //todo nested elements in typedMembers
+		} `xml:"typedMember"`
+		ScenarioConcepts []struct {
+			XMLName  xml.Name
+			XMLInner string `xml:",innerxml"` //todo nested elements in scenarios
+		} `xml:",any"`
+	} `xml:"scenario"`
 }
 
 func ReadInstance(file os.FileInfo, workingDir string) (*Instance, error) {

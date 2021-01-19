@@ -115,7 +115,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 				}
 				fqLabels = append(fqLabels, from)
 				relevantContexts, maxDepth := getRelevantContexts(schemedEntity, instance, schema, fqLabels)
-				factualQuadrant := getCFactualQuadrant(fqLabels, relevantContexts, factFinder)
+				factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder)
 				ret = append(ret, SummationItem{
 					Href:                 from,
 					Label:                from,
@@ -132,26 +132,4 @@ func getSummationItems(schemedEntity string, linkroleURI string, schema *xbrl.Sc
 		}
 	}
 	return nil
-}
-
-func getCFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
-	factFinder FactFinder) [][]string {
-	rowCount := len(hrefs)
-	colCount := len(relevantContexts)
-	if rowCount <= 0 || colCount <= 0 {
-		return [][]string{{}}
-	}
-	var ret [][]string
-	for i := 0; i < rowCount; i++ {
-		var row []string
-		href := hrefs[i]
-		for j := 0; j < colCount; j++ {
-			var fact *xbrl.Fact
-			contextRef := relevantContexts[j].ContextRef
-			fact = factFinder.FindFact(href, contextRef)
-			row = append(row, render(fact))
-		}
-		ret = append(ret, row)
-	}
-	return ret
 }

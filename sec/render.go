@@ -35,6 +35,10 @@ func (p *SECProject) RenderDataGrid(workingDir string, network string, entity in
 	if err != nil {
 		return nil, err
 	}
+	definition, err := p.DefinitionLinkbase(workingDir)
+	if err != nil {
+		return nil, err
+	}
 	factFinder := p.NewFactFinder(workingDir)
 	var bytes []byte
 	switch network {
@@ -42,6 +46,8 @@ func (p *SECProject) RenderDataGrid(workingDir string, network string, entity in
 		bytes, err = renderables.MarshalPGrid(entity, relationshipSet, schema, instance, presentation, factFinder)
 	case "cal":
 		bytes, err = renderables.MarshalCGrid(entity, relationshipSet, schema, instance, calculation, factFinder)
+	case "def":
+		bytes, err = renderables.MarshalDGrid(entity, relationshipSet, schema, instance, definition, factFinder)
 	default:
 		return nil, fmt.Errorf("invalid network: %s", network)
 	}

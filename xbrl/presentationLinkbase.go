@@ -27,14 +27,7 @@ type PresentationLink struct {
 		Type       string `xml:"locator,attr"`
 		ArcroleURI string `xml:"arcroleURI,attr"`
 	} `xml:"arcroleRef"`
-	PresentationArc []struct {
-		XMLName xml.Name
-		Order   string `xml:"order,attr"`
-		Arcrole string `xml:"arcrole,attr"`
-		Type    string `xml:"type,attr"`
-		From    string `xml:"from,attr"`
-		To      string `xml:"to,attr"`
-	} `xml:"presentationArc"`
+	PresentationArcs []Arc `xml:"presentationArc"`
 }
 
 type PresentationLinkbase struct {

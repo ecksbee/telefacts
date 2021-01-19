@@ -4,7 +4,6 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
-	"strconv"
 
 	"ecks-bee.com/telefacts/xbrl"
 )
@@ -58,49 +57,8 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 	}
 	for _, presentationLink := range presentationLinks {
 		if presentationLink.Role == linkroleURI {
-			var root locatorNode
-			arcs := presentationLink.PresentationArc
-			root.Children = make([]*locatorNode, 0, len(arcs))
-			sort.SliceStable(arcs, func(i, j int) bool { return arcs[i].Order < arcs[j].Order })
-			for _, arc := range arcs {
-				if arc.Arcrole == xbrl.PresentationArcrole {
-					from, _ := find(&root, arc.From)
-					if from != nil {
-						to, toIndex := find(&root, arc.To)
-						if to != nil {
-							root.Children[toIndex] = root.Children[len(root.Children)-1]
-							root.Children = root.Children[:len(root.Children)-1]
-							from.Children = append(from.Children, to)
-						} else {
-							order, _ := strconv.ParseFloat(arc.Order, 64)
-							from.Children = append(from.Children, &locatorNode{
-								Locator:  arc.To,
-								Order:    order,
-								Children: make([]*locatorNode, 0, len(arcs)),
-							})
-						}
-					} else {
-						from = &locatorNode{
-							Locator:  arc.From,
-							Children: make([]*locatorNode, 0, len(arcs)),
-						}
-						root.Children = append(root.Children, from)
-						to, toIndex := find(&root, arc.To)
-						if to != nil {
-							root.Children[toIndex] = root.Children[len(root.Children)-1]
-							root.Children = root.Children[:len(root.Children)-1]
-							from.Children = append(from.Children, to)
-						} else {
-							order, _ := strconv.ParseFloat(arc.Order, 64)
-							from.Children = append(from.Children, &locatorNode{
-								Locator:  arc.To,
-								Order:    order,
-								Children: make([]*locatorNode, 0, len(arcs)),
-							})
-						}
-					}
-				}
-			}
+			arcs := presentationLink.PresentationArcs
+			root := tree(arcs, xbrl.PresentationArcrole)
 			ret := make([]IndentedLabel, 0, len(arcs))
 			maxIndent := 1
 			var makeIndents func(node *locatorNode, level int)
@@ -143,22 +101,11 @@ func getPresentationContexts(schemedEntity string, instance *xbrl.Instance,
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
 	relevantContexts []RelevantContext,
 	factFinder FactFinder) [][]string {
-	rowCount := len(indentedLabels)
-	colCount := len(relevantContexts)
-	if rowCount <= 0 || colCount <= 0 {
-		return [][]string{{}}
+	hrefs := make([]string, 0, len(indentedLabels))
+	for _, indentedLabel := range indentedLabels {
+		hrefs = append(hrefs, indentedLabel.Href)
 	}
-	var ret [][]string
-	for i := 0; i < rowCount; i++ {
-		var row []string
-		href := indentedLabels[i].Href
-		for j := 0; j < colCount; j++ {
-			var fact *xbrl.Fact
-			contextRef := relevantContexts[j].ContextRef
-			fact = factFinder.FindFact(href, contextRef)
-			row = append(row, render(fact))
-		}
-		ret = append(ret, row)
-	}
+	ret := getFactualQuadrant(hrefs, relevantContexts,
+		factFinder)
 	return ret
 }

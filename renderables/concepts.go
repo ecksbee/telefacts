@@ -49,3 +49,25 @@ func mapCLocatorToHref(relationshipSetCurrentlyViewing string, calculation *xbrl
 	}
 	return "#" + locator
 }
+
+func mapDLocatorToHref(relationshipSetCurrentlyViewing string, definition *xbrl.DefinitionLinkbase, locator string) string {
+	roleRefs := definition.RoleRef
+	for _, roleRef := range roleRefs {
+		if relationshipSetCurrentlyViewing == roleRef.RoleURI {
+			definitionLinks := definition.DefinitionLinks
+			for _, definitionLink := range definitionLinks {
+				if definitionLink.Role == relationshipSetCurrentlyViewing {
+					for _, loc := range definitionLink.Loc {
+						if loc.Label == locator {
+							i := strings.Index(loc.Href, "#")
+							if i >= 0 {
+								return loc.Href
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	return "#" + locator
+}

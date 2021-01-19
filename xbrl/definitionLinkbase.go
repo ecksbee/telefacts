@@ -10,6 +10,31 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
+const DomainMemberArcrole = `http://xbrl.org/int/dim/arcrole/domain-member`
+const DimensionDomainArcrole = `http://xbrl.org/int/dim/arcrole/dimension-domain`
+const DimensionDefaultArcrole = `http://xbrl.org/int/dim/arcrole/dimension-default`
+const HypercubeDimensionArcrole = `http://xbrl.org/int/dim/arcrole/hypercube-dimension`
+const HasInclusiveHypercubeArcrole = `http://xbrl.org/int/dim/arcrole/all`
+const HasExclusiveHypercubeArcrole = `http://xbrl.org/int/dim/arcrole/notAll`
+
+type DefinitionLink struct {
+	XMLName xml.Name
+	Role    string `xml:"role,attr"`
+	Type    string `xml:"type,attr"`
+	Title   string `xml:"title,attr"`
+	Loc     []struct {
+		Href  string `xml:"href,attr"`
+		Label string `xml:"label,attr"`
+		Type  string `xml:"locator,attr"`
+	} `xml:"loc"`
+	ArcroleRef []struct {
+		Href       string `xml:"href,attr"`
+		Type       string `xml:"locator,attr"`
+		ArcroleURI string `xml:"arcroleURI,attr"`
+	} `xml:"arcroleRef"`
+	DefinitionArcs []Arc `xml:"definitionArc"`
+}
+
 type DefinitionLinkbase struct {
 	XMLName  xml.Name   `xml:"linkbase"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
@@ -19,30 +44,7 @@ type DefinitionLinkbase struct {
 		Href    string `xml:"href,attr"`
 		Type    string `xml:"type,attr"`
 	} `xml:"roleRef"`
-	DefinitionLink []struct {
-		XMLName xml.Name
-		Role    string `xml:"role,attr"`
-		Type    string `xml:"type,attr"`
-		Title   string `xml:"title,attr"`
-		Loc     []struct {
-			Href  string `xml:"href,attr"`
-			Label string `xml:"label,attr"`
-			Type  string `xml:"locator,attr"`
-		} `xml:"loc"`
-		ArcroleRef []struct {
-			Href       string `xml:"href,attr"`
-			Type       string `xml:"locator,attr"`
-			ArcroleURI string `xml:"arcroleURI,attr"`
-		} `xml:"arcroleRef"`
-		DefinitionArc []struct {
-			XMLName xml.Name
-			Order   string `xml:"order,attr"`
-			Arcrole string `xml:"arcrole,attr"`
-			Type    string `xml:"type,attr"`
-			From    string `xml:"from,attr"`
-			To      string `xml:"to,attr"`
-		} `xml:"definitionArc"`
-	} `xml:"definitionLink"`
+	DefinitionLinks []DefinitionLink `xml:"definitionLink"`
 }
 
 func ReadDefinitionLinkbase(file os.FileInfo, workingDir string) (*DefinitionLinkbase, error) {
