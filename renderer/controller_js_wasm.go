@@ -89,6 +89,7 @@ func refreshDataGrid() error {
 	switch network {
 	case "pre":
 	case "cal":
+	case "def":
 		break
 	default:
 		return fmt.Errorf("invalid concept network")
@@ -152,6 +153,7 @@ func refreshDataGrid() error {
 		}
 		setPGrid(pGrid)
 		setCGrid(nil)
+		setDGrid(nil)
 		return nil
 		break
 	case "cal":
@@ -164,6 +166,21 @@ func refreshDataGrid() error {
 			return fmt.Errorf(msg)
 		}
 		setCGrid(cGrid)
+		setPGrid(nil)
+		setDGrid(nil)
+		return nil
+		break
+	case "def":
+		dGrid, err := fetchDGrid(i, j)
+		if err != nil {
+			msg := "cannot fetch dGrid"
+			consoleError(msg)
+			alert(msg)
+			//todo render error UI
+			return fmt.Errorf(msg)
+		}
+		setDGrid(dGrid)
+		setCGrid(nil)
 		setPGrid(nil)
 		return nil
 		break

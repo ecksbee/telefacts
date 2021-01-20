@@ -66,3 +66,22 @@ func fetchCGrid(entityIndex int, relationshipSetIndex int) (*renderables.CGrid, 
 	err = json.Unmarshal(bodyBytes, &cGrid)
 	return &cGrid, err
 }
+func fetchDGrid(entityIndex int, relationshipSetIndex int) (*renderables.DGrid, error) {
+	i := strconv.Itoa(entityIndex)
+	j := strconv.Itoa(relationshipSetIndex)
+	targetURL := currentURL.Scheme + "://" + currentURL.Host + "/projects/" + id + "/renderables" +
+		"/def/" + i + "/" + j
+	consoleLog("fetching from " + targetURL)
+	resp, err := http.Get(targetURL)
+	if err != nil {
+		return nil, err
+	}
+	defer resp.Body.Close()
+	bodyBytes, err := ioutil.ReadAll(resp.Body)
+	if err != nil {
+		return nil, err
+	}
+	var dGrid renderables.DGrid
+	err = json.Unmarshal(bodyBytes, &dGrid)
+	return &dGrid, err
+}

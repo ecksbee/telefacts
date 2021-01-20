@@ -201,6 +201,181 @@ func setCGrid(v *renderables.CGrid) {
 	jsMap["SummationItems"] = summationItems
 	view.Set("cGrid", jsMap)
 }
+func selectedDGrid() *renderables.DGrid {
+	var ret renderables.DGrid
+	jsVal := view.Get("dGrid")
+	jsRootDomains := jsVal.Get("RootDomains")
+	rdLen := jsRootDomains.Length()
+	for i := 0; i < rdLen; i++ {
+		jsRD := jsRootDomains.Index(i)
+		jsPrimaryItems := jsRD.Get("PrimaryItems")
+		piLen := jsPrimaryItems.Length()
+		primaryItems := make([]renderables.PrimaryItem, piLen)
+		for j := 0; j < piLen; j++ {
+			jsPI := jsPrimaryItems.Index(j)
+			jsHypercubes := jsPI.Get("Hypercubes")
+			hypercubeLen := jsHypercubes.Length()
+			hypercubes := make([]renderables.Hypercube, hypercubeLen)
+			for k := 0; k < hypercubeLen; k++ {
+				jsHypercube := jsHypercubes.Index(k)
+				hypercubes[k] = renderables.Hypercube{
+					Href:           jsHypercube.Get("Href").String(),
+					Label:          jsHypercube.Get("Label").String(),
+					IsClosed:       jsHypercube.Get("IsClosed").Bool(),
+					ContextElement: jsHypercube.Get("ContextElement").String(),
+					IsInclusive:    jsHypercube.Get("IsInclusive").Bool(),
+				}
+			}
+			primaryItems[j] = renderables.PrimaryItem{
+				Href:       jsPI.Get("Href").String(),
+				Label:      jsPI.Get("Label").String(),
+				Level:      jsPI.Get("Level").Int(),
+				Hypercubes: hypercubes,
+			}
+		}
+		jsEffectiveDimensions := jsRD.Get("EffectiveDimensions")
+		edLen := jsEffectiveDimensions.Length()
+		effectiveDimensions := make([]renderables.EffectiveDimension, edLen)
+		for j := 0; j < edLen; j++ {
+			jsED := jsEffectiveDimensions.Index(j)
+			effectiveDimensions[j] = renderables.EffectiveDimension{
+				Href:  jsED.Get("Href").String(),
+				Label: jsED.Get("Label").String(),
+			}
+		}
+		jsEffectiveDomainGrid := jsRD.Get("EffectiveDomainGrid")
+		edgLen := jsEffectiveDomainGrid.Length()
+		effectiveDomainGrid := make([][]renderables.EffectiveDomain, edgLen)
+		for j := 0; j < edgLen; j++ {
+			jsEDGRow := jsEffectiveDomainGrid.Index(j)
+			jsEDGLen := jsEDGRow.Length()
+			effectiveDomains := make([]renderables.EffectiveDomain, jsEDGLen)
+			for k := 0; k < jsEDGLen; k++ {
+				jsEDom := jsEDGRow.Index(k)
+				jsEDomLen := jsEDom.Length()
+				effectiveMembers := make([]renderables.EffectiveMember, jsEDomLen)
+				for l := 0; l < jsEDomLen; l++ {
+					jsEM := jsEDom.Index(l)
+					effectiveMembers[l] = renderables.EffectiveMember{
+						Href:            jsEM.Get("Href").String(),
+						Label:           jsEM.Get("Label").String(),
+						IsDefault:       jsEM.Get("IsDefault").Bool(),
+						IsStrikethrough: jsEM.Get("IsStrikethrough").Bool(),
+					}
+				}
+				effectiveDomains[k] = effectiveMembers
+			}
+			effectiveDomainGrid[j] = effectiveDomains
+		}
+		relevantContexts := convertJSRelevantContexts(jsRD.Get("RelevantContexts"))
+		maxDepth := jsRD.Get("MaxDepth").Int()
+		maxLevel := jsRD.Get("MaxLevel").Int()
+		factualQuadrant := convertJSFactualQuadrant(jsRD.Get("FactualQuadrant"))
+		jsHypercubes := jsRD.Get("Hypercubes")
+		hypercubeLen := jsHypercubes.Length()
+		hypercubes := make([]renderables.Hypercube, hypercubeLen)
+		for k := 0; k < hypercubeLen; k++ {
+			jsHypercube := jsHypercubes.Index(k)
+			hypercubes[k] = renderables.Hypercube{
+				Href:           jsHypercube.Get("Href").String(),
+				Label:          jsHypercube.Get("Label").String(),
+				IsClosed:       jsHypercube.Get("IsClosed").Bool(),
+				ContextElement: jsHypercube.Get("ContextElement").String(),
+				IsInclusive:    jsHypercube.Get("IsInclusive").Bool(),
+			}
+		}
+		ret.RootDomains = append(ret.RootDomains, renderables.RootDomain{
+			Href:                jsRD.Get("Href").String(),
+			Label:               jsRD.Get("Label").String(),
+			PrimaryItems:        primaryItems,
+			MaxDepth:            maxDepth,
+			MaxLevel:            maxLevel,
+			RelevantContexts:    relevantContexts,
+			FactualQuadrant:     factualQuadrant,
+			EffectiveDomainGrid: effectiveDomainGrid,
+			EffectiveDimensions: effectiveDimensions,
+			Hypercubes:          hypercubes,
+		})
+	}
+	return &ret
+}
+func setDGrid(v *renderables.DGrid) {
+	if v == nil {
+		view.Set("dGrid", js.Null())
+		return
+	}
+	jsMap := make(map[string]interface{})
+	rootDomains := make([]interface{}, len(v.RootDomains))
+	for j, goRD := range v.RootDomains {
+		jsRD := make(map[string]interface{})
+		jsRD["Href"] = goRD.Href
+		jsRD["Label"] = goRD.Label
+		primaryItems := make([]interface{}, len(goRD.PrimaryItems))
+		for j, goPI := range goRD.PrimaryItems {
+			jsPI := make(map[string]interface{})
+			jsPI["Href"] = goPI.Href
+			jsPI["Label"] = goPI.Label
+			jsPI["Level"] = goPI.Level
+			hypercubes := make([]interface{}, len(goPI.Hypercubes))
+			for k, goHC := range goPI.Hypercubes {
+				jsHC := make(map[string]interface{})
+				jsHC["Href"] = goHC.Href
+				jsHC["Label"] = goHC.Label
+				jsHC["ContextElement"] = goHC.ContextElement
+				jsHC["IsClosed"] = goHC.IsClosed
+				jsHC["IsInclusive"] = goHC.IsInclusive
+				hypercubes[k] = jsHC
+			}
+			jsPI["Hypercubes"] = hypercubes
+			primaryItems[j] = jsPI
+		}
+		jsRD["PrimaryItems"] = primaryItems
+		jsRD["MaxDepth"] = goRD.MaxDepth
+		jsRD["MaxLevel"] = goRD.MaxLevel
+		jsRD["RelevantContexts"] = convertRelevantContextsToJS(goRD.RelevantContexts)
+		jsRD["FactualQuadrant"] = convertFactualQuadrantToJS(goRD.FactualQuadrant)
+		hypercubes := make([]interface{}, len(goRD.Hypercubes))
+		for k, goHC := range goRD.Hypercubes {
+			jsHC := make(map[string]interface{})
+			jsHC["Href"] = goHC.Href
+			jsHC["Label"] = goHC.Label
+			jsHC["ContextElement"] = goHC.ContextElement
+			jsHC["IsClosed"] = goHC.IsClosed
+			jsHC["IsInclusive"] = goHC.IsInclusive
+			hypercubes[k] = jsHC
+		}
+		jsRD["Hypercubes"] = hypercubes
+		effectiveDimensions := make([]interface{}, len(goRD.EffectiveDimensions))
+		for k, goED := range goRD.EffectiveDimensions {
+			jsED := make(map[string]interface{})
+			jsED["Href"] = goED.Href
+			jsED["Label"] = goED.Label
+			effectiveDimensions[k] = jsED
+		}
+		jsRD["EffectiveDimensions"] = effectiveDimensions
+		effectiveDomainGrid := make([]interface{}, len(goRD.EffectiveDomainGrid))
+		for i, goEDGRow := range goRD.EffectiveDomainGrid {
+			jsEDGRow := make([]interface{}, len(goEDGRow))
+			for ii, goEDom := range goEDGRow {
+				jsEDom := make([]interface{}, len(goEDom))
+				for iii, goEM := range goEDom {
+					jsEm := make(map[string]interface{})
+					jsEm["Href"] = goEM.Href
+					jsEm["Label"] = goEM.Label
+					jsEm["IsDefault"] = goEM.IsDefault
+					jsEm["IsStrikethrough"] = goEM.IsStrikethrough
+					jsEDom[iii] = jsEm
+				}
+				jsEDGRow[ii] = jsEDom
+			}
+			effectiveDomainGrid[i] = jsEDGRow
+		}
+		jsRD["EffectiveDomainGrid"] = effectiveDomainGrid
+		rootDomains[j] = jsRD
+	}
+	jsMap["RootDomains"] = rootDomains
+	view.Set("dGrid", jsMap)
+}
 func convertJSRelevantContexts(jsRelevantContexts js.Value) []renderables.RelevantContext {
 	var ret []renderables.RelevantContext
 	rcLen := jsRelevantContexts.Length()

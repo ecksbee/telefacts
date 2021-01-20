@@ -31,9 +31,9 @@ func initializeBrowser() error {
 		//todo render error UI
 		return fmt.Errorf(msg)
 	}
-	ram, _ := strconv.Atoi(deviceMemory.String())
+	ram := deviceMemory.Int()
 	if ram < 2 {
-		msg := "Cannot bootstrap renderer in a device with less than 2 gigabytes of memory"
+		msg := "Cannot bootstrap renderer in a device with less than 2 gigabytes of memory: " + strconv.Itoa(ram)
 		consoleError(msg)
 		alert(msg)
 		//todo render error UI
@@ -41,7 +41,8 @@ func initializeBrowser() error {
 	}
 	//todo check screen size if its a small screens and touchscreen
 	var err error
-	currentURL, err = url.Parse(js.Global().Get("location").String())
+	href := js.Global().Get("location").Get("href").String()
+	currentURL, err = url.Parse(href)
 	if err != nil {
 		msg := err.Error()
 		alert(msg)
