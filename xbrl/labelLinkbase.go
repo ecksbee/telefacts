@@ -10,6 +10,8 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
+const LabelArcrole = `http://www.xbrl.org/2003/arcrole/concept-label`
+
 type LabelLinkbase struct {
 	XMLName  xml.Name   `xml:"linkbase"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
@@ -23,17 +25,18 @@ type LabelLinkbase struct {
 		XMLName xml.Name
 		Role    string `xml:"role,attr"`
 		Type    string `xml:"type,attr"`
-
-		Loc []struct {
+		Loc     []struct {
 			Href  string `xml:"href,attr"`
 			Label string `xml:"label,attr"`
-			Type  string `xml:"locator,attr"`
+			Type  string `xml:"type,attr"`
 		} `xml:"loc"`
-		ArcroleRef []struct {
-			Href       string `xml:"href,attr"`
-			Type       string `xml:"locator,attr"`
-			ArcroleURI string `xml:"arcroleURI,attr"`
-		} `xml:"arcroleRef"`
+		Label []struct {
+			Label    string `xml:"label,attr"`
+			Role     string `xml:"role,attr"`
+			Type     string `xml:"type,attr"`
+			Lang     string `xml:"lang,attr"`
+			CharData string `xml:",chardata"`
+		} `xml:"label"`
 		LabelArc []struct {
 			XMLName xml.Name
 			Arcrole string `xml:"arcrole,attr"`

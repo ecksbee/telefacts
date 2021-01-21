@@ -20,13 +20,8 @@ type CalculationLink struct {
 	Loc     []struct {
 		Href  string `xml:"href,attr"`
 		Label string `xml:"label,attr"`
-		Type  string `xml:"locator,attr"`
+		Type  string `xml:"type,attr"`
 	} `xml:"loc"`
-	ArcroleRef []struct {
-		Href       string `xml:"href,attr"`
-		Type       string `xml:"locator,attr"`
-		ArcroleURI string `xml:"arcroleURI,attr"`
-	} `xml:"arcroleRef"`
 	CalculationArc []struct {
 		XMLName xml.Name
 		Order   string `xml:"order,attr"`

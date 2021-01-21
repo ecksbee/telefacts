@@ -25,13 +25,14 @@ type DefinitionLink struct {
 	Loc     []struct {
 		Href  string `xml:"href,attr"`
 		Label string `xml:"label,attr"`
-		Type  string `xml:"locator,attr"`
+		Type  string `xml:"type,attr"`
 	} `xml:"loc"`
-	ArcroleRef []struct {
-		Href       string `xml:"href,attr"`
-		Type       string `xml:"locator,attr"`
-		ArcroleURI string `xml:"arcroleURI,attr"`
-	} `xml:"arcroleRef"`
+	RoleRef []struct {
+		XMLName xml.Name
+		RoleURI string `xml:"roleURI,attr"`
+		Href    string `xml:"href,attr"`
+		Type    string `xml:"type,attr"`
+	} `xml:"roleRef"`
 	DefinitionArcs []Arc `xml:"definitionArc"`
 }
 
@@ -44,6 +45,11 @@ type DefinitionLinkbase struct {
 		Href    string `xml:"href,attr"`
 		Type    string `xml:"type,attr"`
 	} `xml:"roleRef"`
+	ArcroleRef []struct {
+		Href       string `xml:"href,attr"`
+		Type       string `xml:"locator,attr"`
+		ArcroleURI string `xml:"arcroleURI,attr"`
+	} `xml:"arcroleRef"`
 	DefinitionLinks []DefinitionLink `xml:"definitionLink"`
 }
 
