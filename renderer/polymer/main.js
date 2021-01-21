@@ -240,77 +240,149 @@ class TeleFactsRenderer extends LitElement {
     }
     renderDGrid() {
       if (this.dGrid) {
-        const rootDomains = this.dGrid.RootDomains;
         return html`${
-          rootDomains.map(
+          this.dGrid.RootDomains.map(
             rootDomain => {
-              const grid = []
-              const maxRow = rootDomain.PrimaryItems.length + rootDomain.MaxDepth + 1;
-              const maxCol = rootDomain.RelevantContexts.length + 1;
+              const grid = [];
+              const maxRow = rootDomain.PrimaryItems.length + rootDomain.MaxDepth + 2;
+              const maxCol = rootDomain.RelevantContexts.length + rootDomain.MaxLevel +
+                rootDomain.EffectiveDimensions.length;
               for(let i = 0; i < maxRow; i++) {
                 const row = [];
                 if (i < rootDomain.MaxDepth + 1) {
                   for(let j = 0; j < maxCol; j++) {
-                    if (j < 1) {
+                    if (j < rootDomain.MaxLevel) {
                       row.push(null);
                     }
                     else {
-                      const index = j - 1;
-                      const rc = rootDomain.RelevantContexts[index];
-                      if (i === 0) {
-                        row.push(rc.PeriodHeader);
+                      if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
+                        if (i === rootDomain.MaxDepth) {
+                          const index = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                          const ed = rootDomain.EffectiveDimensions[index];
+                          row.push(ed.Label);
+                        }
+                        else {
+                          row.push(null)
+                        }
                       }
                       else {
-                        const dmIndex = i - 1;
-                        row.push(rc.DomainMemberHeaders[dmIndex]);
+                        const index = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length;
+                        const rc = rootDomain.RelevantContexts[index];
+                        if (i === 0) {
+                          row.push(rc.PeriodHeader);
+                        }
+                        else {
+                          const dmIndex = i - 1;
+                          row.push(rc.DomainMemberHeaders[dmIndex]);
+                        }
                       }
                     }
                   }
                 }
                 else {
                   for(let j = 0; j < maxCol; j++) {
-                    const index = i - rootDomain.MaxDepth - 1;
-                    const cc = rootDomain.PrimaryItems[index];
-                    if (cc && j < 1) {
-                      if (i === rootDomain.MaxDepth + 1) {
-                        row.push(rootDomain.Label)
+                    if (i === rootDomain.MaxDepth + 1) {
+                      if (j < rootDomain.MaxLevel) {
+                        if (j === 0) {
+                          let text = rootDomain.Label
+                          if (rootDomain.Hypercubes && rootDomain.Hypercubes.length) {
+                            text += ' (' + rootDomain.Hypercubes.map(hypercube => hypercube.Label).join(', ') + ') '
+                          }
+                          row.push(text)
+                        }
+                        else {
+                          row.push(null);
+                        }
                       }
                       else {
-                        row.push(cc.Label);
+                        if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
+                          const jIndex = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                          const ed = rootDomain.EffectiveDomainGrid[i-rootDomain.MaxDepth-1][jIndex];
+                          let text = '';
+                          ed.forEach(
+                            m => {
+                              if (m.IsStrikethrough) {
+                                text += '<del>' + m.Label + '</del>,   ';
+                                return;
+                              }
+                              if (m.IsDefault) {
+                                text += '*' + m.Label + '*,   ';
+                              }
+                              else {
+                                text += m.Label + ',   ';
+                              }
+                            }
+                          );
+                          row.push(text);
+                        }
+                        else {
+                          const index = i - rootDomain.MaxDepth - 1;
+                          const fact = rootDomain.FactualQuadrant[index][j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length];
+                          row.push(fact);
+                        }
                       }
                     }
                     else {
-                      const fact = rootDomain.FactualQuadrant[index][j - 1];
-                      row.push(fact);
+                      const index = i - rootDomain.MaxDepth - 2;
+                      const pi = rootDomain.PrimaryItems[index];
+                      if (pi && j == pi.Level) {
+                        let text = pi.Label
+                        if (pi.Hypercubes && pi.Hypercubes.length) {
+                          text += ' (' + pi.Hypercubes.map(hypercube => hypercube.Label).join(', ') + ') '
+                        }
+                        row.push('>' + text);
+                      }
+                      else {
+                        if (j < rootDomain.MaxLevel) {
+                          row.push(null);
+                        }
+                        else {
+                          if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
+                            const jIndex = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                            const ed = rootDomain.EffectiveDomainGrid[i-rootDomain.MaxDepth-1][jIndex];
+                            let text = '';
+                            ed.forEach(
+                              m => {
+                                if (m.IsStrikethrough) {
+                                  text += '<del>' + m.Label + '</del>,   ';
+                                  return;
+                                }
+                                if (m.IsDefault) {
+                                  text += '*' + m.Label + '*,   ';
+                                }
+                                else {
+                                  text += m.Label + ',   ';
+                                }
+                              }
+                            )
+                            row.push(text);
+                          }
+                          else {
+                            const index = i - rootDomain.MaxDepth - 1;
+                            const fact = rootDomain.FactualQuadrant[index][j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length];
+                            row.push(fact);
+                          }
+                        }
+                      }
                     }
                   }
                 }
                 grid.push(row);
               }
-              const bottomRow = [];
-              for(let j = 0; j < maxCol; j++) {
-                if (j < 1) {
-                  bottomRow.push(null);
+              return html`<table>
+                ${
+                  grid.map(
+                    row => html`<tr>${
+                      row.map(cell => html`<td>${cell ? cell : html`&nbsp; &nbsp; &nbsp;`}</td>`)
+                    }</tr>`
+                  )
                 }
-                else {
-                  const index = maxRow - rootDomain.MaxDepth - 1;
-                  const fact = rootDomain.FactualQuadrant[index][j - 1];
-                  bottomRow.push(fact);
-                }
-              }
-              grid.push(bottomRow);
-              return html`<table style="margin: 15px;">${
-                grid.map(
-                  row => html`<tr>${
-                    row.map(cell => html`<td>${cell ? cell : html`&nbsp; &nbsp; &nbsp;`}</td>`)
-                  }</tr>`
-                )
-              }</table>`
+              </table>`;
             }
           )
         }`
       }
-      return html``;
+      return html``
     }
     renderCGrid() {
       if (this.cGrid) {
@@ -405,9 +477,9 @@ class TeleFactsRenderer extends LitElement {
               ${this.renderNetworkSelect()}
             </div>
             <div>
-              ${this.renderPGrid()}
-              ${this.renderCGrid()}
-              ${this.renderDGrid()}
+              ${this.selectedNetwork === 'pre' ? this.renderPGrid() : html``}
+              ${this.selectedNetwork === 'cal' ? this.renderCGrid() : html``}
+              ${this.selectedNetwork === 'def' ? this.renderDGrid() : html``}
             </div>
           </div>
         </mwc-top-app-bar-fixed>
