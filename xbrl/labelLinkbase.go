@@ -14,6 +14,7 @@ const LabelArcrole = `http://www.xbrl.org/2003/arcrole/concept-label`
 
 type LabelLinkbase struct {
 	XMLName  xml.Name   `xml:"linkbase"`
+	XMLNS    string     `xml:"xmlns,attr,omitempty"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
 	RoleRef  []struct {
 		XMLName xml.Name

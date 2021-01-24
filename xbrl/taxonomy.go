@@ -22,6 +22,7 @@ type Concept struct {
 	Name              string `xml:"name,attr"`
 	Nillable          bool   `xml:"nillable,attr"`
 	PeriodType        string `xml:"periodType,attr"`
+	Balance           string `xml:"balance,attr"`
 	Type              string `xml:"type,attr"`
 	SubstitutionGroup string `xml:"substitutionGroup,attr"`
 	Abstract          bool   `xml:"abstract,attr"`

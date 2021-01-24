@@ -12,8 +12,12 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
+const xsd = "http://www.w3.org/2001/XMLSchema"
+const link = "http://www.xbrl.org/2003/linkbase"
+
 type Schema struct {
 	XMLName         xml.Name   `xml:"schema"`
+	XMLNS           string     `xml:"xmlns,attr,omitempty"`
 	TargetNamespace string     `xml:"targetNamespace,attr"`
 	XMLAttrs        []xml.Attr `xml:",any,attr"`
 	Annotation      []struct {

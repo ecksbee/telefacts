@@ -1,14 +1,9 @@
-package types
+package xbrl
 
 type Precision int
 
-const MININT32 = -1 << 31
-
-const (
-	Exact Precision = iota + MININT32
-	Precisionless
-	RuleDriven
-)
+const Exact = Precision(-1 << 31)
+const Precisionless = -(Exact + 1)
 
 const (
 	Trillions Precision = iota - 12

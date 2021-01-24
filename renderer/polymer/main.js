@@ -257,8 +257,10 @@ class TeleFactsRenderer extends LitElement {
                     else {
                       if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
                         if (i === rootDomain.MaxDepth) {
-                          const index = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                          const index = j - rootDomain.MaxLevel;
                           const ed = rootDomain.EffectiveDimensions[index];
+                          console.log("j "+ j)
+                          console.log("index " + index)
                           row.push(ed.Label);
                         }
                         else {
@@ -296,7 +298,7 @@ class TeleFactsRenderer extends LitElement {
                       }
                       else {
                         if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
-                          const jIndex = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                          const jIndex = j - rootDomain.MaxLevel;
                           const ed = rootDomain.EffectiveDomainGrid[i-rootDomain.MaxDepth-1][jIndex];
                           let text = '';
                           ed.forEach(
@@ -338,7 +340,7 @@ class TeleFactsRenderer extends LitElement {
                         }
                         else {
                           if (j < rootDomain.MaxLevel + rootDomain.EffectiveDimensions.length) {
-                            const jIndex = j - rootDomain.MaxLevel - rootDomain.EffectiveDimensions.length + 1;
+                            const jIndex = j - rootDomain.MaxLevel;
                             const ed = rootDomain.EffectiveDomainGrid[i-rootDomain.MaxDepth-1][jIndex];
                             let text = '';
                             ed.forEach(

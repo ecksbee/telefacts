@@ -51,5 +51,8 @@ func (p *SECProject) RenderDataGrid(workingDir string, network string, entity in
 	default:
 		return nil, fmt.Errorf("invalid network: %s", network)
 	}
+	if err != nil {
+		return nil, err
+	}
 	return bytes, nil
 }

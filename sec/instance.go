@@ -3,7 +3,6 @@ package sec
 import (
 	"archive/zip"
 	"bytes"
-	"encoding/xml"
 	"fmt"
 	"io"
 	"net/http"
@@ -86,7 +85,10 @@ func unzipInstance(unzipFile *zip.File) (*xbrl.Instance, error) { //todo move to
 }
 
 func commitInstance(dest string, instance *xbrl.Instance) error {
-	data, _ := xml.Marshal(instance)
+	data, err := xbrl.EncodeInstance(instance)
+	if err != nil {
+		return err
+	}
 	file, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	defer file.Close()
 	if err != nil {

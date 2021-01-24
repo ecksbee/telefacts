@@ -35,6 +35,7 @@ type CalculationLink struct {
 
 type CalculationLinkbase struct {
 	XMLName  xml.Name   `xml:"linkbase"`
+	XMLNS    string     `xml:"xmlns,attr,omitempty"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
 	RoleRef  []struct {
 		XMLName xml.Name

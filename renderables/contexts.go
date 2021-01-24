@@ -40,17 +40,17 @@ func sortContexts(relevantContexts []RelevantContext) {
 }
 
 func periodString(context *xbrl.Context) string {
-	if len(context.Period.EndDate) > 0 {
-		return context.Period.StartDate + "/" + context.Period.EndDate
+	if len(context.Period[0].EndDate) > 0 {
+		return context.Period[0].StartDate[0].XMLInner + "/" + context.Period[0].EndDate[0].XMLInner
 	}
-	return context.Period.Instant
+	return context.Period[0].Instant[0].XMLInner
 }
 
 func domainMembersString(context *xbrl.Context) []string {
-	if len(context.Entity.Segment.ExplicitMember) > 0 {
-		ret := make([]string, 0, len(context.Entity.Segment.ExplicitMember))
-		for _, explicitMember := range context.Entity.Segment.ExplicitMember {
-			ret = append(ret, explicitMember.Text+"<"+explicitMember.Dimension+"<segment")
+	if len(context.Entity[0].Segment) > 0 && len(context.Entity[0].Segment[0].ExplicitMember) > 0 {
+		ret := make([]string, 0, len(context.Entity[0].Segment[0].ExplicitMember))
+		for _, explicitMember := range context.Entity[0].Segment[0].ExplicitMember {
+			ret = append(ret, explicitMember.CharData+"<"+explicitMember.Dimension+"<segment")
 		}
 		sort.SliceStable(ret, func(i int, j int) bool {
 			return ret[i] < ret[j]
@@ -67,10 +67,10 @@ func dedupEntities(instance *xbrl.Instance) []string {
 	entities := func(i *xbrl.Instance) []string {
 		ret := []string{}
 		for _, e := range i.Context {
-			if len(e.Entity.Identitifier) <= 0 {
+			if len(e.Entity[0].Identitifier) <= 0 {
 				continue
 			}
-			ret = append(ret, e.Entity.Identitifier[0].Scheme+"/"+e.Entity.Identitifier[0].Text)
+			ret = append(ret, e.Entity[0].Identitifier[0].Scheme+"/"+e.Entity[0].Identitifier[0].CharData)
 		}
 		return ret
 	}(instance)
@@ -113,10 +113,10 @@ func getRelevantContexts(schemedEntity string, instance *xbrl.Instance,
 			if factualEdgeHref == factualHref {
 				var context *xbrl.Context
 				context = getContext(instance, fact.ContextRef)
-				if len(context.Entity.Identitifier) <= 0 {
+				if len(context.Entity[0].Identitifier) <= 0 {
 					continue
 				}
-				contextualSchemedEntity := context.Entity.Identitifier[0].Scheme + "/" + context.Entity.Identitifier[0].Text
+				contextualSchemedEntity := context.Entity[0].Identitifier[0].Scheme + "/" + context.Entity[0].Identitifier[0].CharData
 				if contextualSchemedEntity != schemedEntity {
 					continue
 				}
