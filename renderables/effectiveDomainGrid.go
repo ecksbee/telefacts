@@ -95,6 +95,9 @@ func getRootDomains(schemedEntity string, linkroleURI string, schema *xbrl.Schem
 					})
 					makeIndents(c, level+1)
 				}
+				sort.SliceStable(node.Children, func(p, q int) bool {
+					return node.Children[p].Order < node.Children[q].Order
+				})
 			}
 			domainMemberNetwork := tree(arcs, xbrl.DomainMemberArcrole)
 			effectiveDimensions, effectiveDimensionHrefs := getEffectiveDimensions(linkroleURI, schema, arcs, definition)

@@ -69,9 +69,6 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 				if level+1 > maxIndent {
 					maxIndent = level + 1
 				}
-				sort.SliceStable(node.Children, func(p, q int) bool {
-					return node.Children[p].Order < node.Children[q].Order
-				})
 				for _, c := range node.Children {
 					href := mapPLocatorToHref(linkroleURI, presentation, c.Locator)
 					ret = append(ret, IndentedLabel{
@@ -81,6 +78,9 @@ func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xb
 					})
 					makeIndents(c, level+1)
 				}
+				sort.SliceStable(node.Children, func(p, q int) bool {
+					return node.Children[p].Order < node.Children[q].Order
+				})
 			}
 			makeIndents(&root, 0)
 			return ret, maxIndent
