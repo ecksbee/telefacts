@@ -4,9 +4,9 @@ import (
 	"net/http"
 )
 
-func LoadServer() http.Handler {
+func LoadServer(dir string) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		h := http.FileServer(http.Dir("./renderer/assets"))
+		h := http.FileServer(http.Dir(dir))
 		h.ServeHTTP(w, r)
 	})
 }

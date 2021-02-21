@@ -1,9 +1,9 @@
-package xbrl_test
+package serializables_test
 
 import (
 	"testing"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/serializables"
 )
 
 const testSchema = `
@@ -446,9 +446,9 @@ const testSchema = `
 </schema>
 `
 
-func TestDecodeSchema(t *testing.T) {
+func TestDecodeSchemaFile(t *testing.T) {
 	stimulus := []byte(testSchema)
-	decoded, err := xbrl.DecodeSchema(stimulus)
+	decoded, err := serializables.DecodeSchemaFile(stimulus)
 	if err != nil {
 		t.Errorf("%v\n", err)
 		return

@@ -1,4 +1,4 @@
-package xbrl
+package hydratables
 
 type Precision int
 

@@ -1,10 +1,7 @@
 package renderables
 
 import (
-	"encoding/json"
-	"fmt"
-
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/hydratables"
 )
 
 type DGrid struct {
@@ -12,22 +9,10 @@ type DGrid struct {
 	//todo XBRL v1 definition arc roles
 }
 
-func MarshalDGrid(entityIndex int, relationshipSetIndex int, schema *xbrl.Schema,
-	instance *xbrl.Instance, definition *xbrl.DefinitionLinkbase,
-	factFinder FactFinder) ([]byte, error) {
-	schemedEntities := sortedEntities(instance)
-	if entityIndex > len(schemedEntities)-1 {
-		return nil, fmt.Errorf("invalid entity index")
-	}
-	linkroleURIs := sortedRelationshipSets(schema)
-	if relationshipSetIndex > len(linkroleURIs)-1 {
-		return nil, fmt.Errorf("invalid relationship set index")
-	}
-	linkroleURI := linkroleURIs[relationshipSetIndex]
-	schemedEntity := schemedEntities[entityIndex]
-	rootDomains := getRootDomains(schemedEntity, linkroleURI, schema, instance,
-		definition, factFinder)
-	return json.Marshal(DGrid{
+func dGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
+	factFinder FactFinder) (DGrid, []LabelRole, []Lang, error) {
+	rootDomains, labelRoles, langs := getRootDomains(schemedEntity, linkroleURI, h, factFinder)
+	return DGrid{
 		RootDomains: rootDomains,
-	})
+	}, labelRoles, langs, nil
 }

@@ -1,4 +1,4 @@
-package sec
+package actions
 
 import (
 	"archive/zip"
@@ -7,7 +7,7 @@ import (
 	"path"
 )
 
-func (p *SECProject) Download(workingDir string) ([]byte, error) {
+func Download(workingDir string) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	writer := zip.NewWriter(buf)
 	files, err := ioutil.ReadDir(workingDir)
@@ -16,10 +16,6 @@ func (p *SECProject) Download(workingDir string) ([]byte, error) {
 	}
 	for _, file := range files {
 		filename := file.Name()
-		ext := path.Ext(filename)
-		if ext != ".xbrl" && ext != ".xml" && ext != ".xsd" {
-			continue
-		}
 		filepath := path.Join(workingDir, filename)
 		data, err := ioutil.ReadFile(filepath)
 		if err != nil {

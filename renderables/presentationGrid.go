@@ -1,16 +1,15 @@
 package renderables
 
 import (
-	"encoding/json"
-	"fmt"
 	"sort"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/attr"
+	"ecksbee.com/telefacts/hydratables"
 )
 
 type IndentedLabel struct {
 	Href        string
-	Label       string
+	Label       LabelPack
 	Indentation int
 }
 
@@ -22,80 +21,87 @@ type PGrid struct {
 	FactualQuadrant  [][]string
 }
 
-func MarshalPGrid(entityIndex int, relationshipSetIndex int, schema *xbrl.Schema,
-	instance *xbrl.Instance, presentation *xbrl.PresentationLinkbase,
-	factFinder FactFinder) ([]byte, error) {
-	schemedEntities := sortedEntities(instance)
-	if entityIndex > len(schemedEntities)-1 {
-		return nil, fmt.Errorf("invalid entity index")
-	}
-	linkroleURIs := sortedRelationshipSets(schema)
-	if relationshipSetIndex > len(linkroleURIs)-1 {
-		return nil, fmt.Errorf("invalid relationship set index")
-	}
-	linkroleURI := linkroleURIs[relationshipSetIndex]
-	schemedEntity := schemedEntities[entityIndex]
-	indentedLabels, maxIndentation := getIndentedLabels(linkroleURI, schema, presentation)
-	relevantContexts, maxDepth := getPresentationContexts(schemedEntity, instance, schema, indentedLabels)
+func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
+	factFinder FactFinder) (PGrid, []LabelRole, []Lang, error) {
+	indentedLabels, maxIndentation := getIndentedLabels(linkroleURI, h)
+	relevantContexts, maxDepth, labelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
+	reduced := reduce(labelPacks)
+	labelRoles, langs := destruct(*reduced)
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder)
-	return json.Marshal(PGrid{
+	return PGrid{
 		IndentedLabels:   indentedLabels,
 		MaxIndentation:   maxIndentation,
 		RelevantContexts: relevantContexts,
 		MaxDepth:         maxDepth,
 		FactualQuadrant:  factualQuadrant,
-	})
+	}, labelRoles, langs, nil
 }
 
-func getIndentedLabels(linkroleURI string, schema *xbrl.Schema, presentation *xbrl.PresentationLinkbase) ([]IndentedLabel, int) {
-	var presentationLinks []xbrl.PresentationLink
-	for _, roleRef := range presentation.RoleRef {
-		if linkroleURI == roleRef.RoleURI {
-			presentationLinks = presentation.PresentationLinks
-			break
-		}
+func pArcs(pArcs []hydratables.PresentationArc) []arc {
+	ret := make([]arc, 0, len(pArcs))
+	for _, pArc := range pArcs {
+		ret = append(ret, arc{
+			Arcrole: pArc.Arcrole,
+			Order:   pArc.Order,
+			From:    pArc.From,
+			To:      pArc.To,
+		})
 	}
-	for _, presentationLink := range presentationLinks {
-		if presentationLink.Role == linkroleURI {
-			arcs := presentationLink.PresentationArcs
-			root := tree(arcs, xbrl.PresentationArcrole)
-			ret := make([]IndentedLabel, 0, len(arcs))
-			maxIndent := 1
-			var makeIndents func(node *locatorNode, level int)
-			makeIndents = func(node *locatorNode, level int) {
-				if len(node.Children) <= 0 {
-					return
-				}
-				if level+1 > maxIndent {
-					maxIndent = level + 1
-				}
-				for _, c := range node.Children {
-					href := mapPLocatorToHref(linkroleURI, presentation, c.Locator)
-					ret = append(ret, IndentedLabel{
-						Href:        href,
-						Label:       href,
-						Indentation: level,
-					})
-					makeIndents(c, level+1)
-				}
-				sort.SliceStable(node.Children, func(p, q int) bool {
-					return node.Children[p].Order < node.Children[q].Order
-				})
+	return ret
+}
+
+func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, int) {
+	for _, presentation := range h.PresentationLinkbases {
+		var presentationLinks []hydratables.PresentationLink
+		for _, roleRef := range presentation.RoleRefs {
+			if linkroleURI == roleRef.RoleURI {
+				presentationLinks = presentation.PresentationLinks
+				break
 			}
-			makeIndents(&root, 0)
-			return ret, maxIndent
+		}
+		for _, presentationLink := range presentationLinks {
+			if presentationLink.Role == linkroleURI {
+				arcs := presentationLink.PresentationArcs
+				pArcs := pArcs(arcs)
+				root := tree(pArcs, attr.PresentationArcrole)
+				ret := make([]IndentedLabel, 0, len(arcs))
+				maxIndent := 1
+				var makeIndents func(node *locatorNode, level int)
+				makeIndents = func(node *locatorNode, level int) {
+					if len(node.Children) <= 0 {
+						return
+					}
+					if level+1 > maxIndent {
+						maxIndent = level + 1
+					}
+					for _, c := range node.Children {
+						href := mapPLocatorToHref(linkroleURI, &presentation, c.Locator)
+						ret = append(ret, IndentedLabel{
+							Href:        href,
+							Label:       GetLabel(h, href),
+							Indentation: level,
+						})
+						makeIndents(c, level+1)
+					}
+					sort.SliceStable(node.Children, func(p, q int) bool {
+						return node.Children[p].Order < node.Children[q].Order
+					})
+				}
+				makeIndents(&root, 0)
+				return ret, maxIndent
+			}
 		}
 	}
 	return nil, -1
 }
 
-func getPresentationContexts(schemedEntity string, instance *xbrl.Instance,
-	schema *xbrl.Schema, indentedLabels []IndentedLabel) ([]RelevantContext, int) {
+func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
+	indentedLabels []IndentedLabel) ([]RelevantContext, int, []LabelPack) {
 	hrefs := make([]string, len(indentedLabels))
 	for i, indentedLabel := range indentedLabels {
 		hrefs[i] = indentedLabel.Href
 	}
-	return getRelevantContexts(schemedEntity, instance, schema, hrefs)
+	return getRelevantContexts(schemedEntity, h, hrefs)
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,

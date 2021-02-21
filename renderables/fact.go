@@ -1,7 +1,7 @@
 package renderables
 
-import "ecks-bee.com/telefacts/xbrl"
+import "ecksbee.com/telefacts/hydratables"
 
 type FactFinder interface {
-	FindFact(href string, contextRef string) *xbrl.Fact
+	FindFact(href string, contextRef string) *hydratables.Fact
 }

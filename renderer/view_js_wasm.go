@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"syscall/js"
 
-	"ecks-bee.com/telefacts/renderables"
+	"ecksbee.com/telefacts/renderables"
 )
 
 var (

@@ -7,13 +7,13 @@ import copy from 'rollup-plugin-copy';
 const production = !process.env.ROLLUP_WATCH;
 const copyConfig = {
   targets: [
-    { src: 'node_modules/@webcomponents', dest: '../assets/node_modules' },
+    { src: 'node_modules/@webcomponents', dest: '../public/node_modules' },
   ],
 };
 export default {
 	input: 'main.js',
 	output: {
-		file: '../assets/bundle.js',
+		file: '../public/bundle.js',
 		format: 'iife',
 	},
 	plugins: [

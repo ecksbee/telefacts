@@ -1,7 +1,7 @@
 package renderables
 
 import (
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/hydratables"
 )
 
 func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
@@ -16,7 +16,7 @@ func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 		var row []string
 		href := hrefs[i]
 		for j := 0; j < colCount; j++ {
-			var fact *xbrl.Fact
+			var fact *hydratables.Fact
 			contextRef := relevantContexts[j].ContextRef
 			fact = factFinder.FindFact(href, contextRef)
 			row = append(row, render(fact))

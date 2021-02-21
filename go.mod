@@ -1,4 +1,4 @@
-module ecks-bee.com/telefacts
+module ecksbee.com/telefacts
 
 go 1.12
 

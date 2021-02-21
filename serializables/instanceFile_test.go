@@ -1,9 +1,9 @@
-package xbrl_test
+package serializables_test
 
 import (
 	"testing"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/serializables"
 )
 
 const testInstance = `
@@ -113,9 +113,9 @@ const testInstance = `
 </xbrli:xbrl>
 `
 
-func TestDecodeInstance(t *testing.T) {
+func TestDecodeInstanceFile(t *testing.T) {
 	stimulus := []byte(testInstance)
-	decoded, err := xbrl.DecodeInstance(stimulus)
+	decoded, err := serializables.DecodeInstanceFile(stimulus)
 	if err != nil {
 		t.Errorf("%v\n", err)
 		return
@@ -142,7 +142,7 @@ func TestDecodeInstance(t *testing.T) {
 	}
 }
 
-const testInstanceUnconventionalName = `<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2020-01-31" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:srt="http://fasb.org/srt/2020-01-31" xmlns:us-gaap="http://fasb.org/us-gaap/2020-01-31" xmlns:wk="http://www.workiva.com/20200930" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en-US">
+const testInstancePrefixless = `<xbrl xmlns="http://www.xbrl.org/2003/instance" xmlns:dei="http://xbrl.sec.gov/dei/2020-01-31" xmlns:iso4217="http://www.xbrl.org/2003/iso4217" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:srt="http://fasb.org/srt/2020-01-31" xmlns:us-gaap="http://fasb.org/us-gaap/2020-01-31" xmlns:wk="http://www.workiva.com/20200930" xmlns:xbrldi="http://xbrl.org/2006/xbrldi" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xml:lang="en-US">
 <link:schemaRef xlink:href="wk-20200930.xsd" xlink:type="simple"/>
 
 <context id="i379ca915ae9345069ac9acf544faa7f5_D20200101-20200930">
@@ -229,9 +229,9 @@ const testInstanceUnconventionalName = `<xbrl xmlns="http://www.xbrl.org/2003/in
 <us-gaap:DebtInstrumentConvertibleConversionPrice1 contextRef="i17db5d7860a840fbbb273f6501008f0a_I20190831" decimals="2" id="id3VybDovL2RvY3MudjEvZG9jOmRiY2FjMzAyYmJiODQxZjc5YmM3Zjk4NGEwYWExNTMxL3NlYzpkYmNhYzMwMmJiYjg0MWY3OWJjN2Y5ODRhMGFhMTUzMV82NC9mcmFnOmZhYjQ2ZDk5NjZhZjQ4ODA5MTQ5ZDQ4MmUwMjA3OWE0L3RleHRyZWdpb246ZmFiNDZkOTk2NmFmNDg4MDkxNDlkNDgyZTAyMDc5YTRfMTcxMw_b9358364-736c-4082-aaea-6aa6b5da29a2" unitRef="usdPerShare">80.16</us-gaap:DebtInstrumentConvertibleConversionPrice1>
 </xbrl>`
 
-func TestDecodeInstanceUnconventionallyNamed(t *testing.T) {
-	stimulus := []byte(testInstanceUnconventionalName)
-	decoded, err := xbrl.DecodeInstance(stimulus)
+func TestDecodeInstanceFilePrefixless(t *testing.T) {
+	stimulus := []byte(testInstancePrefixless)
+	decoded, err := serializables.DecodeInstanceFile(stimulus)
 	if err != nil {
 		t.Errorf("%v\n", err)
 		return

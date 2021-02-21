@@ -5,12 +5,11 @@ import (
 	"os"
 	"path"
 
-	"ecks-bee.com/telefacts/sec"
+	"ecksbee.com/telefacts/sec"
 	"github.com/gorilla/mux"
-	gocache "github.com/patrickmn/go-cache"
 )
 
-func getProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func getProjectRenderableIndex(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -28,11 +27,7 @@ func getProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *h
 		return
 	}
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	data, err := secProject.RenderCatalog(workingDir)
+	data, err := sec.MarshalCatalog(workingDir)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -42,7 +37,7 @@ func getProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *h
 	w.Write(data)
 }
 
-func postProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func postProjectRenderableIndex(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -60,13 +55,9 @@ func postProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *
 		http.Error(w, "Error: "+err.Error(), http.StatusNotFound)
 		return
 	}
-	//todo import taxonomies
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	data, err := secProject.RenderCatalog(workingDir)
+	//todo clear sec cache
+	data, err := sec.MarshalCatalog(workingDir)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -76,12 +67,12 @@ func postProjectRenderableIndex(cache *gocache.Cache, w http.ResponseWriter, r *
 	w.Write(data)
 }
 
-func ProjectRenderableIndex(cache *gocache.Cache) func(http.ResponseWriter, *http.Request) {
+func ProjectRenderableIndex() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			getProjectRenderableIndex(cache, w, r)
+			getProjectRenderableIndex(w, r)
 		} else if r.Method == http.MethodPost {
-			postProjectRenderableIndex(cache, w, r)
+			postProjectRenderableIndex(w, r)
 		} else {
 			http.Error(w, "Error: incorrect verb, "+r.Method, http.StatusInternalServerError)
 		}

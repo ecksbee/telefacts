@@ -8,11 +8,14 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path"
 	"time"
 
-	"ecks-bee.com/telefacts/renderer"
-	"ecks-bee.com/telefacts/server"
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/hydratables"
+	"ecksbee.com/telefacts/renderer"
+	"ecksbee.com/telefacts/sec"
+	"ecksbee.com/telefacts/serializables"
+	"ecksbee.com/telefacts/server"
 	"github.com/gorilla/mux"
 )
 
@@ -33,18 +36,21 @@ func main() {
 
 func setupServer() *http.Server {
 	appcache := server.NewCache()
-	xbrl.InjectCache(appcache)
+	serializables.InjectCache(appcache)
+	hydratables.InjectCache(appcache)
+	sec.InjectCache(appcache)
 	r := mux.NewRouter()
-	r.HandleFunc("/projects", server.Project(appcache)).Methods("GET", "POST")
+	r.HandleFunc("/projects", server.Project()).Methods("GET", "POST")
 	projectsRoute := r.PathPrefix("/projects").Subrouter()
-	projectIdPrefix := projectsRoute.PathPrefix("/{id}")
-	projectIdRoute := projectIdPrefix.Subrouter()
-	projectIdRoute.HandleFunc("", server.Project(appcache)).Methods("GET")
-	projectIdRoute.HandleFunc("/serializables", server.ProjectSerializable(appcache)).Methods("GET", "POST")
-	projectIdRoute.HandleFunc("/renderables", server.ProjectRenderableIndex(appcache)).Methods("GET", "POST")
-	projectIdRoute.HandleFunc("/renderables/{l}/{i}/{j}", server.ProjectRenderable(appcache)).Methods("GET", "POST")
-	rendererServer := renderer.LoadServer()
-	r.PathPrefix("/").Handler(rendererServer).Methods("GET")
+	projectIDPrefix := projectsRoute.PathPrefix("/{id}")
+	projectIDRoute := projectIDPrefix.Subrouter()
+	projectIDRoute.HandleFunc("", server.Project()).Methods("GET")
+	projectIDRoute.HandleFunc("/serializables", server.ProjectSerializable()).Methods("GET", "POST")
+	projectIDRoute.HandleFunc("/renderables", server.ProjectRenderableIndex()).Methods("GET", "POST")
+	projectIDRoute.HandleFunc("/renderables/{slug}", server.ProjectRenderable()).Methods("GET", "POST")
+	rendererServer := renderer.LoadServer(path.Join(".", "renderer", "public"))
+	r.HandleFunc("/renderer", rendererServer.ServeHTTP).Methods("GET")
+	//todo serve open api spec at root
 
 	return &http.Server{
 		Addr:         "0.0.0.0:8080",

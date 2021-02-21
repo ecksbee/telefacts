@@ -6,127 +6,108 @@ import (
 	"path"
 	"sync"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/actions"
 )
 
-func (p *SECProject) Upload(zipFile multipart.File, header multipart.FileHeader, destination string, importTaxonomies bool) (int, error) {
+func Upload(zipFile multipart.File, header multipart.FileHeader, destination string, importTaxonomies bool) error {
 	zipReader, err := zip.NewReader(zipFile, header.Size)
 	if err != nil {
-		return 0, err
+		return err
 	}
+	workingDir := destination
 	unzipFiles := zipReader.File
-	instance, err := getInstanceFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	schema, err := getSchemaFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	pre, err := getPresentationLinkbaseFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	def, err := getDefinitionLinkbaseFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	cal, err := getCalculationLinkbaseFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	lab, err := getLabelLinkbaseFromUnzipfiles(unzipFiles)
-	if err != nil {
-		return 0, err
-	}
-	return p.processClassicBundle(destination, instance, schema,
-		pre, def, cal, lab, importTaxonomies)
-}
-
-func (p *SECProject) processClassicBundle(workingDir string, instance *zip.File, schema *zip.File,
-	presentation *zip.File, definition *zip.File,
-	calculation *zip.File, label *zip.File, importTaxonomies bool) (int, error) {
-	proc := 0
-	var err error
-	wg := new(sync.WaitGroup)
+	var wg sync.WaitGroup
 	wg.Add(6)
-	p.Lock.Lock()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipInstance(instance)
+		instance, err := getInstanceFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitInstance(path.Join(workingDir, instance.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(instance)
 		if err != nil {
 			return
 		}
-		proc++
+		err = actions.Commit(path.Join(workingDir, instance.Name), unmarshalled)
+		if err != nil {
+			return
+		}
 	}()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipSchema(schema)
+		schema, err := getSchemaFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitSchema(path.Join(workingDir, schema.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(schema)
 		if err != nil {
 			return
 		}
-		if importTaxonomies {
-			go xbrl.ImportTaxonomies(unmarshalled)
+		err = actions.Commit(path.Join(workingDir, schema.Name), unmarshalled)
+		if err != nil {
+			return
 		}
-		proc++
 	}()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipPresentationLinkbase(presentation)
+		pre, err := getPresentationLinkbaseFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitPresentationLinkbase(path.Join(workingDir, presentation.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(pre)
 		if err != nil {
 			return
 		}
-		proc++
+		err = actions.Commit(path.Join(workingDir, pre.Name), unmarshalled)
+		if err != nil {
+			return
+		}
 	}()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipDefinitionLinkbase(definition)
+		def, err := getDefinitionLinkbaseFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitDefinitionLinkbase(path.Join(workingDir, definition.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(def)
 		if err != nil {
 			return
 		}
-		proc++
+		err = actions.Commit(path.Join(workingDir, def.Name), unmarshalled)
+		if err != nil {
+			return
+		}
 	}()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipCalculationLinkbase(calculation)
+		cal, err := getCalculationLinkbaseFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitCalculationLinkbase(path.Join(workingDir, calculation.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(cal)
 		if err != nil {
 			return
 		}
-		proc++
+		err = actions.Commit(path.Join(workingDir, cal.Name), unmarshalled)
+		if err != nil {
+			return
+		}
 	}()
 	go func() {
 		defer wg.Done()
-		unmarshalled, err := unzipLabelLinkbase(label)
+		lab, err := getLabelLinkbaseFromUnzipfiles(unzipFiles)
 		if err != nil {
 			return
 		}
-		err = commitLabelLinkbase(path.Join(workingDir, label.Name), unmarshalled)
+		unmarshalled, err := actions.Unzip(lab)
 		if err != nil {
 			return
 		}
-		proc++
+		err = actions.Commit(path.Join(workingDir, lab.Name), unmarshalled)
+		if err != nil {
+			return
+		}
 	}()
 	wg.Wait()
-	p.Lock.Unlock()
-	return proc, err
+	return err
 }

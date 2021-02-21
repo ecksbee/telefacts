@@ -6,12 +6,12 @@ import (
 	"os"
 	"path"
 
-	"ecks-bee.com/telefacts/sec"
+	"ecksbee.com/telefacts/actions"
+	"ecksbee.com/telefacts/sec"
 	"github.com/gorilla/mux"
-	gocache "github.com/patrickmn/go-cache"
 )
 
-func getProjectSerializable(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func getProjectSerializable(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -29,11 +29,7 @@ func getProjectSerializable(cache *gocache.Cache, w http.ResponseWriter, r *http
 		return
 	}
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	data, err := secProject.Download(workingDir)
+	data, err := actions.Download(workingDir)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -44,7 +40,7 @@ func getProjectSerializable(cache *gocache.Cache, w http.ResponseWriter, r *http
 	w.Write(data)
 }
 
-func postProjectSerializable(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func postProjectSerializable(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -72,24 +68,20 @@ func postProjectSerializable(cache *gocache.Cache, w http.ResponseWriter, r *htt
 	fmt.Printf("File size: %+v\n", handler.Size)
 	fmt.Printf("MIME header: %+v\n", handler.Header)
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	proc, err := secProject.Upload(zipFile, *handler, workingDir, true)
+	err = sec.Upload(zipFile, *handler, workingDir, true)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
 	}
-	fmt.Fprintf(w, "%d", proc)
+	w.WriteHeader(http.StatusOK)
 }
 
-func ProjectSerializable(cache *gocache.Cache) func(http.ResponseWriter, *http.Request) {
+func ProjectSerializable() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			getProjectSerializable(cache, w, r)
+			getProjectSerializable(w, r)
 		} else if r.Method == http.MethodPost {
-			postProjectSerializable(cache, w, r)
+			postProjectSerializable(w, r)
 		} else {
 			http.Error(w, "Error: incorrect verb, "+r.Method, http.StatusInternalServerError)
 		}

@@ -4,14 +4,12 @@ import (
 	"net/http"
 	"os"
 	"path"
-	"strconv"
 
-	"ecks-bee.com/telefacts/sec"
+	"ecksbee.com/telefacts/sec"
 	"github.com/gorilla/mux"
-	gocache "github.com/patrickmn/go-cache"
 )
 
-func getProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func getProjectRenderable(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodGet {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -28,27 +26,13 @@ func getProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.R
 		http.Error(w, "Error: "+err.Error(), http.StatusNotFound)
 		return
 	}
-	l := vars["l"]
-	if len(l) <= 0 {
-		http.Error(w, "Error: invalid network '"+l+"'", http.StatusBadRequest)
-		return
-	}
-	i, err := strconv.Atoi(vars["i"])
-	if err != nil {
-		http.Error(w, "Error: invalid entity index '"+vars["i"]+"'", http.StatusBadRequest)
-		return
-	}
-	j, err := strconv.Atoi(vars["j"])
-	if err != nil {
-		http.Error(w, "Error: invalid relationship set index '"+vars["j"]+"'", http.StatusBadRequest)
+	slug := vars["slug"]
+	if len(slug) <= 0 {
+		http.Error(w, "Error: invalid roote", http.StatusBadRequest)
 		return
 	}
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	data, err := secProject.RenderDataGrid(workingDir, l, i, j)
+	data, err := sec.Marshal(workingDir, slug)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -58,7 +42,7 @@ func getProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.R
 	w.Write(data)
 }
 
-func postProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func postProjectRenderable(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -76,28 +60,14 @@ func postProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.
 		http.Error(w, "Error: "+err.Error(), http.StatusNotFound)
 		return
 	}
-	l := vars["l"]
-	if len(l) <= 0 {
-		http.Error(w, "Error: invalid network '"+l+"'", http.StatusBadRequest)
+	slug := vars["slug"]
+	if len(slug) <= 0 {
+		http.Error(w, "Error: invalid network ", http.StatusBadRequest)
 		return
 	}
-	i, err := strconv.Atoi(vars["i"])
-	if err != nil {
-		http.Error(w, "Error: invalid entity index '"+vars["i"]+"'", http.StatusBadRequest)
-		return
-	}
-	j, err := strconv.Atoi(vars["j"])
-	if err != nil {
-		http.Error(w, "Error: invalid relationship set index '"+vars["j"]+"'", http.StatusBadRequest)
-		return
-	}
-	//todo import taxonomies
 	//todo check underscore and determine if sec
-	secProject := sec.SECProject{
-		ID:       id,
-		AppCache: cache,
-	}
-	data, err := secProject.RenderDataGrid(workingDir, l, i, j)
+	//todo clear sec cache
+	data, err := sec.Marshal(workingDir, slug)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return
@@ -107,12 +77,12 @@ func postProjectRenderable(cache *gocache.Cache, w http.ResponseWriter, r *http.
 	w.Write(data)
 }
 
-func ProjectRenderable(cache *gocache.Cache) func(http.ResponseWriter, *http.Request) {
+func ProjectRenderable() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
-			getProjectRenderable(cache, w, r)
+			getProjectRenderable(w, r)
 		} else if r.Method == http.MethodPost {
-			postProjectRenderable(cache, w, r)
+			postProjectRenderable(w, r)
 		} else {
 			http.Error(w, "Error: incorrect verb, "+r.Method, http.StatusInternalServerError)
 		}

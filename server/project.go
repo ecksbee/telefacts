@@ -1,6 +1,7 @@
 package server
 
 import (
+	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"log"
@@ -8,10 +9,9 @@ import (
 	"os"
 	"path"
 
-	"ecks-bee.com/telefacts/sec"
+	"ecksbee.com/telefacts/sec"
 	"github.com/google/uuid"
 	"github.com/gorilla/mux"
-	gocache "github.com/patrickmn/go-cache"
 )
 
 func getProject(w http.ResponseWriter, r *http.Request) {
@@ -49,7 +49,7 @@ func getProject(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, list)
 }
 
-func postProject(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
+func postProject(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {
 		http.Error(w, "Error: incorrect verb", http.StatusInternalServerError)
 		return
@@ -70,26 +70,32 @@ func postProject(cache *gocache.Cache, w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	filingURL := r.FormValue("SEC")
-	secProject := sec.SECProject{
-		ID:       id.String(),
-		AppCache: cache,
-	}
 	if len(filingURL) > 0 {
 		log.Printf("Scraping SEC")
-		err = secProject.Import(filingURL, pathStr, true)
+		err = sec.Import(filingURL, pathStr)
 		if err != nil {
 			log.Printf("SEC scraping error: %v+\n", err)
 		}
+		meta := path.Join(workingDir, "_")
+		file, _ := os.OpenFile(meta, os.O_CREATE, 0755)
+		defer file.Close()
+		encoder := json.NewEncoder(file)
+		go encoder.Encode(struct {
+			SEC string
+		}{
+			SEC: filingURL,
+		})
+		go sec.Hydratable(id.String())
 	}
 	fmt.Fprintf(w, id.String())
 }
 
-func Project(cache *gocache.Cache) func(http.ResponseWriter, *http.Request) {
+func Project() func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if r.Method == http.MethodGet {
 			getProject(w, r)
 		} else if r.Method == http.MethodPost {
-			postProject(cache, w, r)
+			postProject(w, r)
 		} else {
 			http.Error(w, "Error: incorrect verb, "+r.Method, http.StatusInternalServerError)
 		}

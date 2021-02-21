@@ -9,7 +9,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"ecks-bee.com/telefacts/renderables"
+	"ecksbee.com/telefacts/renderables"
 )
 
 func fetchCatalog() (*renderables.Catalog, error) {

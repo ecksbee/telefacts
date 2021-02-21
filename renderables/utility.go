@@ -2,10 +2,9 @@ package renderables
 
 import (
 	"sort"
-	"strconv"
 	"strings"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/hydratables"
 )
 
 func stringInSlice(a string, list []string) bool {
@@ -17,32 +16,27 @@ func stringInSlice(a string, list []string) bool {
 	return false
 }
 
-func sortedRelationshipSets(schema *xbrl.Schema) []string {
-	linkroleURIs := dedupRelationshipSets(schema)
+func sortedRelationshipSets(h *hydratables.Hydratable) []string {
+	linkroleURIs := dedupRelationshipSets(h)
 	sort.SliceStable(linkroleURIs, func(i, j int) bool {
 		return linkroleURIs[i] < linkroleURIs[j]
 	})
 	return linkroleURIs
 }
 
-func dedupRelationshipSets(schema *xbrl.Schema) []string {
-	if len(schema.Annotation) <= 0 {
-		return []string{}
-	}
-	if len(schema.Annotation[0].Appinfo.RoleType) <= 0 {
-		return []string{}
-	}
-	rsets := func(s *xbrl.Schema) []string {
-		ret := []string{}
-		slice := schema.Annotation[0].Appinfo.RoleType
-		for _, e := range slice {
+func dedupRelationshipSets(h *hydratables.Hydratable) []string {
+	rsets := []string{}
+	for _, schema := range h.Schemas {
+		if len(schema.Annotation.Appinfo.RoleTypes) <= 0 {
+			continue
+		}
+		for _, e := range schema.Annotation.Appinfo.RoleTypes {
 			if len(e.RoleURI) <= 0 {
 				continue
 			}
-			ret = append(ret, e.RoleURI)
+			rsets = append(rsets, e.RoleURI)
 		}
-		return ret
-	}(schema)
+	}
 	uniques := dedup(rsets)
 	return uniques
 }
@@ -78,7 +72,14 @@ func find(node *locatorNode, loc string) (*locatorNode, int) {
 	return nil, -1
 }
 
-func tree(arcs []xbrl.Arc, arcrole string) locatorNode {
+type arc struct {
+	Arcrole string
+	Order   float64
+	From    string
+	To      string
+}
+
+func tree(arcs []arc, arcrole string) locatorNode {
 	var root locatorNode
 	root.Children = make([]*locatorNode, 0, len(arcs))
 	sort.SliceStable(arcs, func(i, j int) bool { return arcs[i].Order < arcs[j].Order })
@@ -92,7 +93,7 @@ func tree(arcs []xbrl.Arc, arcrole string) locatorNode {
 					root.Children = root.Children[:len(root.Children)-1]
 					from.Children = append(from.Children, to)
 				} else {
-					order, _ := strconv.ParseFloat(arc.Order, 64)
+					order := arc.Order
 					from.Children = append(from.Children, &locatorNode{
 						Locator:  arc.To,
 						Order:    order,
@@ -111,7 +112,7 @@ func tree(arcs []xbrl.Arc, arcrole string) locatorNode {
 					root.Children = root.Children[:len(root.Children)-1]
 					from.Children = append(from.Children, to)
 				} else {
-					order, _ := strconv.ParseFloat(arc.Order, 64)
+					order := arc.Order
 					from.Children = append(from.Children, &locatorNode{
 						Locator:  arc.To,
 						Order:    order,
@@ -167,7 +168,7 @@ func paths(node *locatorNode, prior path) []path {
 	return ret
 }
 
-func render(fact *xbrl.Fact) string {
+func render(fact *hydratables.Fact) string {
 	if fact == nil {
 		return "null"
 	}

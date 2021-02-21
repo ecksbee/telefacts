@@ -4,7 +4,7 @@
 package main
 
 import (
-	"ecks-bee.com/telefacts/renderer"
+	"ecksbee.com/telefacts/renderer"
 )
 
 // First, make sure the javascript glue code is served with "cp "$(go env GOROOT)/misc/wasm/wasm_exec.js" ./renderer/assets"

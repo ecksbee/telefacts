@@ -3,11 +3,11 @@ package renderables
 import (
 	"sort"
 
-	"ecks-bee.com/telefacts/xbrl"
+	"ecksbee.com/telefacts/hydratables"
 )
 
-func getContext(instance *xbrl.Instance, contextRef string) *xbrl.Context {
-	for _, context := range instance.Context {
+func getContext(instance *hydratables.Instance, contextRef string) *hydratables.Context {
+	for _, context := range instance.Contexts {
 		if context.ID == contextRef {
 			return &context
 		}
@@ -16,123 +16,156 @@ func getContext(instance *xbrl.Instance, contextRef string) *xbrl.Context {
 }
 
 type RelevantContext struct {
-	ContextRef          string
-	PeriodHeader        string
-	DomainMemberHeaders []string
+	ContextRef   string
+	PeriodHeader LabelPack
+	Dimensions   []ContextualDimension
+}
+
+type ContextualDimension struct {
+	Element    string
+	IsExplicit bool
+	Dimension  ContextConcept
+	Member     ContextConcept
+}
+
+type ContextConcept struct {
+	Href  string
+	Label LabelPack
 }
 
 func sortContexts(relevantContexts []RelevantContext) {
 	sort.SliceStable(relevantContexts, func(i int, j int) bool {
-		if relevantContexts[i].PeriodHeader == relevantContexts[j].PeriodHeader {
-			if len(relevantContexts[i].DomainMemberHeaders) == len(relevantContexts[j].DomainMemberHeaders) {
-				for c := 0; c < len(relevantContexts[i].DomainMemberHeaders); c++ {
-					if relevantContexts[i].DomainMemberHeaders[c] == relevantContexts[j].DomainMemberHeaders[c] {
-						continue
+		if getPureLabel(relevantContexts[i].PeriodHeader) == getPureLabel(relevantContexts[j].PeriodHeader) {
+			if len(relevantContexts[i].Dimensions) == len(relevantContexts[j].Dimensions) {
+				for c := 0; c < len(relevantContexts[i].Dimensions); c++ {
+					a := relevantContexts[i].Dimensions[c]
+					b := relevantContexts[j].Dimensions[c]
+					if a.Element == b.Element {
+						if a.IsExplicit == b.IsExplicit {
+							return a.Member.Href < b.Member.Href
+						}
+						return !a.IsExplicit
 					}
-					return relevantContexts[i].DomainMemberHeaders[c] < relevantContexts[j].DomainMemberHeaders[c]
+					return a.Element < b.Element
 				}
 			} else {
-				return len(relevantContexts[i].DomainMemberHeaders) < len(relevantContexts[j].DomainMemberHeaders)
+				return len(relevantContexts[i].Dimensions) < len(relevantContexts[j].Dimensions)
 			}
 		}
-		return relevantContexts[i].PeriodHeader < relevantContexts[j].PeriodHeader
+		return getPureLabel(relevantContexts[i].PeriodHeader) < getPureLabel(relevantContexts[j].PeriodHeader)
 	})
 }
 
-func periodString(context *xbrl.Context) string {
-	if len(context.Period[0].EndDate) > 0 {
-		return context.Period[0].StartDate[0].XMLInner + "/" + context.Period[0].EndDate[0].XMLInner
+func periodString(context *hydratables.Context) LabelPack {
+	ret := LabelPack{}
+	if context.Period.Duration != nil {
+		ret[Default][PureLabel] = context.Period.Duration.StartDate + "/" + context.Period.Duration.EndDate
+	} else if context.Period.Instant != nil {
+		ret[Default][PureLabel] = context.Period.Instant.CharData
+	} else {
+		ret[Default][PureLabel] = "NULL"
 	}
-	return context.Period[0].Instant[0].XMLInner
+	return ret
 }
 
-func domainMembersString(context *xbrl.Context) []string {
-	if len(context.Entity[0].Segment) > 0 && len(context.Entity[0].Segment[0].ExplicitMember) > 0 {
-		ret := make([]string, 0, len(context.Entity[0].Segment[0].ExplicitMember))
-		for _, explicitMember := range context.Entity[0].Segment[0].ExplicitMember {
-			ret = append(ret, explicitMember.CharData+"<"+explicitMember.Dimension+"<segment")
-		}
-		sort.SliceStable(ret, func(i int, j int) bool {
-			return ret[i] < ret[j]
-		})
-		return ret
-	}
-	return []string{}
-}
-
-func dedupEntities(instance *xbrl.Instance) []string {
-	if len(instance.Context) <= 0 {
-		return []string{}
-	}
-	entities := func(i *xbrl.Instance) []string {
-		ret := []string{}
-		for _, e := range i.Context {
-			if len(e.Entity[0].Identitifier) <= 0 {
-				continue
+func dedupEntities(h *hydratables.Hydratable) []string {
+	entities := []string{}
+	for _, instance := range h.Instances {
+		for _, context := range instance.Contexts {
+			entity := context.Entity
+			scheme := entity.Identifier.Scheme
+			entityid := entity.Identifier.CharData
+			if len(scheme) > 0 && len(entityid) > 0 {
+				entities = append(entities, scheme+"/"+entityid)
 			}
-			ret = append(ret, e.Entity[0].Identitifier[0].Scheme+"/"+e.Entity[0].Identitifier[0].CharData)
 		}
-		return ret
-	}(instance)
+	}
 	uniques := dedup(entities)
 	return uniques
 }
 
-func sortedEntities(instance *xbrl.Instance) []string {
-	schemedEntities := dedupEntities(instance)
+func sortedEntities(h *hydratables.Hydratable) []string {
+	schemedEntities := dedupEntities(h)
 	sort.Strings(schemedEntities)
 	return schemedEntities
 }
 
-func getRelevantContexts(schemedEntity string, instance *xbrl.Instance,
-	schema *xbrl.Schema, hrefs []string) ([]RelevantContext, int) {
+func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
+	hrefs []string) ([]RelevantContext, int, []LabelPack) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
-		var c *xbrl.Concept
-		_, c, _ = xbrl.HashQuery(schema, href) //todo catch errors
+		var c *hydratables.Concept
+		_, c, _ = h.HashQuery(href)
 		if !c.Abstract {
 			factuaHrefs = append(factuaHrefs, href)
 		}
 	}
 	if len(factuaHrefs) <= 0 {
-		return []RelevantContext{}, 0
+		return []RelevantContext{}, 0, []LabelPack{}
 	}
-
 	maxDepth := 0
-	contextRefTaken := make(map[string]bool)
-	ret := make([]RelevantContext, 0, len(instance.Context)>>1)
-	for _, factualEdgeHref := range factuaHrefs {
-		for _, fact := range instance.Facts { //todo parallelize nlogn
-			if _, taken := contextRefTaken[fact.ContextRef]; taken {
-				continue
-			}
-			factualHref, _, err := xbrl.NameQuery(schema, fact.XMLName.Space, fact.XMLName.Local)
-			if err != nil {
-				continue
-			}
-			if factualEdgeHref == factualHref {
-				var context *xbrl.Context
-				context = getContext(instance, fact.ContextRef)
-				if len(context.Entity[0].Identitifier) <= 0 {
+	ret := make([]RelevantContext, 0, len(hrefs)*4)
+	labelPacks := make([]LabelPack, 0, len(hrefs)*4)
+	for _, instance := range h.Instances {
+		contextRefTaken := make(map[string]bool)
+		for _, factualEdgeHref := range factuaHrefs {
+			for _, fact := range instance.Facts {
+				if _, taken := contextRefTaken[fact.ContextRef]; taken {
 					continue
 				}
-				contextualSchemedEntity := context.Entity[0].Identitifier[0].Scheme + "/" + context.Entity[0].Identitifier[0].CharData
-				if contextualSchemedEntity != schemedEntity {
-					continue
+				if factualEdgeHref == fact.Href {
+					var context *hydratables.Context
+					context = getContext(&instance, fact.ContextRef)
+					entity := context.Entity
+					contextualSchemedEntity := entity.Identifier.Scheme + "/" + entity.Identifier.CharData
+					if contextualSchemedEntity == schemedEntity {
+						contextualDimensions, contextualLabelPacks := getContextualDimensions(context, h)
+						labelPacks = append(labelPacks, contextualLabelPacks...)
+						newItem := RelevantContext{
+							ContextRef:   context.ID,
+							PeriodHeader: periodString(context),
+							Dimensions:   contextualDimensions,
+						}
+						if len(newItem.Dimensions) > maxDepth {
+							maxDepth = len(newItem.Dimensions)
+						}
+						ret = append(ret, newItem)
+						contextRefTaken[fact.ContextRef] = true
+					}
 				}
-				dommems := domainMembersString(context)
-				if len(dommems) > maxDepth {
-					maxDepth = len(dommems)
-				}
-				ret = append(ret, RelevantContext{
-					ContextRef:          context.ID,
-					PeriodHeader:        periodString(context),
-					DomainMemberHeaders: dommems,
-				})
-				contextRefTaken[fact.ContextRef] = true
 			}
 		}
 	}
 	sortContexts(ret)
-	return ret, maxDepth
+	return ret, maxDepth, labelPacks
+}
+
+func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydratable) ([]ContextualDimension, []LabelPack) {
+	ret := make([]ContextualDimension, 0)
+	labelPacks := make([]LabelPack, 0)
+	if len(context.Entity.Segment.ExplicitMembers) > 0 {
+		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
+			member := explicitMember.Member.Href
+			memberLabel := GetLabel(h, member)
+			labelPacks = append(labelPacks, memberLabel)
+			dimension := explicitMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "segment",
+				IsExplicit: true,
+				Dimension: ContextConcept{
+					Href:  dimension,
+					Label: dimensionLabel,
+				},
+				Member: ContextConcept{
+					Href:  member,
+					Label: memberLabel,
+				},
+			})
+		}
+	}
+	//todo scenario
+	//todo typedMembers
+	return ret, labelPacks
 }
