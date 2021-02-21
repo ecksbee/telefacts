@@ -76,11 +76,11 @@ func postProject(w http.ResponseWriter, r *http.Request) {
 		if err != nil {
 			log.Printf("SEC scraping error: %v+\n", err)
 		}
-		meta := path.Join(workingDir, "_")
+		meta := path.Join(pathStr, "_")
 		file, _ := os.OpenFile(meta, os.O_CREATE, 0755)
 		defer file.Close()
 		encoder := json.NewEncoder(file)
-		go encoder.Encode(struct {
+		encoder.Encode(struct {
 			SEC string
 		}{
 			SEC: filingURL,

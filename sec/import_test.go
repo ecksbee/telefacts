@@ -10,7 +10,7 @@ import (
 )
 
 func TestImport(t *testing.T) {
-	workingDir := path.Join("..", "projects")
+	workingDir := path.Join("..", "test")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
 	_, err := os.Stat(pathStr)
@@ -30,7 +30,7 @@ func TestImport(t *testing.T) {
 }
 
 func TestImport_Large(t *testing.T) {
-	workingDir := path.Join("..", "projects")
+	workingDir := path.Join("..", "test")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
 	_, err := os.Stat(pathStr)
@@ -50,7 +50,7 @@ func TestImport_Large(t *testing.T) {
 }
 
 func TestImport_Gold(t *testing.T) {
-	workingDir := path.Join("..", "projects")
+	workingDir := path.Join("..", "test")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
 	_, err := os.Stat(pathStr)
