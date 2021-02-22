@@ -453,8 +453,13 @@ func TestDecodeSchemaFile(t *testing.T) {
 		t.Errorf("%v\n", err)
 		return
 	}
-	annotations := decoded.Annotation
-	if len(annotations) != 1 {
-		t.Fatalf("expected 1 annotation; outcome %d;\n%v\n", len(annotations), annotations)
+	if len(decoded.Import) != 9 {
+		t.Fatalf("expected 9 Import; outcome %d;\n", len(decoded.Import))
+	}
+	if len(decoded.Annotation) != 1 {
+		t.Fatalf("expected 1 Annotation; outcome %d;\n", len(decoded.Annotation))
+	}
+	if len(decoded.Element) != 59 {
+		t.Fatalf("expected 59 Element; outcome %d;\n", len(decoded.Element))
 	}
 }
