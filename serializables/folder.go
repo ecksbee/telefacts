@@ -16,6 +16,7 @@ const (
 )
 
 type Folder struct {
+	wLock                 sync.Mutex
 	Dir                   string
 	Namespaces            map[string]string
 	Instances             map[string]InstanceFile
@@ -43,6 +44,8 @@ func Discover(dir string, entryFileName string) (*Folder, error) {
 		return nil, err
 	}
 	ret.schemaRef(instanceFile)
+	ret.wLock.Lock()
+	defer ret.wLock.Unlock()
 	ret.Instances[entryFileName] = *instanceFile
 	return ret, nil
 }
@@ -53,12 +56,12 @@ func (folder *Folder) schemaRef(file *InstanceFile) {
 	}
 	schemaRefs := file.SchemaRef
 	var wg sync.WaitGroup
+	wg.Add(len(schemaRefs))
 	for _, iitem := range schemaRefs {
 		go func(item struct {
 			XMLName  xml.Name
 			XMLAttrs []xml.Attr "xml:\",any,attr\""
 		}) {
-			wg.Add(1)
 			defer wg.Done()
 			if item.XMLName.Space != attr.LINK {
 				return
@@ -80,19 +83,27 @@ func (folder *Folder) schemaRef(file *InstanceFile) {
 			if targetNS == nil || targetNS.Value == "" {
 				return
 			}
-			elementFormDefault := attr.FindAttr(file.XMLAttrs, "elementFormDefault")
-			if elementFormDefault == nil || elementFormDefault.Value != "qualified" {
-				return
-			}
-			attributeFormDefault := attr.FindAttr(file.XMLAttrs, "attributeFormDefault")
-			if attributeFormDefault == nil || attributeFormDefault.Value != "unqualified" {
-				return
-			}
+			folder.wLock.Lock()
 			folder.Namespaces[targetNS.Value] = hrefAttr.Value
-			go folder.importSchema(discoveredSchema)
-			go folder.includeSchema(discoveredSchema)
-			go folder.linkbaseRefSchema(discoveredSchema)
+			folder.wLock.Unlock()
+			var wwg sync.WaitGroup
+			wwg.Add(3)
+			go func() {
+				defer wwg.Done()
+				folder.importSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				go folder.includeSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				folder.linkbaseRefSchema(discoveredSchema)
+			}()
+			wwg.Wait()
+			folder.wLock.Lock()
 			folder.Schemas[hrefAttr.Value] = *discoveredSchema
+			folder.wLock.Unlock()
 		}(iitem)
 	}
 	wg.Wait()
@@ -131,11 +142,27 @@ func (folder *Folder) includeSchema(file *SchemaFile) {
 			if targetNS == nil || targetNS.Value == "" {
 				return
 			}
+			folder.wLock.Lock()
 			folder.Namespaces[targetNS.Value] = schemaLocationAttr.Value
-			go folder.importSchema(discoveredSchema)
-			go folder.includeSchema(discoveredSchema)
-			go folder.linkbaseRefSchema(discoveredSchema)
+			folder.wLock.Unlock()
+			var wwg sync.WaitGroup
+			wwg.Add(3)
+			go func() {
+				defer wwg.Done()
+				folder.importSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				go folder.includeSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				folder.linkbaseRefSchema(discoveredSchema)
+			}()
+			wwg.Wait()
+			folder.wLock.Lock()
 			folder.Schemas[schemaLocationAttr.Value] = *discoveredSchema
+			folder.wLock.Unlock()
 		}(iitem)
 	}
 	wg.Wait()
@@ -165,7 +192,9 @@ func (folder *Folder) importSchema(file *SchemaFile) {
 			if schemaLocationAttr == nil || schemaLocationAttr.Value == "" {
 				return
 			}
+			folder.wLock.Lock()
 			folder.Namespaces[namespaceAttr.Value] = schemaLocationAttr.Value
+			folder.wLock.Unlock()
 			if attr.IsValidUrl(schemaLocationAttr.Value) {
 				go DiscoverGlobalSchema(schemaLocationAttr.Value)
 				return
@@ -175,10 +204,24 @@ func (folder *Folder) importSchema(file *SchemaFile) {
 			if err != nil {
 				return
 			}
-			go folder.importSchema(discoveredSchema)
-			go folder.includeSchema(discoveredSchema)
-			go folder.linkbaseRefSchema(discoveredSchema)
+			var wwg sync.WaitGroup
+			wwg.Add(3)
+			go func() {
+				defer wwg.Done()
+				folder.importSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				go folder.includeSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				folder.linkbaseRefSchema(discoveredSchema)
+			}()
+			wwg.Wait()
+			folder.wLock.Lock()
 			folder.Schemas[schemaLocationAttr.Value] = *discoveredSchema
+			folder.wLock.Unlock()
 		}(iitem)
 	}
 	wg.Wait()
@@ -198,11 +241,11 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 				continue
 			}
 			for _, iitem := range appinfo.LinkbaseRef {
+				wg.Add(1)
 				go func(item struct {
 					XMLName  xml.Name
 					XMLAttrs []xml.Attr "xml:\",any,attr\""
 				}) {
-					wg.Add(1)
 					defer wg.Done()
 					if item.XMLName.Space != attr.LINK {
 						return
@@ -234,28 +277,36 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 						if err != nil {
 							return
 						}
+						folder.wLock.Lock()
 						folder.PresentationLinkbases[hrefAttr.Value] = *discoveredPre
+						folder.wLock.Unlock()
 						break
 					case attr.DefinitionLinkbaseRef:
 						discoveredDef, err := ReadDefinitionLinkbaseFile(filepath)
 						if err != nil {
 							return
 						}
+						folder.wLock.Lock()
 						folder.DefinitionLinkbases[hrefAttr.Value] = *discoveredDef
+						folder.wLock.Unlock()
 						break
 					case attr.CalculationLinkbaseRef:
 						discoveredCal, err := ReadCalculationLinkbaseFile(filepath)
 						if err != nil {
 							return
 						}
+						folder.wLock.Lock()
 						folder.CalculationLinkbases[hrefAttr.Value] = *discoveredCal
+						folder.wLock.Unlock()
 						break
 					case attr.LabelLinkbaseRef:
 						discoveredLab, err := ReadLabelLinkbaseFile(filepath)
 						if err != nil {
 							return
 						}
+						folder.wLock.Lock()
 						folder.LabelLinkbases[hrefAttr.Value] = *discoveredLab
+						folder.wLock.Unlock()
 						break
 					default:
 						break
