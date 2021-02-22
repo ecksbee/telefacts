@@ -115,12 +115,12 @@ func (folder *Folder) includeSchema(file *SchemaFile) {
 	}
 	includes := file.Include
 	var wg sync.WaitGroup
+	wg.Add(len(includes))
 	for _, iitem := range includes {
 		go func(item struct {
 			XMLName  xml.Name
 			XMLAttrs []xml.Attr "xml:\",any,attr\""
 		}) {
-			wg.Add(1)
 			defer wg.Done()
 			if item.XMLName.Space != attr.XSD {
 				return
@@ -174,12 +174,12 @@ func (folder *Folder) importSchema(file *SchemaFile) {
 	}
 	imports := file.Import
 	var wg sync.WaitGroup
+	wg.Add(len(imports))
 	for _, iitem := range imports {
 		go func(item struct {
 			XMLName  xml.Name
 			XMLAttrs []xml.Attr "xml:\",any,attr\""
 		}) {
-			wg.Add(1)
 			defer wg.Done()
 			if item.XMLName.Space != attr.XSD {
 				return

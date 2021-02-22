@@ -120,7 +120,13 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					return getPureLabel(ret[i].Label) < getPureLabel(ret[j].Label)
 				})
 				reduced := reduce(labelPacks)
-				labelRoles, langs := destruct(*reduced)
+				var (
+					labelRoles []LabelRole
+					langs      []Lang
+				)
+				if reduced != nil {
+					labelRoles, langs = destruct(*reduced)
+				}
 				return ret, labelRoles, langs
 			}
 		}

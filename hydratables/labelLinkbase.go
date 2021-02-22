@@ -131,10 +131,6 @@ func hydrateLabelLink(linkbaseFile *serializables.LabelLinkbaseFile) []LabelLink
 			if toAttr == nil || toAttr.Name.Space != attr.XLINK || toAttr.Value == "" {
 				continue
 			}
-			weightAttr := attr.FindAttr(arc.XMLAttrs, "weight")
-			if weightAttr == nil || weightAttr.Value == "" {
-				continue
-			}
 			order, err := strconv.ParseFloat(orderAttr.Value, 64)
 			if err != nil {
 				order = math.MaxFloat64

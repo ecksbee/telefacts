@@ -14,7 +14,6 @@ const COMMON_SCHEMA = `http://www.xbrl.org/2003/xbrl-instance-2003-12-31.XSD`
 type Concept struct {
 	XMLName           xml.Name
 	ID                string
-	Name              string
 	Type              xml.Name
 	SubstitutionGroup xml.Name
 	Nillable          bool
@@ -164,7 +163,7 @@ func hydrateConcepts(file *serializables.SchemaFile) []Concept {
 		abstractAttr := attr.FindAttr(element.XMLAttrs, "abstract")
 		if abstractAttr != nil {
 			v, err := strconv.ParseBool(abstractAttr.Value)
-			if err != nil {
+			if err == nil {
 				isAbstract = v
 			}
 		}
@@ -177,7 +176,7 @@ func hydrateConcepts(file *serializables.SchemaFile) []Concept {
 		nillableAttr := attr.FindAttr(element.XMLAttrs, "nillable")
 		if nillableAttr != nil {
 			v, err := strconv.ParseBool(nillableAttr.Value)
-			if err != nil {
+			if err == nil {
 				isNillable = v
 			}
 		}

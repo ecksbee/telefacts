@@ -35,10 +35,13 @@ func main() {
 }
 
 func setupServer() *http.Server {
-	appcache := server.NewCache()
-	serializables.InjectCache(appcache)
-	hydratables.InjectCache(appcache)
-	sec.InjectCache(appcache)
+	scache := server.NewSCache()
+	hcache := server.NewHCache()
+	seccache := server.NewSECCache()
+	serializables.SetGlobalDir(path.Join(".", "taxonomies"))
+	serializables.InjectCache(scache)
+	hydratables.InjectCache(hcache)
+	sec.InjectCache(seccache)
 	r := mux.NewRouter()
 	r.HandleFunc("/projects", server.Project()).Methods("GET", "POST")
 	projectsRoute := r.PathPrefix("/projects").Subrouter()

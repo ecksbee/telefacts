@@ -7,9 +7,15 @@ import (
 
 	"ecksbee.com/telefacts/hydratables"
 	"ecksbee.com/telefacts/serializables"
+	gocache "github.com/patrickmn/go-cache"
 )
 
 func TestHydrate_Gold(t *testing.T) {
+	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.SetGlobalDir(path.Join("..", "taxonomies"))
+	serializables.InjectCache(scache)
+	hydratables.InjectCache(hcache)
 	workingDir := path.Join("..", "test", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {

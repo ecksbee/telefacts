@@ -16,16 +16,19 @@ func stringInSlice(a string, list []string) bool {
 	return false
 }
 
-func sortedRelationshipSets(h *hydratables.Hydratable) []string {
-	linkroleURIs := dedupRelationshipSets(h)
-	sort.SliceStable(linkroleURIs, func(i, j int) bool {
-		return linkroleURIs[i] < linkroleURIs[j]
+func sortedRelationshipSets(h *hydratables.Hydratable) []RelationshipSet {
+	rsets := dedupRelationshipSets(h)
+	sort.SliceStable(rsets, func(i, j int) bool {
+		if rsets[i].Title == rsets[j].Title {
+			return rsets[i].RoleURI < rsets[j].RoleURI
+		}
+		return rsets[i].Title < rsets[j].Title
 	})
-	return linkroleURIs
+	return rsets
 }
 
-func dedupRelationshipSets(h *hydratables.Hydratable) []string {
-	rsets := []string{}
+func dedupRelationshipSets(h *hydratables.Hydratable) []RelationshipSet {
+	rsets := []RelationshipSet{}
 	for _, schema := range h.Schemas {
 		if len(schema.Annotation.Appinfo.RoleTypes) <= 0 {
 			continue
@@ -34,10 +37,23 @@ func dedupRelationshipSets(h *hydratables.Hydratable) []string {
 			if len(e.RoleURI) <= 0 {
 				continue
 			}
-			rsets = append(rsets, e.RoleURI)
+			rsets = append(rsets, RelationshipSet{
+				RoleURI: e.RoleURI,
+				Title:   e.Definition,
+			})
 		}
 	}
-	uniques := dedup(rsets)
+	uniques := func(arr []RelationshipSet) []RelationshipSet {
+		occured := map[RelationshipSet]bool{}
+		u := []RelationshipSet{}
+		for e := range arr {
+			if occured[arr[e]] != true {
+				occured[arr[e]] = true
+				u = append(u, arr[e])
+			}
+		}
+		return u
+	}(rsets)
 	return uniques
 }
 

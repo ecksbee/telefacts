@@ -58,6 +58,7 @@ func sortContexts(relevantContexts []RelevantContext) {
 
 func periodString(context *hydratables.Context) LabelPack {
 	ret := LabelPack{}
+	ret[Default] = make(LanguagePack)
 	if context.Period.Duration != nil {
 		ret[Default][PureLabel] = context.Period.Duration.StartDate + "/" + context.Period.Duration.EndDate
 	} else if context.Period.Instant != nil {
@@ -68,35 +69,60 @@ func periodString(context *hydratables.Context) LabelPack {
 	return ret
 }
 
-func dedupEntities(h *hydratables.Hydratable) []string {
-	entities := []string{}
+func dedupEntities(h *hydratables.Hydratable) []Entity {
+	entities := []Entity{}
 	for _, instance := range h.Instances {
 		for _, context := range instance.Contexts {
 			entity := context.Entity
 			scheme := entity.Identifier.Scheme
 			entityid := entity.Identifier.CharData
 			if len(scheme) > 0 && len(entityid) > 0 {
-				entities = append(entities, scheme+"/"+entityid)
+				entities = append(entities, Entity{
+					Scheme:   scheme,
+					CharData: entityid,
+				})
 			}
 		}
 	}
-	uniques := dedup(entities)
+
+	uniques := func(arr []Entity) []Entity {
+		occured := map[Entity]bool{}
+		u := []Entity{}
+		for e := range arr {
+			if occured[arr[e]] != true {
+				occured[arr[e]] = true
+				u = append(u, arr[e])
+			}
+		}
+		return u
+	}(entities)
 	return uniques
 }
 
-func sortedEntities(h *hydratables.Hydratable) []string {
+func sortedEntities(h *hydratables.Hydratable) []Entity {
 	schemedEntities := dedupEntities(h)
-	sort.Strings(schemedEntities)
+	sort.SliceStable(schemedEntities, func(i, j int) bool {
+		if schemedEntities[i].Scheme == schemedEntities[j].Scheme {
+			return schemedEntities[i].CharData < schemedEntities[j].CharData
+		}
+		return schemedEntities[i].Scheme < schemedEntities[j].Scheme
+	})
 	return schemedEntities
+}
+
+func stringify(e *Entity) string {
+	if e == nil {
+		return ""
+	}
+	return e.Scheme + "/" + e.CharData
 }
 
 func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 	hrefs []string) ([]RelevantContext, int, []LabelPack) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
-		var c *hydratables.Concept
-		_, c, _ = h.HashQuery(href)
-		if !c.Abstract {
+		_, c, err := h.HashQuery(href)
+		if err == nil && !c.Abstract {
 			factuaHrefs = append(factuaHrefs, href)
 		}
 	}
@@ -143,7 +169,7 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydratable) ([]ContextualDimension, []LabelPack) {
 	ret := make([]ContextualDimension, 0)
 	labelPacks := make([]LabelPack, 0)
-	if len(context.Entity.Segment.ExplicitMembers) > 0 {
+	if context.Entity.Segment != nil && len(context.Entity.Segment.ExplicitMembers) > 0 {
 		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
 			member := explicitMember.Member.Href
 			memberLabel := GetLabel(h, member)

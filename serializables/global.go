@@ -1,28 +1,31 @@
 package serializables
 
 import (
-	"bytes"
 	"encoding/xml"
 	"fmt"
-	"io"
-	"net/http"
 	"net/url"
 	"os"
 	"path"
 	"strings"
 	"sync"
 
+	"ecksbee.com/telefacts/actions"
 	"ecksbee.com/telefacts/attr"
 	gocache "github.com/patrickmn/go-cache"
 )
 
 var (
-	lock     sync.RWMutex
-	appcache *gocache.Cache
+	lock      sync.RWMutex
+	appcache  *gocache.Cache
+	globalDir string
 )
 
 func InjectCache(c *gocache.Cache) {
 	appcache = c
+}
+
+func SetGlobalDir(dir string) {
+	globalDir = dir
 }
 
 func ImportSchema(file *SchemaFile) map[string]string {
@@ -59,6 +62,9 @@ func ImportSchema(file *SchemaFile) map[string]string {
 }
 
 func urlToFilename(urlStr string) (string, error) {
+	if globalDir == "" {
+		return "", fmt.Errorf("No directory set")
+	}
 	urlPath, err := url.Parse(urlStr)
 	if err != nil {
 		return "", err
@@ -76,7 +82,7 @@ func urlToFilename(urlStr string) (string, error) {
 	for _, split := range splits {
 		dest = path.Join(dest, split)
 	}
-	return path.Join(".", "taxonomies", dest), nil //todo pas config value
+	return path.Join(globalDir, dest), nil
 }
 
 func DiscoverGlobalFile(urlStr string) ([]byte, error) {
@@ -102,19 +108,14 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 			return nil, err
 		}
 	}
-	resp, err := http.Get(urlStr)
-	defer resp.Body.Close()
+	ret, err := actions.Scrape(urlStr)
 	if err != nil {
 		return nil, err
 	}
-	file, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
-	defer file.Close()
+	err = actions.Commit(dest, ret)
 	if err != nil {
 		return nil, err
 	}
-	var buffer bytes.Buffer
-	_, err = io.Copy(&buffer, resp.Body)
-	ret := buffer.Bytes()
 	go func() {
 		lock.Lock()
 		defer lock.Unlock()

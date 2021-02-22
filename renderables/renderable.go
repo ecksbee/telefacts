@@ -8,28 +8,41 @@ import (
 	"ecksbee.com/telefacts/hydratables"
 )
 
-type Renderables struct {
-	RoleURI    string
-	Entity     string
-	Title      string
-	Lang       []Lang
-	LabelRoles []LabelRole
-	PGrid
-	DGrid
-	CGrid
+type RelationshipSet struct {
+	Title   string
+	RoleURI string
 }
 
-func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
+type Subject struct {
+	Name   string
+	Entity Entity
+}
+
+type Entity struct {
+	Scheme   string
+	CharData string
+}
+
+type Renderable struct {
+	RelationshipSet RelationshipSet
+	Subject         Subject
+	Lang            []Lang
+	LabelRoles      []LabelRole
+	PGrid           PGrid
+	DGrid           DGrid
+	CGrid           CGrid
+}
+
+func MarshalRenderable(slug string, names map[string]map[string]string, h *hydratables.Hydratable) ([]byte, error) {
 	schemedEntities := sortedEntities(h)
-	linkroleURIs := sortedRelationshipSets(h)
+	rsets := sortedRelationshipSets(h)
 	for _, schemedEntity := range schemedEntities {
-		for _, linkroleURI := range linkroleURIs {
-			if slug == hash(schemedEntity, linkroleURI) {
+		for _, rset := range rsets {
+			if slug == hash(stringify(&schemedEntity), rset.RoleURI) {
 				var (
 					p          PGrid
 					d          DGrid
 					c          CGrid
-					title      string
 					labelRoles []LabelRole
 					langs      []Lang
 					err        error
@@ -48,7 +61,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					p = localP
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(schemedEntity, linkroleURI)
+				}(stringify(&schemedEntity), rset.RoleURI)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
 					localD, lr, ln, localError := dGrid(entity, linkrole, h, h)
@@ -59,7 +72,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					d = localD
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(schemedEntity, linkroleURI)
+				}(stringify(&schemedEntity), rset.RoleURI)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
 					localC, lr, ln, localError := cGrid(entity, linkrole, h, h)
@@ -70,13 +83,24 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					c = localC
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(schemedEntity, linkroleURI)
+				}(stringify(&schemedEntity), rset.RoleURI)
 
 				wg.Wait()
-				ret := Renderables{
-					Title:      title,
-					RoleURI:    linkroleURI,
-					Entity:     schemedEntity,
+				ret := Renderable{
+					Subject: Subject{
+						Name: names[schemedEntity.Scheme][schemedEntity.CharData],
+						Entity: struct {
+							Scheme   string
+							CharData string
+						}{
+							Scheme:   schemedEntity.Scheme,
+							CharData: schemedEntity.CharData,
+						},
+					},
+					RelationshipSet: RelationshipSet{
+						Title:   rset.Title,
+						RoleURI: rset.RoleURI,
+					},
 					PGrid:      p,
 					DGrid:      d,
 					CGrid:      c,

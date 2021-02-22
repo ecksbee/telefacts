@@ -5,10 +5,17 @@ import (
 	"path"
 	"testing"
 
+	"ecksbee.com/telefacts/sec"
 	"ecksbee.com/telefacts/serializables"
+	gocache "github.com/patrickmn/go-cache"
 )
 
 func TestDiscover_Gold(t *testing.T) {
+	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	seccache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.SetGlobalDir(path.Join("..", "taxonomies"))
+	serializables.InjectCache(scache)
+	sec.InjectCache(seccache)
 	workingDir := path.Join("..", "test", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {

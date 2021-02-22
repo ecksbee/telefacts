@@ -5,7 +5,7 @@ import (
 )
 
 type Hydratable struct {
-	Folder                serializables.Folder
+	Folder                *serializables.Folder
 	Instances             map[string]Instance
 	Schemas               map[string]Schema
 	LabelLinkbases        map[string]LabelLinkbase
@@ -16,19 +16,13 @@ type Hydratable struct {
 
 func Hydrate(folder *serializables.Folder) (*Hydratable, error) {
 	ret := &Hydratable{
+		Folder:                folder,
 		Instances:             make(map[string]Instance),
 		Schemas:               make(map[string]Schema),
 		LabelLinkbases:        make(map[string]LabelLinkbase),
 		PresentationLinkbases: make(map[string]PresentationLinkbase),
 		DefinitionLinkbases:   make(map[string]DefinitionLinkbase),
 		CalculationLinkbases:  make(map[string]CalculationLinkbase),
-	}
-	for filename, file := range folder.Instances {
-		entry, err := HydrateInstance(&file, filename)
-		if err != nil {
-			return nil, err
-		}
-		ret.Instances[filename] = *entry
 	}
 	for filename, file := range folder.Schemas {
 		entry, err := HydrateSchema(&file, filename)
@@ -64,6 +58,13 @@ func Hydrate(folder *serializables.Folder) (*Hydratable, error) {
 			return nil, err
 		}
 		ret.LabelLinkbases[filename] = *entry
+	}
+	for filename, file := range folder.Instances {
+		entry, err := HydrateInstance(&file, filename, ret)
+		if err != nil {
+			return nil, err
+		}
+		ret.Instances[filename] = *entry
 	}
 	return ret, nil
 }

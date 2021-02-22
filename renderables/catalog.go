@@ -1,6 +1,7 @@
 package renderables
 
 import (
+	"encoding/hex"
 	"encoding/json"
 	"hash/fnv"
 
@@ -9,25 +10,32 @@ import (
 
 type Catalog struct {
 	Files            []string
-	Entities         []string
-	RelationshipSets []string
+	Subjects         []Subject
+	RelationshipSets []RelationshipSet
 	Networks         map[string]map[string]string
 }
 
-func MarshalCatalog(h *hydratables.Hydratable, filenames []string) ([]byte, error) {
+func MarshalCatalog(h *hydratables.Hydratable, names map[string]map[string]string,
+	filenames []string) ([]byte, error) {
 	schemedEntities := sortedEntities(h)
-	linkroleURIs := sortedRelationshipSets(h)
+	rsets := sortedRelationshipSets(h)
+	subjects := make([]Subject, 0, len(schemedEntities))
 	networks := map[string]map[string]string{}
 	for _, schemedEntity := range schemedEntities {
-		networks[schemedEntity] = make(map[string]string)
-		for _, linkroleURI := range linkroleURIs {
-			hash := hash(schemedEntity, linkroleURI)
-			networks[schemedEntity][linkroleURI] = hash
+		entityStr := stringify(&schemedEntity)
+		networks[entityStr] = make(map[string]string)
+		for _, rset := range rsets {
+			hash := hash(entityStr, rset.RoleURI)
+			networks[entityStr][rset.RoleURI] = hash
 		}
+		subjects = append(subjects, Subject{
+			Name:   names[schemedEntity.Scheme][schemedEntity.CharData],
+			Entity: schemedEntity,
+		})
 	}
 	return json.Marshal(Catalog{
-		Entities:         schemedEntities,
-		RelationshipSets: linkroleURIs,
+		Subjects:         subjects,
+		RelationshipSets: rsets,
 		Files:            filenames,
 		Networks:         networks,
 	})
@@ -36,5 +44,5 @@ func MarshalCatalog(h *hydratables.Hydratable, filenames []string) ([]byte, erro
 func hash(schemedEntity string, linkroleURI string) string {
 	h := fnv.New128a()
 	h.Write([]byte(schemedEntity + linkroleURI))
-	return string(h.Sum([]byte{}))
+	return hex.EncodeToString(h.Sum([]byte{}))
 }

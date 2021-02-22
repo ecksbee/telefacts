@@ -74,7 +74,7 @@ func (h *Hydratable) NameQuery(namespace string, localName string) (string, *Con
 		concepts = schema.Element
 	}
 	for _, candidate := range concepts {
-		if localName == candidate.Name {
+		if localName == candidate.XMLName.Local && namespace == candidate.XMLName.Space {
 			return schemaLoc + "#" + candidate.ID, &candidate, nil
 		}
 	}

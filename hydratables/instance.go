@@ -17,16 +17,15 @@ type Instance struct {
 }
 
 type Fact struct {
-	Href         string
-	PrefixedName string
-	ID           string
-	ContextRef   string
-	Context      *Context
-	UnitRef      string
-	Unit         *Unit
-	Decimals     string
-	Precision    string
-	XMLInner     string
+	Href       string
+	ID         string
+	ContextRef string
+	Context    *Context
+	UnitRef    string
+	Unit       *Unit
+	Decimals   string
+	Precision  string
+	XMLInner   string
 }
 
 type ExplicitMember struct {
@@ -127,7 +126,7 @@ type FootnoteArc struct {
 	Footnote *Footnote
 }
 
-func HydrateInstance(file *serializables.InstanceFile, fileName string) (*Instance, error) {
+func HydrateInstance(file *serializables.InstanceFile, fileName string, h *Hydratable) (*Instance, error) {
 	if len(fileName) <= 0 {
 		return nil, fmt.Errorf("Empty file name")
 	}
@@ -136,14 +135,14 @@ func HydrateInstance(file *serializables.InstanceFile, fileName string) (*Instan
 	}
 	ret := Instance{}
 	ret.FileName = fileName
-	ret.Contexts = hydrateContexts(file)
+	ret.Contexts = hydrateContexts(file, h)
 	ret.Units = hydrateUnits(file)
-	ret.Facts = hydrateFacts(file)
+	ret.Facts = hydrateFacts(file, h)
 	ret.FootnoteLinks = hydrateFootnoteLinks(file)
 	return &ret, nil
 }
 
-func hydrateContexts(instanceFile *serializables.InstanceFile) []Context {
+func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []Context {
 	ret := make([]Context, 0, len(instanceFile.Context))
 	for _, context := range instanceFile.Context {
 		if context.XMLName.Space != attr.XBRLI {
@@ -178,19 +177,35 @@ func hydrateContexts(instanceFile *serializables.InstanceFile) []Context {
 					if dimAttr == nil {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
+					memName := attr.Xmlns(instanceFile.XMLAttrs, explicitMember.CharData)
+					if memName.Space == "" {
+						continue
+					}
+					memRef, memConcept, err := h.NameQuery(memName.Space, memName.Local)
+					if err != nil || memRef == "" || memConcept == nil {
+						continue
+					}
 					newExplicitMember := ExplicitMember{
 						Dimension: struct {
 							Href  string
 							Value string
 						}{
-							Href:  "", //todo
+							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
 						Member: struct {
 							Href     string
 							CharData string
 						}{
-							Href:     "", //todo
+							Href:     memRef,
 							CharData: explicitMember.CharData,
 						},
 					}
@@ -244,19 +259,35 @@ func hydrateContexts(instanceFile *serializables.InstanceFile) []Context {
 					if dimAttr == nil || dimAttr.Value == "" {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
+					memName := attr.Xmlns(instanceFile.XMLAttrs, explicitMember.CharData)
+					if memName.Space == "" {
+						continue
+					}
+					memRef, memConcept, err := h.NameQuery(memName.Space, memName.Local)
+					if err != nil || memRef == "" || memConcept == nil {
+						continue
+					}
 					newExplicitMember := ExplicitMember{
 						Dimension: struct {
 							Href  string
 							Value string
 						}{
-							Href:  "", //todo
+							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
 						Member: struct {
 							Href     string
 							CharData string
 						}{
-							Href:     "", //todo
+							Href:     memRef,
 							CharData: explicitMember.CharData,
 						},
 					}
@@ -347,7 +378,7 @@ func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 	return ret
 }
 
-func hydrateFacts(instanceFile *serializables.InstanceFile) []Fact {
+func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fact {
 	ret := make([]Fact, 0, len(instanceFile.Facts))
 	for _, fact := range instanceFile.Facts {
 		idAttr := attr.FindAttr(fact.XMLAttrs, "id")
@@ -355,6 +386,10 @@ func hydrateFacts(instanceFile *serializables.InstanceFile) []Fact {
 			continue
 		}
 		if fact.XMLName.Local == "" || fact.XMLName.Space == "" {
+			continue
+		}
+		factRef, factConcept, err := h.NameQuery(fact.XMLName.Space, fact.XMLName.Local)
+		if err != nil || factRef == "" || factConcept == nil {
 			continue
 		}
 		contextRefAttr := attr.FindAttr(fact.XMLAttrs, "contextRef")
@@ -377,15 +412,14 @@ func hydrateFacts(instanceFile *serializables.InstanceFile) []Fact {
 			precisionVal = precisionAttr.Value
 		}
 		newFact := Fact{
-			ID:           idAttr.Value,
-			Href:         "", //todo
-			PrefixedName: "", //todo
-			ContextRef:   contextRefAttr.Value,
-			Context:      nil, //todo
-			UnitRef:      unitVal,
-			Unit:         nil, //todo
-			Decimals:     decimalsVal,
-			Precision:    precisionVal,
+			ID:         idAttr.Value,
+			Href:       factRef,
+			ContextRef: contextRefAttr.Value,
+			Context:    nil, //todo
+			UnitRef:    unitVal,
+			Unit:       nil, //todo
+			Decimals:   decimalsVal,
+			Precision:  precisionVal,
 		}
 		ret = append(ret, newFact)
 	}

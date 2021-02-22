@@ -88,7 +88,6 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 				break
 			}
 		}
-		ret := []RootDomain{}
 		for _, definitionLink := range definitionLinks {
 			if definitionLink.Role == linkroleURI {
 				arcs := definitionLink.DefinitionArcs
@@ -158,7 +157,9 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder)
 					ret = append(ret, rootDomain)
 					reduced := reduce(labelPacks)
-					labelRoles, langs = destruct(*reduced)
+					if reduced != nil {
+						labelRoles, langs = destruct(*reduced)
+					}
 				}
 			}
 		}

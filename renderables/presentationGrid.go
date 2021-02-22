@@ -26,7 +26,13 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	indentedLabels, maxIndentation := getIndentedLabels(linkroleURI, h)
 	relevantContexts, maxDepth, labelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
 	reduced := reduce(labelPacks)
-	labelRoles, langs := destruct(*reduced)
+	var (
+		labelRoles []LabelRole
+		langs      []Lang
+	)
+	if reduced != nil {
+		labelRoles, langs = destruct(*reduced)
+	}
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder)
 	return PGrid{
 		IndentedLabels:   indentedLabels,
