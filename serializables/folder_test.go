@@ -36,6 +36,9 @@ func TestDiscover_Gold(t *testing.T) {
 	if len(ins.Context) != 248 {
 		t.Fatalf("expected 248 Context; outcome %d;\n", len(ins.Context))
 	}
+	if len(ins.Facts) != 874 {
+		t.Fatalf("expected 874 Fact; outcome %d;\n", len(ins.Facts))
+	}
 
 	if len(f.Schemas) != 1 {
 		t.Fatalf("expected 1 Schema; outcome %d;\n", len(f.Schemas))

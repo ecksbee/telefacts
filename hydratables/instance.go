@@ -144,10 +144,9 @@ func HydrateInstance(file *serializables.InstanceFile, fileName string) (*Instan
 }
 
 func hydrateContexts(instanceFile *serializables.InstanceFile) []Context {
-	ret := make([]Context, len(instanceFile.Context))
+	ret := make([]Context, 0, len(instanceFile.Context))
 	for _, context := range instanceFile.Context {
-		nsAttr := attr.FindAttr(context.XMLAttrs, "xmlns")
-		if nsAttr == nil || nsAttr.Value != attr.XBRLI {
+		if context.XMLName.Space != attr.XBRLI {
 			continue
 		}
 		item := Context{}
@@ -297,8 +296,7 @@ func hydrateContexts(instanceFile *serializables.InstanceFile) []Context {
 func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 	ret := make([]Unit, 0, len(instanceFile.Unit))
 	for _, unit := range instanceFile.Unit {
-		nsAttr := attr.FindAttr(unit.XMLAttrs, "xmlns")
-		if nsAttr == nil || nsAttr.Value != attr.XBRLI {
+		if unit.XMLName.Space != attr.XBRLI {
 			continue
 		}
 		idAttr := attr.FindAttr(unit.XMLAttrs, "id")
@@ -335,7 +333,7 @@ func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 			item.Divide = &divide
 		} else {
 			item.Measure = &UnitMeasure{
-				Href:     "",
+				Href:     "", //todo
 				CharData: unit.Measure[0].CharData,
 			}
 		}
@@ -364,16 +362,19 @@ func hydrateFacts(instanceFile *serializables.InstanceFile) []Fact {
 			continue
 		}
 		unitRefAttr := attr.FindAttr(fact.XMLAttrs, "unitRef")
-		if unitRefAttr == nil || unitRefAttr.Value == "" {
-			continue
+		unitVal := ""
+		if unitRefAttr != nil {
+			unitVal = unitRefAttr.Value
 		}
 		decimalsAttr := attr.FindAttr(fact.XMLAttrs, "decimals")
-		if decimalsAttr == nil || decimalsAttr.Value == "" {
-			continue
+		decimalsVal := ""
+		if decimalsAttr != nil {
+			decimalsVal = decimalsAttr.Value
 		}
 		precisionAttr := attr.FindAttr(fact.XMLAttrs, "precision")
-		if precisionAttr == nil || precisionAttr.Value == "" {
-			continue
+		precisionVal := ""
+		if precisionAttr != nil {
+			precisionVal = precisionAttr.Value
 		}
 		newFact := Fact{
 			ID:           idAttr.Value,
@@ -381,10 +382,10 @@ func hydrateFacts(instanceFile *serializables.InstanceFile) []Fact {
 			PrefixedName: "", //todo
 			ContextRef:   contextRefAttr.Value,
 			Context:      nil, //todo
-			UnitRef:      unitRefAttr.Value,
+			UnitRef:      unitVal,
 			Unit:         nil, //todo
-			Decimals:     decimalsAttr.Value,
-			Precision:    precisionAttr.Value,
+			Decimals:     decimalsVal,
+			Precision:    precisionVal,
 		}
 		ret = append(ret, newFact)
 	}
