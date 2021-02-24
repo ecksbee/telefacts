@@ -84,8 +84,10 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
 				}(stringify(&schemedEntity), rset.RoleURI)
-
 				wg.Wait()
+				langs = dedupLang(langs)
+				labelRoles = dedupLabelRole(labelRoles)
+				p, d, c = formatPeriod(p, d, c, labelRoles, langs)
 				ret := Renderable{
 					Subject: Subject{
 						Name: names[schemedEntity.Scheme][schemedEntity.CharData],
@@ -104,8 +106,8 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 					PGrid:      p,
 					DGrid:      d,
 					CGrid:      c,
-					Lang:       dedupLang(langs),
-					LabelRoles: dedupLabelRole(labelRoles),
+					Lang:       langs,
+					LabelRoles: labelRoles,
 				}
 				if err != nil {
 					return nil, err
