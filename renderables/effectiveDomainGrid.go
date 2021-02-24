@@ -80,6 +80,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 	ret := []RootDomain{}
 	labelRoles := []LabelRole{}
 	langs := []Lang{}
+	labelPacks := make([]LabelPack, 0, 100)
 	for _, definition := range h.DefinitionLinkbases {
 		var definitionLinks []hydratables.DefinitionLink
 		for _, roleRef := range definition.RoleRefs {
@@ -103,12 +104,16 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 					}
 					for _, c := range node.Children {
 						href := mapDLocatorToHref(linkroleURI, &definition, c.Locator)
+						piLabel := GetLabel(h, href)
+						labelPacks = append(labelPacks, piLabel)
+						hcubes, hLabels := getHypercubes(c.Locator, arcs, linkroleURI, &definition, h)
 						indentedItems = append(indentedItems, PrimaryItem{
 							Href:       href,
-							Label:      GetLabel(h, href),
+							Label:      piLabel,
 							Level:      level,
-							Hypercubes: getHypercubes(c.Locator, arcs, linkroleURI, &definition, h),
+							Hypercubes: hcubes,
 						})
+						labelPacks = append(labelPacks, hLabels...)
 						makeIndents(c, level+1)
 					}
 					sort.SliceStable(node.Children, func(p, q int) bool {
@@ -117,7 +122,9 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 				}
 				dArcs := dArcs(arcs)
 				domainMemberNetwork := tree(dArcs, attr.DomainMemberArcrole)
-				effectiveDimensions, effectiveDimensionHrefs := getEffectiveDimensions(linkroleURI, arcs, h)
+				effectiveDimensions, effectiveDimensionHrefs, edLabelRoles, edLangs := getEffectiveDimensions(linkroleURI, arcs, h)
+				labelRoles = append(labelRoles, edLabelRoles...)
+				langs = append(langs, edLangs...)
 				dimensionDomainNetwork := tree(dArcs, attr.DimensionDomainArcrole)
 				defaultDimensionsNetwork := tree(dArcs, attr.DimensionDefaultArcrole)
 				primaryItemNetwork, explicitDomainNetwork :=
@@ -137,28 +144,35 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 					locToHref := func(loc string) string {
 						return mapDLocatorToHref(linkroleURI, &definition, loc)
 					}
-					relevantContexts, maxDepth, labelPacks := getRelevantContexts(schemedEntity, h, primaryItemHrefs)
+					edGrid, edLabels := getEffectiveDomainGrid(primaryItemHrefs, effectiveDimensionHrefs,
+						&dimensionDomainNetwork, primaryItemNetwork,
+						explicitDomainNetwork, &exclusiveHypercubeNetwork, &inclusiveHypercubeNetwork,
+						&hypercubeDimensionNetwork, &defaultDimensionsNetwork, locToHref, h)
+					labelPacks = append(labelPacks, edLabels...)
+					hypercubes, hLabels := getHypercubes(root.Locator, arcs, linkroleURI, &definition, h)
+					labelPacks = append(labelPacks, hLabels...)
+					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, primaryItemHrefs)
+					labelPacks = append(labelPacks, contextualLabelPack...)
 					rdLabelPack := GetLabel(h, rootHref)
 					labelPacks = append(labelPacks, rdLabelPack)
 					rootDomain := RootDomain{
 						PrimaryItems:        indentedItems,
 						Href:                rootHref,
-						Label:               GetLabel(h, rootHref),
+						Label:               rdLabelPack,
 						MaxLevel:            maxIndent,
 						RelevantContexts:    relevantContexts,
 						MaxDepth:            maxDepth,
 						EffectiveDimensions: effectiveDimensions,
-						EffectiveDomainGrid: getEffectiveDomainGrid(primaryItemHrefs, effectiveDimensionHrefs,
-							&dimensionDomainNetwork, primaryItemNetwork,
-							explicitDomainNetwork, &exclusiveHypercubeNetwork, &inclusiveHypercubeNetwork,
-							&hypercubeDimensionNetwork, &defaultDimensionsNetwork, locToHref, h),
-						Hypercubes: getHypercubes(root.Locator, arcs, linkroleURI, &definition, h),
+						EffectiveDomainGrid: edGrid,
+						Hypercubes:          hypercubes,
 					}
 					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder)
 					ret = append(ret, rootDomain)
 					reduced := reduce(labelPacks)
 					if reduced != nil {
-						labelRoles, langs = destruct(*reduced)
+						dLabelRoles, dLangs := destruct(*reduced)
+						labelRoles = append(labelRoles, dLabelRoles...)
+						langs = append(langs, dLangs...)
 					}
 				}
 			}
@@ -168,7 +182,8 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 }
 
 func getEffectiveDimensions(linkroleURI string,
-	arcs []hydratables.DefinitionArc, h *hydratables.Hydratable) ([]EffectiveDimension, []string) {
+	arcs []hydratables.DefinitionArc, h *hydratables.Hydratable) ([]EffectiveDimension, []string, []LabelRole, []Lang) {
+	labelPacks := []LabelPack{}
 	effectiveDimensionMap := make(map[string]bool)
 	effectiveDimensions := make([]EffectiveDimension, 0, len(arcs))
 	effectiveDimensionHrefs := make([]string, 0, len(arcs))
@@ -181,14 +196,22 @@ func getEffectiveDimensions(linkroleURI string,
 				}
 				effectiveDimensionMap[dim] = true
 				effectiveDimensionHrefs = append(effectiveDimensionHrefs, dim)
+				dimLabelPack := GetLabel(h, dim)
+				labelPacks = append(labelPacks, dimLabelPack)
 				effectiveDimensions = append(effectiveDimensions, EffectiveDimension{
 					Href:  dim,
-					Label: GetLabel(h, dim),
+					Label: dimLabelPack,
 				})
 			}
 		}
 	}
-	return effectiveDimensions, effectiveDimensionHrefs
+	reduced := reduce(labelPacks)
+	labelRoles := []LabelRole{}
+	langs := []Lang{}
+	if reduced != nil {
+		labelRoles, langs = destruct(*reduced)
+	}
+	return effectiveDimensions, effectiveDimensionHrefs, labelRoles, langs
 }
 
 func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorNode,
@@ -229,50 +252,55 @@ func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []R
 }
 
 func getHypercubes(primaryItemLoc string, arcs []hydratables.DefinitionArc, linkroleURI string,
-	definition *hydratables.DefinitionLinkbase, h *hydratables.Hydratable) []Hypercube {
+	definition *hydratables.DefinitionLinkbase, h *hydratables.Hydratable) ([]Hypercube, []LabelPack) {
 	ret := make([]Hypercube, 0, len(arcs))
+	labelPacks := make([]LabelPack, 0, len(arcs))
 	for _, arc := range arcs {
 		if arc.Arcrole == attr.HasExclusiveHypercubeArcrole || arc.Arcrole == attr.HasInclusiveHypercubeArcrole {
 			if arc.From != primaryItemLoc {
 				continue
 			}
 			href := mapDLocatorToHref(linkroleURI, definition, arc.To)
+			hLabel := GetLabel(h, href)
+			labelPacks = append(labelPacks, hLabel)
 			ret = append(ret, Hypercube{
 				Href:           href,
-				Label:          GetLabel(h, href),
+				Label:          hLabel,
 				IsClosed:       arc.Closed,
 				ContextElement: arc.ContextElement,
 				IsInclusive:    arc.Arcrole == attr.HasInclusiveHypercubeArcrole,
 			})
 		}
 	}
-	return ret
+	return ret, labelPacks
 }
 
 func getEffectiveDomainGrid(primaryItemHrefs []string, effectiveDimensionHrefs []string,
 	dimensionDomainNetwork *locatorNode, primaryItemNetwork *locatorNode,
 	explicitDomainNetwork *locatorNode, exclusiveHypercubeNetwork *locatorNode, inclusiveHypercubeNetwork *locatorNode,
 	hypercubeDimensionNetwork *locatorNode, dimensionDefaultNetwork *locatorNode,
-	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) [][]EffectiveDomain {
+	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) ([][]EffectiveDomain, []LabelPack) {
 	ret := make([][]EffectiveDomain, 0, len(primaryItemHrefs))
+	labelPacks := make([]LabelPack, 0, len(primaryItemHrefs))
 	for _, primaryItem := range primaryItemHrefs {
 		row := make([]EffectiveDomain, 0, len(effectiveDimensionHrefs))
 		for _, effectiveDimension := range effectiveDimensionHrefs {
-			effectiveDomain := getEffectiveDomain(primaryItem, effectiveDimension,
+			effectiveDomain, edLabels := getEffectiveDomain(primaryItem, effectiveDimension,
 				dimensionDomainNetwork, primaryItemNetwork, explicitDomainNetwork, exclusiveHypercubeNetwork,
 				inclusiveHypercubeNetwork, hypercubeDimensionNetwork, dimensionDefaultNetwork, mapDLocatorToHref, h)
 			row = append(row, effectiveDomain)
+			labelPacks = append(labelPacks, edLabels...)
 		}
 		ret = append(ret, row)
 	}
-	return ret
+	return ret, labelPacks
 }
 
 func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 	dimensionDomainNetwork *locatorNode, primaryItemNetwork *locatorNode,
 	explicitDomainNetwork *locatorNode, exclusiveHypercubeNetwork *locatorNode, inclusiveHypercubeNetwork *locatorNode,
 	hypercubeDimensionNetwork *locatorNode, dimensionDefaultNetwork *locatorNode,
-	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) EffectiveDomain {
+	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) (EffectiveDomain, []LabelPack) {
 	inclusiveHypercubeHrefs := []string{}
 	exclusiveHypercubeHrefs := []string{}
 	for _, inclusiveHypercubeNode := range inclusiveHypercubeNetwork.Children {
@@ -310,13 +338,13 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 	for _, inclusiveHypercubeHref := range inclusiveHypercubeHrefs {
 		for _, exclusiveHypercubeHref := range exclusiveHypercubeHrefs {
 			if inclusiveHypercubeHref == exclusiveHypercubeHref {
-				return []EffectiveMember{}
+				return []EffectiveMember{}, []LabelPack{}
 			}
 		}
 	}
+	labelPacks := make([]LabelPack, 0, 100)
 	ret := []EffectiveMember{}
 	defaultMembersMap := make(map[string]bool)
-	excludedDefaultMembersMap := make(map[string]bool)
 	for _, hypercubeDimensionNode := range hypercubeDimensionNetwork.Children {
 		for _, inclusiveHypercubeHref := range inclusiveHypercubeHrefs {
 			if inclusiveHypercubeHref == mapDLocatorToHref(hypercubeDimensionNode.Locator) {
@@ -328,12 +356,14 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 					for _, defaultMemberNode := range dimensionDefaultNode.Children {
 						defaultMemberHref := mapDLocatorToHref(defaultMemberNode.Locator)
 						if defaultMembersMap[defaultMemberHref] {
-							return []EffectiveMember{}
+							return []EffectiveMember{}, []LabelPack{}
 						}
 						defaultMembersMap[defaultMemberHref] = true
+						defMemLabel := GetLabel(h, defaultMemberHref)
+						labelPacks = append(labelPacks, defMemLabel)
 						ret = append(ret, EffectiveMember{
 							Href:            defaultMemberHref,
-							Label:           GetLabel(h, defaultMemberHref),
+							Label:           defMemLabel,
 							IsDefault:       true,
 							IsStrikethrough: false,
 						})
@@ -342,6 +372,7 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 			}
 		}
 	}
+	excludedDefaultMembersMap := make(map[string]bool)
 	for _, hypercubeDimensionNode := range hypercubeDimensionNetwork.Children {
 		for _, exclusiveHypercubeHref := range exclusiveHypercubeHrefs {
 			if exclusiveHypercubeHref == mapDLocatorToHref(hypercubeDimensionNode.Locator) {
@@ -353,12 +384,14 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 					for _, defaultMemberNode := range dimensionDefaultNode.Children {
 						defaultMemberHref := mapDLocatorToHref(defaultMemberNode.Locator)
 						if excludedDefaultMembersMap[defaultMemberHref] {
-							return []EffectiveMember{}
+							return []EffectiveMember{}, []LabelPack{}
 						}
 						excludedDefaultMembersMap[defaultMemberHref] = true
+						defMemLabel := GetLabel(h, defaultMemberHref)
+						labelPacks = append(labelPacks, defMemLabel)
 						ret = append(ret, EffectiveMember{
 							Href:            defaultMemberHref,
-							Label:           GetLabel(h, defaultMemberHref),
+							Label:           defMemLabel,
 							IsDefault:       true,
 							IsStrikethrough: true,
 						})
@@ -376,24 +409,28 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 		if isInclusive {
 			if membersMap[memberHref] {
 				ret = []EffectiveMember{}
+				labelPacks = []LabelPack{}
 				return
 			}
 			membersMap[memberHref] = true
+			efMemLabel := GetLabel(h, memberHref)
 			ret = append(ret, EffectiveMember{
 				Href:            memberHref,
-				Label:           GetLabel(h, memberHref),
+				Label:           efMemLabel,
 				IsDefault:       false,
 				IsStrikethrough: false,
 			})
 		} else {
 			if excludedMembersMap[memberHref] {
 				ret = []EffectiveMember{}
+				labelPacks = []LabelPack{}
 				return
 			}
 			excludedMembersMap[memberHref] = true
+			efMemLabel := GetLabel(h, memberHref)
 			ret = append(ret, EffectiveMember{
 				Href:            memberHref,
-				Label:           GetLabel(h, memberHref),
+				Label:           efMemLabel,
 				IsDefault:       false,
 				IsStrikethrough: true,
 			})
@@ -459,5 +496,5 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 		}
 		return false
 	})
-	return ret
+	return ret, labelPacks
 }

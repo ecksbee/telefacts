@@ -92,14 +92,16 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						_, isSummationItem := cMap[cstruct.Href]
 						sign := fmt.Sprintf("%c", cstruct.Sign)
 						scale := fmt.Sprintf("%.1f", cstruct.Scale)
+						cLabelPack := GetLabel(h, cstruct.Href)
 						contributingConcepts = append(contributingConcepts, ContributingConcept{
 							Href:            cstruct.Href,
-							Label:           GetLabel(h, cstruct.Href),
+							Label:           cLabelPack,
 							Scale:           scale,
 							Sign:            sign,
 							IsSummationItem: isSummationItem,
 						})
 						fqLabels = append(fqLabels, cstruct.Href)
+						labelPacks = append(labelPacks, cLabelPack)
 					}
 					fqLabels = append(fqLabels, from)
 					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, fqLabels)

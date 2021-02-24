@@ -59,12 +59,12 @@ func sortContexts(relevantContexts []RelevantContext) {
 func periodString(context *hydratables.Context) LabelPack {
 	ret := LabelPack{}
 	ret[Default] = make(LanguagePack)
-	if context.Period.Duration != nil {
+	if context.Period.Duration.EndDate != "" && context.Period.Duration.StartDate != "" {
 		ret[Default][PureLabel] = context.Period.Duration.StartDate + "/" + context.Period.Duration.EndDate
-	} else if context.Period.Instant != nil {
+	} else if context.Period.Instant.CharData != "" {
 		ret[Default][PureLabel] = context.Period.Instant.CharData
 	} else {
-		ret[Default][PureLabel] = "NULL"
+		ret[Default][PureLabel] = ""
 	}
 	return ret
 }
@@ -169,7 +169,7 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydratable) ([]ContextualDimension, []LabelPack) {
 	ret := make([]ContextualDimension, 0)
 	labelPacks := make([]LabelPack, 0)
-	if context.Entity.Segment != nil && len(context.Entity.Segment.ExplicitMembers) > 0 {
+	if len(context.Entity.Segment.ExplicitMembers) > 0 {
 		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
 			member := explicitMember.Member.Href
 			memberLabel := GetLabel(h, member)

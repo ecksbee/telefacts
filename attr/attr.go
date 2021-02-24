@@ -19,12 +19,13 @@ func Xmlns(attrs []xml.Attr, prefixedName string) xml.Name {
 	if i < 0 {
 		return xml.Name{}
 	}
+	prefix := prefixedName[:i]
 	local := prefixedName[i+1:]
 	if len(local) <= 0 {
 		return xml.Name{}
 	}
 	return xml.Name{
-		Space: Ns(attrs, local),
+		Space: Ns(attrs, prefix),
 		Local: local,
 	}
 }

@@ -20,9 +20,7 @@ type Fact struct {
 	Href       string
 	ID         string
 	ContextRef string
-	Context    *Context
 	UnitRef    string
-	Unit       *Unit
 	Decimals   string
 	Precision  string
 	XMLInner   string
@@ -51,10 +49,10 @@ type Context struct {
 	ID     string
 	Entity Entity
 	Period struct {
-		Instant  *Instant
-		Duration *Duration
+		Instant  Instant
+		Duration Duration
 	}
-	Scenario *DimensionContext
+	Scenario DimensionContext
 }
 
 type Entity struct {
@@ -62,7 +60,7 @@ type Entity struct {
 		Scheme   string
 		CharData string
 	}
-	Segment *DimensionContext
+	Segment DimensionContext
 }
 
 type DimensionContext struct {
@@ -81,8 +79,8 @@ type Duration struct {
 
 type Unit struct {
 	ID      string
-	Measure *UnitMeasure
-	Divide  *UnitDivide
+	Measure UnitMeasure
+	Divide  UnitDivide
 }
 
 type UnitMeasure struct {
@@ -92,10 +90,10 @@ type UnitMeasure struct {
 
 type UnitDivide struct {
 	UnitNumerator struct {
-		Measure *UnitMeasure
+		Measure UnitMeasure
 	}
 	UnitDenominator struct {
-		Measure *UnitMeasure
+		Measure UnitMeasure
 	}
 }
 
@@ -232,7 +230,7 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					segment.TypedMembers = append(segment.TypedMembers, newTypedMember)
 				}
 			}
-			newEntity.Segment = &segment
+			newEntity.Segment = segment
 		}
 		item.Entity = newEntity
 		if len(context.Period) > 0 {
@@ -240,14 +238,14 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 				instant := Instant{
 					CharData: context.Period[0].Instant[0].CharData,
 				}
-				item.Period.Instant = &instant
+				item.Period.Instant = instant
 			}
 			if len(context.Period[0].StartDate) > 0 && len(context.Period[0].EndDate) > 0 {
 				duration := Duration{
 					StartDate: context.Period[0].StartDate[0].CharData,
 					EndDate:   context.Period[0].EndDate[0].CharData,
 				}
-				item.Period.Duration = &duration
+				item.Period.Duration = duration
 			}
 		}
 		if len(context.Scenario) > 0 {
@@ -314,7 +312,7 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					scenario.TypedMembers = append(scenario.TypedMembers, newTypedMember)
 				}
 			}
-			item.Scenario = &scenario
+			item.Scenario = scenario
 		}
 		ret = append(ret, item)
 	}
@@ -354,16 +352,16 @@ func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 				CharData: unit.Divide[0].UnitDenominator[0].Measure[0].CharData,
 			}
 			divide := UnitDivide{
-				UnitNumerator: struct{ Measure *UnitMeasure }{
-					Measure: &numeratorMeasure,
+				UnitNumerator: struct{ Measure UnitMeasure }{
+					Measure: numeratorMeasure,
 				},
-				UnitDenominator: struct{ Measure *UnitMeasure }{
-					Measure: &denominatorMeasure,
+				UnitDenominator: struct{ Measure UnitMeasure }{
+					Measure: denominatorMeasure,
 				},
 			}
-			item.Divide = &divide
+			item.Divide = divide
 		} else {
-			item.Measure = &UnitMeasure{
+			item.Measure = UnitMeasure{
 				Href:     "", //todo
 				CharData: unit.Measure[0].CharData,
 			}
@@ -415,11 +413,10 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 			ID:         idAttr.Value,
 			Href:       factRef,
 			ContextRef: contextRefAttr.Value,
-			Context:    nil, //todo
 			UnitRef:    unitVal,
-			Unit:       nil, //todo
 			Decimals:   decimalsVal,
 			Precision:  precisionVal,
+			XMLInner:   fact.XMLInner,
 		}
 		ret = append(ret, newFact)
 	}

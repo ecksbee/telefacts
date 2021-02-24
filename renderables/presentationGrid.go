@@ -23,8 +23,10 @@ type PGrid struct {
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	factFinder FactFinder) (PGrid, []LabelRole, []Lang, error) {
-	indentedLabels, maxIndentation := getIndentedLabels(linkroleURI, h)
-	relevantContexts, maxDepth, labelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
+	labelPacks := make([]LabelPack, 0, 100)
+	indentedLabels, maxIndentation, labelPacks := getIndentedLabels(linkroleURI, h)
+	relevantContexts, maxDepth, contextualLabelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
+	labelPacks = append(labelPacks, contextualLabelPacks...)
 	reduced := reduce(labelPacks)
 	var (
 		labelRoles []LabelRole
@@ -56,7 +58,8 @@ func pArcs(pArcs []hydratables.PresentationArc) []arc {
 	return ret
 }
 
-func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, int) {
+func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, int, []LabelPack) {
+	labelPacks := make([]LabelPack, 0, 100)
 	for _, presentation := range h.PresentationLinkbases {
 		var presentationLinks []hydratables.PresentationLink
 		for _, roleRef := range presentation.RoleRefs {
@@ -82,11 +85,13 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 					}
 					for _, c := range node.Children {
 						href := mapPLocatorToHref(linkroleURI, &presentation, c.Locator)
+						iLabel := GetLabel(h, href)
 						ret = append(ret, IndentedLabel{
 							Href:        href,
-							Label:       GetLabel(h, href),
+							Label:       iLabel,
 							Indentation: level,
 						})
+						labelPacks = append(labelPacks, iLabel)
 						makeIndents(c, level+1)
 					}
 					sort.SliceStable(node.Children, func(p, q int) bool {
@@ -94,11 +99,11 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 					})
 				}
 				makeIndents(&root, 0)
-				return ret, maxIndent
+				return ret, maxIndent, labelPacks
 			}
 		}
 	}
-	return nil, -1
+	return nil, -1, labelPacks
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,

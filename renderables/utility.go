@@ -183,16 +183,3 @@ func paths(node *locatorNode, prior path) []path {
 	}
 	return ret
 }
-
-func render(fact *hydratables.Fact) string {
-	if fact == nil {
-		return "null"
-	}
-	var precision string
-	if fact.Decimals != "" {
-		precision = fact.Decimals
-	} else {
-		precision = fact.Precision
-	}
-	return precision + " " + fact.XMLInner + " " + fact.UnitRef
-}
