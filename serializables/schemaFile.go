@@ -20,11 +20,21 @@ type SchemaFile struct {
 		XMLAttrs []xml.Attr `xml:",any,attr"`
 	} `xml:"import"`
 	Annotation []struct {
-		XMLName  xml.Name
-		XMLAttrs []xml.Attr `xml:",any,attr"`
-		Appinfo  []struct {
-			XMLName     xml.Name
-			XMLAttrs    []xml.Attr `xml:",any,attr"`
+		XMLName    xml.Name
+		XMLAttrs   []xml.Attr `xml:",any,attr"`
+		Definition []struct {
+			XMLName  xml.Name
+			XMLAttrs []xml.Attr `xml:",any,attr"`
+			CharData string     `xml:",chardata"`
+		} `xml:"definition"`
+		Appinfo []struct {
+			XMLName    xml.Name
+			XMLAttrs   []xml.Attr `xml:",any,attr"`
+			Definition []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"definition"`
 			LinkbaseRef []struct {
 				XMLName  xml.Name
 				XMLAttrs []xml.Attr `xml:",any,attr"`

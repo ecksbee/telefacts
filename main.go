@@ -42,6 +42,8 @@ func setupServer() *http.Server {
 	serializables.InjectCache(scache)
 	hydratables.InjectCache(hcache)
 	sec.InjectCache(seccache)
+	serializables.DiscoverFundamentalSchema()
+	serializables.DiscoverUnitTypeRegistry()
 	r := mux.NewRouter()
 	r.HandleFunc("/projects", server.Project()).Methods("GET", "POST")
 	projectsRoute := r.PathPrefix("/projects").Subrouter()

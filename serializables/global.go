@@ -28,6 +28,26 @@ func SetGlobalDir(dir string) {
 	globalDir = dir
 }
 
+const utr = `http://www.xbrl.org/utr/utr.xml`
+
+func DiscoverUnitTypeRegistry() (*UnitTypeRegistry, error) {
+	data, err := DiscoverGlobalFile(utr)
+	if err != nil {
+		return nil, err
+	}
+	return DecodeUnitTypeRegistry(data)
+}
+
+const lrr = `http://www.xbrl.org/2003/xbrl-role-2003-07-31.xsd`
+
+func DiscoverFundamentalSchema() (*SchemaFile, error) {
+	data, err := DiscoverGlobalFile(lrr)
+	if err != nil {
+		return nil, err
+	}
+	return DecodeSchemaFile(data)
+}
+
 func ImportSchema(file *SchemaFile) map[string]string {
 	ret := make(map[string]string)
 	if file == nil {
