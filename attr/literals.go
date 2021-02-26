@@ -1,5 +1,7 @@
 package attr
 
+const UTR = `http://www.xbrl.org/utr/utr.xml`
+const LRR = `http://www.xbrl.org/2003/xbrl-role-2003-07-31.xsd`
 const XSD = "http://www.w3.org/2001/XMLSchema"
 const XLINK = "http://www.w3.org/1999/xlink"
 const XBRLI = "http://www.xbrl.org/2003/instance"

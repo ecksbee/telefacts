@@ -8,7 +8,7 @@ import (
 	"golang.org/x/net/html/charset"
 )
 
-type UnitTypeRegistry struct {
+type UnitTypeRegistryFile struct {
 	XMLName  xml.Name   `xml:"utr"`
 	XMLAttrs []xml.Attr `xml:",any,attr"`
 	Units    []struct {
@@ -37,6 +37,11 @@ type UnitTypeRegistry struct {
 				XMLAttrs []xml.Attr `xml:",any,attr"`
 				CharData string     `xml:",chardata"`
 			} `xml:"itemType"`
+			NSItemType []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"nsItemType"`
 			ItemTypeDate []struct {
 				XMLName  xml.Name
 				XMLAttrs []xml.Attr `xml:",any,attr"`
@@ -77,15 +82,35 @@ type UnitTypeRegistry struct {
 				XMLAttrs []xml.Attr `xml:",any,attr"`
 				CharData string     `xml:",chardata"`
 			} `xml:"versionDate"`
+			NumeratorItemType []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"numeratorItemType"`
+			NSNumeratorItemType []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"nsNumeratorItemType"`
+			DenominatorItemType []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"denominatorItemType"`
+			NSDenominatorItemType []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				CharData string     `xml:",chardata"`
+			} `xml:"nsDenominatorItemType"`
 		} `xml:"unit"`
 	} `xml:"units"`
 }
 
-func DecodeUnitTypeRegistry(xmlData []byte) (*UnitTypeRegistry, error) {
+func DecodeUnitTypeRegistry(xmlData []byte) (*UnitTypeRegistryFile, error) {
 	reader := bytes.NewReader(xmlData)
 	decoder := xml.NewDecoder(reader)
 	decoder.CharsetReader = charset.NewReaderLabel
-	decoded := UnitTypeRegistry{}
+	decoded := UnitTypeRegistryFile{}
 	err := decoder.Decode(&decoded)
 	if err != nil {
 		return nil, err
@@ -93,7 +118,7 @@ func DecodeUnitTypeRegistry(xmlData []byte) (*UnitTypeRegistry, error) {
 	return &decoded, nil
 }
 
-func ReadUnitTypeRegistry(filepath string) (*UnitTypeRegistry, error) {
+func ReadUnitTypeRegistry(filepath string) (*UnitTypeRegistryFile, error) {
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
 		return nil, err

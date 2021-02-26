@@ -14,7 +14,7 @@ type RootDomain struct {
 	MaxDepth            int
 	MaxLevel            int
 	PrimaryItems        []PrimaryItem
-	FactualQuadrant     [][]string
+	FactualQuadrant     [][]LabelPack
 	EffectiveDomainGrid [][]EffectiveDomain
 	EffectiveDimensions []EffectiveDimension
 	Hypercubes          []Hypercube
@@ -76,7 +76,7 @@ func dArcs(dArcs []hydratables.DefinitionArc) []arc {
 }
 
 func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder) ([]RootDomain, []LabelRole, []Lang) {
+	factFinder FactFinder, measurementFinder MeasurementFinder) ([]RootDomain, []LabelRole, []Lang) {
 	ret := []RootDomain{}
 	labelRoles := []LabelRole{}
 	langs := []Lang{}
@@ -160,20 +160,20 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						Href:                rootHref,
 						Label:               rdLabelPack,
 						MaxLevel:            maxIndent,
-						RelevantContexts:    relevantContexts,
+						RelevantContexts:    relevantContexts, //todo add labelRoles and langs
 						MaxDepth:            maxDepth,
 						EffectiveDimensions: effectiveDimensions,
 						EffectiveDomainGrid: edGrid,
 						Hypercubes:          hypercubes,
 					}
-					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder)
-					ret = append(ret, rootDomain)
 					reduced := reduce(labelPacks)
 					if reduced != nil {
 						dLabelRoles, dLangs := destruct(*reduced)
 						labelRoles = append(labelRoles, dLabelRoles...)
 						langs = append(langs, dLangs...)
 					}
+					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
+					ret = append(ret, rootDomain)
 				}
 			}
 		}
@@ -240,13 +240,15 @@ func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorN
 }
 
 func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []RelevantContext,
-	factFinder FactFinder) RootDomain {
+	factFinder FactFinder, measurementFinder MeasurementFinder,
+	labelRoles []LabelRole, langs []Lang) RootDomain {
 	hrefs := make([]string, 0, len(incompleteRootDomain.PrimaryItems)+1)
 	hrefs = append(hrefs, incompleteRootDomain.Href)
 	for _, primaryItem := range incompleteRootDomain.PrimaryItems {
 		hrefs = append(hrefs, primaryItem.Href)
 	}
-	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder)
+	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder, measurementFinder,
+		labelRoles, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
 	return incompleteRootDomain
 }

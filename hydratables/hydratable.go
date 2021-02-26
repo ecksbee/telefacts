@@ -5,7 +5,8 @@ import (
 )
 
 type Hydratable struct {
-	Folder                *serializables.Folder
+	Folder *serializables.Folder
+	UnitTypeRegistry
 	Instances             map[string]Instance
 	Schemas               map[string]Schema
 	LabelLinkbases        map[string]LabelLinkbase
@@ -66,5 +67,10 @@ func Hydrate(folder *serializables.Folder) (*Hydratable, error) {
 		}
 		ret.Instances[filename] = *entry
 	}
+	utr, err := HydrateUnitTypeRegistry()
+	if err != nil {
+		return nil, err
+	}
+	ret.UnitTypeRegistry = *utr
 	return ret, nil
 }

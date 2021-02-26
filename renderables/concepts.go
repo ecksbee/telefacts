@@ -6,6 +6,10 @@ import (
 	"ecksbee.com/telefacts/hydratables"
 )
 
+type ConceptFinder interface {
+	HashQuery(query string) (string, *hydratables.Concept, error)
+}
+
 func mapPLocatorToHref(relationshipSetCurrentlyViewing string, presentation *hydratables.PresentationLinkbase, locator string) string {
 	roleRefs := presentation.RoleRefs
 	for _, roleRef := range roleRefs {

@@ -3,6 +3,7 @@ package hydratables
 import (
 	"fmt"
 	"sort"
+	"strconv"
 
 	"ecksbee.com/telefacts/attr"
 	"ecksbee.com/telefacts/serializables"
@@ -14,16 +15,6 @@ type Instance struct {
 	Units         []Unit
 	FootnoteLinks []FootnoteLink
 	Facts         []Fact
-}
-
-type Fact struct {
-	Href       string
-	ID         string
-	ContextRef string
-	UnitRef    string
-	Decimals   string
-	Precision  string
-	XMLInner   string
 }
 
 type ExplicitMember struct {
@@ -77,26 +68,6 @@ type Duration struct {
 	EndDate   string
 }
 
-type Unit struct {
-	ID      string
-	Measure UnitMeasure
-	Divide  UnitDivide
-}
-
-type UnitMeasure struct {
-	Href     string
-	CharData string
-}
-
-type UnitDivide struct {
-	UnitNumerator struct {
-		Measure UnitMeasure
-	}
-	UnitDenominator struct {
-		Measure UnitMeasure
-	}
-}
-
 type FootnoteLink struct {
 	Title        string
 	Footnotes    []Footnote
@@ -113,15 +84,12 @@ type Footnote struct {
 
 type FootnoteLinkLoc struct {
 	Href  string
-	Fact  *Fact
 	Label string
 }
 
 type FootnoteArc struct {
-	From     string
-	Loc      *FootnoteLinkLoc
-	To       string
-	Footnote *Footnote
+	From string
+	To   string
 }
 
 func HydrateInstance(file *serializables.InstanceFile, fileName string, h *Hydratable) (*Instance, error) {
@@ -343,13 +311,15 @@ func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 			if len(unit.Divide[0].UnitDenominator[0].Measure) <= 0 || len(unit.Divide[0].UnitNumerator[0].Measure) <= 0 {
 				continue
 			}
+			numeratorPrefixedName := unit.Divide[0].UnitNumerator[0].Measure[0].CharData
 			numeratorMeasure := UnitMeasure{
-				Href:     "", //todo
-				CharData: unit.Divide[0].UnitNumerator[0].Measure[0].CharData,
+				XMLName:  attr.Xmlns(instanceFile.XMLAttrs, numeratorPrefixedName),
+				CharData: numeratorPrefixedName,
 			}
+			denominatorPrefixedName := unit.Divide[0].UnitDenominator[0].Measure[0].CharData
 			denominatorMeasure := UnitMeasure{
-				Href:     "", //todo
-				CharData: unit.Divide[0].UnitDenominator[0].Measure[0].CharData,
+				XMLName:  attr.Xmlns(instanceFile.XMLAttrs, denominatorPrefixedName),
+				CharData: denominatorPrefixedName,
 			}
 			divide := UnitDivide{
 				UnitNumerator: struct{ Measure UnitMeasure }{
@@ -361,9 +331,10 @@ func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {
 			}
 			item.Divide = divide
 		} else {
+			itemPrefixedName := unit.Measure[0].CharData
 			item.Measure = UnitMeasure{
-				Href:     "", //todo
-				CharData: unit.Measure[0].CharData,
+				XMLName:  attr.Xmlns(instanceFile.XMLAttrs, itemPrefixedName),
+				CharData: itemPrefixedName,
 			}
 		}
 		item.ID = idAttr.Value
@@ -409,6 +380,11 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 		if precisionAttr != nil {
 			precisionVal = precisionAttr.Value
 		}
+		nilAttr := attr.FindAttr(fact.XMLAttrs, "nil")
+		nilVal := false
+		if nilAttr != nil {
+			nilVal, _ = strconv.ParseBool(nilAttr.Value)
+		}
 		newFact := Fact{
 			ID:         idAttr.Value,
 			Href:       factRef,
@@ -416,6 +392,7 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 			UnitRef:    unitVal,
 			Decimals:   decimalsVal,
 			Precision:  precisionVal,
+			IsNil:      nilVal,
 			XMLInner:   fact.XMLInner,
 		}
 		ret = append(ret, newFact)
@@ -466,7 +443,6 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 			}
 			newLoc := FootnoteLinkLoc{
 				Href:  hrefAttr.Value,
-				Fact:  nil, //todo
 				Label: labelAttr.Value,
 			}
 			item.Locs = append(item.Locs, newLoc)
@@ -523,28 +499,9 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 			if footnoteArctoAttr == nil || footnoteArctoAttr.Value == "" {
 				continue
 			}
-			var locPtr *FootnoteLinkLoc
-			for _, lloc := range item.Locs {
-				if lloc.Label == footnoteArcfromAttr.Value {
-					locPtr = &lloc
-					break
-				}
-			}
-			var footnotePtr *Footnote
-			for _, ffootnote := range item.Footnotes {
-				if ffootnote.Label == footnoteArctoAttr.Value {
-					footnotePtr = &ffootnote
-					break
-				}
-			}
-			if locPtr == nil || footnotePtr == nil {
-				continue
-			}
 			newFootnoteArc := FootnoteArc{
-				From:     footnoteArcfromAttr.Value,
-				To:       footnoteArctoAttr.Value,
-				Loc:      locPtr,
-				Footnote: footnotePtr,
+				From: footnoteArcfromAttr.Value,
+				To:   footnoteArctoAttr.Value,
 			}
 			item.FootnoteArcs = append(item.FootnoteArcs, newFootnoteArc)
 		}

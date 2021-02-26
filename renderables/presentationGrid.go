@@ -18,11 +18,11 @@ type PGrid struct {
 	MaxIndentation   int
 	RelevantContexts []RelevantContext
 	MaxDepth         int
-	FactualQuadrant  [][]string
+	FactualQuadrant  [][]LabelPack
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder) (PGrid, []LabelRole, []Lang, error) {
+	factFinder FactFinder, measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
 	labelPacks := make([]LabelPack, 0, 100)
 	indentedLabels, maxIndentation, labelPacks := getIndentedLabels(linkroleURI, h)
 	relevantContexts, maxDepth, contextualLabelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
@@ -35,11 +35,11 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	if reduced != nil {
 		labelRoles, langs = destruct(*reduced)
 	}
-	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder)
+	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
 	return PGrid{
 		IndentedLabels:   indentedLabels,
 		MaxIndentation:   maxIndentation,
-		RelevantContexts: relevantContexts,
+		RelevantContexts: relevantContexts, //todo add labelRoles and langs
 		MaxDepth:         maxDepth,
 		FactualQuadrant:  factualQuadrant,
 	}, labelRoles, langs, nil
@@ -116,13 +116,14 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
-	relevantContexts []RelevantContext,
-	factFinder FactFinder) [][]string {
+	relevantContexts []RelevantContext, factFinder FactFinder,
+	measurementFinder MeasurementFinder,
+	labelRoles []LabelRole, langs []Lang) [][]LabelPack {
 	hrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
 		hrefs = append(hrefs, indentedLabel.Href)
 	}
 	ret := getFactualQuadrant(hrefs, relevantContexts,
-		factFinder)
+		factFinder, measurementFinder, labelRoles, langs)
 	return ret
 }

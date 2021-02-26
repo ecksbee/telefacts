@@ -15,7 +15,7 @@ type SummationItem struct {
 	RelevantContexts     []RelevantContext
 	MaxDepth             int
 	ContributingConcepts []ContributingConcept
-	FactualQuadrant      [][]string
+	FactualQuadrant      [][]LabelPack
 }
 
 type ContributingConcept struct {
@@ -31,16 +31,16 @@ type CGrid struct {
 }
 
 func cGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder) (CGrid, []LabelRole, []Lang, error) {
+	factFinder FactFinder, measurementFinder MeasurementFinder) (CGrid, []LabelRole, []Lang, error) {
 	summationItems, labelRoles, langs := getSummationItems(schemedEntity, linkroleURI,
-		h, factFinder)
+		h, factFinder, measurementFinder)
 	return CGrid{
 		SummationItems: summationItems,
 	}, labelRoles, langs, nil
 }
 
 func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder) ([]SummationItem, []LabelRole, []Lang) {
+	factFinder FactFinder, measurementFinder MeasurementFinder) ([]SummationItem, []LabelRole, []Lang) {
 	var calculationLinks []hydratables.CalculationLink
 	for _, calculation := range h.CalculationLinkbases {
 		for _, roleRef := range calculation.RoleRefs {
@@ -84,6 +84,10 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					})
 				}
 				labelPacks := make([]LabelPack, 0, len(calculationLinks))
+				var (
+					labelRoles []LabelRole
+					langs      []Lang
+				)
 				ret := make([]SummationItem, 0, len(cMap))
 				for from, slice := range cMap {
 					contributingConcepts := make([]ContributingConcept, 0, len(slice))
@@ -105,30 +109,26 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					}
 					fqLabels = append(fqLabels, from)
 					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, fqLabels)
-					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder)
 					siLabelPack := GetLabel(h, from)
 					labelPacks = append(labelPacks, siLabelPack)
 					labelPacks = append(labelPacks, contextualLabelPack...)
+					reduced := reduce(labelPacks)
+					if reduced != nil {
+						labelRoles, langs = destruct(*reduced)
+					}
+					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
 					ret = append(ret, SummationItem{
 						Href:                 from,
 						Label:                siLabelPack,
 						ContributingConcepts: contributingConcepts,
 						MaxDepth:             maxDepth,
-						RelevantContexts:     relevantContexts,
+						RelevantContexts:     relevantContexts, //todo add labelRoles and langs
 						FactualQuadrant:      factualQuadrant,
 					})
 				}
 				sort.SliceStable(ret, func(i, j int) bool {
 					return getPureLabel(ret[i].Label) < getPureLabel(ret[j].Label)
 				})
-				reduced := reduce(labelPacks)
-				var (
-					labelRoles []LabelRole
-					langs      []Lang
-				)
-				if reduced != nil {
-					labelRoles, langs = destruct(*reduced)
-				}
 				return ret, labelRoles, langs
 			}
 		}
