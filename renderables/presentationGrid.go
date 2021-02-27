@@ -18,7 +18,7 @@ type PGrid struct {
 	MaxIndentation   int
 	RelevantContexts []RelevantContext
 	MaxDepth         int
-	FactualQuadrant  [][]LabelPack
+	FactualQuadrant  FactualQuadrant
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
@@ -118,7 +118,7 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
 	relevantContexts []RelevantContext, factFinder FactFinder,
 	measurementFinder MeasurementFinder,
-	labelRoles []LabelRole, langs []Lang) [][]LabelPack {
+	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
 	hrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
 		hrefs = append(hrefs, indentedLabel.Href)

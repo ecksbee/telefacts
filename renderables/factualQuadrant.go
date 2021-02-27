@@ -4,17 +4,27 @@ import (
 	"ecksbee.com/telefacts/hydratables"
 )
 
+type FactExpression struct {
+	Head string
+	Core string
+	Tail string
+}
+
+type MultilingualFact map[LabelRole]map[Lang]FactExpression
+
+type FactualQuadrant [][]MultilingualFact
+
 func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 	factFinder FactFinder, measurementFinder MeasurementFinder,
-	labelRoles []LabelRole, langs []Lang) [][]LabelPack {
+	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
 	rowCount := len(hrefs)
 	colCount := len(relevantContexts)
 	if rowCount <= 0 || colCount <= 0 {
-		return [][]LabelPack{{}}
+		return FactualQuadrant{}
 	}
-	var ret [][]LabelPack
+	var ret [][]MultilingualFact
 	for i := 0; i < rowCount; i++ {
-		var row []LabelPack
+		var row []MultilingualFact
 		href := hrefs[i]
 		for j := 0; j < colCount; j++ {
 			var fact *hydratables.Fact

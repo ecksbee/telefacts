@@ -10,19 +10,31 @@ type MeasurementFinder interface {
 	FindMeasurement(unitRef string) (*hydratables.Measurement, *hydratables.Measurement)
 }
 
-func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole, langs []Lang) LabelPack {
-	ret := LabelPack{}
-	ret[Default] = make(LanguagePack)
+func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole, langs []Lang) MultilingualFact { //todo render for percentItemType concepts
+	ret := MultilingualFact{}
+	ret[Default] = make(map[Lang]FactExpression)
 	if fact == nil {
-		ret[Default][PureLabel] = ""
+		ret[Default][PureLabel] = FactExpression{
+			Head: "",
+			Core: "",
+			Tail: "",
+		}
 		return ret
 	}
 	if fact.IsNil {
-		ret[Default][PureLabel] = "nil"
+		ret[Default][PureLabel] = FactExpression{
+			Head: "",
+			Core: "nil",
+			Tail: "",
+		}
 		return ret
 	}
 	if mf == nil {
-		ret[Default][PureLabel] = "error"
+		ret[Default][PureLabel] = FactExpression{
+			Head: "",
+			Core: "error",
+			Tail: "",
+		}
 		return ret
 	}
 	var precision string
@@ -30,6 +42,12 @@ func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole
 		precision = fact.Decimals
 	} else {
 		precision = fact.Precision
+	}
+
+	ret[Default][PureLabel] = FactExpression{
+		Head: precision,
+		Core: fact.XMLInner,
+		Tail: fact.UnitRef,
 	}
 	tail := ""
 	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
@@ -48,17 +66,19 @@ func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole
 			}
 		}
 	}
-
-	ret[Default][PureLabel] = precision + " " + fact.XMLInner + " " + fact.UnitRef
 	for _, labelRole := range labelRoles {
 		if _, found := ret[labelRole]; !found {
-			ret[labelRole] = make(LanguagePack)
+			ret[labelRole] = make(map[Lang]FactExpression)
 		}
 		for _, lang := range langs {
 			if lang == PureLabel {
 				continue
 			}
-			ret[labelRole][lang] = precision + " " + fact.XMLInner + " " + tail //todo
+			ret[labelRole][lang] = FactExpression{
+				Head: precision,
+				Core: fact.XMLInner,
+				Tail: tail,
+			} //todo
 		}
 	}
 	return ret

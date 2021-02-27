@@ -15,7 +15,7 @@ type SummationItem struct {
 	RelevantContexts     []RelevantContext
 	MaxDepth             int
 	ContributingConcepts []ContributingConcept
-	FactualQuadrant      [][]LabelPack
+	FactualQuadrant      FactualQuadrant
 }
 
 type ContributingConcept struct {

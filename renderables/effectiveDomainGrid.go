@@ -14,7 +14,7 @@ type RootDomain struct {
 	MaxDepth            int
 	MaxLevel            int
 	PrimaryItems        []PrimaryItem
-	FactualQuadrant     [][]LabelPack
+	FactualQuadrant     FactualQuadrant
 	EffectiveDomainGrid [][]EffectiveDomain
 	EffectiveDimensions []EffectiveDimension
 	Hypercubes          []Hypercube
