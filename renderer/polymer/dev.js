@@ -1,6 +1,8 @@
 import pGrid from './testPGrid'
 import cGrid from './testCGrid'
 import dGrid from './testDGrid'
+import balanceSheet from './testBalanceSheet'
+import equityTable from './testEquityTable'
 
 console.log("mounting concept network browser development page")
 

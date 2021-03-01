@@ -8,13 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Material+Icons&display=block" rel="stylesheet">
     <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src='bundle.js'></script>
-    <script src="wasm_exec.js"></script>
-    <script>
-        const go = new Go();
-        WebAssembly.instantiateStreaming(fetch("renderer.wasm"), go.importObject).then((result) => {
-            go.run(result.instance);
-        });
-    </script>
   </head>
   <body>
     <telefacts-renderer id="telefacts-renderer"></telefacts-renderer>

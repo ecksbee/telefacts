@@ -54,7 +54,7 @@ func setupServer() *http.Server {
 	projectIDRoute.HandleFunc("/renderables", server.ProjectRenderableIndex()).Methods("GET", "POST")
 	projectIDRoute.HandleFunc("/renderables/{slug}", server.ProjectRenderable()).Methods("GET", "POST")
 	rendererServer := renderer.LoadServer(path.Join(".", "renderer", "public"))
-	r.HandleFunc("/renderer", rendererServer.ServeHTTP).Methods("GET")
+	r.PathPrefix("/renderer/").Handler(http.StripPrefix("/renderer/", rendererServer))
 	//todo serve open api spec at root
 
 	return &http.Server{
