@@ -33,8 +33,8 @@ func reduce(labelPacks []LabelPack) *LabelPack {
 	if len(labelPacks) == 1 {
 		return &labelPacks[0]
 	}
-	ret := labelPacks[0]
-	for i := 1; i < len(labelPacks); i++ {
+	ret := make(LabelPack)
+	for i := 0; i < len(labelPacks); i++ {
 		item := labelPacks[i]
 		for labelRole, langPack := range item {
 			ret[labelRole] = make(LanguagePack)

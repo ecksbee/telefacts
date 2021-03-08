@@ -28,7 +28,7 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	serializables.SetGlobalDir(path.Join("..", "taxonomies"))
 	serializables.InjectCache(scache)
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join("..", "test", "test_gold")
+	workingDir := path.Join("..", "..", "test", "data", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
