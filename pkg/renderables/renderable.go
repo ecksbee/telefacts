@@ -87,7 +87,7 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 				wg.Wait()
 				langs = dedupLang(langs)
 				labelRoles = dedupLabelRole(labelRoles)
-				p, d, c = formatPeriod(p, d, c, labelRoles, langs)
+				p, d, c = formatPeriod(p, d, c, langs)
 				ret := Renderable{
 					Subject: Subject{
 						Name: names[schemedEntity.Scheme][schemedEntity.CharData],

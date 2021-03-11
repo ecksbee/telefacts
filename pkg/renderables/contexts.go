@@ -17,7 +17,7 @@ func getContext(instance *hydratables.Instance, contextRef string) *hydratables.
 
 type RelevantContext struct {
 	ContextRef   string
-	PeriodHeader LabelPack
+	PeriodHeader LanguagePack
 	Dimensions   []ContextualDimension
 }
 
@@ -35,7 +35,7 @@ type ContextConcept struct {
 
 func sortContexts(relevantContexts []RelevantContext) {
 	sort.SliceStable(relevantContexts, func(i int, j int) bool {
-		if getPureLabel(relevantContexts[i].PeriodHeader) == getPureLabel(relevantContexts[j].PeriodHeader) {
+		if relevantContexts[i].PeriodHeader[PureLabel] == relevantContexts[j].PeriodHeader[PureLabel] {
 			if len(relevantContexts[i].Dimensions) == len(relevantContexts[j].Dimensions) {
 				for c := 0; c < len(relevantContexts[i].Dimensions); c++ {
 					a := relevantContexts[i].Dimensions[c]
@@ -52,19 +52,18 @@ func sortContexts(relevantContexts []RelevantContext) {
 				return len(relevantContexts[i].Dimensions) < len(relevantContexts[j].Dimensions)
 			}
 		}
-		return getPureLabel(relevantContexts[i].PeriodHeader) < getPureLabel(relevantContexts[j].PeriodHeader)
+		return relevantContexts[i].PeriodHeader[PureLabel] < relevantContexts[j].PeriodHeader[PureLabel]
 	})
 }
 
-func periodString(context *hydratables.Context) LabelPack {
-	ret := LabelPack{}
-	ret[Default] = make(LanguagePack)
+func periodString(context *hydratables.Context) LanguagePack {
+	ret := LanguagePack{}
 	if context.Period.Duration.EndDate != "" && context.Period.Duration.StartDate != "" {
-		ret[Default][PureLabel] = context.Period.Duration.StartDate + "/" + context.Period.Duration.EndDate
+		ret[PureLabel] = context.Period.Duration.StartDate + "/" + context.Period.Duration.EndDate
 	} else if context.Period.Instant.CharData != "" {
-		ret[Default][PureLabel] = context.Period.Instant.CharData
+		ret[PureLabel] = context.Period.Instant.CharData
 	} else {
-		ret[Default][PureLabel] = ""
+		ret[PureLabel] = ""
 	}
 	return ret
 }
