@@ -1,6 +1,10 @@
 package renderables
 
-import "time"
+import (
+	"time"
+
+	"github.com/klauspost/lctime"
+)
 
 func formatPeriod(p PGrid, d DGrid, c CGrid, langs []Lang) (PGrid, DGrid, CGrid) {
 	p.RelevantContexts = formatRelevantPeriod(p.RelevantContexts, langs)
@@ -34,12 +38,12 @@ func formatRelevantPeriod(relevantContexts []RelevantContext, langs []Lang) []Re
 	return relevantContexts
 }
 
-const iso8601 = "2060-12-25"
-const defaultUS = "December 25, 2060"
-const terseUS = "Dec 25, 2060"
+const iso8601 = "2006-01-02"
+const terseUS = "Jan 2, 2006"
+const terseStrf = "%b %d, %Y"
 
 func formatDate(lang Lang, date string) string {
-	//todo expand to other locales: https://github.com/klauspost/lctime
+	//todo duration context
 	switch lang {
 	case PureLabel:
 		return date
@@ -49,6 +53,16 @@ func formatDate(lang Lang, date string) string {
 			return date
 		}
 		return t.Format(terseUS)
+	case Español:
+		t, err := time.Parse(iso8601, date)
+		if err != nil {
+			return date
+		}
+		txt, err := lctime.StrftimeLoc("es_ES", terseStrf, t)
+		if err != nil {
+			return date
+		}
+		return txt
 	default:
 		return date
 	}
