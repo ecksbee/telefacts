@@ -1,6 +1,8 @@
 package renderables
 
 import (
+	"strconv"
+	"strings"
 	"time"
 
 	"github.com/klauspost/lctime"
@@ -39,31 +41,107 @@ func formatRelevantPeriod(relevantContexts []RelevantContext, langs []Lang) []Re
 }
 
 const iso8601 = "2006-01-02"
-const terseUS = "Jan 2, 2006"
-const terseStrf = "%b %d, %Y"
+
+func defaultDate(start string, end string) string {
+	isDuration := start != ""
+	if isDuration {
+		return start + "/" + end
+	}
+	return end
+}
 
 func formatDate(lang Lang, date string) string {
-	//todo duration context
+	i := strings.IndexRune(date, '/')
+	var start, end string
+	if i < 0 {
+		end = date
+	} else {
+		start = date[:i]
+		end = date[i+1:]
+	}
 	switch lang {
 	case PureLabel:
 		return date
 	case English:
-		t, err := time.Parse(iso8601, date)
-		if err != nil {
-			return date
-		}
-		return t.Format(terseUS)
+		return formatEnglishDates(start, end)
 	case Español:
-		t, err := time.Parse(iso8601, date)
-		if err != nil {
-			return date
-		}
-		txt, err := lctime.StrftimeLoc("es_ES", terseStrf, t)
-		if err != nil {
-			return date
-		}
-		return txt
+		return formatSpanishDates(start, end)
 	default:
 		return date
 	}
+}
+
+func formatEnglishDates(start string, end string) string {
+	isDuration := start != ""
+	endTime, err := time.Parse(iso8601, end)
+	if err != nil {
+		return defaultDate(start, end)
+	}
+	const strfUS = "January 2, 2006"
+	date := endTime.Format(strfUS)
+	if isDuration {
+		startTime, err := time.Parse(iso8601, start)
+		if err != nil {
+			return defaultDate(start, end)
+		}
+		months := monthCount(startTime, endTime)
+		if months < 1 {
+			return defaultDate(start, end)
+		} else if months == 1 {
+			return "1 month ended " + date
+		} else {
+			m := strconv.Itoa(months)
+			return m + " months ended " + date
+		}
+	}
+	return "as of " + date
+}
+
+func formatSpanishDates(start string, end string) string {
+	isDuration := start != ""
+	endTime, err := time.Parse(iso8601, end)
+	if err != nil {
+		return defaultDate(start, end)
+	}
+	date, err := lctime.StrftimeLoc("es_ES", "%d %B %Y", endTime)
+	if err != nil {
+		return defaultDate(start, end)
+	}
+	if isDuration {
+		startTime, err := time.Parse(iso8601, start)
+		if err != nil {
+			return defaultDate(start, end)
+		}
+		months := monthCount(startTime, endTime)
+		if months < 1 {
+			return defaultDate(start, end)
+		} else if months == 1 {
+			return "un mes terminado al " + date
+		} else {
+			m := strconv.Itoa(months)
+			return m + " meses terminados al " + date
+		}
+	}
+	return "al " + date
+}
+
+func monthCount(start time.Time, end time.Time) int {
+	//https://yourbasic.org/golang/days-between-dates/
+	days := end.Sub(start).Hours() / 24
+	//per accounting practice, there are 30 days in a month
+	if days < 30 {
+		return 0
+	}
+	//https://flaviocopes.com/golang-count-months-since-date/
+	months := 1
+	month := start.Month()
+	for start.Before(end) {
+		start = start.Add(time.Hour * 24)
+		nextMonth := start.Month()
+		if nextMonth != month {
+			months++
+		}
+		month = nextMonth
+	}
+	return months
 }
