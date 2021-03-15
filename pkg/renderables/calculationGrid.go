@@ -12,6 +12,7 @@ import (
 type SummationItem struct {
 	Href                 string
 	Label                LabelPack
+	BalanceType          string
 	RelevantContexts     []RelevantContext
 	MaxDepth             int
 	ContributingConcepts []ContributingConcept
@@ -21,6 +22,7 @@ type SummationItem struct {
 type ContributingConcept struct {
 	Sign            string
 	Scale           string
+	BalanceType     string
 	Href            string
 	Label           LabelPack
 	IsSummationItem bool
@@ -97,9 +99,14 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						sign := fmt.Sprintf("%c", cstruct.Sign)
 						scale := fmt.Sprintf("%.1f", cstruct.Scale)
 						cLabelPack := GetLabel(h, cstruct.Href)
+						_, concept, err := h.HashQuery(cstruct.Href)
+						if err != nil {
+							continue
+						}
 						contributingConcepts = append(contributingConcepts, ContributingConcept{
 							Href:            cstruct.Href,
 							Label:           cLabelPack,
+							BalanceType:     concept.Balance,
 							Scale:           scale,
 							Sign:            sign,
 							IsSummationItem: isSummationItem,
@@ -117,9 +124,14 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						labelRoles, langs = destruct(*reduced)
 					}
 					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
+					_, sumConcept, err := h.HashQuery(from)
+					if err != nil {
+						continue
+					}
 					ret = append(ret, SummationItem{
 						Href:                 from,
 						Label:                siLabelPack,
+						BalanceType:          sumConcept.Balance,
 						ContributingConcepts: contributingConcepts,
 						MaxDepth:             maxDepth,
 						RelevantContexts:     relevantContexts, //todo add labelRoles and langs
