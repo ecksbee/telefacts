@@ -59,8 +59,12 @@ func appendLabelModifiersFromHref(labelPack LabelPack, h *hydratables.Hydratable
 
 func appendLanguage(labelLinkLabel *hydratables.LabelLinkLabel, labelRole LabelRole, charData string, labelPack LabelPack) LabelPack {
 	switch labelLinkLabel.Lang {
+	case "en":
 	case "en-US":
 		labelPack[labelRole][English] = charData
+		break
+	case "es":
+		labelPack[labelRole][Español] = charData
 		break
 	default: //noop
 	}
