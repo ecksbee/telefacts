@@ -185,12 +185,20 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if dimAttr == nil {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
 							Href  string
 							Value string
 						}{
-							Href:  "", //todo
+							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
 						XMLInner: typedMember.XMLInner,
@@ -267,12 +275,20 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if dimAttr == nil || dimAttr.Value == "" {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
 							Href  string
 							Value string
 						}{
-							Href:  "", //todo
+							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
 						XMLInner: typedMember.XMLInner,

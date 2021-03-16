@@ -22,15 +22,21 @@ type RelevantContext struct {
 }
 
 type ContextualDimension struct {
-	Element    string
-	IsExplicit bool
-	Dimension  ContextConcept
-	Member     ContextConcept
+	Element     string
+	IsExplicit  bool
+	Dimension   ContextConcept
+	Member      *ContextConcept `json:",omitempty"`
+	TypedMember *TypedMember    `json:",omitempty"`
 }
 
 type ContextConcept struct {
 	Href  string
 	Label LabelPack
+}
+
+type TypedMember struct {
+	TypedDomainHref string
+	Value           map[string]interface{}
 }
 
 func sortContexts(relevantContexts []RelevantContext) {
@@ -183,10 +189,26 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 					Href:  dimension,
 					Label: dimensionLabel,
 				},
-				Member: ContextConcept{
+				Member: &ContextConcept{
 					Href:  member,
 					Label: memberLabel,
 				},
+			})
+		}
+	}
+	if len(context.Entity.Segment.TypedMembers) > 0 {
+		for _, typedMember := range context.Entity.Segment.TypedMembers {
+			dimension := typedMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "segment",
+				IsExplicit: false,
+				Dimension: ContextConcept{
+					Href:  dimension,
+					Label: dimensionLabel,
+				},
+				TypedMember: &TypedMember{}, //todo typedmember
 			})
 		}
 	}
@@ -205,13 +227,28 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 					Href:  dimension,
 					Label: dimensionLabel,
 				},
-				Member: ContextConcept{
+				Member: &ContextConcept{
 					Href:  member,
 					Label: memberLabel,
 				},
 			})
 		}
 	}
-	//todo typedMembers
+	if len(context.Scenario.TypedMembers) > 0 {
+		for _, typedMember := range context.Scenario.TypedMembers {
+			dimension := typedMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "scenario",
+				IsExplicit: false,
+				Dimension: ContextConcept{
+					Href:  dimension,
+					Label: dimensionLabel,
+				},
+				TypedMember: &TypedMember{}, //todo typedmember
+			})
+		}
+	}
 	return ret, labelPacks
 }
