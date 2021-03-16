@@ -190,7 +190,28 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			})
 		}
 	}
-	//todo scenario
+	if len(context.Scenario.ExplicitMembers) > 0 {
+		for _, explicitMember := range context.Scenario.ExplicitMembers {
+			member := explicitMember.Member.Href
+			memberLabel := GetLabel(h, member)
+			labelPacks = append(labelPacks, memberLabel)
+			dimension := explicitMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "scenario",
+				IsExplicit: true,
+				Dimension: ContextConcept{
+					Href:  dimension,
+					Label: dimensionLabel,
+				},
+				Member: ContextConcept{
+					Href:  member,
+					Label: memberLabel,
+				},
+			})
+		}
+	}
 	//todo typedMembers
 	return ret, labelPacks
 }
