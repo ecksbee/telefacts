@@ -36,7 +36,7 @@ type ContextConcept struct {
 
 type TypedMember struct {
 	TypedDomainHref string
-	Value           map[string]interface{}
+	Value           string
 }
 
 func sortContexts(relevantContexts []RelevantContext) {
@@ -208,7 +208,10 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 					Href:  dimension,
 					Label: dimensionLabel,
 				},
-				TypedMember: &TypedMember{}, //todo typedmember
+				TypedMember: &TypedMember{
+					TypedDomainHref: typedMember.TypedDomainHref,
+					Value:           typedMember.Value,
+				},
 			})
 		}
 	}
@@ -246,7 +249,10 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 					Href:  dimension,
 					Label: dimensionLabel,
 				},
-				TypedMember: &TypedMember{}, //todo typedmember
+				TypedMember: &TypedMember{
+					TypedDomainHref: typedMember.TypedDomainHref,
+					Value:           typedMember.Value,
+				},
 			})
 		}
 	}

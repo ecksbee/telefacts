@@ -5,6 +5,7 @@ const LRR = `http://www.xbrl.org/2003/xbrl-role-2003-07-31.xsd`
 const XSD = `http://www.w3.org/2001/XMLSchema`
 const XLINK = `http://www.w3.org/1999/xlink`
 const XBRLI = `http://www.xbrl.org/2003/instance`
+const XBRLDT = `http://xbrl.org/2005/xbrldt`
 const LINK = `http://www.xbrl.org/2003/linkbase`
 const LINKARCROLE = `http://www.w3.org/1999/xlink/properties/linkbase`
 const ROLELINK = `http://www.xbrl.org/2003/role/link`

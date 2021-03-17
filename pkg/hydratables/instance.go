@@ -33,7 +33,8 @@ type TypedMember struct {
 		Href  string
 		Value string
 	}
-	XMLInner string
+	TypedDomainHref string
+	Value           string
 }
 
 type Context struct {
@@ -201,7 +202,9 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
-						XMLInner: typedMember.XMLInner,
+						XMLInner:        typedMember.XMLInner,
+						TypedDomainHref: dimConcept.TypedDomainHref,
+						text:            typedMemberMap,
 					}
 					segment.TypedMembers = append(segment.TypedMembers, newTypedMember)
 				}
@@ -291,7 +294,9 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 							Href:  dimRef,
 							Value: dimAttr.Value,
 						},
-						XMLInner: typedMember.XMLInner,
+						XMLInner:        typedMember.XMLInner,
+						TypedDomainHref: dimConcept.TypedDomainHref,
+						TypedMemberMap:  make(map[string]interface{}),
 					}
 					scenario.TypedMembers = append(scenario.TypedMembers, newTypedMember)
 				}
