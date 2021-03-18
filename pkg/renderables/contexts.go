@@ -22,21 +22,22 @@ type RelevantContext struct {
 }
 
 type ContextualDimension struct {
-	Element     string
-	IsExplicit  bool
-	Dimension   ContextConcept
-	Member      *ContextConcept `json:",omitempty"`
-	TypedMember *TypedMember    `json:",omitempty"`
+	Element        string
+	IsExplicit     bool
+	Dimension      Dimension
+	ExplicitMember *ExplicitMember `json:",omitempty"`
+	TypedMember    string          `json:",omitempty"`
 }
 
-type ContextConcept struct {
+type Dimension struct {
+	Href            string
+	Label           LabelPack
+	TypedDomainHref string
+}
+
+type ExplicitMember struct {
 	Href  string
 	Label LabelPack
-}
-
-type TypedMember struct {
-	TypedDomainHref string
-	Value           string
 }
 
 func sortContexts(relevantContexts []RelevantContext) {
@@ -48,7 +49,10 @@ func sortContexts(relevantContexts []RelevantContext) {
 					b := relevantContexts[j].Dimensions[c]
 					if a.Element == b.Element {
 						if a.IsExplicit == b.IsExplicit {
-							return a.Member.Href < b.Member.Href
+							if a.ExplicitMember != nil && b.ExplicitMember != nil {
+								return a.ExplicitMember.Href < b.ExplicitMember.Href
+							}
+							return a.ExplicitMember == nil
 						}
 						return !a.IsExplicit
 					}
@@ -185,11 +189,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			ret = append(ret, ContextualDimension{
 				Element:    "segment",
 				IsExplicit: true,
-				Dimension: ContextConcept{
-					Href:  dimension,
-					Label: dimensionLabel,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: "",
 				},
-				Member: &ContextConcept{
+				ExplicitMember: &ExplicitMember{
 					Href:  member,
 					Label: memberLabel,
 				},
@@ -204,14 +209,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			ret = append(ret, ContextualDimension{
 				Element:    "segment",
 				IsExplicit: false,
-				Dimension: ContextConcept{
-					Href:  dimension,
-					Label: dimensionLabel,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
 				},
-				TypedMember: &TypedMember{
-					TypedDomainHref: typedMember.TypedDomainHref,
-					Value:           typedMember.Value,
-				},
+				TypedMember: formatTypedMember(typedMember.Dimension.TypedDomainHref, typedMember.Value, h),
 			})
 		}
 	}
@@ -226,11 +229,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			ret = append(ret, ContextualDimension{
 				Element:    "scenario",
 				IsExplicit: true,
-				Dimension: ContextConcept{
-					Href:  dimension,
-					Label: dimensionLabel,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: "",
 				},
-				Member: &ContextConcept{
+				ExplicitMember: &ExplicitMember{
 					Href:  member,
 					Label: memberLabel,
 				},
@@ -245,14 +249,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			ret = append(ret, ContextualDimension{
 				Element:    "scenario",
 				IsExplicit: false,
-				Dimension: ContextConcept{
-					Href:  dimension,
-					Label: dimensionLabel,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
 				},
-				TypedMember: &TypedMember{
-					TypedDomainHref: typedMember.TypedDomainHref,
-					Value:           typedMember.Value,
-				},
+				TypedMember: typedMember.Value,
 			})
 		}
 	}

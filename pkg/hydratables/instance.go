@@ -30,11 +30,11 @@ type ExplicitMember struct {
 
 type TypedMember struct {
 	Dimension struct {
-		Href  string
-		Value string
+		Href            string
+		Value           string
+		TypedDomainHref string
 	}
-	TypedDomainHref string
-	Value           string
+	Value string
 }
 
 type Context struct {
@@ -196,15 +196,15 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
-							Href  string
-							Value string
+							Href            string
+							Value           string
+							TypedDomainHref string
 						}{
-							Href:  dimRef,
-							Value: dimAttr.Value,
+							Href:            dimRef,
+							TypedDomainHref: dimConcept.TypedDomainHref,
+							Value:           dimAttr.Value,
 						},
-						XMLInner:        typedMember.XMLInner,
-						TypedDomainHref: dimConcept.TypedDomainHref,
-						text:            typedMemberMap,
+						Value: typedMember.XMLInner,
 					}
 					segment.TypedMembers = append(segment.TypedMembers, newTypedMember)
 				}
@@ -288,15 +288,15 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
-							Href  string
-							Value string
+							Href            string
+							Value           string
+							TypedDomainHref string
 						}{
-							Href:  dimRef,
-							Value: dimAttr.Value,
+							Href:            dimRef,
+							Value:           dimAttr.Value,
+							TypedDomainHref: dimConcept.TypedDomainHref,
 						},
-						XMLInner:        typedMember.XMLInner,
-						TypedDomainHref: dimConcept.TypedDomainHref,
-						TypedMemberMap:  make(map[string]interface{}),
+						Value: typedMember.XMLInner,
 					}
 					scenario.TypedMembers = append(scenario.TypedMembers, newTypedMember)
 				}
