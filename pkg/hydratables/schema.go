@@ -189,13 +189,13 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 			periodType = periodTypeAttr.Value
 		}
 		typedDomainHref := ""
-		typedDomainHrefAttr := attr.FindAttr(element.XMLAttrs, "typedDomainHref")
-		if typedDomainHrefAttr != nil && typedDomainHrefAttr.Name.Space == attr.XBRLDT {
-			i := strings.IndexRune(typedDomainHrefAttr.Value, '#')
+		typedDomainRefAttr := attr.FindAttr(element.XMLAttrs, "typedDomainRef")
+		if typedDomainRefAttr != nil && typedDomainRefAttr.Name.Space == attr.XBRLDT {
+			i := strings.IndexRune(typedDomainRefAttr.Value, '#')
 			if i == 0 {
 				typedDomainHref += fileName
 			}
-			typedDomainHref += typedDomainHrefAttr.Value
+			typedDomainHref += typedDomainRefAttr.Value
 		}
 		ret = append(ret, Concept{
 			XMLName: xml.Name{
