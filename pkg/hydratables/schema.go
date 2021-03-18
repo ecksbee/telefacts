@@ -4,6 +4,7 @@ import (
 	"encoding/xml"
 	"fmt"
 	"strconv"
+	"strings"
 
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -20,6 +21,7 @@ type Concept struct {
 	PeriodType        string
 	Balance           string
 	Abstract          bool
+	TypedDomainHref   string
 }
 
 type Schema struct {
@@ -53,8 +55,9 @@ func HydrateSchema(file *serializables.SchemaFile, fileName string) (*Schema, er
 		return nil, fmt.Errorf("Empty file")
 	}
 	ret := Schema{}
+	ret.FileName = fileName
 	ret.Annotation = hydrateAnnotation(file)
-	ret.Element = hydrateConcepts(file)
+	ret.Element = hydrateConcepts(file, fileName)
 	return &ret, nil
 }
 
@@ -135,7 +138,7 @@ func hydrateAnnotation(file *serializables.SchemaFile) Annotation {
 	}
 }
 
-func hydrateConcepts(file *serializables.SchemaFile) []Concept {
+func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept {
 	ret := make([]Concept, 0, len(file.Element))
 	tlAttrs := file.XMLAttrs
 	targetNS := hydrateTargetNamespace(file)
@@ -185,6 +188,15 @@ func hydrateConcepts(file *serializables.SchemaFile) []Concept {
 		if periodTypeAttr != nil && periodTypeAttr.Name.Space == attr.XBRLI {
 			periodType = periodTypeAttr.Value
 		}
+		typedDomainHref := ""
+		typedDomainRefAttr := attr.FindAttr(element.XMLAttrs, "typedDomainRef")
+		if typedDomainRefAttr != nil && typedDomainRefAttr.Name.Space == attr.XBRLDT {
+			i := strings.IndexRune(typedDomainRefAttr.Value, '#')
+			if i == 0 {
+				typedDomainHref += fileName
+			}
+			typedDomainHref += typedDomainRefAttr.Value
+		}
 		ret = append(ret, Concept{
 			XMLName: xml.Name{
 				Space: targetNS,
@@ -197,6 +209,7 @@ func hydrateConcepts(file *serializables.SchemaFile) []Concept {
 			Balance:           balance,
 			Nillable:          isNillable,
 			PeriodType:        periodType,
+			TypedDomainHref:   typedDomainHref,
 		})
 	}
 	return ret

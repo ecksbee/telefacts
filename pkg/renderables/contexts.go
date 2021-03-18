@@ -22,13 +22,20 @@ type RelevantContext struct {
 }
 
 type ContextualDimension struct {
-	Element    string
-	IsExplicit bool
-	Dimension  ContextConcept
-	Member     ContextConcept
+	Element        string
+	IsExplicit     bool
+	Dimension      Dimension
+	ExplicitMember *ExplicitMember `json:",omitempty"`
+	TypedMember    string          `json:",omitempty"`
 }
 
-type ContextConcept struct {
+type Dimension struct {
+	Href            string
+	Label           LabelPack
+	TypedDomainHref string
+}
+
+type ExplicitMember struct {
 	Href  string
 	Label LabelPack
 }
@@ -42,7 +49,10 @@ func sortContexts(relevantContexts []RelevantContext) {
 					b := relevantContexts[j].Dimensions[c]
 					if a.Element == b.Element {
 						if a.IsExplicit == b.IsExplicit {
-							return a.Member.Href < b.Member.Href
+							if a.ExplicitMember != nil && b.ExplicitMember != nil {
+								return a.ExplicitMember.Href < b.ExplicitMember.Href
+							}
+							return a.ExplicitMember == nil
 						}
 						return !a.IsExplicit
 					}
@@ -179,18 +189,74 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			ret = append(ret, ContextualDimension{
 				Element:    "segment",
 				IsExplicit: true,
-				Dimension: ContextConcept{
-					Href:  dimension,
-					Label: dimensionLabel,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: "",
 				},
-				Member: ContextConcept{
+				ExplicitMember: &ExplicitMember{
 					Href:  member,
 					Label: memberLabel,
 				},
 			})
 		}
 	}
-	//todo scenario
-	//todo typedMembers
+	if len(context.Entity.Segment.TypedMembers) > 0 {
+		for _, typedMember := range context.Entity.Segment.TypedMembers {
+			dimension := typedMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "segment",
+				IsExplicit: false,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
+				},
+				TypedMember: formatTypedMember(typedMember.Dimension.TypedDomainHref, typedMember.Value, h),
+			})
+		}
+	}
+	if len(context.Scenario.ExplicitMembers) > 0 {
+		for _, explicitMember := range context.Scenario.ExplicitMembers {
+			member := explicitMember.Member.Href
+			memberLabel := GetLabel(h, member)
+			labelPacks = append(labelPacks, memberLabel)
+			dimension := explicitMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "scenario",
+				IsExplicit: true,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: "",
+				},
+				ExplicitMember: &ExplicitMember{
+					Href:  member,
+					Label: memberLabel,
+				},
+			})
+		}
+	}
+	if len(context.Scenario.TypedMembers) > 0 {
+		for _, typedMember := range context.Scenario.TypedMembers {
+			dimension := typedMember.Dimension.Href
+			dimensionLabel := GetLabel(h, dimension)
+			labelPacks = append(labelPacks, dimensionLabel)
+			ret = append(ret, ContextualDimension{
+				Element:    "scenario",
+				IsExplicit: false,
+				Dimension: Dimension{
+					Href:            dimension,
+					Label:           dimensionLabel,
+					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
+				},
+				TypedMember: typedMember.Value,
+			})
+		}
+	}
 	return ret, labelPacks
 }

@@ -30,10 +30,11 @@ type ExplicitMember struct {
 
 type TypedMember struct {
 	Dimension struct {
-		Href  string
-		Value string
+		Href            string
+		Value           string
+		TypedDomainHref string
 	}
-	XMLInner string
+	Value string
 }
 
 type Context struct {
@@ -185,15 +186,25 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if dimAttr == nil {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
-							Href  string
-							Value string
+							Href            string
+							Value           string
+							TypedDomainHref string
 						}{
-							Href:  "", //todo
-							Value: dimAttr.Value,
+							Href:            dimRef,
+							TypedDomainHref: dimConcept.TypedDomainHref,
+							Value:           dimAttr.Value,
 						},
-						XMLInner: typedMember.XMLInner,
+						Value: typedMember.XMLInner,
 					}
 					segment.TypedMembers = append(segment.TypedMembers, newTypedMember)
 				}
@@ -267,15 +278,25 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if dimAttr == nil || dimAttr.Value == "" {
 						continue
 					}
+					dimName := attr.Xmlns(instanceFile.XMLAttrs, dimAttr.Value)
+					if dimName.Space == "" {
+						continue
+					}
+					dimRef, dimConcept, err := h.NameQuery(dimName.Space, dimName.Local)
+					if err != nil || dimRef == "" || dimConcept == nil {
+						continue
+					}
 					newTypedMember := TypedMember{
 						Dimension: struct {
-							Href  string
-							Value string
+							Href            string
+							Value           string
+							TypedDomainHref string
 						}{
-							Href:  "", //todo
-							Value: dimAttr.Value,
+							Href:            dimRef,
+							Value:           dimAttr.Value,
+							TypedDomainHref: dimConcept.TypedDomainHref,
 						},
-						XMLInner: typedMember.XMLInner,
+						Value: typedMember.XMLInner,
 					}
 					scenario.TypedMembers = append(scenario.TypedMembers, newTypedMember)
 				}

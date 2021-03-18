@@ -134,7 +134,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						BalanceType:          sumConcept.Balance,
 						ContributingConcepts: contributingConcepts,
 						MaxDepth:             maxDepth,
-						RelevantContexts:     relevantContexts, //todo add labelRoles and langs
+						RelevantContexts:     relevantContexts,
 						FactualQuadrant:      factualQuadrant,
 					})
 				}
