@@ -39,7 +39,7 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	return PGrid{
 		IndentedLabels:   indentedLabels,
 		MaxIndentation:   maxIndentation,
-		RelevantContexts: relevantContexts, //todo add labelRoles and langs
+		RelevantContexts: relevantContexts,
 		MaxDepth:         maxDepth,
 		FactualQuadrant:  factualQuadrant,
 	}, labelRoles, langs, nil

@@ -160,7 +160,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						Href:                rootHref,
 						Label:               rdLabelPack,
 						MaxLevel:            maxIndent,
-						RelevantContexts:    relevantContexts, //todo add labelRoles and langs
+						RelevantContexts:    relevantContexts,
 						MaxDepth:            maxDepth,
 						EffectiveDimensions: effectiveDimensions,
 						EffectiveDomainGrid: edGrid,
