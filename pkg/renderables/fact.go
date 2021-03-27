@@ -10,7 +10,7 @@ type MeasurementFinder interface {
 	FindMeasurement(unitRef string) (*hydratables.Measurement, *hydratables.Measurement)
 }
 
-func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole, langs []Lang) MultilingualFact { //todo render for percentItemType concepts
+func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRoles []LabelRole, langs []Lang) MultilingualFact {
 	ret := MultilingualFact{}
 	ret[Default] = make(map[Lang]FactExpression)
 	if fact == nil {
@@ -71,15 +71,49 @@ func render(fact *hydratables.Fact, mf MeasurementFinder, labelRoles []LabelRole
 			ret[labelRole] = make(map[Lang]FactExpression)
 		}
 		for _, lang := range langs {
-			if lang == PureLabel {
+			switch lang {
+			case English:
+				ret[labelRole][lang] = renderEnglishFact(fact, mf, labelRole)
+			case Español:
+				ret[labelRole][lang] = renderEnglishFact(fact, mf, labelRole) //todo spanish fact expression
+			case PureLabel:
+			default:
 				continue
 			}
-			ret[labelRole][lang] = FactExpression{
-				Head: precision,
-				Core: fact.XMLInner,
-				Tail: tail,
-			} //todo
 		}
 	}
 	return ret
+}
+
+func renderEnglishFact(fact *hydratables.Fact, mf MeasurementFinder, labelRole LabelRole) FactExpression {
+	var precision string
+	if fact.Decimals != "" {
+		precision = fact.Decimals
+	} else {
+		precision = fact.Precision
+	}
+	precision += " "
+	tail := ""
+	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
+	if numerator != nil {
+		if numerator.Symbol != "" {
+			tail += numerator.Symbol
+		} else {
+			tail += numerator.UnitName
+		}
+		if denominator != nil {
+			tail += "/"
+			if denominator.Symbol != "" {
+				tail += denominator.Symbol
+			} else {
+				tail += denominator.UnitName
+			}
+		}
+	}
+
+	return FactExpression{
+		Head: precision,
+		Core: fact.XMLInner,
+		Tail: tail,
+	}
 }

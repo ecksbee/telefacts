@@ -53,7 +53,7 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 				langs = make([]Lang, 0, 8)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
-					localP, lr, ln, localError := pGrid(entity, linkrole, h, h, h)
+					localP, lr, ln, localError := pGrid(entity, linkrole, h, h, h, h)
 					if localError != nil {
 						err = localError
 						return
@@ -64,7 +64,7 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 				}(stringify(&schemedEntity), rset.RoleURI)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
-					localD, lr, ln, localError := dGrid(entity, linkrole, h, h, h)
+					localD, lr, ln, localError := dGrid(entity, linkrole, h, h, h, h)
 					if localError != nil {
 						err = localError
 						return
@@ -75,7 +75,7 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 				}(stringify(&schemedEntity), rset.RoleURI)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
-					localC, lr, ln, localError := cGrid(entity, linkrole, h, h, h)
+					localC, lr, ln, localError := cGrid(entity, linkrole, h, h, h, h)
 					if localError != nil {
 						err = localError
 						return
