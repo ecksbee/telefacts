@@ -83,17 +83,31 @@ func SigFigs(value string, precision hydratables.Precision, concept *hydratables
 	if err != nil {
 		return value, ""
 	}
+	original := f.Text('f', -1)
+	point := strings.IndexRune(original, '.')
 	isPercent := concept.Type.Space == attr.NUM &&
 		concept.Type.Local == attr.PercentItemType
+	n := int(precision)
 	if isPercent {
-		f = f.Mul(f, new(big.Float).SetPrec(128).SetInt64(100)) //todo requires accurate way to move decimal place
+		n -= 2
+		if point > -1 {
+			for len(original)-1-point < 2 {
+				original += "0"
+			}
+			original = original[:point] + original[point+1:point+3] + "." + original[point+3:]
+			f, _, err = big.ParseFloat(original, 10, 106, big.ToZero)
+			if err != nil {
+				return value, ""
+			}
+			original = f.Text('f', -1)
+			point = strings.IndexRune(original, '.')
+		} else {
+			original += "00"
+		}
 	}
-	original := f.Text('f', -1)
 	if precision == hydratables.Exact || precision == hydratables.Precisionless {
 		return original, ""
 	}
-	n := int(precision)
-	point := strings.IndexRune(original, '.')
 	if point < 0 {
 		if n < 1 {
 			n = int(math.Abs(float64(n)))
