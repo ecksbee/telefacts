@@ -140,7 +140,7 @@ func SigFigs(value string, precision hydratables.Precision, concept *hydratables
 			return "", "0" + original
 		}
 		if n == 0 {
-			return original[:point], original[point:]
+			return original[:point+1], original[point+1:]
 		}
 		if n > 0 {
 			n = int(math.Abs(float64(n)))
@@ -153,6 +153,6 @@ func SigFigs(value string, precision hydratables.Precision, concept *hydratables
 		if n >= point {
 			return "", original
 		}
-		return original[:point-n], original[point-n:]
+		return original[:point+1-n], original[point+1-n:]
 	}
 }
