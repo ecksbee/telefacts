@@ -5,8 +5,7 @@ type Fact struct {
 	ID         string
 	ContextRef string
 	UnitRef    string
-	Decimals   string
-	Precision  string
+	Precision  Precision
 	IsNil      bool
 	XMLInner   string
 }

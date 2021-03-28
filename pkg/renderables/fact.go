@@ -1,6 +1,14 @@
 package renderables
 
-import "ecksbee.com/telefacts/pkg/hydratables"
+import (
+	"math"
+	"math/big"
+	"strconv"
+	"strings"
+
+	"ecksbee.com/telefacts/pkg/attr"
+	"ecksbee.com/telefacts/pkg/hydratables"
+)
 
 type FactFinder interface {
 	FindFact(href string, contextRef string) *hydratables.Fact
@@ -38,33 +46,18 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 		return ret
 	}
 	var precision string
-	if fact.Decimals != "" {
-		precision = fact.Decimals
-	} else {
-		precision = fact.Precision
+	if fact.Precision != hydratables.Precisionless {
+		if fact.Precision == hydratables.Exact {
+			precision = "INF"
+		} else {
+			precision = strconv.Itoa(int(fact.Precision))
+		}
 	}
 
 	ret[Default][PureLabel] = FactExpression{
 		Head: precision,
 		Core: fact.XMLInner,
 		Tail: fact.UnitRef,
-	}
-	tail := ""
-	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
-	if numerator != nil {
-		if numerator.Symbol != "" {
-			tail += numerator.Symbol
-		} else {
-			tail += numerator.UnitName
-		}
-		if denominator != nil {
-			tail += "/"
-			if denominator.Symbol != "" {
-				tail += denominator.Symbol
-			} else {
-				tail += denominator.UnitName
-			}
-		}
 	}
 	for _, labelRole := range labelRoles {
 		if _, found := ret[labelRole]; !found {
@@ -73,9 +66,9 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 		for _, lang := range langs {
 			switch lang {
 			case English:
-				ret[labelRole][lang] = renderEnglishFact(fact, mf, labelRole)
+				ret[labelRole][lang] = renderEnglishFact(fact, cf, mf, labelRole)
 			case Español:
-				ret[labelRole][lang] = renderEnglishFact(fact, mf, labelRole) //todo spanish fact expression
+				ret[labelRole][lang] = renderEnglishFact(fact, cf, mf, labelRole) //todo spanish fact expression
 			case PureLabel:
 			default:
 				continue
@@ -85,20 +78,96 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 	return ret
 }
 
-func renderEnglishFact(fact *hydratables.Fact, mf MeasurementFinder, labelRole LabelRole) FactExpression {
-	var precision string
-	if fact.Decimals != "" {
-		precision = fact.Decimals
-	} else {
-		precision = fact.Precision
+func SigFigs(value string, precision hydratables.Precision, concept *hydratables.Concept) (string, string) {
+	f, _, err := big.ParseFloat(value, 10, 106, big.ToZero)
+	if err != nil {
+		return value, ""
 	}
-	precision += " "
-	tail := ""
+	isPercent := concept.Type.Space == attr.NUM &&
+		concept.Type.Local == attr.PercentItemType
+	if isPercent {
+		f = f.Mul(f, new(big.Float).SetPrec(128).SetInt64(100)) //todo requires accurate way to move decimal place
+	}
+	original := f.Text('f', -1)
+	if precision == hydratables.Exact || precision == hydratables.Precisionless {
+		return original, ""
+	}
+	n := int(precision)
+	point := strings.IndexRune(original, '.')
+	if point < 0 {
+		if n < 1 {
+			n = int(math.Abs(float64(n)))
+			if n >= len(original) {
+				return "", original
+			}
+			return original[:len(original)-n], original[len(original)-n:]
+		} else {
+			ret := original
+			ret += "."
+			n--
+			for n > 0 {
+				ret += "0"
+				n--
+			}
+			return ret, ""
+		}
+	} else {
+		if point == 0 {
+			if n == 0 {
+				return "0.", original[1:]
+			}
+			if n > 0 {
+				n = int(math.Abs(float64(n)))
+				if n >= len(original)-1 {
+					return "", original
+				}
+				return "0" + original[:n+1], original[n+1:]
+			}
+			return "", "0" + original
+		}
+		if n == 0 {
+			return original[:point], original[point:]
+		}
+		if n > 0 {
+			n = int(math.Abs(float64(n)))
+			if n >= len(original)-point-1 {
+				return "", original
+			}
+			return original[:point+n], original[point+n:]
+		}
+		n = int(math.Abs(float64(n)))
+		if n >= point {
+			return "", original
+		}
+		return original[:point-n], original[point-n:]
+	}
+}
+
+func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRole LabelRole) FactExpression {
+	_, concept, err := cf.HashQuery(fact.Href)
+	if err != nil {
+		return FactExpression{
+			Head: "",
+			Core: "error",
+			Tail: "",
+		}
+	}
+	isPercent := concept.Type.Space == attr.NUM &&
+		concept.Type.Local == attr.PercentItemType
+	head := ""
 	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			tail += numerator.Symbol
-		} else {
+			head += numerator.Symbol + " "
+		}
+	}
+	core, tail := SigFigs(fact.XMLInner, fact.Precision, concept)
+	if isPercent {
+		tail += "%"
+	}
+	if numerator != nil {
+		tail += " "
+		if numerator.Symbol == "" {
 			tail += numerator.UnitName
 		}
 		if denominator != nil {
@@ -112,8 +181,8 @@ func renderEnglishFact(fact *hydratables.Fact, mf MeasurementFinder, labelRole L
 	}
 
 	return FactExpression{
-		Head: precision,
-		Core: fact.XMLInner,
+		Head: head,
+		Core: core,
 		Tail: tail,
 	}
 }

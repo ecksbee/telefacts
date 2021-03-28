@@ -391,15 +391,28 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 		if unitRefAttr != nil {
 			unitVal = unitRefAttr.Value
 		}
+		// precisionAttr := attr.FindAttr(fact.XMLAttrs, "precision")	//todoo
+		// if precisionAttr != nil {
+		// 	if precisionAttr.Value == "INF" {
+		// 		precisionVal = Exact
+		// 	} else {
+		// 		precision, err := strconv.Atoi(precisionAttr.Value)
+		// 		if err == nil {
+		// 			precisionVal = Precision(precision)
+		// 		}
+		// 	}
+		// }
+		precisionVal := Precisionless
 		decimalsAttr := attr.FindAttr(fact.XMLAttrs, "decimals")
-		decimalsVal := ""
 		if decimalsAttr != nil {
-			decimalsVal = decimalsAttr.Value
-		}
-		precisionAttr := attr.FindAttr(fact.XMLAttrs, "precision")
-		precisionVal := ""
-		if precisionAttr != nil {
-			precisionVal = precisionAttr.Value
+			if decimalsAttr.Value == "INF" {
+				precisionVal = Exact
+			} else {
+				decimal, err := strconv.Atoi(decimalsAttr.Value)
+				if err == nil {
+					precisionVal = Precision(decimal)
+				}
+			}
 		}
 		nilAttr := attr.FindAttr(fact.XMLAttrs, "nil")
 		nilVal := false
@@ -411,7 +424,6 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 			Href:       factRef,
 			ContextRef: contextRefAttr.Value,
 			UnitRef:    unitVal,
-			Decimals:   decimalsVal,
 			Precision:  precisionVal,
 			IsNil:      nilVal,
 			XMLInner:   fact.XMLInner,
