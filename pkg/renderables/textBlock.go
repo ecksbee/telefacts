@@ -11,7 +11,7 @@ import (
 	"golang.org/x/net/html"
 )
 
-func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRole LabelRole) *FactExpression {
+func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) *FactExpression {
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
 		return &FactExpression{

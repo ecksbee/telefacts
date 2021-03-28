@@ -172,7 +172,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						labelRoles = append(labelRoles, dLabelRoles...)
 						langs = append(langs, dLangs...)
 					}
-					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder, conceptFinder, measurementFinder, labelRoles, langs)
+					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
 					ret = append(ret, rootDomain)
 				}
 			}
@@ -241,14 +241,14 @@ func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorN
 
 func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []RelevantContext,
 	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
-	labelRoles []LabelRole, langs []Lang) RootDomain {
+	langs []Lang) RootDomain {
 	hrefs := make([]string, 0, len(incompleteRootDomain.PrimaryItems)+1)
 	hrefs = append(hrefs, incompleteRootDomain.Href)
 	for _, primaryItem := range incompleteRootDomain.PrimaryItems {
 		hrefs = append(hrefs, primaryItem.Href)
 	}
 	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
-		measurementFinder, labelRoles, langs)
+		measurementFinder, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
 	return incompleteRootDomain
 }

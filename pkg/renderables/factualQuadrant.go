@@ -12,13 +12,13 @@ type FactExpression struct {
 	TextBlock   string
 }
 
-type MultilingualFact map[LabelRole]map[Lang]FactExpression
+type MultilingualFact map[Lang]FactExpression
 
 type FactualQuadrant [][]MultilingualFact
 
 func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
-	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
+	langs []Lang) FactualQuadrant {
 	rowCount := len(hrefs)
 	colCount := len(relevantContexts)
 	if rowCount <= 0 || colCount <= 0 {
@@ -32,7 +32,7 @@ func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 			var fact *hydratables.Fact
 			contextRef := relevantContexts[j].ContextRef
 			fact = factFinder.FindFact(href, contextRef)
-			row = append(row, render(fact, conceptFinder, measurementFinder, labelRoles, langs))
+			row = append(row, render(fact, conceptFinder, measurementFinder, langs))
 		}
 		ret = append(ret, row)
 	}

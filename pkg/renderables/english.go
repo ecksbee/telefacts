@@ -34,14 +34,14 @@ func formatEnglishDates(start string, end string) string {
 	return "as of " + date
 }
 
-func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRole LabelRole) FactExpression {
+func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) FactExpression {
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
 		return FactExpression{
 			Core: "error",
 		}
 	}
-	textBlock := renderTextBlock(fact, cf, mf, labelRole)
+	textBlock := renderTextBlock(fact, cf, mf)
 	if textBlock != nil {
 		return *textBlock
 	}
