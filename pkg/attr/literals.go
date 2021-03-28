@@ -48,3 +48,4 @@ const Documentation = `http://www.xbrl.org/2003/role/documentation`
 const Commentary = `http://www.xbrl.org/2003/role/commentary`
 const Example = `http://www.xbrl.org/2003/role/example`
 const PercentItemType = `percentItemType`
+const TextBlockItemType = `textBlockItemType`

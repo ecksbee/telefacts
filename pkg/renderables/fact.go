@@ -22,26 +22,18 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 	ret := MultilingualFact{}
 	ret[Default] = make(map[Lang]FactExpression)
 	if fact == nil {
-		ret[Default][PureLabel] = FactExpression{
-			Head: "",
-			Core: "",
-			Tail: "",
-		}
+		ret[Default][PureLabel] = FactExpression{}
 		return ret
 	}
 	if fact.IsNil {
 		ret[Default][PureLabel] = FactExpression{
-			Head: "",
 			Core: "nil",
-			Tail: "",
 		}
 		return ret
 	}
 	if mf == nil {
 		ret[Default][PureLabel] = FactExpression{
-			Head: "",
 			Core: "error",
-			Tail: "",
 		}
 		return ret
 	}
@@ -53,10 +45,13 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 			precision = strconv.Itoa(int(fact.Precision))
 		}
 	}
-
+	core := fact.XMLInner
+	if len(core) > 44 {
+		core = core[:44]
+	}
 	ret[Default][PureLabel] = FactExpression{
 		Head: precision,
-		Core: fact.XMLInner,
+		Core: core,
 		Tail: fact.UnitRef,
 	}
 	for _, labelRole := range labelRoles {

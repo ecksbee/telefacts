@@ -46,6 +46,10 @@ func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 			Tail: "",
 		}
 	}
+	textBlock := renderTextBlock(fact, cf, mf, labelRole)
+	if textBlock != nil {
+		return *textBlock
+	}
 	isPercent := concept.Type.Space == attr.NUM &&
 		concept.Type.Local == attr.PercentItemType
 	head := ""

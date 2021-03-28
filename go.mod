@@ -7,5 +7,5 @@ require (
 	github.com/gorilla/mux v1.8.0
 	github.com/klauspost/lctime v0.1.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	golang.org/x/net v0.0.0-20210226172049-e18ecbb05110
+	golang.org/x/net v0.0.0-20210326220855-61e056675ecf
 )
