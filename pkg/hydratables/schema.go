@@ -203,7 +203,7 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 				Local: nameAttr.Value,
 			},
 			ID:                idAttr.Value,
-			Type:              attr.Xmlns(tlAttrs, nameAttr.Value),
+			Type:              attr.Xmlns(tlAttrs, typeAttr.Value),
 			SubstitutionGroup: attr.Xmlns(tlAttrs, substitutionGroupAttr.Value),
 			Abstract:          isAbstract,
 			Balance:           balance,

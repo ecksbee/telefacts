@@ -22,10 +22,12 @@ type PGrid struct {
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder, measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
+	factFinder FactFinder, conceptFinder ConceptFinder,
+	measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
 	labelPacks := make([]LabelPack, 0, 100)
 	indentedLabels, maxIndentation, labelPacks := getIndentedLabels(linkroleURI, h)
-	relevantContexts, maxDepth, contextualLabelPacks := getPresentationContexts(schemedEntity, h, indentedLabels)
+	relevantContexts, maxDepth, contextualLabelPacks :=
+		getPresentationContexts(schemedEntity, h, indentedLabels)
 	labelPacks = append(labelPacks, contextualLabelPacks...)
 	reduced := reduce(labelPacks)
 	var (
@@ -35,7 +37,8 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	if reduced != nil {
 		labelRoles, langs = destruct(*reduced)
 	}
-	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
+	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts,
+		factFinder, conceptFinder, measurementFinder, labelRoles, langs)
 	return PGrid{
 		IndentedLabels:   indentedLabels,
 		MaxIndentation:   maxIndentation,
@@ -117,13 +120,13 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
 	relevantContexts []RelevantContext, factFinder FactFinder,
-	measurementFinder MeasurementFinder,
+	conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
 	hrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
 		hrefs = append(hrefs, indentedLabel.Href)
 	}
 	ret := getFactualQuadrant(hrefs, relevantContexts,
-		factFinder, measurementFinder, labelRoles, langs)
+		factFinder, conceptFinder, measurementFinder, labelRoles, langs)
 	return ret
 }

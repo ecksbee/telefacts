@@ -33,16 +33,16 @@ type CGrid struct {
 }
 
 func cGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder, measurementFinder MeasurementFinder) (CGrid, []LabelRole, []Lang, error) {
+	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder) (CGrid, []LabelRole, []Lang, error) {
 	summationItems, labelRoles, langs := getSummationItems(schemedEntity, linkroleURI,
-		h, factFinder, measurementFinder)
+		h, factFinder, conceptFinder, measurementFinder)
 	return CGrid{
 		SummationItems: summationItems,
 	}, labelRoles, langs, nil
 }
 
 func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder, measurementFinder MeasurementFinder) ([]SummationItem, []LabelRole, []Lang) {
+	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder) ([]SummationItem, []LabelRole, []Lang) {
 	var calculationLinks []hydratables.CalculationLink
 	for _, calculation := range h.CalculationLinkbases {
 		for _, roleRef := range calculation.RoleRefs {
@@ -123,7 +123,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					if reduced != nil {
 						labelRoles, langs = destruct(*reduced)
 					}
-					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
+					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder, conceptFinder, measurementFinder, labelRoles, langs)
 					_, sumConcept, err := h.HashQuery(from)
 					if err != nil {
 						continue

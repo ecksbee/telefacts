@@ -76,7 +76,7 @@ func dArcs(dArcs []hydratables.DefinitionArc) []arc {
 }
 
 func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
-	factFinder FactFinder, measurementFinder MeasurementFinder) ([]RootDomain, []LabelRole, []Lang) {
+	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder) ([]RootDomain, []LabelRole, []Lang) {
 	ret := []RootDomain{}
 	labelRoles := []LabelRole{}
 	langs := []Lang{}
@@ -172,7 +172,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						labelRoles = append(labelRoles, dLabelRoles...)
 						langs = append(langs, dLangs...)
 					}
-					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder, measurementFinder, labelRoles, langs)
+					rootDomain = injectFactualQuadrant(rootDomain, relevantContexts, factFinder, conceptFinder, measurementFinder, labelRoles, langs)
 					ret = append(ret, rootDomain)
 				}
 			}
@@ -240,15 +240,15 @@ func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorN
 }
 
 func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []RelevantContext,
-	factFinder FactFinder, measurementFinder MeasurementFinder,
+	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	labelRoles []LabelRole, langs []Lang) RootDomain {
 	hrefs := make([]string, 0, len(incompleteRootDomain.PrimaryItems)+1)
 	hrefs = append(hrefs, incompleteRootDomain.Href)
 	for _, primaryItem := range incompleteRootDomain.PrimaryItems {
 		hrefs = append(hrefs, primaryItem.Href)
 	}
-	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder, measurementFinder,
-		labelRoles, langs)
+	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
+		measurementFinder, labelRoles, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
 	return incompleteRootDomain
 }

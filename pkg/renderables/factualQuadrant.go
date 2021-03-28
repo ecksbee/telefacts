@@ -15,7 +15,7 @@ type MultilingualFact map[LabelRole]map[Lang]FactExpression
 type FactualQuadrant [][]MultilingualFact
 
 func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
-	factFinder FactFinder, measurementFinder MeasurementFinder,
+	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
 	rowCount := len(hrefs)
 	colCount := len(relevantContexts)
@@ -30,7 +30,7 @@ func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 			var fact *hydratables.Fact
 			contextRef := relevantContexts[j].ContextRef
 			fact = factFinder.FindFact(href, contextRef)
-			row = append(row, render(fact, measurementFinder, labelRoles, langs))
+			row = append(row, render(fact, conceptFinder, measurementFinder, labelRoles, langs))
 		}
 		ret = append(ret, row)
 	}
