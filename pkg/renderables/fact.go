@@ -79,6 +79,7 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 }
 
 func SigFigs(value string, precision hydratables.Precision, concept *hydratables.Concept) (string, string) {
+	//todo decouple as its own numeric expression library
 	f, _, err := big.ParseFloat(value, 10, 106, big.ToZero)
 	if err != nil {
 		return value, ""

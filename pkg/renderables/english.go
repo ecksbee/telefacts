@@ -52,7 +52,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 			head += numerator.Symbol + " "
 		}
 	}
-	core, tail := Comma(SigFigs(fact.XMLInner, fact.Precision, concept))
+	core, tail := SigFigs(fact.XMLInner, fact.Precision, concept)
 	if isPercent {
 		tail += "%"
 	}
