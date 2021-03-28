@@ -38,9 +38,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
 		return FactExpression{
-			Head: "",
 			Core: "error",
-			Tail: "",
 		}
 	}
 	isPercent := concept.Type.Space == attr.NUM &&

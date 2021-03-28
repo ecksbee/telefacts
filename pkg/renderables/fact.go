@@ -22,26 +22,18 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 	ret := MultilingualFact{}
 	ret[Default] = make(map[Lang]FactExpression)
 	if fact == nil {
-		ret[Default][PureLabel] = FactExpression{
-			Head: "",
-			Core: "",
-			Tail: "",
-		}
+		ret[Default][PureLabel] = FactExpression{}
 		return ret
 	}
 	if fact.IsNil {
 		ret[Default][PureLabel] = FactExpression{
-			Head: "",
 			Core: "nil",
-			Tail: "",
 		}
 		return ret
 	}
 	if mf == nil {
 		ret[Default][PureLabel] = FactExpression{
-			Head: "",
 			Core: "error",
-			Tail: "",
 		}
 		return ret
 	}
