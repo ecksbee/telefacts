@@ -51,7 +51,7 @@ func destruct(labelPack LabelPack) ([]LabelRole, []Lang) {
 	langs := make([]Lang, 0, 8)
 	for labelRole, langPack := range labelPack {
 		labelRoles = append(labelRoles, labelRole)
-		for lang, _ := range langPack {
+		for lang := range langPack {
 			langs = append(langs, lang)
 		}
 	}

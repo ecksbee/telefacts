@@ -1,11 +1,8 @@
 package renderables
 
 import (
-	"strconv"
 	"strings"
 	"time"
-
-	"github.com/klauspost/lctime"
 )
 
 func formatPeriod(p PGrid, d DGrid, c CGrid, langs []Lang) (PGrid, DGrid, CGrid) {
@@ -69,60 +66,6 @@ func formatDate(lang Lang, date string) string {
 	default:
 		return date
 	}
-}
-
-func formatEnglishDates(start string, end string) string {
-	isDuration := start != ""
-	endTime, err := time.Parse(iso8601, end)
-	if err != nil {
-		return defaultDate(start, end)
-	}
-	const strfUS = "January 2, 2006"
-	date := endTime.Format(strfUS)
-	if isDuration {
-		startTime, err := time.Parse(iso8601, start)
-		if err != nil {
-			return defaultDate(start, end)
-		}
-		months := monthCount(startTime, endTime)
-		if months < 1 {
-			return defaultDate(start, end)
-		} else if months == 1 {
-			return "1 month ended " + date
-		} else {
-			m := strconv.Itoa(months)
-			return m + " months ended " + date
-		}
-	}
-	return "as of " + date
-}
-
-func formatSpanishDates(start string, end string) string {
-	isDuration := start != ""
-	endTime, err := time.Parse(iso8601, end)
-	if err != nil {
-		return defaultDate(start, end)
-	}
-	date, err := lctime.StrftimeLoc("es_ES", "%d %B %Y", endTime)
-	if err != nil {
-		return defaultDate(start, end)
-	}
-	if isDuration {
-		startTime, err := time.Parse(iso8601, start)
-		if err != nil {
-			return defaultDate(start, end)
-		}
-		months := monthCount(startTime, endTime)
-		if months < 1 {
-			return defaultDate(start, end)
-		} else if months == 1 {
-			return "un mes terminado al " + date
-		} else {
-			m := strconv.Itoa(months)
-			return m + " meses terminados al " + date
-		}
-	}
-	return "al " + date
 }
 
 func monthCount(start time.Time, end time.Time) int {
