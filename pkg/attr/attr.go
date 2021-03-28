@@ -17,7 +17,15 @@ func FindAttr(attrs []xml.Attr, attr string) *xml.Attr {
 func Xmlns(attrs []xml.Attr, prefixedName string) xml.Name {
 	i := strings.IndexRune(prefixedName, ':')
 	if i < 0 {
-		return xml.Name{}
+		xmlnsAttr := FindAttr(attrs, `xmlns`)
+		space := ""
+		if xmlnsAttr != nil {
+			space = xmlnsAttr.Value
+		}
+		return xml.Name{
+			Space: space,
+			Local: prefixedName,
+		}
 	}
 	prefix := prefixedName[:i]
 	local := prefixedName[i+1:]
