@@ -45,10 +45,13 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 			precision = strconv.Itoa(int(fact.Precision))
 		}
 	}
-
+	core := fact.XMLInner
+	if len(core) > 44 {
+		core = core[:44]
+	}
 	ret[Default][PureLabel] = FactExpression{
 		Head: precision,
-		Core: fact.XMLInner,
+		Core: core,
 		Tail: fact.UnitRef,
 	}
 	for _, labelRole := range labelRoles {
