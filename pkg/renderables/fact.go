@@ -18,21 +18,20 @@ type MeasurementFinder interface {
 	FindMeasurement(unitRef string) (*hydratables.Measurement, *hydratables.Measurement)
 }
 
-func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRoles []LabelRole, langs []Lang) MultilingualFact {
+func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, langs []Lang) MultilingualFact {
 	ret := MultilingualFact{}
-	ret[Default] = make(map[Lang]FactExpression)
 	if fact == nil {
-		ret[Default][PureLabel] = FactExpression{}
+		ret[PureLabel] = FactExpression{}
 		return ret
 	}
 	if fact.IsNil {
-		ret[Default][PureLabel] = FactExpression{
+		ret[PureLabel] = FactExpression{
 			Core: "nil",
 		}
 		return ret
 	}
 	if mf == nil {
-		ret[Default][PureLabel] = FactExpression{
+		ret[PureLabel] = FactExpression{
 			Core: "error",
 		}
 		return ret
@@ -49,25 +48,20 @@ func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labe
 	if len(core) > 44 {
 		core = core[:44]
 	}
-	ret[Default][PureLabel] = FactExpression{
+	ret[PureLabel] = FactExpression{
 		Head: precision,
 		Core: core,
 		Tail: fact.UnitRef,
 	}
-	for _, labelRole := range labelRoles {
-		if _, found := ret[labelRole]; !found {
-			ret[labelRole] = make(map[Lang]FactExpression)
-		}
-		for _, lang := range langs {
-			switch lang {
-			case English:
-				ret[labelRole][lang] = renderEnglishFact(fact, cf, mf, labelRole)
-			case Español:
-				ret[labelRole][lang] = renderSpanishFact(fact, cf, mf, labelRole)
-			case PureLabel:
-			default:
-				continue
-			}
+	for _, lang := range langs {
+		switch lang {
+		case English:
+			ret[lang] = renderEnglishFact(fact, cf, mf)
+		case Español:
+			ret[lang] = renderSpanishFact(fact, cf, mf)
+		case PureLabel:
+		default:
+			continue
 		}
 	}
 	return ret

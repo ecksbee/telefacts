@@ -37,7 +37,7 @@ func formatSpanishDates(start string, end string) string {
 	return "al " + date
 }
 
-func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, labelRole LabelRole) FactExpression { //todo spanish fact expression
+func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) FactExpression { //todo spanish fact expression
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
 		return FactExpression{
@@ -46,7 +46,7 @@ func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 			Tail: "",
 		}
 	}
-	textBlock := renderTextBlock(fact, cf, mf, labelRole)
+	textBlock := renderTextBlock(fact, cf, mf)
 	if textBlock != nil {
 		return *textBlock
 	}

@@ -38,7 +38,7 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 		labelRoles, langs = destruct(*reduced)
 	}
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts,
-		factFinder, conceptFinder, measurementFinder, labelRoles, langs)
+		factFinder, conceptFinder, measurementFinder, langs)
 	return PGrid{
 		IndentedLabels:   indentedLabels,
 		MaxIndentation:   maxIndentation,
@@ -121,12 +121,12 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
 	relevantContexts []RelevantContext, factFinder FactFinder,
 	conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
-	labelRoles []LabelRole, langs []Lang) FactualQuadrant {
+	langs []Lang) FactualQuadrant {
 	hrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
 		hrefs = append(hrefs, indentedLabel.Href)
 	}
 	ret := getFactualQuadrant(hrefs, relevantContexts,
-		factFinder, conceptFinder, measurementFinder, labelRoles, langs)
+		factFinder, conceptFinder, measurementFinder, langs)
 	return ret
 }
