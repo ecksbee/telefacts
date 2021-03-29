@@ -15,6 +15,7 @@ type DefinitionArc struct {
 	From           string
 	To             string
 	Closed         bool
+	Usable         bool
 	ContextElement string
 	TargetRole     string
 }
@@ -141,6 +142,14 @@ func hydrateDefinitionLink(linkbaseFile *serializables.DefinitionLinkbaseFile) [
 					closed = false
 				}
 				newArc.Closed = closed
+			}
+			usableAttr := attr.FindAttr(arc.XMLAttrs, "usable")
+			if usableAttr != nil {
+				usable, err := strconv.ParseBool(usableAttr.Value)
+				if err == nil {
+					usable = true
+				}
+				newArc.Usable = usable
 			}
 			contextElementAttr := attr.FindAttr(arc.XMLAttrs, "contextElement")
 			if contextElementAttr != nil {

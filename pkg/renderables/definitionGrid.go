@@ -6,6 +6,7 @@ import (
 
 type DGrid struct {
 	RootDomains []RootDomain
+	DRS         DRS
 	//todo XBRL v1 definition arc roles
 }
 
@@ -14,5 +15,6 @@ func dGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	rootDomains, labelRoles, langs := getRootDomains(schemedEntity, linkroleURI, h, factFinder, conceptFinder, measurementFinder)
 	return DGrid{
 		RootDomains: rootDomains,
+		DRS:         getDRS(schemedEntity, linkroleURI, h),
 	}, labelRoles, langs, nil
 }
