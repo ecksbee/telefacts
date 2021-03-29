@@ -391,7 +391,7 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 		if unitRefAttr != nil {
 			unitVal = unitRefAttr.Value
 		}
-		// precisionAttr := attr.FindAttr(fact.XMLAttrs, "precision")	//todoo
+		// precisionAttr := attr.FindAttr(fact.XMLAttrs, "precision")	//todo
 		// if precisionAttr != nil {
 		// 	if precisionAttr.Value == "INF" {
 		// 		precisionVal = Exact
