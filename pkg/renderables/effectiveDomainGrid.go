@@ -17,14 +17,13 @@ type RootDomain struct {
 	FactualQuadrant     FactualQuadrant
 	EffectiveDomainGrid [][]EffectiveDomain
 	EffectiveDimensions []EffectiveDimension
-	Hypercubes          []Hypercube
+	DRSNodes            []DRSNode `json:",omitempty"`
 }
 
 type PrimaryItem struct {
-	Href       string
-	Label      LabelPack
-	Level      int
-	Hypercubes []Hypercube
+	Href  string
+	Label LabelPack
+	Level int
 }
 
 type EffectiveDimension struct {
@@ -39,27 +38,6 @@ type EffectiveMember struct {
 	Label           LabelPack
 	IsDefault       bool
 	IsStrikethrough bool
-}
-
-type Hypercube struct {
-	Href           string
-	Label          LabelPack
-	IsClosed       bool
-	ContextElement string
-	IsInclusive    bool
-	Nodes          []struct {
-		Source struct {
-			Href  string
-			Label string
-		}
-		Target struct {
-			Href  string
-			Label string
-		}
-		Order   string
-		Default bool
-		Usable  bool
-	}
 }
 
 func dArcs(dArcs []hydratables.DefinitionArc) []arc {
@@ -106,14 +84,11 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						href := mapDLocatorToHref(linkroleURI, &definition, c.Locator)
 						piLabel := GetLabel(h, href)
 						labelPacks = append(labelPacks, piLabel)
-						hcubes, hLabels := getHypercubes(c.Locator, arcs, linkroleURI, &definition, h)
 						indentedItems = append(indentedItems, PrimaryItem{
-							Href:       href,
-							Label:      piLabel,
-							Level:      level,
-							Hypercubes: hcubes,
+							Href:  href,
+							Label: piLabel,
+							Level: level,
 						})
-						labelPacks = append(labelPacks, hLabels...)
 						makeIndents(c, level+1)
 					}
 					sort.SliceStable(node.Children, func(p, q int) bool {
@@ -149,8 +124,6 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						explicitDomainNetwork, &exclusiveHypercubeNetwork, &inclusiveHypercubeNetwork,
 						&hypercubeDimensionNetwork, &defaultDimensionsNetwork, locToHref, h)
 					labelPacks = append(labelPacks, edLabels...)
-					hypercubes, hLabels := getHypercubes(root.Locator, arcs, linkroleURI, &definition, h)
-					labelPacks = append(labelPacks, hLabels...)
 					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, primaryItemHrefs)
 					labelPacks = append(labelPacks, contextualLabelPack...)
 					rdLabelPack := GetLabel(h, rootHref)
@@ -164,7 +137,6 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						MaxDepth:            maxDepth,
 						EffectiveDimensions: effectiveDimensions,
 						EffectiveDomainGrid: edGrid,
-						Hypercubes:          hypercubes,
 					}
 					reduced := reduce(labelPacks)
 					if reduced != nil {
@@ -251,30 +223,6 @@ func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []R
 		measurementFinder, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
 	return incompleteRootDomain
-}
-
-func getHypercubes(primaryItemLoc string, arcs []hydratables.DefinitionArc, linkroleURI string,
-	definition *hydratables.DefinitionLinkbase, h *hydratables.Hydratable) ([]Hypercube, []LabelPack) {
-	ret := make([]Hypercube, 0, len(arcs))
-	labelPacks := make([]LabelPack, 0, len(arcs))
-	for _, arc := range arcs {
-		if arc.Arcrole == attr.HasExclusiveHypercubeArcrole || arc.Arcrole == attr.HasInclusiveHypercubeArcrole {
-			if arc.From != primaryItemLoc {
-				continue
-			}
-			href := mapDLocatorToHref(linkroleURI, definition, arc.To)
-			hLabel := GetLabel(h, href)
-			labelPacks = append(labelPacks, hLabel)
-			ret = append(ret, Hypercube{
-				Href:           href,
-				Label:          hLabel,
-				IsClosed:       arc.Closed,
-				ContextElement: arc.ContextElement,
-				IsInclusive:    arc.Arcrole == attr.HasInclusiveHypercubeArcrole,
-			})
-		}
-	}
-	return ret, labelPacks
 }
 
 func getEffectiveDomainGrid(primaryItemHrefs []string, effectiveDimensionHrefs []string,
