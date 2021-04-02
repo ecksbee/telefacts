@@ -1,4 +1,4 @@
-package sec_test
+package telefacts_test
 
 import (
 	"os"

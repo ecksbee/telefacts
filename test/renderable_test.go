@@ -1,4 +1,4 @@
-package renderables_test
+package telefacts_test
 
 import (
 	"encoding/json"
