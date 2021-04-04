@@ -23,6 +23,7 @@ func TestImport(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
+	defer os.RemoveAll(pathStr)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/843006/000165495420001999", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -43,6 +44,7 @@ func TestImport_Large(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
+	defer os.RemoveAll(pathStr)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/69891/000143774920014395", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -63,6 +65,7 @@ func TestImport_Gold(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
+	defer os.RemoveAll(pathStr)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/1445305/000144530520000124", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
