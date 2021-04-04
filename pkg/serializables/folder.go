@@ -94,7 +94,7 @@ func (folder *Folder) schemaRef(file *InstanceFile) {
 			}()
 			go func() {
 				defer wwg.Done()
-				go folder.includeSchema(discoveredSchema)
+				folder.includeSchema(discoveredSchema)
 			}()
 			go func() {
 				defer wwg.Done()
@@ -153,7 +153,7 @@ func (folder *Folder) includeSchema(file *SchemaFile) {
 			}()
 			go func() {
 				defer wwg.Done()
-				go folder.includeSchema(discoveredSchema)
+				folder.includeSchema(discoveredSchema)
 			}()
 			go func() {
 				defer wwg.Done()
@@ -212,7 +212,7 @@ func (folder *Folder) importSchema(file *SchemaFile) {
 			}()
 			go func() {
 				defer wwg.Done()
-				go folder.includeSchema(discoveredSchema)
+				folder.includeSchema(discoveredSchema)
 			}()
 			go func() {
 				defer wwg.Done()

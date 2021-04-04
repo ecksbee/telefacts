@@ -1,9 +1,10 @@
-package serializables_test
+package telefacts_test
 
 import (
 	"os"
 	"path"
 	"testing"
+	"time"
 
 	"ecksbee.com/telefacts/pkg/sec"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -13,10 +14,10 @@ import (
 func TestDiscover_Gold(t *testing.T) {
 	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	seccache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalDir(path.Join("..", "taxonomies"))
+	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
 	serializables.InjectCache(scache)
 	sec.InjectCache(seccache)
-	workingDir := path.Join("..", "test", "test_gold")
+	workingDir := path.Join(".", "data", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -24,6 +25,7 @@ func TestDiscover_Gold(t *testing.T) {
 	}
 	entryFilePath := "wk-20200930_htm.xml"
 	f, err := serializables.Discover(workingDir, entryFilePath)
+	time.Sleep(time.Second * 15)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}

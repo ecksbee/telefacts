@@ -46,10 +46,10 @@ func Import(filingURL string, workingDir string) error {
 			ParentDir string       `json:"parent-dir"`
 		} `json:"directory"`
 	}{}
-	json.Unmarshal(body, &filing)
+	err = json.Unmarshal(body, &filing)
 	items := filing.Directory.Item
-	if len(items) <= 0 {
-		return fmt.Errorf("Empty filing at " + filingURL)
+	if len(items) <= 0 || err != nil {
+		return fmt.Errorf("Empty filing at "+filingURL+". %s\n\n%v", string(body), err)
 	}
 	schemaItem, err := getSchemaFromFilingItems(items)
 	if err != nil {

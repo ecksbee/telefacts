@@ -116,6 +116,10 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
+	ret, err := actions.Scrape(urlStr)
+	if err != nil {
+		return nil, err
+	}
 	dirString, _ := path.Split(dest)
 	_, err = os.Stat(dirString)
 	if os.IsNotExist(err) {
@@ -123,10 +127,6 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
-	}
-	ret, err := actions.Scrape(urlStr)
-	if err != nil {
-		return nil, err
 	}
 	err = actions.Commit(dest, ret)
 	if err != nil {
