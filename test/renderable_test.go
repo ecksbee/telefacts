@@ -25,10 +25,10 @@ func names() map[string]map[string]string {
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalDir(path.Join("..", "taxonomies"))
+	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
 	serializables.InjectCache(scache)
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join("..", "..", "test", "data", "test_gold")
+	workingDir := path.Join(".", "data", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
