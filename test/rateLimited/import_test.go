@@ -1,19 +1,13 @@
-package telefacts_test
+package rateLimited_test
 
 import (
-	"math/rand"
 	"os"
 	"path"
-	"sync"
 	"testing"
 	"time"
 
 	"ecksbee.com/telefacts/pkg/sec"
 	"github.com/google/uuid"
-)
-
-var (
-	lock sync.Mutex
 )
 
 func TestImport(t *testing.T) {
@@ -31,16 +25,6 @@ func TestImport(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 	}
 	defer os.RemoveAll(pathStr)
-	loop := true
-	dur := (time.Second * 1) + (time.Second * time.Duration(rand.Int31n(4)))
-	for loop {
-		select {
-		case <-time.After(dur):
-			lock.Lock()
-			loop = false
-		}
-	}
-	defer lock.Unlock()
 	<-time.After(time.Second * 1)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/843006/000165495420001999", pathStr)
 	if err != nil {
@@ -63,17 +47,6 @@ func TestImport_Large(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 	}
 	defer os.RemoveAll(pathStr)
-	loop := true
-	dur := (time.Second * 1) + (time.Second * time.Duration(rand.Int31n(4)))
-	for loop {
-		select {
-		case <-time.After(dur):
-			lock.Lock()
-			loop = false
-		}
-	}
-	defer lock.Unlock()
-	<-time.After(time.Second * 1)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/69891/000143774920014395", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -95,17 +68,6 @@ func TestImport_Gold(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 	}
 	defer os.RemoveAll(pathStr)
-	loop := true
-	dur := (time.Second * 1) + (time.Second * time.Duration(rand.Int31n(4)))
-	for loop {
-		select {
-		case <-time.After(dur):
-			lock.Lock()
-			loop = false
-		}
-	}
-	defer lock.Unlock()
-	<-time.After(time.Second * 1)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/1445305/000144530520000124", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
