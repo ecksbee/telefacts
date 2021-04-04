@@ -1,4 +1,4 @@
-package serializables_test
+package telefacts_test
 
 import (
 	"testing"
