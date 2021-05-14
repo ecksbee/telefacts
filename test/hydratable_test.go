@@ -4,6 +4,7 @@ import (
 	"os"
 	"path"
 	"testing"
+	"time"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -11,6 +12,9 @@ import (
 )
 
 func TestHydrate_Gold(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))

@@ -12,6 +12,9 @@ import (
 )
 
 func TestDiscover_Gold(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	seccache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))

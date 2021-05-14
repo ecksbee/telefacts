@@ -5,6 +5,7 @@ import (
 	"os"
 	"path"
 	"testing"
+	"time"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
 	"ecksbee.com/telefacts/pkg/renderables"
@@ -23,6 +24,9 @@ func names() map[string]map[string]string {
 }
 
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
