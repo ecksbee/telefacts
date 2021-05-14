@@ -4,7 +4,7 @@ import (
 	"os"
 )
 
-func Commit(dest string, data []byte) error {
+func Commit(dest string, data []byte) error { //todo ioutil.WriteFile
 	file, err := os.OpenFile(dest, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0755)
 	defer file.Close()
 	if err != nil {

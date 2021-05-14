@@ -1,4 +1,4 @@
-package rateLimited_test
+package telefacts_test
 
 import (
 	"os"
@@ -11,6 +11,9 @@ import (
 )
 
 func TestImport(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	workingDir := path.Join(".", "data")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
@@ -25,7 +28,6 @@ func TestImport(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 	}
 	defer os.RemoveAll(pathStr)
-	<-time.After(time.Second * 1)
 	err = sec.Import("https://www.sec.gov/Archives/edgar/data/843006/000165495420001999", pathStr)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -33,6 +35,9 @@ func TestImport(t *testing.T) {
 }
 
 func TestImport_Large(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	workingDir := path.Join(".", "data")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
@@ -54,6 +59,9 @@ func TestImport_Large(t *testing.T) {
 }
 
 func TestImport_Gold(t *testing.T) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
 	workingDir := path.Join(".", "data")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, "test_"+id.String())
