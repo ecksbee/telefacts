@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	SEC_INTERVAL = time.Second * 2
+	SEC_INTERVAL = time.Second * 5
 )
 
 var (
