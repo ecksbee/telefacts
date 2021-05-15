@@ -128,7 +128,7 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 			return nil, err
 		}
 	}
-	err = actions.Commit(dest, ret)
+	err = actions.WriteFile(dest, ret)
 	if err != nil {
 		return nil, err
 	}
