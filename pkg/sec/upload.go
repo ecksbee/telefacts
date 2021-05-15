@@ -28,7 +28,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, instance.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, instance.Name), unmarshalled)
 		if err != nil {
 			return
 		}
@@ -43,7 +43,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, schema.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, schema.Name), unmarshalled)
 		if err != nil {
 			return
 		}
@@ -58,7 +58,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, pre.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, pre.Name), unmarshalled)
 		if err != nil {
 			return
 		}
@@ -73,7 +73,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, def.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, def.Name), unmarshalled)
 		if err != nil {
 			return
 		}
@@ -88,7 +88,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, cal.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, cal.Name), unmarshalled)
 		if err != nil {
 			return
 		}
@@ -103,7 +103,7 @@ func Upload(zipFile multipart.File, header multipart.FileHeader, destination str
 		if err != nil {
 			return
 		}
-		err = actions.Commit(path.Join(workingDir, lab.Name), unmarshalled)
+		err = actions.WriteFile(path.Join(workingDir, lab.Name), unmarshalled)
 		if err != nil {
 			return
 		}

@@ -1,27 +1,25 @@
-package actions
+package sec
 
 import (
 	"archive/zip"
 	"bytes"
-	"io/ioutil"
-	"path"
+
+	"ecksbee.com/telefacts/internal/actions"
 )
 
 func Download(workingDir string) ([]byte, error) {
 	buf := new(bytes.Buffer)
 	writer := zip.NewWriter(buf)
-	files, err := ioutil.ReadDir(workingDir)
+	files, err := GetOSFiles(workingDir)
 	if err != nil {
 		return nil, err
 	}
 	for _, file := range files {
-		filename := file.Name()
-		filepath := path.Join(workingDir, filename)
-		data, err := ioutil.ReadFile(filepath)
+		data, err := actions.ReadFile(workingDir, file)
 		if err != nil {
 			return nil, err
 		}
-		f, err := writer.Create(filename)
+		f, err := writer.Create(file.Name())
 		if err != nil {
 			return nil, err
 		}
@@ -29,6 +27,7 @@ func Download(workingDir string) ([]byte, error) {
 		if err != nil {
 			return nil, err
 		}
+
 	}
 	err = writer.Close()
 	return buf.Bytes(), err

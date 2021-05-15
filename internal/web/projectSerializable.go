@@ -6,7 +6,6 @@ import (
 	"os"
 	"path"
 
-	"ecksbee.com/telefacts/internal/actions"
 	"ecksbee.com/telefacts/pkg/sec"
 	"github.com/gorilla/mux"
 )
@@ -29,7 +28,7 @@ func getProjectSerializable(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	//todo check underscore and determine if sec
-	data, err := actions.Download(workingDir)
+	data, err := sec.Download(workingDir)
 	if err != nil {
 		http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 		return

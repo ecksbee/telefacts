@@ -70,7 +70,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, schemaItem.Name)
-		err = actions.Commit(dest, schema)
+		err = actions.WriteFile(dest, schema)
 	}()
 	go func() {
 		defer wg.Done()
@@ -83,7 +83,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, instanceItem.Name)
-		err = actions.Commit(dest, instance)
+		err = actions.WriteFile(dest, instance)
 	}()
 	go func() {
 		defer wg.Done()
@@ -96,7 +96,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, preItem.Name)
-		err = actions.Commit(dest, presentation)
+		err = actions.WriteFile(dest, presentation)
 	}()
 	go func() {
 		defer wg.Done()
@@ -109,7 +109,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, defItem.Name)
-		err = actions.Commit(dest, definition)
+		err = actions.WriteFile(dest, definition)
 	}()
 	go func() {
 		defer wg.Done()
@@ -122,7 +122,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, calItem.Name)
-		err = actions.Commit(dest, calculation)
+		err = actions.WriteFile(dest, calculation)
 	}()
 	go func() {
 		defer wg.Done()
@@ -135,7 +135,7 @@ func Import(filingURL string, workingDir string) error {
 			return
 		}
 		dest := path.Join(workingDir, labItem.Name)
-		err = actions.Commit(dest, label)
+		err = actions.WriteFile(dest, label)
 	}()
 	wg.Wait()
 	return err
