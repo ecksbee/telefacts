@@ -15,7 +15,7 @@ func Download(workingDir string) ([]byte, error) {
 		return nil, err
 	}
 	for _, file := range files {
-		data, err := actions.ReadFile(workingDir, file)
+		data, err := actions.ReadFile(workingDir, &file)
 		if err != nil {
 			return nil, err
 		}

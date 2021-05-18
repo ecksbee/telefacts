@@ -6,11 +6,19 @@ import (
 
 	"ecksbee.com/telefacts/internal/actions"
 	"ecksbee.com/telefacts/pkg/renderables"
+	gocache "github.com/patrickmn/go-cache"
 )
 
 func names() map[string]map[string]string {
+	tickerURL := `https://www.sec.gov/files/company_tickers.json`
 	ret := make(map[string]map[string]string)
-	b, err := actions.Scrape(`https://www.sec.gov/files/company_tickers.json`)
+	if x, found := appcache.Get(tickerURL); found {
+		lock.RLock()
+		defer lock.RUnlock()
+		ret := x.(map[string]map[string]string)
+		return ret
+	}
+	b, err := actions.Scrape(tickerURL)
 	if err != nil {
 		return ret
 	}
@@ -29,6 +37,11 @@ func names() map[string]map[string]string {
 	for _, obj := range f {
 		ret[cik][fmt.Sprintf("%010d", obj.CIK)] = obj.Title
 	}
+	go func() {
+		lock.Lock()
+		defer lock.Unlock()
+		appcache.Set(tickerURL, ret, gocache.DefaultExpiration)
+	}()
 	return ret
 }
 

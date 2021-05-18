@@ -28,7 +28,6 @@ func TestDiscover_Gold(t *testing.T) {
 	}
 	entryFilePath := "wk-20200930_htm.xml"
 	f, err := serializables.Discover(workingDir, entryFilePath)
-	time.Sleep(time.Second * 15)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}

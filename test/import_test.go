@@ -10,7 +10,13 @@ import (
 	"github.com/google/uuid"
 )
 
-func TestImport(t *testing.T) {
+func TestAllImports(t *testing.T) {
+	testImport(t)
+	testImport_Large(t)
+	testImport_Gold(t)
+}
+
+func testImport(t *testing.T) {
 	secMutex.Lock()
 	defer secMutex.Unlock()
 	<-time.NewTimer(SEC_INTERVAL).C
@@ -34,7 +40,7 @@ func TestImport(t *testing.T) {
 	}
 }
 
-func TestImport_Large(t *testing.T) {
+func testImport_Large(t *testing.T) {
 	secMutex.Lock()
 	defer secMutex.Unlock()
 	<-time.NewTimer(SEC_INTERVAL).C
@@ -58,7 +64,7 @@ func TestImport_Large(t *testing.T) {
 	}
 }
 
-func TestImport_Gold(t *testing.T) {
+func testImport_Gold(t *testing.T) {
 	secMutex.Lock()
 	defer secMutex.Unlock()
 	<-time.NewTimer(SEC_INTERVAL).C
