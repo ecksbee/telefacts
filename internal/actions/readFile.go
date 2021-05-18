@@ -6,8 +6,8 @@ import (
 	"path"
 )
 
-func ReadFile(src string, file fs.FileInfo) ([]byte, error) {
-	filename := file.Name()
+func ReadFile(src string, file *fs.FileInfo) ([]byte, error) {
+	filename := (*file).Name()
 	filepath := path.Join(src, filename)
 	return ioutil.ReadFile(filepath)
 }

@@ -116,21 +116,30 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 	if err != nil {
 		return nil, err
 	}
-	ret, err := actions.Scrape(urlStr)
-	if err != nil {
-		return nil, err
-	}
+	var ret []byte
+	file, err := os.Stat(dest)
 	dirString, _ := path.Split(dest)
-	_, err = os.Stat(dirString)
-	if os.IsNotExist(err) {
-		err = os.MkdirAll(dirString, 0755)
+	if os.IsExist(err) {
+		ret, err = actions.ReadFile(dirString, &file)
 		if err != nil {
 			return nil, err
 		}
-	}
-	err = actions.WriteFile(dest, ret)
-	if err != nil {
-		return nil, err
+	} else {
+		ret, err = actions.Scrape(urlStr)
+		if err != nil {
+			return nil, err
+		}
+		_, err = os.Stat(dirString)
+		if os.IsNotExist(err) {
+			err = os.MkdirAll(dirString, 0755)
+			if err != nil {
+				return nil, err
+			}
+		}
+		err = actions.WriteFile(dest, ret)
+		if err != nil {
+			return nil, err
+		}
 	}
 	go func() {
 		lock.Lock()
