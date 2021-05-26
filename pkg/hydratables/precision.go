@@ -3,7 +3,7 @@ package hydratables
 type Precision int
 
 const Exact = Precision(-1 << 31)
-const Precisionless = -(Exact + 1)
+const Precisionless = Exact + 1
 
 const (
 	Trillions Precision = iota - 12
