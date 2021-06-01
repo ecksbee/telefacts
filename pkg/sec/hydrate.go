@@ -33,7 +33,7 @@ func Hydratable(workingDir string) (*hydratables.Hydratable, error) {
 	}
 	folder, err := Folder(workingDir)
 	if err != nil {
-		return nil, fmt.Errorf("Failed to discover folder")
+		return nil, fmt.Errorf("Failed to discover folder, %v", err)
 	}
 	return Hydrate(workingDir, folder)
 }
