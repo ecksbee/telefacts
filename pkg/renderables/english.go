@@ -45,37 +45,47 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	if textBlock != nil {
 		return *textBlock
 	}
+	if fact.Precision == hydratables.Precisionless {
+		return FactExpression{
+			Core: "NaN",
+		}
+	}
 	isPercent := concept.Type.Space == attr.NUM &&
 		concept.Type.Local == attr.PercentItemType
-	head := ""
 	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
+	sigFig, err := SigFigs(fact.XMLInner, fact.Precision, concept, ',')
+	if err != nil {
+		return FactExpression{
+			Core: "NaN",
+		}
+	}
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			head += numerator.Symbol + " "
+			sigFig.Head += numerator.Symbol + " "
 		}
 	}
-	core, tail := SigFigs(fact.XMLInner, fact.Precision, concept)
 	if isPercent {
-		tail += "%"
+		sigFig.Tail += "%"
 	}
 	if numerator != nil {
-		tail += " "
+		sigFig.Tail += " "
 		if numerator.Symbol == "" && !isPercent {
-			tail += numerator.UnitName
+			sigFig.Tail += numerator.UnitName
 		}
 		if denominator != nil {
-			tail += "/"
+			sigFig.Tail += "/"
 			if denominator.Symbol != "" {
-				tail += denominator.Symbol
+				sigFig.Tail += denominator.Symbol
 			} else {
-				tail += denominator.UnitName
+				sigFig.Tail += denominator.UnitName
 			}
 		}
 	}
 
 	return FactExpression{
-		Head: head,
-		Core: core,
-		Tail: tail,
+		Head:        sigFig.Head,
+		Core:        sigFig.Core,
+		Tail:        sigFig.Tail,
+		TextPreview: fact.XMLInner,
 	}
 }
