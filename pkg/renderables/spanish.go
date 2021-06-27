@@ -59,7 +59,7 @@ func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	sigFig, err := SigFigs(fact.XMLInner, fact.Precision, concept, ' ')
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			sigFig.Head += numerator.Symbol + " "
+			sigFig.Head = numerator.Symbol + " " + sigFig.Head
 		}
 	}
 	if isPercent {

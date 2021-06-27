@@ -61,7 +61,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	}
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			sigFig.Head += numerator.Symbol + " "
+			sigFig.Head = numerator.Symbol + " " + sigFig.Head
 		}
 	}
 	if isPercent {
