@@ -116,5 +116,5 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 			}
 		}
 	}
-	return nil, fmt.Errorf("Object not found")
+	return nil, fmt.Errorf("object not found")
 }

@@ -2,6 +2,7 @@ package telefacts_test
 
 import (
 	"encoding/json"
+	"fmt"
 	"os"
 	"path"
 	"testing"
@@ -171,4 +172,58 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected postive contribution from http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_OperatingLeaseRightOfUseAsset; outcome %v;\n", sItem0.ContributingConcepts[5])
 	}
 
+}
+
+func hydratableFactory(filing string) (*hydratables.Hydratable, error) {
+	secMutex.Lock()
+	defer secMutex.Unlock()
+	<-time.NewTimer(SEC_INTERVAL).C
+	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
+	serializables.InjectCache(scache)
+	hydratables.InjectCache(hcache)
+	workingDir := path.Join(".", "data", filing)
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		return nil, fmt.Errorf(err.Error())
+	}
+	entryFilePath := "wk-20200930_htm.xml"
+	f, err := serializables.Discover(workingDir, entryFilePath)
+	if err != nil {
+		return nil, fmt.Errorf(err.Error())
+	}
+	h, err := hydratables.Hydrate(f)
+	if err != nil {
+		return nil, fmt.Errorf(err.Error())
+	}
+	return h, nil
+}
+
+func bencmarkMarshalRenderable(slug string, names map[string]map[string]string, h *hydratables.Hydratable, b *testing.B) {
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		_, err := renderables.MarshalRenderable(slug, names, h)
+		if err != nil {
+			b.Fatalf(err.Error())
+		}
+	}
+}
+
+func BenchmarkMarshalRenderable_Gold_BalanceSheet(b *testing.B) {
+	h, err := hydratableFactory("test_gold")
+	if err != nil {
+		b.Fatalf(err.Error())
+	}
+	slug := "883459b49fae34a739704b6db51d6b1d"
+	bencmarkMarshalRenderable(slug, names(), h, b)
+}
+
+func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
+	h, err := hydratableFactory("test_gold")
+	if err != nil {
+		b.Fatalf(err.Error())
+	}
+	slug := "4d034c1e44b980a9940e857682b81991"
+	bencmarkMarshalRenderable(slug, names(), h, b)
 }
