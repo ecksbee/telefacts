@@ -17,41 +17,37 @@ type MeasurementFinder interface {
 	FindMeasurement(unitRef string) (*hydratables.Measurement, *hydratables.Measurement)
 }
 
-func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, langs []Lang) MultilingualFact {
+func render(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder, langs []Lang) *MultilingualFact {
 	ret := MultilingualFact{}
 	if fact == nil {
 		ret[PureLabel] = FactExpression{}
-		return ret
+		return &ret
 	}
 	if fact.IsNil {
 		ret[PureLabel] = FactExpression{
 			Core: "nil",
 		}
-		return ret
+		return &ret
 	}
 	if mf == nil {
 		ret[PureLabel] = FactExpression{
 			Core: "error",
 		}
-		return ret
-	}
-	core := fact.XMLInner
-	if len(core) > 44 {
-		core = core[:44]
+		return &ret
 	}
 	for _, lang := range langs {
 		switch lang {
 		case English:
-			ret[lang] = renderEnglishFact(fact, cf, mf)
+			ret[lang] = *renderEnglishFact(fact, cf, mf)
 		case Español:
-			ret[lang] = renderSpanishFact(fact, cf, mf)
+			ret[lang] = *renderSpanishFact(fact, cf, mf)
 		case PureLabel:
-			ret[lang] = renderEnglishFact(fact, cf, mf)
+			ret[lang] = *renderEnglishFact(fact, cf, mf)
 		default:
 			continue
 		}
 	}
-	return ret
+	return &ret
 }
 
 func SigFigs(value string, precision hydratables.Precision, concept *hydratables.Concept, g rune) (*FactExpression, error) {

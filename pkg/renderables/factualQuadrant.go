@@ -14,7 +14,7 @@ type FactExpression struct {
 
 type MultilingualFact map[Lang]FactExpression
 
-type FactualQuadrant [][]MultilingualFact
+type FactualQuadrant [][]*MultilingualFact
 
 func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
@@ -24,17 +24,17 @@ func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
 	if rowCount <= 0 || colCount <= 0 {
 		return FactualQuadrant{}
 	}
-	var ret [][]MultilingualFact
+	ret := make([][]*MultilingualFact, rowCount)
 	for i := 0; i < rowCount; i++ {
-		var row []MultilingualFact
+		row := make([]*MultilingualFact, colCount)
 		href := hrefs[i]
 		for j := 0; j < colCount; j++ {
 			var fact *hydratables.Fact
 			contextRef := relevantContexts[j].ContextRef
 			fact = factFinder.FindFact(href, contextRef)
-			row = append(row, render(fact, conceptFinder, measurementFinder, langs))
+			row[j] = render(fact, conceptFinder, measurementFinder, langs)
 		}
-		ret = append(ret, row)
+		ret[i] = row
 	}
 	return ret
 }

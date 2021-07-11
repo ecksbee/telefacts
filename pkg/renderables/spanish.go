@@ -37,19 +37,19 @@ func formatSpanishDates(start string, end string) string {
 	return "al " + date
 }
 
-func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) FactExpression {
+func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) *FactExpression {
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
-		return FactExpression{
+		return &FactExpression{
 			Core: "error",
 		}
 	}
 	textBlock := renderTextBlock(fact, cf, mf)
 	if textBlock != nil {
-		return *textBlock
+		return textBlock
 	}
 	if fact.Precision == hydratables.Precisionless {
-		return FactExpression{
+		return &FactExpression{
 			Core: "NaN",
 		}
 	}
@@ -57,9 +57,14 @@ func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 		concept.Type.Local == attr.PercentItemType
 	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
 	sigFig, err := SigFigs(fact.XMLInner, fact.Precision, concept, ' ')
+	if err != nil {
+		return &FactExpression{
+			Core: "NaN",
+		}
+	}
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			sigFig.Head += numerator.Symbol + " "
+			sigFig.Head = numerator.Symbol + " " + sigFig.Head
 		}
 	}
 	if isPercent {
@@ -80,7 +85,7 @@ func renderSpanishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 		}
 	}
 
-	return FactExpression{
+	return &FactExpression{
 		Head: sigFig.Head,
 		Core: sigFig.Core,
 		Tail: sigFig.Tail,

@@ -34,19 +34,19 @@ func formatEnglishDates(start string, end string) string {
 	return "as of " + date
 }
 
-func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) FactExpression {
+func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFinder) *FactExpression {
 	_, concept, err := cf.HashQuery(fact.Href)
 	if err != nil {
-		return FactExpression{
+		return &FactExpression{
 			Core: "error",
 		}
 	}
 	textBlock := renderTextBlock(fact, cf, mf)
 	if textBlock != nil {
-		return *textBlock
+		return textBlock
 	}
 	if fact.Precision == hydratables.Precisionless {
-		return FactExpression{
+		return &FactExpression{
 			Core: "NaN",
 		}
 	}
@@ -55,13 +55,13 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	numerator, denominator := mf.FindMeasurement(fact.UnitRef)
 	sigFig, err := SigFigs(fact.XMLInner, fact.Precision, concept, ',')
 	if err != nil {
-		return FactExpression{
+		return &FactExpression{
 			Core: "NaN",
 		}
 	}
 	if numerator != nil {
 		if numerator.Symbol != "" {
-			sigFig.Head += numerator.Symbol + " "
+			sigFig.Head = numerator.Symbol + " " + sigFig.Head
 		}
 	}
 	if isPercent {
@@ -82,7 +82,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 		}
 	}
 
-	return FactExpression{
+	return &FactExpression{
 		Head:        sigFig.Head,
 		Core:        sigFig.Core,
 		Tail:        sigFig.Tail,
