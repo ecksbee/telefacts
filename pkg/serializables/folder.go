@@ -8,13 +8,6 @@ import (
 	"ecksbee.com/telefacts/pkg/attr"
 )
 
-type RegulatoryAuthority int
-
-const (
-	SEC RegulatoryAuthority = iota
-	ESMA
-)
-
 type Folder struct {
 	wLock                 sync.Mutex
 	Dir                   string
