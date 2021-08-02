@@ -3,8 +3,8 @@ package serializables
 import (
 	"bytes"
 	"encoding/xml"
-	"io/ioutil"
 
+	"ecksbee.com/telefacts/pkg/attr"
 	"golang.org/x/net/html/charset"
 )
 
@@ -118,14 +118,10 @@ func DecodeUnitTypeRegistry(xmlData []byte) (*UnitTypeRegistryFile, error) {
 	return &decoded, nil
 }
 
-func ReadUnitTypeRegistry(filepath string) (*UnitTypeRegistryFile, error) {
-	data, err := ioutil.ReadFile(filepath)
+func DiscoverUnitTypeRegistry() (*UnitTypeRegistryFile, error) {
+	data, err := DiscoverGlobalFile(attr.UTR)
 	if err != nil {
 		return nil, err
 	}
-	decoded, err := DecodeUnitTypeRegistry(data)
-	if err != nil {
-		return nil, err
-	}
-	return decoded, nil
+	return DecodeUnitTypeRegistry(data)
 }

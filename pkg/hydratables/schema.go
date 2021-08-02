@@ -49,10 +49,10 @@ type RoleType struct {
 
 func HydrateSchema(file *serializables.SchemaFile, fileName string) (*Schema, error) {
 	if len(fileName) <= 0 {
-		return nil, fmt.Errorf("Empty file name")
+		return nil, fmt.Errorf("empty file name")
 	}
 	if file == nil {
-		return nil, fmt.Errorf("Empty file")
+		return nil, fmt.Errorf("empty file")
 	}
 	ret := Schema{}
 	ret.FileName = fileName

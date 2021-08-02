@@ -6,7 +6,6 @@ import (
 	"os"
 	"path"
 	"testing"
-	"time"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
 	"ecksbee.com/telefacts/pkg/renderables"
@@ -14,24 +13,10 @@ import (
 	gocache "github.com/patrickmn/go-cache"
 )
 
-func names() map[string]map[string]string {
-	ret := make(map[string]map[string]string)
-	cik := "http://www.sec.gov/CIK"
-	ret[cik] = make(map[string]string)
-	ret[cik]["0001445305"] = "WORKIVA INC"
-	ret[cik]["0000069891"] = "FILER DIRECT CORP"
-	ret[cik]["0000843006"] = "NATIONAL BEVERAGE CORP"
-	return ret
-}
-
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
-	secMutex.Lock()
-	defer secMutex.Unlock()
-	<-time.NewTimer(SEC_INTERVAL).C
-	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
-	serializables.InjectCache(scache)
+	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies"))
+	serializables.SetNamesDir(path.Join(".", "data"))
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(".", "data", "test_gold")
 	_, err := os.Stat(workingDir)
@@ -39,8 +24,7 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	entryFilePath := "wk-20200930_htm.xml"
-	f, err := serializables.Discover(workingDir, entryFilePath)
+	f, err := serializables.Discover(workingDir)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
@@ -49,7 +33,7 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 	}
 	slug := "883459b49fae34a739704b6db51d6b1d"
-	data, err := renderables.MarshalRenderable(slug, names(), h)
+	data, err := renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
@@ -175,21 +159,16 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 }
 
 func hydratableFactory(filing string) (*hydratables.Hydratable, error) {
-	secMutex.Lock()
-	defer secMutex.Unlock()
-	<-time.NewTimer(SEC_INTERVAL).C
-	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
-	serializables.InjectCache(scache)
+	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies"))
+	serializables.SetNamesDir(path.Join(".", "data"))
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(".", "data", filing)
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		return nil, fmt.Errorf(err.Error())
 	}
-	entryFilePath := "wk-20200930_htm.xml"
-	f, err := serializables.Discover(workingDir, entryFilePath)
+	f, err := serializables.Discover(workingDir)
 	if err != nil {
 		return nil, fmt.Errorf(err.Error())
 	}
@@ -200,10 +179,10 @@ func hydratableFactory(filing string) (*hydratables.Hydratable, error) {
 	return h, nil
 }
 
-func bencmarkMarshalRenderable(slug string, names map[string]map[string]string, h *hydratables.Hydratable, b *testing.B) {
+func bencmarkMarshalRenderable(slug string, h *hydratables.Hydratable, b *testing.B) {
 	b.ResetTimer()
 	for n := 0; n < b.N; n++ {
-		_, err := renderables.MarshalRenderable(slug, names, h)
+		_, err := renderables.MarshalRenderable(slug, h)
 		if err != nil {
 			b.Fatalf(err.Error())
 		}
@@ -216,7 +195,7 @@ func BenchmarkMarshalRenderable_Gold_BalanceSheet(b *testing.B) {
 		b.Fatalf(err.Error())
 	}
 	slug := "883459b49fae34a739704b6db51d6b1d"
-	bencmarkMarshalRenderable(slug, names(), h, b)
+	bencmarkMarshalRenderable(slug, h, b)
 }
 
 func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
@@ -225,5 +204,5 @@ func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
 		b.Fatalf(err.Error())
 	}
 	slug := "4d034c1e44b980a9940e857682b81991"
-	bencmarkMarshalRenderable(slug, names(), h, b)
+	bencmarkMarshalRenderable(slug, h, b)
 }

@@ -31,10 +31,10 @@ type CalculationLinkbase struct {
 
 func HydrateCalculationLinkbase(file *serializables.CalculationLinkbaseFile, fileName string) (*CalculationLinkbase, error) {
 	if len(fileName) <= 0 {
-		return nil, fmt.Errorf("Empty file name")
+		return nil, fmt.Errorf("empty file name")
 	}
 	if file == nil {
-		return nil, fmt.Errorf("Empty file")
+		return nil, fmt.Errorf("empty file")
 	}
 	ret := CalculationLinkbase{}
 	ret.FileName = fileName

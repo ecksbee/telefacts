@@ -2,8 +2,11 @@ package hydratables
 
 import (
 	"encoding/xml"
+	"fmt"
 
+	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/serializables"
+	gocache "github.com/patrickmn/go-cache"
 )
 
 type Unit struct {
@@ -47,6 +50,31 @@ type Measurement struct {
 }
 
 type UnitTypeRegistry map[string]map[string]Measurement
+
+func HydrateUnitTypeRegistry() (*UnitTypeRegistry, error) {
+	urlStr := attr.UTR
+	if globalCache == nil {
+		return nil, fmt.Errorf("no accessible cache")
+	}
+	lock.RLock()
+	if x, found := globalCache.Get(urlStr); found {
+		ret := x.(UnitTypeRegistry)
+		lock.RUnlock()
+		return &ret, nil
+	}
+	lock.RUnlock()
+	file, err := serializables.DiscoverUnitTypeRegistry()
+	if err != nil {
+		return nil, err
+	}
+	utr := mapMeasurements(file)
+	go func() {
+		lock.Lock()
+		defer lock.Unlock()
+		globalCache.Set(urlStr, utr, gocache.DefaultExpiration)
+	}()
+	return &utr, err
+}
 
 func mapMeasurements(file *serializables.UnitTypeRegistryFile) UnitTypeRegistry {
 	ret := make(map[string]map[string]Measurement)
@@ -118,8 +146,12 @@ func mapMeasurements(file *serializables.UnitTypeRegistryFile) UnitTypeRegistry 
 	return ret
 }
 
-func (h *Hydratable) queryUTR(namespace string, id string) *Measurement {
-	if units, found := h.UnitTypeRegistry[namespace]; found {
+func queryUTR(namespace string, id string) *Measurement {
+	utr, err := HydrateUnitTypeRegistry()
+	if err != nil {
+		return nil
+	}
+	if units, found := (*utr)[namespace]; found {
 		if unit, ffound := units[id]; ffound {
 			return &unit
 		}
@@ -136,12 +168,12 @@ func (h *Hydratable) FindMeasurement(unitRef string) (*Measurement, *Measurement
 						unit.Divide.UnitDenominator.Measure.CharData == "" {
 						return nil, nil
 					}
-					return h.queryUTR(unit.Divide.UnitNumerator.Measure.XMLName.Space,
+					return queryUTR(unit.Divide.UnitNumerator.Measure.XMLName.Space,
 							unit.Divide.UnitNumerator.Measure.XMLName.Local),
-						h.queryUTR(unit.Divide.UnitDenominator.Measure.XMLName.Space,
+						queryUTR(unit.Divide.UnitDenominator.Measure.XMLName.Space,
 							unit.Divide.UnitNumerator.Measure.XMLName.Local)
 				}
-				return h.queryUTR(unit.Measure.XMLName.Space, unit.Measure.XMLName.Local), nil
+				return queryUTR(unit.Measure.XMLName.Space, unit.Measure.XMLName.Local), nil
 			}
 		}
 	}

@@ -14,9 +14,7 @@ import (
 	"ecksbee.com/telefacts/internal/cache"
 	"ecksbee.com/telefacts/internal/web"
 	"ecksbee.com/telefacts/pkg/hydratables"
-	"ecksbee.com/telefacts/pkg/sec"
 	"ecksbee.com/telefacts/pkg/serializables"
-	"github.com/gorilla/mux"
 )
 
 func main() {
@@ -35,27 +33,14 @@ func main() {
 }
 
 func setupServer() *http.Server {
-	scache := cache.NewSCache()
-	hcache := cache.NewHCache()
-	seccache := cache.NewSECCache()
-	serializables.SetGlobalDir(path.Join(".", "taxonomies"))
-	serializables.InjectCache(scache)
-	hydratables.InjectCache(hcache)
-	sec.InjectCache(seccache)
-	serializables.DiscoverFundamentalSchema()
-	serializables.DiscoverUnitTypeRegistry()
-	r := mux.NewRouter()
-	r.HandleFunc("/projects", web.Project()).Methods("GET", "POST")
-	projectsRoute := r.PathPrefix("/projects").Subrouter()
-	projectIDPrefix := projectsRoute.PathPrefix("/{id}")
-	projectIDRoute := projectIDPrefix.Subrouter()
-	projectIDRoute.HandleFunc("", web.Project()).Methods("GET")
-	projectIDRoute.HandleFunc("/serializables", web.ProjectSerializable()).Methods("GET", "POST")
-	projectIDRoute.HandleFunc("/renderables", web.ProjectRenderableIndex()).Methods("GET", "POST")
-	projectIDRoute.HandleFunc("/renderables/{slug}", web.ProjectRenderable()).Methods("GET", "POST")
-	rendererServer := web.LoadServer(path.Join(".", "renderer", "public"))
-	r.PathPrefix("/renderer/").Handler(http.StripPrefix("/renderer/", rendererServer))
-	//todo serve open api spec at root
+	appCache := cache.NewCache()
+	serializables.SetGlobalSchemaDir(path.Join(".", "taxonomies"))
+	serializables.SetNamesDir(path.Join("."))
+	hydratables.InjectCache(appCache)
+	hydratables.HydrateEntityNames()
+	hydratables.HydrateFundamentalSchema()
+	hydratables.HydrateUnitTypeRegistry()
+	r := web.NewRouter()
 
 	return &http.Server{
 		Addr:         "0.0.0.0:8080",

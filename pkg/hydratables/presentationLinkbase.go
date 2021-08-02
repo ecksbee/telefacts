@@ -31,10 +31,10 @@ type PresentationLinkbase struct {
 
 func HydratePresentationLinkbase(file *serializables.PresentationLinkbaseFile, fileName string) (*PresentationLinkbase, error) {
 	if len(fileName) <= 0 {
-		return nil, fmt.Errorf("Empty file name")
+		return nil, fmt.Errorf("empty file name")
 	}
 	if file == nil {
-		return nil, fmt.Errorf("Empty file")
+		return nil, fmt.Errorf("empty file")
 	}
 	ret := PresentationLinkbase{}
 	ret.FileName = fileName
