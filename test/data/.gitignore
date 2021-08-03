@@ -1,6 +1,9 @@
 *
 */
 !.gitignore
+!names.json
+!/taxonomies
+!/taxonomies/**
 !/test_gold
 !/test_gold/*
 !/test_large

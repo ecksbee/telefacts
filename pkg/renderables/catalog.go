@@ -15,7 +15,7 @@ type Catalog struct {
 	Networks         map[string]map[string]string
 }
 
-func MarshalCatalog(h *hydratables.Hydratable, names map[string]map[string]string,
+func MarshalCatalog(h *hydratables.Hydratable,
 	filenames []string) ([]byte, error) {
 	schemedEntities := sortedEntities(h)
 	rsets := sortedRelationshipSets(h)
@@ -28,8 +28,14 @@ func MarshalCatalog(h *hydratables.Hydratable, names map[string]map[string]strin
 			hash := hash(entityStr, rset.RoleURI)
 			networks[entityStr][rset.RoleURI] = hash
 		}
+		name := schemedEntity.Scheme + "/" + schemedEntity.CharData
+		hydratedName, err := hydratables.EntityQuery(schemedEntity.Scheme,
+			schemedEntity.CharData)
+		if err == nil {
+			name = hydratedName
+		}
 		subjects = append(subjects, Subject{
-			Name:   names[schemedEntity.Scheme][schemedEntity.CharData],
+			Name:   name,
 			Entity: schemedEntity,
 		})
 	}

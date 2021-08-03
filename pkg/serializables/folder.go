@@ -8,13 +8,6 @@ import (
 	"ecksbee.com/telefacts/pkg/attr"
 )
 
-type RegulatoryAuthority int
-
-const (
-	SEC RegulatoryAuthority = iota
-	ESMA
-)
-
 type Folder struct {
 	wLock                 sync.Mutex
 	Dir                   string
@@ -27,9 +20,13 @@ type Folder struct {
 	CalculationLinkbases  map[string]CalculationLinkbaseFile
 }
 
-func Discover(dir string, entryFileName string) (*Folder, error) {
+func Discover(workingDir string) (*Folder, error) {
+	entryFileName, err := GetEntryFileName(workingDir)
+	if err != nil {
+		return nil, err
+	}
 	ret := &Folder{
-		Dir:                   dir,
+		Dir:                   workingDir,
 		Namespaces:            make(map[string]string),
 		Instances:             make(map[string]InstanceFile),
 		Schemas:               make(map[string]SchemaFile),
@@ -38,7 +35,7 @@ func Discover(dir string, entryFileName string) (*Folder, error) {
 		DefinitionLinkbases:   make(map[string]DefinitionLinkbaseFile),
 		CalculationLinkbases:  make(map[string]CalculationLinkbaseFile),
 	}
-	filepath := path.Join(dir, entryFileName)
+	filepath := path.Join(workingDir, entryFileName)
 	instanceFile, err := ReadInstanceFile(filepath)
 	if err != nil {
 		return nil, err

@@ -10,15 +10,15 @@ import (
 func (h *Hydratable) HashQuery(query string) (string, *Concept, error) {
 	i := strings.IndexRune(query, '#')
 	if i < 0 {
-		return "", nil, fmt.Errorf("Invalid query")
+		return "", nil, fmt.Errorf("invalid query")
 	}
 	base := query[:i]
 	if len(base) <= 0 {
-		return "", nil, fmt.Errorf("Invalid base query")
+		return "", nil, fmt.Errorf("invalid base query")
 	}
 	fragment := query[i+1:]
 	if len(base) <= 0 {
-		return "", nil, fmt.Errorf("Invalid query fragment")
+		return "", nil, fmt.Errorf("invalid query fragment")
 	}
 	var namespace string
 	var concepts []Concept
@@ -79,4 +79,17 @@ func (h *Hydratable) NameQuery(namespace string, localName string) (string, *Con
 		}
 	}
 	return "", nil, nil
+}
+
+func EntityQuery(scheme string, chardata string) (string, error) {
+	names, err := HydrateEntityNames()
+	if err != nil {
+		return "", err
+	}
+	if x, found := names[scheme]; found {
+		if y, foundd := x[chardata]; foundd {
+			return y, nil
+		}
+	}
+	return scheme + "/" + chardata, nil
 }

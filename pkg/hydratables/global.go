@@ -10,20 +10,20 @@ import (
 )
 
 var (
-	lock     sync.RWMutex
-	appcache *gocache.Cache
+	lock        sync.RWMutex
+	globalCache *gocache.Cache
 )
 
 func InjectCache(c *gocache.Cache) {
-	appcache = c
+	globalCache = c
 }
 
 func HydrateGlobalSchema(urlStr string) (*Schema, error) {
-	if appcache == nil {
-		return nil, fmt.Errorf("No accessible cache")
+	if globalCache == nil {
+		return nil, fmt.Errorf("no accessible cache")
 	}
 	lock.RLock()
-	if x, found := appcache.Get(urlStr); found {
+	if x, found := globalCache.Get(urlStr); found {
 		ret := x.(Schema)
 		lock.RUnlock()
 		return &ret, nil
@@ -40,7 +40,7 @@ func HydrateGlobalSchema(urlStr string) (*Schema, error) {
 	go func() {
 		lock.Lock()
 		defer lock.Unlock()
-		appcache.Set(urlStr, *schema, gocache.DefaultExpiration)
+		globalCache.Set(urlStr, *schema, gocache.DefaultExpiration)
 	}()
 	return schema, err
 }
@@ -49,30 +49,26 @@ func HydrateFundamentalSchema() (*Schema, error) {
 	return HydrateGlobalSchema(attr.LRR)
 }
 
-func HydrateUnitTypeRegistry() (*UnitTypeRegistry, error) {
-	urlStr := attr.UTR
-	if appcache == nil {
-		return nil, fmt.Errorf("No accessible cache")
+func HydrateEntityNames() (map[string]map[string]string, error) {
+	key := "names.json"
+	if globalCache == nil {
+		return nil, fmt.Errorf("no accessible cache")
 	}
 	lock.RLock()
-	if x, found := appcache.Get(urlStr); found {
-		ret := x.(UnitTypeRegistry)
+	if x, found := globalCache.Get(key); found {
+		ret := x.(map[string]map[string]string)
 		lock.RUnlock()
-		return &ret, nil
+		return ret, nil
 	}
 	lock.RUnlock()
-	file, err := serializables.DiscoverUnitTypeRegistry()
+	names, err := serializables.DiscoverEntityNames()
 	if err != nil {
-		return nil, err
-	}
-	utr := mapMeasurements(file)
-	if err != nil {
-		return nil, err
+		return names, err
 	}
 	go func() {
 		lock.Lock()
 		defer lock.Unlock()
-		appcache.Set(urlStr, utr, gocache.DefaultExpiration)
+		globalCache.Set(key, names, gocache.DefaultExpiration)
 	}()
-	return &utr, err
+	return names, err
 }

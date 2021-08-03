@@ -33,7 +33,7 @@ type Renderable struct {
 	CGrid           CGrid
 }
 
-func MarshalRenderable(slug string, names map[string]map[string]string, h *hydratables.Hydratable) ([]byte, error) {
+func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 	schemedEntities := sortedEntities(h)
 	rsets := sortedRelationshipSets(h)
 	for _, schemedEntity := range schemedEntities {
@@ -88,9 +88,15 @@ func MarshalRenderable(slug string, names map[string]map[string]string, h *hydra
 				langs = dedupLang(langs)
 				labelRoles = dedupLabelRole(labelRoles)
 				p, d, c = formatPeriod(p, d, c, langs)
+				name := schemedEntity.Scheme + "/" + schemedEntity.CharData
+				hydratedName, err := hydratables.EntityQuery(schemedEntity.Scheme,
+					schemedEntity.CharData)
+				if err == nil {
+					name = hydratedName
+				}
 				ret := Renderable{
 					Subject: Subject{
-						Name: names[schemedEntity.Scheme][schemedEntity.CharData],
+						Name: name,
 						Entity: struct {
 							Scheme   string
 							CharData string

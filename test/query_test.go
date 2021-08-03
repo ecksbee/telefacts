@@ -4,7 +4,6 @@ import (
 	"os"
 	"path"
 	"testing"
-	"time"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -12,13 +11,8 @@ import (
 )
 
 func TestHashQuery_Gold(t *testing.T) {
-	secMutex.Lock()
-	defer secMutex.Unlock()
-	<-time.NewTimer(SEC_INTERVAL).C
-	scache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalDir(path.Join(".", "data", "taxonomies"))
-	serializables.InjectCache(scache)
+	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies"))
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(".", "data", "test_gold")
 	_, err := os.Stat(workingDir)
@@ -26,8 +20,7 @@ func TestHashQuery_Gold(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	entryFilePath := "wk-20200930_htm.xml"
-	f, err := serializables.Discover(workingDir, entryFilePath)
+	f, err := serializables.Discover(workingDir)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
