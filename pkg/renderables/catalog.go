@@ -9,14 +9,12 @@ import (
 )
 
 type Catalog struct {
-	Files            []string
 	Subjects         []Subject
 	RelationshipSets []RelationshipSet
 	Networks         map[string]map[string]string
 }
 
-func MarshalCatalog(h *hydratables.Hydratable,
-	filenames []string) ([]byte, error) {
+func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 	schemedEntities := sortedEntities(h)
 	rsets := sortedRelationshipSets(h)
 	subjects := make([]Subject, 0, len(schemedEntities))
@@ -42,7 +40,6 @@ func MarshalCatalog(h *hydratables.Hydratable,
 	return json.Marshal(Catalog{
 		Subjects:         subjects,
 		RelationshipSets: rsets,
-		Files:            filenames,
 		Networks:         networks,
 	})
 }

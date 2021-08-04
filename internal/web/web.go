@@ -2,7 +2,6 @@ package web
 
 import (
 	"net/http"
-	"os"
 	"path"
 
 	"ecksbee.com/telefacts/internal/cache"
@@ -21,13 +20,7 @@ func Catalog() func(http.ResponseWriter, *http.Request) {
 			http.Error(w, "Error: invalid id '"+id+"'", http.StatusBadRequest)
 			return
 		}
-		workingDir := path.Join(".", "projects", id)
-		_, err := os.Stat(workingDir)
-		if os.IsNotExist(err) {
-			http.Error(w, "Error: "+err.Error(), http.StatusNotFound)
-			return
-		}
-		data, err := cache.MarshalCatalog(workingDir)
+		data, err := cache.MarshalCatalog(id)
 		if err != nil {
 			http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 			return
@@ -50,19 +43,13 @@ func Renderable() func(http.ResponseWriter, *http.Request) {
 			http.Error(w, "Error: invalid id '"+id+"'", http.StatusBadRequest)
 			return
 		}
-		workingDir := path.Join(".", "projects", id)
-		_, err := os.Stat(workingDir)
-		if os.IsNotExist(err) {
-			http.Error(w, "Error: "+err.Error(), http.StatusNotFound)
-			return
-		}
 		hash := vars["hash"]
 		if len(hash) <= 0 {
 			http.Error(w, "Error: invalid roote", http.StatusBadRequest)
 			return
 		}
 
-		data, err := cache.Marshal(workingDir, hash)
+		data, err := cache.Marshal(id, hash)
 		if err != nil {
 			http.Error(w, "Error: "+err.Error(), http.StatusInternalServerError)
 			return
@@ -75,10 +62,9 @@ func Renderable() func(http.ResponseWriter, *http.Request) {
 
 func NewRouter() http.Handler {
 	r := mux.NewRouter()
-	r.HandleFunc("/renderables", Catalog()).Methods("GET")
-	renderablesRoute := r.PathPrefix("/renderables").Subrouter()
-	projectIDPrefix := renderablesRoute.PathPrefix("/{id}")
-	projectIDRoute := projectIDPrefix.Subrouter()
+	foldersRoute := r.PathPrefix("/folders").Subrouter()
+	foldersRoute.HandleFunc("/{id}", Catalog()).Methods("GET")
+	projectIDRoute := foldersRoute.PathPrefix("/{id}").Subrouter()
 	projectIDRoute.HandleFunc("/{hash}", Renderable()).Methods("GET")
 	r.Handle("/", http.FileServer(http.Dir((path.Join(".", "renderer")))))
 

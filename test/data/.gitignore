@@ -2,8 +2,8 @@
 */
 !.gitignore
 !names.json
-!/taxonomies
-!/taxonomies/**
+!/concepts
+!/concepts/**
 !/test_gold
 !/test_gold/*
 !/test_large
