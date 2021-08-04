@@ -13,17 +13,8 @@ import (
 )
 
 var (
-	namesDir        string
-	globalSchemaDir string
+	VolumePath string
 )
-
-func SetGlobalSchemaDir(dir string) {
-	globalSchemaDir = dir
-}
-
-func SetNamesDir(dir string) {
-	namesDir = dir
-}
 
 func DiscoverFundamentalSchema() (*SchemaFile, error) {
 	data, err := DiscoverGlobalFile(attr.LRR)
@@ -34,9 +25,6 @@ func DiscoverFundamentalSchema() (*SchemaFile, error) {
 }
 
 func urlToFilename(urlStr string) (string, error) {
-	if globalSchemaDir == "" {
-		return "", fmt.Errorf("no directory set")
-	}
 	urlPath, err := url.Parse(urlStr)
 	if err != nil {
 		return "", err
@@ -54,7 +42,7 @@ func urlToFilename(urlStr string) (string, error) {
 	for _, split := range splits {
 		dest = path.Join(dest, split)
 	}
-	return path.Join(globalSchemaDir, dest), nil
+	return path.Join(VolumePath, "concepts", dest), nil
 }
 
 func DiscoverGlobalFile(urlStr string) ([]byte, error) {
@@ -84,7 +72,7 @@ func DiscoverGlobalSchema(urlStr string) (*SchemaFile, error) {
 }
 
 func DiscoverEntityNames() (map[string]map[string]string, error) {
-	filename := path.Join(namesDir, "names.json")
+	filename := path.Join(VolumePath, "names.json")
 	names := make(map[string]map[string]string)
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {

@@ -34,8 +34,11 @@ func main() {
 
 func setupServer() *http.Server {
 	appCache := cache.NewCache()
-	serializables.SetGlobalSchemaDir(path.Join(".", "taxonomies"))
-	serializables.SetNamesDir(path.Join("."))
+	dir, err := os.Getwd()
+	if err != nil {
+		dir = path.Join(".")
+	}
+	serializables.VolumePath = path.Join(dir, "data")
 	hydratables.InjectCache(appCache)
 	hydratables.HydrateEntityNames()
 	hydratables.HydrateFundamentalSchema()

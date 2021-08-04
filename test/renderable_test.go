@@ -15,16 +15,15 @@ import (
 
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies"))
-	serializables.SetNamesDir(path.Join(".", "data"))
+	serializables.VolumePath = path.Join(".", "data")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "data", "test_gold")
+	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	f, err := serializables.Discover(workingDir)
+	f, err := serializables.Discover("test_gold")
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
@@ -158,17 +157,16 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 
 }
 
-func hydratableFactory(filing string) (*hydratables.Hydratable, error) {
+func hydratableFactory(id string) (*hydratables.Hydratable, error) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies"))
-	serializables.SetNamesDir(path.Join(".", "data"))
+	serializables.VolumePath = path.Join(".", "data")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "data", filing)
+	workingDir := path.Join(serializables.VolumePath, "folders", id)
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		return nil, fmt.Errorf(err.Error())
 	}
-	f, err := serializables.Discover(workingDir)
+	f, err := serializables.Discover(id)
 	if err != nil {
 		return nil, fmt.Errorf(err.Error())
 	}

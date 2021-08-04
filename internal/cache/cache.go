@@ -23,49 +23,71 @@ func NewCache() *gocache.Cache {
 	return appCache
 }
 
-func Marshal(workingDir string, hash string) ([]byte, error) {
-	h, err := Hydratable(workingDir)
-	if err != nil {
-		return nil, err
-	}
-	return renderables.MarshalRenderable(hash, h)
-}
-
-func MarshalCatalog(workingDir string) ([]byte, error) {
-	h, err := Hydratable(workingDir)
-	if err != nil {
-		return nil, err
-	}
-	filenames := []string{}
-	return renderables.MarshalCatalog(h, filenames)
-}
-
-func Hydratable(workingDir string) (*hydratables.Hydratable, error) {
+func Marshal(id string, hash string) ([]byte, error) {
 	if appCache == nil {
 		return nil, fmt.Errorf("no accessible cache")
 	}
-	lock.RLock()
-	defer lock.RUnlock()
-	if x, found := appCache.Get(workingDir); found {
-		ret := x.(hydratables.Hydratable)
-		return &ret, nil
-	}
-	folder, err := serializables.Discover(workingDir)
-	if err != nil {
-		return nil, fmt.Errorf("failed to discover folder, %v", err)
-	}
-	return Hydrate(workingDir, folder)
-}
-
-func Hydrate(workingDir string, folder *serializables.Folder) (*hydratables.Hydratable, error) {
-	ret, err := hydratables.Hydrate(folder)
+	h, err := hydratable(id)
 	if err != nil {
 		return nil, err
 	}
+	lock.RLock()
+	if x, found := appCache.Get(id + "/" + hash); found {
+		ret := x.([]byte)
+		lock.RUnlock()
+		return ret, nil
+	}
+	lock.RUnlock()
+	byteArr, err := renderables.MarshalRenderable(hash, h)
 	go func() {
 		lock.Lock()
 		defer lock.Unlock()
-		appCache.Set(workingDir, *ret, gocache.DefaultExpiration)
+		appCache.Set(id+"/", byteArr, gocache.DefaultExpiration)
 	}()
-	return ret, nil
+	return byteArr, err
+}
+
+func MarshalCatalog(id string) ([]byte, error) {
+	if appCache == nil {
+		return nil, fmt.Errorf("no accessible cache")
+	}
+	h, err := hydratable(id)
+	if err != nil {
+		return nil, err
+	}
+	lock.RLock()
+	if x, found := appCache.Get(id + "/"); found {
+		ret := x.([]byte)
+		lock.RUnlock()
+		return ret, nil
+	}
+	lock.RUnlock()
+	byteArr, err := renderables.MarshalCatalog(h)
+	go func() {
+		lock.Lock()
+		defer lock.Unlock()
+		appCache.Set(id+"/", byteArr, gocache.DefaultExpiration)
+	}()
+	return byteArr, err
+}
+
+func hydratable(id string) (*hydratables.Hydratable, error) {
+	lock.RLock()
+	if x, found := appCache.Get(id); found {
+		ret := x.(*hydratables.Hydratable)
+		lock.RUnlock()
+		return ret, nil
+	}
+	lock.RUnlock()
+	folder, err := serializables.Discover(id)
+	if err != nil {
+		return nil, fmt.Errorf("failed to discover folder, %v", err)
+	}
+	ret, err := hydratables.Hydrate(folder)
+	go func() {
+		lock.Lock()
+		defer lock.Unlock()
+		appCache.Set(id, ret, gocache.DefaultExpiration)
+	}()
+	return ret, err
 }

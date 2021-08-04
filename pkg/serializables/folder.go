@@ -20,11 +20,12 @@ type Folder struct {
 	CalculationLinkbases  map[string]CalculationLinkbaseFile
 }
 
-func Discover(workingDir string) (*Folder, error) {
-	entryFileName, err := GetEntryFileName(workingDir)
+func Discover(id string) (*Folder, error) {
+	entryFileName, err := GetEntryFileName(id)
 	if err != nil {
 		return nil, err
 	}
+	workingDir := path.Join(VolumePath, "folders", id)
 	ret := &Folder{
 		Dir:                   workingDir,
 		Namespaces:            make(map[string]string),

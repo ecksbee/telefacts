@@ -12,16 +12,16 @@ import (
 
 func TestHydrate_Gold(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.SetGlobalSchemaDir(path.Join(".", "data", "taxonomies")) //todo abs path
+	serializables.VolumePath = path.Join(".", "data")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "data", "test_gold")
+	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
 	entryFilePath := "wk-20200930_htm.xml"
-	f, err := serializables.Discover(workingDir)
+	f, err := serializables.Discover("test_gold")
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}

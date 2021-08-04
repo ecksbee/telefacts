@@ -2,6 +2,7 @@ package serializables
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"os"
 	"path"
@@ -16,9 +17,9 @@ type Underscore struct {
 	Note     string
 }
 
-func GetEntryFileName(workingDir string) (string, error) {
+func GetEntryFileName(id string) (string, error) {
 	underscore := Underscore{}
-	b, err := ioutil.ReadFile(path.Join(workingDir, "_"))
+	b, err := ioutil.ReadFile(path.Join(VolumePath, "folders", id, "_"))
 	if err != nil {
 		return "", err
 	}
@@ -27,7 +28,10 @@ func GetEntryFileName(workingDir string) (string, error) {
 }
 
 func NewFolder(underscore Underscore) (string, error) {
-	workingDir := path.Join(".", "projects")
+	if VolumePath == "" {
+		return "", fmt.Errorf("empty VolumePath")
+	}
+	workingDir := path.Join(VolumePath, "folders")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)
