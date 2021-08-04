@@ -4,9 +4,5 @@
 !names.json
 !/concepts
 !/concepts/**
-!/test_gold
-!/test_gold/*
-!/test_large
-!/test_large/*
-!/test_small
-!/test_small/*
+!/folders
+!/folders/**
