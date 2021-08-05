@@ -24,7 +24,7 @@ func DiscoverFundamentalSchema() (*SchemaFile, error) {
 	return DecodeSchemaFile(data)
 }
 
-func urlToFilename(urlStr string) (string, error) {
+func UrlToFilename(urlStr string) (string, error) {
 	urlPath, err := url.Parse(urlStr)
 	if err != nil {
 		return "", err
@@ -33,7 +33,7 @@ func urlToFilename(urlStr string) (string, error) {
 		return "", fmt.Errorf("empty scheme")
 	}
 	dest := urlPath.Scheme
-	hostname := urlPath.Hostname() //todo only import "trusted hostnames"
+	hostname := urlPath.Hostname()
 	if len(hostname) <= 0 {
 		return "", fmt.Errorf("empty hostname")
 	}
@@ -46,7 +46,7 @@ func urlToFilename(urlStr string) (string, error) {
 }
 
 func DiscoverGlobalFile(urlStr string) ([]byte, error) {
-	dest, err := urlToFilename(urlStr)
+	dest, err := UrlToFilename(urlStr)
 	if err != nil {
 		return nil, err
 	}
