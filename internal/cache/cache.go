@@ -42,7 +42,7 @@ func Marshal(id string, hash string) ([]byte, error) {
 	go func() {
 		lock.Lock()
 		defer lock.Unlock()
-		appCache.Set(id+"/", byteArr, gocache.DefaultExpiration)
+		appCache.Set(id+"/"+hash, byteArr, gocache.DefaultExpiration)
 	}()
 	return byteArr, err
 }
