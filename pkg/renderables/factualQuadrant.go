@@ -5,11 +5,11 @@ import (
 )
 
 type FactExpression struct {
-	Head        string
-	Core        string
-	Tail        string
-	TextPreview string
-	TextBlock   string
+	Head      string
+	Core      string
+	Tail      string
+	CharData  string
+	TextBlock string
 }
 
 type MultilingualFact map[Lang]FactExpression

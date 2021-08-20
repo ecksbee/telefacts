@@ -25,12 +25,12 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 	}
 	r := strings.NewReader(gohtml.UnescapeString(fact.XMLInner))
 	tokenizer := html.NewTokenizer(r)
-	preview := ""
+	tokenized := ""
 	for {
 		tt := tokenizer.Next()
 		token := tokenizer.Token()
 		err := tokenizer.Err()
-		if err == io.EOF || len(preview) > 40 {
+		if err == io.EOF {
 			break
 		}
 
@@ -39,13 +39,13 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 			data := strings.TrimSpace(token.Data)
 
 			if len(data) > 0 {
-				preview += data + " "
+				tokenized += data + "<br></br><br></br> "
 			}
 		}
 	}
 
 	return &FactExpression{
-		TextPreview: preview,
-		TextBlock:   fact.XMLInner,
+		CharData:  fact.XMLInner,
+		TextBlock: tokenized,
 	}
 }
