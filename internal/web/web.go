@@ -2,7 +2,8 @@ package web
 
 import (
 	"net/http"
-	"path"
+	"os"
+	"path/filepath"
 
 	"ecksbee.com/telefacts/internal/cache"
 	"github.com/gorilla/mux"
@@ -66,8 +67,14 @@ func NewRouter() http.Handler {
 	foldersRoute.HandleFunc("/{id}", Catalog()).Methods("GET")
 	projectIDRoute := foldersRoute.PathPrefix("/{id}").Subrouter()
 	projectIDRoute.HandleFunc("/{hash}", Renderable()).Methods("GET")
-	r.Handle("/", http.FileServer(http.Dir((path.Join(".", "renderer")))))
-
-	//todo serve open api spec at root
+	wd, err := os.Getwd()
+	if err != nil {
+		r.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
+			http.Error(w, "Error: renderer failed to load", http.StatusInternalServerError)
+		})
+		return r
+	}
+	fs := http.FileServer(http.Dir((filepath.Join(wd, "renderer"))))
+	r.PathPrefix("/").Handler(fs)
 	return r
 }
