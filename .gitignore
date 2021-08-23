@@ -16,3 +16,4 @@
 
 .vscode/
 /cmd/telefacts/data/**
+/cmd/telefacts/renderer/**
