@@ -62,10 +62,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected 43 Indented Labels; outcome %d;\n", len(r.PGrid.IndentedLabels))
 	}
 
-	if r.PGrid.MaxIndentation != 6 {
-		t.Fatalf("expected 6 maximum indentation; outcome %d;\n", r.PGrid.MaxIndentation)
-	}
-
 	if r.PGrid.MaxDepth != 1 {
 		t.Fatalf("expected 1 maximum depth; outcome %d;\n", r.PGrid.MaxDepth)
 	}

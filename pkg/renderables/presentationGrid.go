@@ -15,7 +15,6 @@ type IndentedLabel struct {
 
 type PGrid struct {
 	IndentedLabels   []IndentedLabel
-	MaxIndentation   int
 	RelevantContexts []RelevantContext
 	MaxDepth         int
 	FactualQuadrant  FactualQuadrant
@@ -25,7 +24,7 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	factFinder FactFinder, conceptFinder ConceptFinder,
 	measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
 	labelPacks := make([]LabelPack, 0, 100)
-	indentedLabels, maxIndentation, labelPacks := getIndentedLabels(linkroleURI, h)
+	indentedLabels, labelPacks := getIndentedLabels(linkroleURI, h)
 	relevantContexts, maxDepth, contextualLabelPacks :=
 		getPresentationContexts(schemedEntity, h, indentedLabels)
 	labelPacks = append(labelPacks, contextualLabelPacks...)
@@ -41,7 +40,6 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 		factFinder, conceptFinder, measurementFinder, langs)
 	return PGrid{
 		IndentedLabels:   indentedLabels,
-		MaxIndentation:   maxIndentation,
 		RelevantContexts: relevantContexts,
 		MaxDepth:         maxDepth,
 		FactualQuadrant:  factualQuadrant,
@@ -61,7 +59,7 @@ func pArcs(pArcs []hydratables.PresentationArc) []arc {
 	return ret
 }
 
-func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, int, []LabelPack) {
+func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, []LabelPack) {
 	labelPacks := make([]LabelPack, 0, 100)
 	for _, presentation := range h.PresentationLinkbases {
 		var presentationLinks []hydratables.PresentationLink
@@ -77,14 +75,10 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 				pArcs := pArcs(arcs)
 				root := tree(pArcs, attr.PresentationArcrole)
 				ret := make([]IndentedLabel, 0, len(arcs))
-				maxIndent := 1
 				var makeIndents func(node *locatorNode, level int)
 				makeIndents = func(node *locatorNode, level int) {
 					if len(node.Children) <= 0 {
 						return
-					}
-					if level+1 > maxIndent {
-						maxIndent = level + 1
 					}
 					for _, c := range node.Children {
 						href := mapPLocatorToHref(linkroleURI, &presentation, c.Locator)
@@ -102,11 +96,11 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 					})
 				}
 				makeIndents(&root, 0)
-				return ret, maxIndent, labelPacks
+				return ret, labelPacks
 			}
 		}
 	}
-	return nil, -1, labelPacks
+	return nil, labelPacks
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
