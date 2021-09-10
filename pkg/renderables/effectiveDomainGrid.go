@@ -12,7 +12,6 @@ type RootDomain struct {
 	Label               LabelPack
 	RelevantContexts    []RelevantContext
 	MaxDepth            int
-	MaxLevel            int
 	PrimaryItems        []PrimaryItem
 	FactualQuadrant     FactualQuadrant
 	EffectiveDomainGrid [][]EffectiveDomain
@@ -71,14 +70,10 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 			if definitionLink.Role == linkroleURI {
 				arcs := definitionLink.DefinitionArcs
 				indentedItems := make([]PrimaryItem, 0, len(arcs))
-				maxIndent := 0
 				var makeIndents func(node *locatorNode, level int)
 				makeIndents = func(node *locatorNode, level int) {
 					if len(node.Children) <= 0 {
 						return
-					}
-					if level+1 > maxIndent {
-						maxIndent = level + 1
 					}
 					for _, c := range node.Children {
 						href := mapDLocatorToHref(linkroleURI, &definition, c.Locator)
@@ -132,7 +127,6 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						PrimaryItems:        indentedItems,
 						Href:                rootHref,
 						Label:               rdLabelPack,
-						MaxLevel:            maxIndent,
 						RelevantContexts:    relevantContexts,
 						MaxDepth:            maxDepth,
 						EffectiveDimensions: effectiveDimensions,
@@ -441,7 +435,7 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 		if a.IsDefault != b.IsDefault {
 			return a.IsDefault
 		}
-		if a.IsStrikethrough != a.IsStrikethrough {
+		if a.IsStrikethrough != b.IsStrikethrough {
 			return b.IsStrikethrough
 		}
 		return false

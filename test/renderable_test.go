@@ -86,10 +86,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected 1 maximum depth; outcome %d;\n", rd.MaxDepth)
 	}
 
-	if rd.MaxLevel != 3 {
-		t.Fatalf("expected 3 maximum level; outcome %d;\n", rd.MaxLevel)
-	}
-
 	if len(rd.PrimaryItems) != 36 {
 		t.Fatalf("expected 36 non-root primary items; outcome %d;\n", len(rd.PrimaryItems))
 	}
