@@ -2,7 +2,6 @@ package renderables
 
 import (
 	"sort"
-	"strings"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
 )
@@ -141,28 +140,6 @@ func tree(arcs []arc, arcrole string) locatorNode {
 	return root
 }
 
-func comparePath(a path, b path) int {
-	max := len(a)
-	if len(a) > len(b) {
-		max = len(b)
-	}
-	for i := 0; i < max; i++ {
-		aa := a[i]
-		bb := b[i]
-		c := strings.Compare(aa, bb)
-		if c != 0 {
-			return c
-		}
-	}
-	if len(a) > len(b) {
-		return 1
-	}
-	if len(a) < len(b) {
-		return -1
-	}
-	return 0
-}
-
 type path []string
 
 func paths(node *locatorNode, prior path) []path {
@@ -177,9 +154,38 @@ func paths(node *locatorNode, prior path) []path {
 	}
 	var ret []path
 	for _, child := range node.Children {
-		for _, childPath := range paths(child, newPath) {
-			ret = append(ret, childPath)
-		}
+		ret = append(ret, paths(child, newPath)...)
 	}
 	return ret
+}
+
+type Stack []*hydratables.Concept
+
+// IsEmpty: check if stack is empty
+func (s *Stack) IsEmpty() bool {
+	return len(*s) == 0
+}
+
+// Push a new value onto the stack
+func (s *Stack) Push(concept *hydratables.Concept) {
+	*s = append(*s, concept) // Simply append the new value to the end of the stack
+}
+
+// Remove and return top element of stack. Return false if stack is empty.
+func (s *Stack) Pop() (*hydratables.Concept, bool) {
+	if s.IsEmpty() {
+		return nil, false
+	} else {
+		index := len(*s) - 1   // Get the index of the top most element.
+		element := (*s)[index] // Index into the slice and obtain the element.
+		*s = (*s)[:index]      // Remove it from the stack by slicing it off.
+		return element, true
+	}
+}
+
+func (s *Stack) Copy() *Stack {
+	dst := make([]*hydratables.Concept, len(*s))
+	copy(dst, *s)
+	ret := Stack(dst)
+	return &ret
 }

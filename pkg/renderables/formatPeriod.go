@@ -6,35 +6,36 @@ import (
 )
 
 func formatPeriod(p PGrid, d DGrid, c CGrid, langs []Lang) (PGrid, DGrid, CGrid) {
-	p.RelevantContexts = formatRelevantPeriod(p.RelevantContexts, langs)
+	p.PeriodHeaders = formatRelevantPeriod(p.PeriodHeaders, langs)
 	for _, rootDomain := range d.RootDomains {
-		rootDomain.RelevantContexts = formatRelevantPeriod(rootDomain.RelevantContexts, langs)
+		rootDomain.PeriodHeaders = formatRelevantPeriod(rootDomain.PeriodHeaders, langs)
 	}
 	for _, summationItem := range c.SummationItems {
-		summationItem.RelevantContexts = formatRelevantPeriod(summationItem.RelevantContexts, langs)
+		summationItem.PeriodHeaders = formatRelevantPeriod(summationItem.PeriodHeaders, langs)
 	}
 
 	return p, d, c
 }
 
-func formatRelevantPeriod(relevantContexts []RelevantContext, langs []Lang) []RelevantContext {
-	ret := make([]RelevantContext, len(relevantContexts))
-	for i, ctx := range relevantContexts {
-		if _, foundPure := ctx.PeriodHeader[PureLabel]; !foundPure {
-			ret[i] = ctx
+func formatRelevantPeriod(periodHeaders PeriodHeaders, langs []Lang) PeriodHeaders {
+	ret := make(PeriodHeaders, len(periodHeaders))
+	for i, ctxPtr := range periodHeaders {
+		ctx := *ctxPtr
+		if _, foundPure := ctx[PureLabel]; !foundPure {
+			ret[i] = &ctx
 			continue
 		}
-		if pureData, foundPure := ctx.PeriodHeader[PureLabel]; foundPure {
+		if pureData, foundPure := ctx[PureLabel]; foundPure {
 			for _, lang := range langs {
 				if lang == PureLabel {
 					continue
 				}
-				ctx.PeriodHeader[lang] = formatDate(lang, pureData)
+				ctx[lang] = formatDate(lang, pureData)
 			}
 		}
-		ret[i] = ctx
+		ret[i] = &ctx
 	}
-	return relevantContexts
+	return periodHeaders
 }
 
 const iso8601 = "2006-01-02"

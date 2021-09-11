@@ -15,24 +15,18 @@ func getContext(instance *hydratables.Instance, contextRef string) *hydratables.
 	return nil
 }
 
-type RelevantContext struct {
+type relevantContext struct {
 	ContextRef   string
 	PeriodHeader LanguagePack
-	Dimensions   []ContextualDimension
+	Members      []ContextualMember
 }
 
-type ContextualDimension struct {
-	Element        string
-	IsExplicit     bool
-	Dimension      Dimension
-	ExplicitMember *ExplicitMember `json:",omitempty"`
-	TypedMember    string          `json:",omitempty"`
-}
-
-type Dimension struct {
-	Href            string
-	Label           LabelPack
-	TypedDomainHref string
+type ContextualMember struct {
+	Dimension
+	ExplicitMember *ExplicitMember
+	TypedMember    string
+	TypedDomain    *TypedDomain
+	IsSegment      bool
 }
 
 type ExplicitMember struct {
@@ -40,26 +34,54 @@ type ExplicitMember struct {
 	Label LabelPack
 }
 
-func sortContexts(relevantContexts []RelevantContext) {
+type Dimension struct {
+	Href  string
+	Label LabelPack
+}
+
+type TypedDomain struct {
+	Href  string
+	Label LabelPack
+}
+
+func sortContexts(relevantContexts []relevantContext) {
 	sort.SliceStable(relevantContexts, func(i int, j int) bool {
 		if relevantContexts[i].PeriodHeader[PureLabel] == relevantContexts[j].PeriodHeader[PureLabel] {
-			if len(relevantContexts[i].Dimensions) == len(relevantContexts[j].Dimensions) {
-				for c := 0; c < len(relevantContexts[i].Dimensions); c++ {
-					a := relevantContexts[i].Dimensions[c]
-					b := relevantContexts[j].Dimensions[c]
-					if a.Element == b.Element {
-						if a.IsExplicit == b.IsExplicit {
-							if a.ExplicitMember != nil && b.ExplicitMember != nil {
-								return a.ExplicitMember.Href < b.ExplicitMember.Href
-							}
-							return a.ExplicitMember == nil
-						}
-						return !a.IsExplicit
+			if len(relevantContexts[i].Members) == len(relevantContexts[j].Members) {
+				for c := 0; c < len(relevantContexts[i].Members); c++ {
+					a := relevantContexts[i].Members[c]
+					b := relevantContexts[j].Members[c]
+					if a.IsSegment && !b.IsSegment {
+						return true
 					}
-					return a.Element < b.Element
+					if !a.IsSegment && b.IsSegment {
+						return false
+					}
+					if a.TypedDomain != nil && b.TypedDomain == nil {
+						return true
+					}
+					if a.TypedDomain == nil && b.TypedDomain != nil {
+						return false
+					}
+					if a.TypedDomain != nil && b.TypedDomain != nil {
+						if a.TypedDomain.Href == b.TypedDomain.Href {
+							return a.TypedMember < b.TypedMember
+						}
+						return a.TypedDomain.Href < b.TypedDomain.Href
+					}
+					if a.ExplicitMember != nil && b.ExplicitMember != nil {
+						return a.ExplicitMember.Href < b.ExplicitMember.Href
+					}
+					if a.ExplicitMember == nil && b.ExplicitMember != nil {
+						return true
+					}
+					if a.ExplicitMember != nil && b.ExplicitMember == nil {
+						return false
+					}
+					return i < j
 				}
 			} else {
-				return len(relevantContexts[i].Dimensions) < len(relevantContexts[j].Dimensions)
+				return len(relevantContexts[i].Members) < len(relevantContexts[j].Members)
 			}
 		}
 		return relevantContexts[i].PeriodHeader[PureLabel] < relevantContexts[j].PeriodHeader[PureLabel]
@@ -98,7 +120,7 @@ func dedupEntities(h *hydratables.Hydratable) []Entity {
 		occured := map[Entity]bool{}
 		u := []Entity{}
 		for e := range arr {
-			if occured[arr[e]] != true {
+			if !occured[arr[e]] {
 				occured[arr[e]] = true
 				u = append(u, arr[e])
 			}
@@ -127,7 +149,7 @@ func stringify(e *Entity) string {
 }
 
 func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
-	hrefs []string) ([]RelevantContext, int, []LabelPack) {
+	hrefs []string) ([]relevantContext, []locatorNode, []locatorNode, []LabelPack) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
 		_, c, err := h.HashQuery(href)
@@ -136,10 +158,11 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 		}
 	}
 	if len(factuaHrefs) <= 0 {
-		return []RelevantContext{}, 0, []LabelPack{}
+		return []relevantContext{}, []locatorNode{}, []locatorNode{}, []LabelPack{}
 	}
-	maxDepth := 0
-	ret := make([]RelevantContext, 0, len(hrefs)*4)
+	var segmentTypedDomainTrees []locatorNode
+	var scenarioTypedDomainTrees []locatorNode
+	ret := make([]relevantContext, 0, len(hrefs)*4)
 	labelPacks := make([]LabelPack, 0, len(hrefs)*4)
 	for _, instance := range h.Instances {
 		contextRefTaken := make(map[string]bool)
@@ -154,16 +177,16 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 					entity := context.Entity
 					contextualSchemedEntity := entity.Identifier.Scheme + "/" + entity.Identifier.CharData
 					if contextualSchemedEntity == schemedEntity {
-						contextualDimensions, contextualLabelPacks := getContextualDimensions(context, h)
+						contextualMembers, segmentTypedDomainTrees, scenarioTypedDomainTrees,
+							contextualLabelPacks := getContextualMembers(context, h)
 						labelPacks = append(labelPacks, contextualLabelPacks...)
-						newItem := RelevantContext{
+						newItem := relevantContext{
 							ContextRef:   context.ID,
 							PeriodHeader: periodString(context),
-							Dimensions:   contextualDimensions,
+							Members:      contextualMembers,
 						}
-						if len(newItem.Dimensions) > maxDepth {
-							maxDepth = len(newItem.Dimensions)
-						}
+						segmentTypedDomainTrees = segmentTypedDomainTrees
+						scenarioTypedDomainTrees = scenarioTypedDomainTrees
 						ret = append(ret, newItem)
 						contextRefTaken[fact.ContextRef] = true
 					}
@@ -172,12 +195,16 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 		}
 	}
 	sortContexts(ret)
-	return ret, maxDepth, labelPacks
+	return ret, segmentTypedDomainTrees, scenarioTypedDomainTrees, labelPacks
 }
 
-func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydratable) ([]ContextualDimension, []LabelPack) {
-	ret := make([]ContextualDimension, 0)
+func getContextualMembers(context *hydratables.Context,
+	h *hydratables.Hydratable) ([]ContextualMember, []locatorNode,
+	[]locatorNode, []LabelPack) {
+	ret := make([]ContextualMember, 0)
 	labelPacks := make([]LabelPack, 0)
+	segmentTypedDomainTrees := make([]locatorNode, 0)
+	scenarioTypedDomainTrees := make([]locatorNode, 0)
 	if len(context.Entity.Segment.ExplicitMembers) > 0 {
 		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
 			member := explicitMember.Member.Href
@@ -186,14 +213,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			dimension := explicitMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualDimension{
-				Element:    "segment",
-				IsExplicit: true,
+			ret = append(ret, ContextualMember{
 				Dimension: Dimension{
-					Href:            dimension,
-					Label:           dimensionLabel,
-					TypedDomainHref: "",
+					Href:  dimension,
+					Label: GetLabel(h, dimension),
 				},
+				IsSegment: true,
 				ExplicitMember: &ExplicitMember{
 					Href:  member,
 					Label: memberLabel,
@@ -206,16 +231,13 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			dimension := typedMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualDimension{
-				Element:    "segment",
-				IsExplicit: false,
-				Dimension: Dimension{
-					Href:            dimension,
-					Label:           dimensionLabel,
-					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
-				},
-				TypedMember: formatTypedMember(typedMember.Dimension.TypedDomainHref, typedMember.Value, h),
-			})
+			typedDomainMembers, typedDomainArcs, typedDomainMemberLabels := getTypedMember(typedMember, Dimension{
+				Href:  dimension,
+				Label: dimensionLabel,
+			}, true, h)
+			segmentTypedDomainTrees = append(segmentTypedDomainTrees, tree(typedDomainArcs, typedDomainArcRole))
+			labelPacks = append(labelPacks, typedDomainMemberLabels...)
+			ret = append(ret, typedDomainMembers...)
 		}
 	}
 	if len(context.Scenario.ExplicitMembers) > 0 {
@@ -226,14 +248,12 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			dimension := explicitMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualDimension{
-				Element:    "scenario",
-				IsExplicit: true,
+			ret = append(ret, ContextualMember{
 				Dimension: Dimension{
-					Href:            dimension,
-					Label:           dimensionLabel,
-					TypedDomainHref: "",
+					Href:  dimension,
+					Label: GetLabel(h, dimension),
 				},
+				IsSegment: false,
 				ExplicitMember: &ExplicitMember{
 					Href:  member,
 					Label: memberLabel,
@@ -246,17 +266,14 @@ func getContextualDimensions(context *hydratables.Context, h *hydratables.Hydrat
 			dimension := typedMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualDimension{
-				Element:    "scenario",
-				IsExplicit: false,
-				Dimension: Dimension{
-					Href:            dimension,
-					Label:           dimensionLabel,
-					TypedDomainHref: typedMember.Dimension.TypedDomainHref,
-				},
-				TypedMember: typedMember.Value,
-			})
+			typedDomainMembers, typedDomainArcs, typedDomainMemberLabels := getTypedMember(typedMember, Dimension{
+				Href:  dimension,
+				Label: dimensionLabel,
+			}, false, h)
+			scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, tree(typedDomainArcs, typedDomainArcRole))
+			labelPacks = append(labelPacks, typedDomainMemberLabels...)
+			ret = append(ret, typedDomainMembers...)
 		}
 	}
-	return ret, labelPacks
+	return ret, segmentTypedDomainTrees, scenarioTypedDomainTrees, labelPacks
 }

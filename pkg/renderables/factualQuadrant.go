@@ -16,7 +16,7 @@ type MultilingualFact map[Lang]FactExpression
 
 type FactualQuadrant [][]*MultilingualFact
 
-func getFactualQuadrant(hrefs []string, relevantContexts []RelevantContext,
+func getFactualQuadrant(hrefs []string, relevantContexts []relevantContext,
 	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	langs []Lang) FactualQuadrant {
 	rowCount := len(hrefs)

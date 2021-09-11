@@ -10,11 +10,12 @@ import (
 )
 
 type SummationItem struct {
-	Href                 string
-	Label                LabelPack
-	BalanceType          string
-	RelevantContexts     []RelevantContext
-	MaxDepth             int
+	Href        string
+	Label       LabelPack
+	BalanceType string
+	PeriodHeaders
+	ContextualMemberGrid
+	VoidQuadrant
 	ContributingConcepts []ContributingConcept
 	FactualQuadrant      FactualQuadrant
 }
@@ -115,7 +116,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						labelPacks = append(labelPacks, cLabelPack)
 					}
 					fqLabels = append(fqLabels, from)
-					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, fqLabels)
+					relevantContexts, segmentTypedDomainArcs, scenarioTypedDomainArcs, contextualLabelPack := getRelevantContexts(schemedEntity, h, fqLabels)
 					siLabelPack := GetLabel(h, from)
 					labelPacks = append(labelPacks, siLabelPack)
 					labelPacks = append(labelPacks, contextualLabelPack...)
@@ -128,13 +129,15 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					if err != nil {
 						continue
 					}
+					memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(relevantContexts, segmentTypedDomainArcs, scenarioTypedDomainArcs)
 					ret = append(ret, SummationItem{
 						Href:                 from,
 						Label:                siLabelPack,
 						BalanceType:          sumConcept.Balance,
 						ContributingConcepts: contributingConcepts,
-						MaxDepth:             maxDepth,
-						RelevantContexts:     relevantContexts,
+						PeriodHeaders:        getPeriodHeaders(relevantContexts),
+						ContextualMemberGrid: memberGrid,
+						VoidQuadrant:         voidQuadrant,
 						FactualQuadrant:      factualQuadrant,
 					})
 				}

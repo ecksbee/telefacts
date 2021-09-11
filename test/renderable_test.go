@@ -62,10 +62,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected 43 Indented Labels; outcome %d;\n", len(r.PGrid.IndentedLabels))
 	}
 
-	if r.PGrid.MaxDepth != 1 {
-		t.Fatalf("expected 1 maximum depth; outcome %d;\n", r.PGrid.MaxDepth)
-	}
-
 	iLabel42 := r.PGrid.IndentedLabels[42]
 	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilitiesAndStockholdersEquity` ||
 		!found || len(langPack) != 2 ||
@@ -80,10 +76,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	rd := r.DGrid.RootDomains[0]
 	if rd.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_StatementLineItems` {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_StatementLineItems; outcome %s;\n", rd.Href)
-	}
-
-	if rd.MaxDepth != 1 {
-		t.Fatalf("expected 1 maximum depth; outcome %d;\n", rd.MaxDepth)
 	}
 
 	if len(rd.PrimaryItems) != 36 {
@@ -135,9 +127,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	sItem0 := sItems[0]
 	if sItem0.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_Assets` {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_Assets; outcome %v;\n", sItem0)
-	}
-	if sItem0.MaxDepth != 0 {
-		t.Fatalf("expected 0 max depth; outcome %d;\n", sItem0.MaxDepth)
 	}
 	if len(sItem0.ContributingConcepts) != 6 {
 		t.Fatalf("expected 6 Contributing Concepts; outcome %d;\n", len(sItem0.ContributingConcepts))

@@ -14,10 +14,11 @@ type IndentedLabel struct {
 }
 
 type PGrid struct {
-	IndentedLabels   []IndentedLabel
-	RelevantContexts []RelevantContext
-	MaxDepth         int
-	FactualQuadrant  FactualQuadrant
+	IndentedLabels []IndentedLabel
+	PeriodHeaders
+	ContextualMemberGrid
+	VoidQuadrant
+	FactualQuadrant FactualQuadrant
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
@@ -25,7 +26,7 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
 	labelPacks := make([]LabelPack, 0, 100)
 	indentedLabels, labelPacks := getIndentedLabels(linkroleURI, h)
-	relevantContexts, maxDepth, contextualLabelPacks :=
+	relevantContexts, segmentTypedDomainTrees, scenarioTypedDomainTrees, contextualLabelPacks :=
 		getPresentationContexts(schemedEntity, h, indentedLabels)
 	labelPacks = append(labelPacks, contextualLabelPacks...)
 	reduced := reduce(labelPacks)
@@ -38,11 +39,14 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	}
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts,
 		factFinder, conceptFinder, measurementFinder, langs)
+	memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(relevantContexts,
+		segmentTypedDomainTrees, scenarioTypedDomainTrees)
 	return PGrid{
-		IndentedLabels:   indentedLabels,
-		RelevantContexts: relevantContexts,
-		MaxDepth:         maxDepth,
-		FactualQuadrant:  factualQuadrant,
+		IndentedLabels:       indentedLabels,
+		PeriodHeaders:        getPeriodHeaders(relevantContexts),
+		ContextualMemberGrid: memberGrid,
+		VoidQuadrant:         voidQuadrant,
+		FactualQuadrant:      factualQuadrant,
 	}, labelRoles, langs, nil
 }
 
@@ -80,6 +84,9 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 					if len(node.Children) <= 0 {
 						return
 					}
+					sort.SliceStable(node.Children, func(p, q int) bool {
+						return node.Children[p].Order < node.Children[q].Order
+					})
 					for _, c := range node.Children {
 						href := mapPLocatorToHref(linkroleURI, &presentation, c.Locator)
 						iLabel := GetLabel(h, href)
@@ -91,9 +98,6 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 						labelPacks = append(labelPacks, iLabel)
 						makeIndents(c, level+1)
 					}
-					sort.SliceStable(node.Children, func(p, q int) bool {
-						return node.Children[p].Order < node.Children[q].Order
-					})
 				}
 				makeIndents(&root, 0)
 				return ret, labelPacks
@@ -104,7 +108,8 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
-	indentedLabels []IndentedLabel) ([]RelevantContext, int, []LabelPack) {
+	indentedLabels []IndentedLabel) ([]relevantContext, []locatorNode,
+	[]locatorNode, []LabelPack) {
 	hrefs := make([]string, len(indentedLabels))
 	for i, indentedLabel := range indentedLabels {
 		hrefs[i] = indentedLabel.Href
@@ -113,7 +118,7 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
-	relevantContexts []RelevantContext, factFinder FactFinder,
+	relevantContexts []relevantContext, factFinder FactFinder,
 	conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	langs []Lang) FactualQuadrant {
 	hrefs := make([]string, 0, len(indentedLabels))

@@ -8,11 +8,12 @@ import (
 )
 
 type RootDomain struct {
-	Href                string
-	Label               LabelPack
-	RelevantContexts    []RelevantContext
-	MaxDepth            int
-	PrimaryItems        []PrimaryItem
+	Href         string
+	Label        LabelPack
+	PrimaryItems []PrimaryItem
+	PeriodHeaders
+	ContextualMemberGrid
+	VoidQuadrant
 	FactualQuadrant     FactualQuadrant
 	EffectiveDomainGrid [][]EffectiveDomain
 	EffectiveDimensions []EffectiveDimension
@@ -75,6 +76,9 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 					if len(node.Children) <= 0 {
 						return
 					}
+					sort.SliceStable(node.Children, func(p, q int) bool {
+						return node.Children[p].Order < node.Children[q].Order
+					})
 					for _, c := range node.Children {
 						href := mapDLocatorToHref(linkroleURI, &definition, c.Locator)
 						piLabel := GetLabel(h, href)
@@ -86,9 +90,6 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						})
 						makeIndents(c, level+1)
 					}
-					sort.SliceStable(node.Children, func(p, q int) bool {
-						return node.Children[p].Order < node.Children[q].Order
-					})
 				}
 				dArcs := dArcs(arcs)
 				domainMemberNetwork := tree(dArcs, attr.DomainMemberArcrole)
@@ -119,18 +120,21 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 						explicitDomainNetwork, &exclusiveHypercubeNetwork, &inclusiveHypercubeNetwork,
 						&hypercubeDimensionNetwork, &defaultDimensionsNetwork, locToHref, h)
 					labelPacks = append(labelPacks, edLabels...)
-					relevantContexts, maxDepth, contextualLabelPack := getRelevantContexts(schemedEntity, h, primaryItemHrefs)
+					relevantContexts, segmentTypedDomainArcs, scenarioTypedDomainTrees, contextualLabelPack :=
+						getRelevantContexts(schemedEntity, h, primaryItemHrefs)
 					labelPacks = append(labelPacks, contextualLabelPack...)
 					rdLabelPack := GetLabel(h, rootHref)
 					labelPacks = append(labelPacks, rdLabelPack)
+					memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(relevantContexts, segmentTypedDomainArcs, scenarioTypedDomainTrees)
 					rootDomain := RootDomain{
-						PrimaryItems:        indentedItems,
-						Href:                rootHref,
-						Label:               rdLabelPack,
-						RelevantContexts:    relevantContexts,
-						MaxDepth:            maxDepth,
-						EffectiveDimensions: effectiveDimensions,
-						EffectiveDomainGrid: edGrid,
+						PrimaryItems:         indentedItems,
+						Href:                 rootHref,
+						Label:                rdLabelPack,
+						PeriodHeaders:        getPeriodHeaders(relevantContexts),
+						ContextualMemberGrid: memberGrid,
+						VoidQuadrant:         voidQuadrant,
+						EffectiveDimensions:  effectiveDimensions,
+						EffectiveDomainGrid:  edGrid,
 					}
 					reduced := reduce(labelPacks)
 					if reduced != nil {
@@ -205,7 +209,7 @@ func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorN
 	return &primaryItemNetwork, &explicitDomainNetwork
 }
 
-func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []RelevantContext,
+func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []relevantContext,
 	factFinder FactFinder, conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	langs []Lang) RootDomain {
 	hrefs := make([]string, 0, len(incompleteRootDomain.PrimaryItems)+1)
