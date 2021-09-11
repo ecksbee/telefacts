@@ -14,7 +14,7 @@ type ContextualMemberCell struct {
 type VoidCell struct {
 	IsParenthesized bool
 	Indentation     int
-	Dimension       *Dimension   `json:",omitempty"`
+	Dimension       Dimension
 	TypedDomain     *TypedDomain `json:",omitempty"`
 }
 
@@ -58,6 +58,9 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 	for i := 0; i < rowCount; i++ {
 		row := make([]*ContextualMemberCell, colCount)
 		voidCell := voidQuadrant[i]
+		if voidCell == nil {
+			return ContextualMemberGrid{}, VoidQuadrant{}
+		}
 		ctx := relevantContexts[i]
 		for j := 0; j < colCount; j++ {
 			for _, ctxMember := range ctx.Members {
@@ -121,21 +124,21 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 		}
 	}
 
-	ret := make(VoidQuadrant, len(segmentTypedDimensionMap)+
+	ret := make(VoidQuadrant, 0, len(segmentTypedDimensionMap)+
 		len(scenarioTypedDimensionMap)+len(segmentExplicitDimensionMap)+
 		len(scenarioExplicitDimensionMap))
 	for _, member := range segmentExplicitDimensionMap {
 		ret = append(ret, &VoidCell{
 			IsParenthesized: false,
 			Indentation:     0,
-			Dimension:       &member.Dimension,
+			Dimension:       member.Dimension,
 		})
 	}
 	for _, member := range scenarioExplicitDimensionMap {
 		ret = append(ret, &VoidCell{
 			IsParenthesized: true,
 			Indentation:     0,
-			Dimension:       &member.Dimension,
+			Dimension:       member.Dimension,
 		})
 	}
 	for _, root := range segmentTypedDimensionMap {
@@ -145,20 +148,20 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 				ret = VoidQuadrant{}
 				return
 			}
+			dimension, ok := allDimensionMap[node.Locator]
+			if !ok {
+				ret = VoidQuadrant{}
+				return
+			}
 			sort.SliceStable(node.Children, func(p, q int) bool {
 				return node.Children[p].Order < node.Children[q].Order
 			})
 			for _, c := range node.Children {
 				if level <= 0 {
-					dimension, ok := allDimensionMap[node.Locator]
-					if !ok {
-						ret = VoidQuadrant{}
-						return
-					}
 					ret = append(ret, &VoidCell{
 						IsParenthesized: false,
 						Indentation:     level,
-						Dimension:       dimension,
+						Dimension:       *dimension,
 					})
 				} else {
 					typedDomain, ok := allTypedDomainMap[node.Locator]
@@ -169,6 +172,7 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 					ret = append(ret, &VoidCell{
 						IsParenthesized: false,
 						Indentation:     level,
+						Dimension:       *dimension,
 						TypedDomain:     typedDomain,
 					})
 				}
