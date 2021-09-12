@@ -14,19 +14,19 @@ type IndentedLabel struct {
 }
 
 type PGrid struct {
-	IndentedLabels   []IndentedLabel
-	MaxIndentation   int
-	RelevantContexts []RelevantContext
-	MaxDepth         int
-	FactualQuadrant  FactualQuadrant
+	IndentedLabels []IndentedLabel
+	PeriodHeaders
+	ContextualMemberGrid
+	VoidQuadrant
+	FactualQuadrant FactualQuadrant
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	factFinder FactFinder, conceptFinder ConceptFinder,
 	measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
 	labelPacks := make([]LabelPack, 0, 100)
-	indentedLabels, maxIndentation, labelPacks := getIndentedLabels(linkroleURI, h)
-	relevantContexts, maxDepth, contextualLabelPacks :=
+	indentedLabels, labelPacks := getIndentedLabels(linkroleURI, h)
+	relevantContexts, segmentTypedDomainTrees, scenarioTypedDomainTrees, contextualLabelPacks :=
 		getPresentationContexts(schemedEntity, h, indentedLabels)
 	labelPacks = append(labelPacks, contextualLabelPacks...)
 	reduced := reduce(labelPacks)
@@ -39,12 +39,14 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	}
 	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts,
 		factFinder, conceptFinder, measurementFinder, langs)
+	memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(relevantContexts,
+		segmentTypedDomainTrees, scenarioTypedDomainTrees)
 	return PGrid{
-		IndentedLabels:   indentedLabels,
-		MaxIndentation:   maxIndentation,
-		RelevantContexts: relevantContexts,
-		MaxDepth:         maxDepth,
-		FactualQuadrant:  factualQuadrant,
+		IndentedLabels:       indentedLabels,
+		PeriodHeaders:        getPeriodHeaders(relevantContexts),
+		ContextualMemberGrid: memberGrid,
+		VoidQuadrant:         voidQuadrant,
+		FactualQuadrant:      factualQuadrant,
 	}, labelRoles, langs, nil
 }
 
@@ -61,7 +63,7 @@ func pArcs(pArcs []hydratables.PresentationArc) []arc {
 	return ret
 }
 
-func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, int, []LabelPack) {
+func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]IndentedLabel, []LabelPack) {
 	labelPacks := make([]LabelPack, 0, 100)
 	for _, presentation := range h.PresentationLinkbases {
 		var presentationLinks []hydratables.PresentationLink
@@ -77,15 +79,14 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 				pArcs := pArcs(arcs)
 				root := tree(pArcs, attr.PresentationArcrole)
 				ret := make([]IndentedLabel, 0, len(arcs))
-				maxIndent := 1
 				var makeIndents func(node *locatorNode, level int)
 				makeIndents = func(node *locatorNode, level int) {
 					if len(node.Children) <= 0 {
 						return
 					}
-					if level+1 > maxIndent {
-						maxIndent = level + 1
-					}
+					sort.SliceStable(node.Children, func(p, q int) bool {
+						return node.Children[p].Order < node.Children[q].Order
+					})
 					for _, c := range node.Children {
 						href := mapPLocatorToHref(linkroleURI, &presentation, c.Locator)
 						iLabel := GetLabel(h, href)
@@ -97,20 +98,18 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 						labelPacks = append(labelPacks, iLabel)
 						makeIndents(c, level+1)
 					}
-					sort.SliceStable(node.Children, func(p, q int) bool {
-						return node.Children[p].Order < node.Children[q].Order
-					})
 				}
 				makeIndents(&root, 0)
-				return ret, maxIndent, labelPacks
+				return ret, labelPacks
 			}
 		}
 	}
-	return nil, -1, labelPacks
+	return nil, labelPacks
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
-	indentedLabels []IndentedLabel) ([]RelevantContext, int, []LabelPack) {
+	indentedLabels []IndentedLabel) ([]relevantContext, []locatorNode,
+	[]locatorNode, []LabelPack) {
 	hrefs := make([]string, len(indentedLabels))
 	for i, indentedLabel := range indentedLabels {
 		hrefs[i] = indentedLabel.Href
@@ -119,7 +118,7 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
-	relevantContexts []RelevantContext, factFinder FactFinder,
+	relevantContexts []relevantContext, factFinder FactFinder,
 	conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
 	langs []Lang) FactualQuadrant {
 	hrefs := make([]string, 0, len(indentedLabels))

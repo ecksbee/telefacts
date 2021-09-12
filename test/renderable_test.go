@@ -62,19 +62,11 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected 43 Indented Labels; outcome %d;\n", len(r.PGrid.IndentedLabels))
 	}
 
-	if r.PGrid.MaxIndentation != 6 {
-		t.Fatalf("expected 6 maximum indentation; outcome %d;\n", r.PGrid.MaxIndentation)
-	}
-
-	if r.PGrid.MaxDepth != 1 {
-		t.Fatalf("expected 1 maximum depth; outcome %d;\n", r.PGrid.MaxDepth)
-	}
-
 	iLabel42 := r.PGrid.IndentedLabels[42]
-	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilitiesAndStockholdersEquity` ||
+	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_CommonClassBMember` ||
 		!found || len(langPack) != 2 ||
-		langPack[renderables.English] != `Liabilities and Equity` {
-		t.Fatalf("expected Liabilities and Equity; outcome %v;\n", r.PGrid.IndentedLabels[42])
+		langPack[renderables.English] != `Common Class B [Member]` {
+		t.Fatalf("expected Common Class B [Member]; outcome %v;\n", r.PGrid.IndentedLabels[42])
 	}
 
 	if len(r.DGrid.RootDomains) != 1 {
@@ -84,14 +76,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	rd := r.DGrid.RootDomains[0]
 	if rd.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_StatementLineItems` {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_StatementLineItems; outcome %s;\n", rd.Href)
-	}
-
-	if rd.MaxDepth != 1 {
-		t.Fatalf("expected 1 maximum depth; outcome %d;\n", rd.MaxDepth)
-	}
-
-	if rd.MaxLevel != 3 {
-		t.Fatalf("expected 3 maximum level; outcome %d;\n", rd.MaxLevel)
 	}
 
 	if len(rd.PrimaryItems) != 36 {
@@ -143,9 +127,6 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	sItem0 := sItems[0]
 	if sItem0.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_Assets` {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_Assets; outcome %v;\n", sItem0)
-	}
-	if sItem0.MaxDepth != 0 {
-		t.Fatalf("expected 0 max depth; outcome %d;\n", sItem0.MaxDepth)
 	}
 	if len(sItem0.ContributingConcepts) != 6 {
 		t.Fatalf("expected 6 Contributing Concepts; outcome %d;\n", len(sItem0.ContributingConcepts))
