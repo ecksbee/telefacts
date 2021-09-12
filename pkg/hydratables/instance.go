@@ -1,9 +1,13 @@
 package hydratables
 
 import (
+	"bufio"
+	"encoding/xml"
 	"fmt"
+	"io"
 	"sort"
 	"strconv"
+	"strings"
 
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -34,7 +38,8 @@ type TypedMember struct {
 		Value           string
 		TypedDomainHref string
 	}
-	Value string
+	TypedMembersMap map[string]string
+	TypedDomainArcs []TypedDomainArc
 }
 
 type Context struct {
@@ -58,6 +63,12 @@ type Entity struct {
 type DimensionContext struct {
 	ExplicitMembers []ExplicitMember
 	TypedMembers    []TypedMember
+}
+
+type TypedDomainArc struct {
+	Order float64
+	From  string
+	To    string
 }
 
 type Instant struct {
@@ -194,6 +205,8 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if err != nil || dimRef == "" || dimConcept == nil {
 						continue
 					}
+					typedMembersMap, typedDomainArcs := hydrateTypedMembers(dimRef, typedMember.XMLInner,
+						instanceFile, h)
 					newTypedMember := TypedMember{
 						Dimension: struct {
 							Href            string
@@ -204,7 +217,8 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 							TypedDomainHref: dimConcept.TypedDomainHref,
 							Value:           dimAttr.Value,
 						},
-						Value: typedMember.XMLInner,
+						TypedMembersMap: typedMembersMap,
+						TypedDomainArcs: typedDomainArcs,
 					}
 					segment.TypedMembers = append(segment.TypedMembers, newTypedMember)
 				}
@@ -286,6 +300,8 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 					if err != nil || dimRef == "" || dimConcept == nil {
 						continue
 					}
+					typedMembersMap, typedDomainArcs := hydrateTypedMembers(dimRef, typedMember.XMLInner,
+						instanceFile, h)
 					newTypedMember := TypedMember{
 						Dimension: struct {
 							Href            string
@@ -296,7 +312,8 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 							Value:           dimAttr.Value,
 							TypedDomainHref: dimConcept.TypedDomainHref,
 						},
-						Value: typedMember.XMLInner,
+						TypedMembersMap: typedMembersMap,
+						TypedDomainArcs: typedDomainArcs,
 					}
 					scenario.TypedMembers = append(scenario.TypedMembers, newTypedMember)
 				}
@@ -309,6 +326,83 @@ func hydrateContexts(instanceFile *serializables.InstanceFile, h *Hydratable) []
 		return ret[i].ID < ret[j].ID
 	})
 	return ret
+}
+
+func hydrateTypedMembers(dimensionHref string, typedMember string, instanceFile *serializables.InstanceFile, h *Hydratable) (map[string]string, []TypedDomainArc) {
+	reader := bufio.NewReader(strings.NewReader(typedMember))
+	d := xml.NewDecoder(reader)
+	retMap := make(map[string]string)
+	arcs := make([]TypedDomainArc, 0)
+	order := 0
+	var stack Stack
+	stack = make([]*Concept, 0)
+	prevHref := dimensionHref
+	_, prev, err := h.HashQuery(dimensionHref)
+	dimension := prev
+	if err != nil {
+		return nil, nil
+	}
+	for {
+		token, err := d.Token()
+		if err == io.EOF {
+			break
+		}
+		switch token.(type) {
+		case xml.StartElement:
+			startElem, ok := token.(xml.StartElement)
+			if ok {
+				startElemName := attr.Xmlns(instanceFile.XMLAttrs, startElem.Name.Space+":"+startElem.Name.Local)
+				if startElemName.Space == "" {
+					continue
+				}
+				currHref, curr, err := h.NameQuery(startElemName.Space, startElemName.Local)
+				if err != nil {
+					return nil, nil
+				}
+				order++
+				stack.Push(curr)
+				arcs = append(arcs, TypedDomainArc{
+					From:  prevHref,
+					To:    currHref,
+					Order: float64(order),
+				})
+				prev = curr
+				prevHref = currHref
+			}
+		case xml.EndElement:
+			endElem, ok := token.(xml.EndElement)
+			if ok {
+				popped, ok := stack.Pop()
+				if !ok {
+					return nil, nil
+				}
+				endElemName := attr.Xmlns(instanceFile.XMLAttrs, endElem.Name.Space+":"+endElem.Name.Local)
+				if (popped.XMLName.Local != endElemName.Local) && (popped.XMLName.Space != endElemName.Space) {
+					return nil, nil
+				}
+				prev, ok = stack.Pop()
+				if ok {
+					stack.Push(prev)
+				} else {
+					prev = dimension
+				}
+			}
+		case xml.CharData:
+			charData, ok := token.(xml.CharData)
+			if ok {
+				str := strings.TrimSpace(string(charData))
+				if str == "" {
+					continue
+				}
+				typedDomainHref, _, err := h.NameQuery(prev.XMLName.Space, prev.XMLName.Local)
+				if err != nil {
+					return nil, nil
+				}
+				retMap[typedDomainHref] = str
+			}
+		}
+	}
+	return retMap, arcs
 }
 
 func hydrateUnits(instanceFile *serializables.InstanceFile) []Unit {

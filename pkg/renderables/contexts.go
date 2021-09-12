@@ -18,10 +18,10 @@ func getContext(instance *hydratables.Instance, contextRef string) *hydratables.
 type relevantContext struct {
 	ContextRef   string
 	PeriodHeader LanguagePack
-	Members      []ContextualMember
+	Members      []RelevantMember
 }
 
-type ContextualMember struct {
+type RelevantMember struct {
 	Dimension
 	ExplicitMember *ExplicitMember
 	TypedMember    string
@@ -160,8 +160,8 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 	if len(factuaHrefs) <= 0 {
 		return []relevantContext{}, []locatorNode{}, []locatorNode{}, []LabelPack{}
 	}
-	var segmentTypedDomainTrees []locatorNode
-	var scenarioTypedDomainTrees []locatorNode
+	segmentTypedDomainTrees := make([]locatorNode, 0)
+	scenarioTypedDomainTrees := make([]locatorNode, 0)
 	ret := make([]relevantContext, 0, len(hrefs)*4)
 	labelPacks := make([]LabelPack, 0, len(hrefs)*4)
 	for _, instance := range h.Instances {
@@ -172,12 +172,11 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 					continue
 				}
 				if factualEdgeHref == fact.Href {
-					var context *hydratables.Context
-					context = getContext(&instance, fact.ContextRef)
+					context := getContext(&instance, fact.ContextRef)
 					entity := context.Entity
 					contextualSchemedEntity := entity.Identifier.Scheme + "/" + entity.Identifier.CharData
 					if contextualSchemedEntity == schemedEntity {
-						contextualMembers, segmentTypedDomainTrees, scenarioTypedDomainTrees,
+						contextualMembers, segmentTypedDomainTreesLocal, scenarioTypedDomainTreesLocal,
 							contextualLabelPacks := getContextualMembers(context, h)
 						labelPacks = append(labelPacks, contextualLabelPacks...)
 						newItem := relevantContext{
@@ -185,8 +184,8 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 							PeriodHeader: periodString(context),
 							Members:      contextualMembers,
 						}
-						segmentTypedDomainTrees = segmentTypedDomainTrees
-						scenarioTypedDomainTrees = scenarioTypedDomainTrees
+						segmentTypedDomainTrees = append(segmentTypedDomainTrees, segmentTypedDomainTreesLocal...)
+						scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, scenarioTypedDomainTreesLocal...)
 						ret = append(ret, newItem)
 						contextRefTaken[fact.ContextRef] = true
 					}
@@ -199,9 +198,9 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getContextualMembers(context *hydratables.Context,
-	h *hydratables.Hydratable) ([]ContextualMember, []locatorNode,
+	h *hydratables.Hydratable) ([]RelevantMember, []locatorNode,
 	[]locatorNode, []LabelPack) {
-	ret := make([]ContextualMember, 0)
+	ret := make([]RelevantMember, 0)
 	labelPacks := make([]LabelPack, 0)
 	segmentTypedDomainTrees := make([]locatorNode, 0)
 	scenarioTypedDomainTrees := make([]locatorNode, 0)
@@ -213,7 +212,7 @@ func getContextualMembers(context *hydratables.Context,
 			dimension := explicitMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualMember{
+			ret = append(ret, RelevantMember{
 				Dimension: Dimension{
 					Href:  dimension,
 					Label: GetLabel(h, dimension),
@@ -248,7 +247,7 @@ func getContextualMembers(context *hydratables.Context,
 			dimension := explicitMember.Dimension.Href
 			dimensionLabel := GetLabel(h, dimension)
 			labelPacks = append(labelPacks, dimensionLabel)
-			ret = append(ret, ContextualMember{
+			ret = append(ret, RelevantMember{
 				Dimension: Dimension{
 					Href:  dimension,
 					Label: GetLabel(h, dimension),

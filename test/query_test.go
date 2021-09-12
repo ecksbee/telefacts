@@ -70,4 +70,11 @@ func TestHashQuery_Gold(t *testing.T) {
 		cc.XMLName.Local != "StatementOfStockholdersEquityAbstract" {
 		t.Fatalf("expected StatementOfStockholdersEquityAbstract; outcome %v;\n", cc)
 	}
+	typedDomainHref, typedDomain, err := h.NameQuery("http://fasb.org/us-gaap/2020-01-31", "RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis.domain")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if typedDomainHref == "" || typedDomain == nil {
+		t.Fatalf("exptected RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis.domain; outcome: nil or blank typed domain")
+	}
 }
