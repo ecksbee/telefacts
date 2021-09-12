@@ -19,10 +19,9 @@ func formatPeriod(p PGrid, d DGrid, c CGrid, langs []Lang) (PGrid, DGrid, CGrid)
 
 func formatRelevantPeriod(periodHeaders PeriodHeaders, langs []Lang) PeriodHeaders {
 	ret := make(PeriodHeaders, len(periodHeaders))
-	for i, ctxPtr := range periodHeaders {
-		ctx := *ctxPtr
+	for i, ctx := range periodHeaders {
 		if _, foundPure := ctx[PureLabel]; !foundPure {
-			ret[i] = &ctx
+			ret[i] = ctx
 			continue
 		}
 		if pureData, foundPure := ctx[PureLabel]; foundPure {
@@ -33,7 +32,7 @@ func formatRelevantPeriod(periodHeaders PeriodHeaders, langs []Lang) PeriodHeade
 				ctx[lang] = formatDate(lang, pureData)
 			}
 		}
-		ret[i] = &ctx
+		ret[i] = ctx
 	}
 	return periodHeaders
 }
