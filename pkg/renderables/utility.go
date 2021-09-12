@@ -158,34 +158,3 @@ func paths(node *locatorNode, prior path) []path {
 	}
 	return ret
 }
-
-type Stack []*hydratables.Concept
-
-// IsEmpty: check if stack is empty
-func (s *Stack) IsEmpty() bool {
-	return len(*s) == 0
-}
-
-// Push a new value onto the stack
-func (s *Stack) Push(concept *hydratables.Concept) {
-	*s = append(*s, concept) // Simply append the new value to the end of the stack
-}
-
-// Remove and return top element of stack. Return false if stack is empty.
-func (s *Stack) Pop() (*hydratables.Concept, bool) {
-	if s.IsEmpty() {
-		return nil, false
-	} else {
-		index := len(*s) - 1   // Get the index of the top most element.
-		element := (*s)[index] // Index into the slice and obtain the element.
-		*s = (*s)[:index]      // Remove it from the stack by slicing it off.
-		return element, true
-	}
-}
-
-func (s *Stack) Copy() *Stack {
-	dst := make([]*hydratables.Concept, len(*s))
-	copy(dst, *s)
-	ret := Stack(dst)
-	return &ret
-}

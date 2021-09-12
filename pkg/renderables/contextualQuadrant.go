@@ -90,8 +90,8 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 
 func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []locatorNode,
 	scenarioTypedDomainTrees []locatorNode) VoidQuadrant {
-	segmentExplicitDimensionMap := make(map[string]*ContextualMember)
-	scenarioExplicitDimensionMap := make(map[string]*ContextualMember)
+	segmentExplicitDimensionMap := make(map[string]*RelevantMember)
+	scenarioExplicitDimensionMap := make(map[string]*RelevantMember)
 	segmentTypedDimensionMap := make(map[string]*locatorNode)
 	scenarioTypedDimensionMap := make(map[string]*locatorNode)
 	allDimensionMap := make(map[string]*Dimension)
@@ -115,6 +115,7 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 		}
 	}
 
+	//todo reduce array of segmentTypedDomainTree into a single tree
 	for i := 0; i < len(segmentTypedDomainTrees); i++ {
 		root := segmentTypedDomainTrees[i]
 		if root.Locator != "" {
@@ -122,10 +123,11 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 		}
 	}
 
-	for i := 0; i < len(segmentTypedDomainTrees); i++ {
-		root := segmentTypedDomainTrees[i]
+	//todo reduce array of segmentTypedDomainTree into a single tree
+	for i := 0; i < len(scenarioTypedDomainTrees); i++ {
+		root := scenarioTypedDomainTrees[i]
 		if root.Locator != "" {
-			segmentTypedDimensionMap[root.Locator] = &root
+			scenarioTypedDimensionMap[root.Locator] = &root
 		}
 	}
 
@@ -146,45 +148,45 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 			Dimension:       member.Dimension,
 		})
 	}
-	for _, root := range segmentTypedDimensionMap {
-		var makeIndents func(node *locatorNode, level int)
-		makeIndents = func(node *locatorNode, level int) {
-			if len(node.Children) <= 0 {
-				ret = VoidQuadrant{}
-				return
-			}
-			dimension, ok := allDimensionMap[node.Locator]
-			if !ok {
-				ret = VoidQuadrant{}
-				return
-			}
-			sort.SliceStable(node.Children, func(p, q int) bool {
-				return node.Children[p].Order < node.Children[q].Order
-			})
-			for _, c := range node.Children {
-				if level <= 0 {
-					ret = append(ret, &VoidCell{
-						IsParenthesized: false,
-						Indentation:     level,
-						Dimension:       *dimension,
-					})
-				} else {
-					typedDomain, ok := allTypedDomainMap[node.Locator]
-					if !ok {
-						ret = VoidQuadrant{}
-						return
-					}
-					ret = append(ret, &VoidCell{
-						IsParenthesized: false,
-						Indentation:     level,
-						Dimension:       *dimension,
-						TypedDomain:     typedDomain,
-					})
-				}
-				makeIndents(c, level+1)
-			}
-		}
-		makeIndents(root, 0)
-	}
+	// for _, root := range segmentTypedDimensionMap {
+	// 	var makeIndents func(node *locatorNode, level int)
+	// 	makeIndents = func(node *locatorNode, level int) {
+	// 		if len(node.Children) <= 0 {
+	// 			ret = VoidQuadrant{}
+	// 			return
+	// 		}
+	// 		dimension, ok := allDimensionMap[node.Locator]
+	// 		if !ok {
+	// 			ret = VoidQuadrant{}
+	// 			return
+	// 		}
+	// 		sort.SliceStable(node.Children, func(p, q int) bool {
+	// 			return node.Children[p].Order < node.Children[q].Order
+	// 		})
+	// 		for _, c := range node.Children {
+	// 			if level <= 0 {
+	// 				ret = append(ret, &VoidCell{
+	// 					IsParenthesized: false,
+	// 					Indentation:     level,
+	// 					Dimension:       *dimension,
+	// 				})
+	// 			} else {
+	// 				typedDomain, ok := allTypedDomainMap[node.Locator]
+	// 				if !ok {
+	// 					ret = VoidQuadrant{}
+	// 					return
+	// 				}
+	// 				ret = append(ret, &VoidCell{
+	// 					IsParenthesized: false,
+	// 					Indentation:     level,
+	// 					Dimension:       *dimension,
+	// 					TypedDomain:     typedDomain,
+	// 				})
+	// 			}
+	// 			makeIndents(c, level+1)
+	// 		}
+	// 	}
+	// 	makeIndents(root, 0)
+	// }
 	return ret
 }

@@ -138,6 +138,53 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 
 }
 
+func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.VolumePath = path.Join(".", "data")
+	hydratables.InjectCache(hcache)
+	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	f, err := serializables.Discover("test_gold")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	h, err := hydratables.Hydrate(f)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	slug := "ede1c87be654e31915fece14f9994d47"
+	data, err := renderables.MarshalRenderable(slug, h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	r := renderables.Renderable{}
+	err = json.Unmarshal(data, &r)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+
+	if len(r.LabelRoles) != 2 {
+		t.Fatalf("expected 2 LabelRole; outcome %d;\n", len(r.LabelRoles))
+	}
+
+	if len(r.Lang) != 2 {
+		t.Fatalf("expected 2 Lang; outcome %d;\n", len(r.Lang))
+	}
+
+	if r.RelationshipSet.Title != "2429414 - Disclosure - Revenue Recognition - Deferred Revenue and Transaction Price Allocated to the Remaining Performance Obligations (Details)" {
+		t.Fatalf("expected 2429414 - Disclosure - Revenue Recognition - Deferred Revenue and Transaction Price Allocated to the Remaining Performance Obligations (Details); outcome %s;\n", r.RelationshipSet.Title)
+	}
+
+	if r.Subject.Name != "WORKIVA INC" {
+		t.Fatalf("expected WORKIVA INC; outcome %s;\n", r.Subject.Name)
+	}
+	fmt.Printf("%v\n", r.PGrid.ContextualMemberGrid)
+}
+
 func hydratableFactory(id string) (*hydratables.Hydratable, error) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.VolumePath = path.Join(".", "data")

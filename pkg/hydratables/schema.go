@@ -154,13 +154,14 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 		if nameAttr == nil || nameAttr.Value == "" {
 			continue
 		}
-		substitutionGroupAttr := attr.FindAttr(element.XMLAttrs, "substitutionGroup")
-		if substitutionGroupAttr == nil || substitutionGroupAttr.Value == "" {
-			continue
-		}
 		typeAttr := attr.FindAttr(element.XMLAttrs, "type")
 		if typeAttr == nil || typeAttr.Value == "" {
 			continue
+		}
+		substitutionGroup := xml.Name{}
+		substitutionGroupAttr := attr.FindAttr(element.XMLAttrs, "substitutionGroup")
+		if substitutionGroupAttr != nil && substitutionGroupAttr.Value == "" {
+			substitutionGroup = attr.Xmlns(tlAttrs, substitutionGroupAttr.Value)
 		}
 		isAbstract := false
 		abstractAttr := attr.FindAttr(element.XMLAttrs, "abstract")
@@ -204,7 +205,7 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 			},
 			ID:                idAttr.Value,
 			Type:              attr.Xmlns(tlAttrs, typeAttr.Value),
-			SubstitutionGroup: attr.Xmlns(tlAttrs, substitutionGroupAttr.Value),
+			SubstitutionGroup: substitutionGroup,
 			Abstract:          isAbstract,
 			Balance:           balance,
 			Nillable:          isNillable,
@@ -213,4 +214,35 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 		})
 	}
 	return ret
+}
+
+type Stack []*Concept
+
+// IsEmpty: check if stack is empty
+func (s *Stack) IsEmpty() bool {
+	return len(*s) == 0
+}
+
+// Push a new value onto the stack
+func (s *Stack) Push(concept *Concept) {
+	*s = append(*s, concept) // Simply append the new value to the end of the stack
+}
+
+// Remove and return top element of stack. Return false if stack is empty.
+func (s *Stack) Pop() (*Concept, bool) {
+	if s.IsEmpty() {
+		return nil, false
+	} else {
+		index := len(*s) - 1   // Get the index of the top most element.
+		element := (*s)[index] // Index into the slice and obtain the element.
+		*s = (*s)[:index]      // Remove it from the stack by slicing it off.
+		return element, true
+	}
+}
+
+func (s *Stack) Copy() *Stack {
+	dst := make([]*Concept, len(*s))
+	copy(dst, *s)
+	ret := Stack(dst)
+	return &ret
 }

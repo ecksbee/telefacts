@@ -24,7 +24,6 @@ type PGrid struct {
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	factFinder FactFinder, conceptFinder ConceptFinder,
 	measurementFinder MeasurementFinder) (PGrid, []LabelRole, []Lang, error) {
-	labelPacks := make([]LabelPack, 0, 100)
 	indentedLabels, labelPacks := getIndentedLabels(linkroleURI, h)
 	relevantContexts, segmentTypedDomainTrees, scenarioTypedDomainTrees, contextualLabelPacks :=
 		getPresentationContexts(schemedEntity, h, indentedLabels)
