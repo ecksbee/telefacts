@@ -63,10 +63,10 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	}
 
 	iLabel42 := r.PGrid.IndentedLabels[42]
-	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilitiesAndStockholdersEquity` ||
+	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_CommonClassBMember` ||
 		!found || len(langPack) != 2 ||
-		langPack[renderables.English] != `Liabilities and Equity` {
-		t.Fatalf("expected Liabilities and Equity; outcome %v;\n", r.PGrid.IndentedLabels[42])
+		langPack[renderables.English] != `Common Class B [Member]` {
+		t.Fatalf("expected Common Class B [Member]; outcome %v;\n", r.PGrid.IndentedLabels[42])
 	}
 
 	if len(r.DGrid.RootDomains) != 1 {
