@@ -160,7 +160,7 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 		}
 		substitutionGroup := xml.Name{}
 		substitutionGroupAttr := attr.FindAttr(element.XMLAttrs, "substitutionGroup")
-		if substitutionGroupAttr != nil && substitutionGroupAttr.Value == "" {
+		if substitutionGroupAttr != nil && substitutionGroupAttr.Value != "" {
 			substitutionGroup = attr.Xmlns(tlAttrs, substitutionGroupAttr.Value)
 		}
 		isAbstract := false

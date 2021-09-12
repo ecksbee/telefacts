@@ -182,7 +182,62 @@ func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
 	if r.Subject.Name != "WORKIVA INC" {
 		t.Fatalf("expected WORKIVA INC; outcome %s;\n", r.Subject.Name)
 	}
-	fmt.Printf("%v\n", r.PGrid.ContextualMemberGrid)
+
+	if len(r.PGrid.PeriodHeaders) != 6 {
+		t.Fatalf("expected 6 PeriodHeaders; outcome %d;\n", len(r.PGrid.PeriodHeaders))
+	}
+
+	if len(r.PGrid.PeriodHeaders) != 6 {
+		t.Fatalf("expected 6 PeriodHeaders; outcome %d;\n", len(r.PGrid.PeriodHeaders))
+	}
+
+	if r.PGrid.PeriodHeaders[5][renderables.PureLabel] != "2020-09-30" {
+		t.Fatalf("expected 2020-09-30; outcome %s;\n", r.PGrid.PeriodHeaders[5][renderables.PureLabel])
+	}
+
+	if len(r.PGrid.VoidQuadrant) != 2 {
+		t.Fatalf("expected 2 VoidQuadrant; outcome %d;\n", len(r.PGrid.VoidQuadrant))
+	}
+
+	voidQ0 := r.PGrid.VoidQuadrant[0]
+	if voidQ0 == nil || voidQ0.IsParenthesized || voidQ0.Indentation != 1 ||
+		voidQ0.TypedDomain != nil ||
+		voidQ0.Dimension.Href != "http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis" {
+		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis; outcome %s;\n", voidQ0.Dimension.Href)
+	}
+
+	voidQ1 := r.PGrid.VoidQuadrant[1]
+	if voidQ1 == nil || voidQ1.IsParenthesized || voidQ1.Indentation != 2 ||
+		voidQ1.TypedDomain == nil ||
+		voidQ1.TypedDomain.Href != "http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis.domain" &&
+			voidQ1.Dimension.Href != "http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis" {
+		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_RevenueRemainingPerformanceObligationExpectedTimingOfSatisfactionStartDateAxis.domain; outcome %v;\n", voidQ1.TypedDomain)
+	}
+
+	if len(r.PGrid.VoidQuadrant) != 2 {
+		t.Fatalf("expected 2 VoidQuadrant; outcome %d;\n", len(r.PGrid.VoidQuadrant))
+	}
+
+	if len(r.PGrid.ContextualMemberGrid) != 2 {
+		t.Fatalf("expected 2 ContextualMemberGrid rows; outcome %d;\n", len(r.PGrid.ContextualMemberGrid))
+	}
+
+	if len(r.PGrid.ContextualMemberGrid[0]) != 6 {
+		t.Fatalf("expected 6 ContextualMemberGrid columns; outcome %d;\n", len(r.PGrid.ContextualMemberGrid[0]))
+	}
+
+	if r.PGrid.ContextualMemberGrid[1][5].TypedMember != "2020-10-01" &&
+		r.PGrid.ContextualMemberGrid[1][5].ExplicitMember == nil {
+		t.Fatalf("expected 2020-10-01; outcome %d;\n", len(r.PGrid.ContextualMemberGrid[1][5].TypedMember))
+	}
+
+	if len(r.PGrid.FactualQuadrant) != 7 {
+		t.Fatalf("expected 7 FactualQuadrant rows; outcome %d;\n", len(r.PGrid.FactualQuadrant))
+	}
+
+	if len(r.PGrid.FactualQuadrant[0]) != 6 {
+		t.Fatalf("expected 6 FactualQuadrant columns; outcome %d;\n", len(r.PGrid.FactualQuadrant[0]))
+	}
 }
 
 func hydratableFactory(id string) (*hydratables.Hydratable, error) {

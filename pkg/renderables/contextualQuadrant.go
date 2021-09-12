@@ -115,22 +115,6 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 		}
 	}
 
-	//todo reduce array of segmentTypedDomainTree into a single tree
-	for i := 0; i < len(segmentTypedDomainTrees); i++ {
-		root := segmentTypedDomainTrees[i]
-		if root.Locator != "" {
-			segmentTypedDimensionMap[root.Locator] = &root
-		}
-	}
-
-	//todo reduce array of segmentTypedDomainTree into a single tree
-	for i := 0; i < len(scenarioTypedDomainTrees); i++ {
-		root := scenarioTypedDomainTrees[i]
-		if root.Locator != "" {
-			scenarioTypedDimensionMap[root.Locator] = &root
-		}
-	}
-
 	ret := make(VoidQuadrant, 0, len(segmentTypedDimensionMap)+
 		len(scenarioTypedDimensionMap)+len(segmentExplicitDimensionMap)+
 		len(scenarioExplicitDimensionMap))
@@ -148,45 +132,109 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 			Dimension:       member.Dimension,
 		})
 	}
-	// for _, root := range segmentTypedDimensionMap {
-	// 	var makeIndents func(node *locatorNode, level int)
-	// 	makeIndents = func(node *locatorNode, level int) {
-	// 		if len(node.Children) <= 0 {
-	// 			ret = VoidQuadrant{}
-	// 			return
-	// 		}
-	// 		dimension, ok := allDimensionMap[node.Locator]
-	// 		if !ok {
-	// 			ret = VoidQuadrant{}
-	// 			return
-	// 		}
-	// 		sort.SliceStable(node.Children, func(p, q int) bool {
-	// 			return node.Children[p].Order < node.Children[q].Order
-	// 		})
-	// 		for _, c := range node.Children {
-	// 			if level <= 0 {
-	// 				ret = append(ret, &VoidCell{
-	// 					IsParenthesized: false,
-	// 					Indentation:     level,
-	// 					Dimension:       *dimension,
-	// 				})
-	// 			} else {
-	// 				typedDomain, ok := allTypedDomainMap[node.Locator]
-	// 				if !ok {
-	// 					ret = VoidQuadrant{}
-	// 					return
-	// 				}
-	// 				ret = append(ret, &VoidCell{
-	// 					IsParenthesized: false,
-	// 					Indentation:     level,
-	// 					Dimension:       *dimension,
-	// 					TypedDomain:     typedDomain,
-	// 				})
-	// 			}
-	// 			makeIndents(c, level+1)
-	// 		}
-	// 	}
-	// 	makeIndents(root, 0)
-	// }
+
+	reducedSegmentTypedDomainTree := reduceTrees(segmentTypedDomainTrees)
+	reducedScenarioTypedDomainTree := reduceTrees(scenarioTypedDomainTrees)
+	var dimension *Dimension
+	var makeIndents func(node *locatorNode, level int, isParenthesized bool)
+	makeIndents = func(node *locatorNode, level int, isParenthesized bool) {
+		if dimension == nil && node.Locator != "" {
+			mappedDimension, ok := allDimensionMap[node.Locator]
+			if !ok {
+				ret = VoidQuadrant{}
+				return
+			}
+			dimension = mappedDimension
+		}
+		if level == 1 {
+			ret = append(ret, &VoidCell{
+				IsParenthesized: isParenthesized,
+				Indentation:     level,
+				Dimension:       *dimension,
+				TypedDomain:     nil,
+			})
+		}
+		if level > 1 {
+			if node.Locator != "" {
+				typedDomain, ok := allTypedDomainMap[node.Locator]
+				if !ok {
+					ret = VoidQuadrant{}
+					return
+				}
+				ret = append(ret, &VoidCell{
+					IsParenthesized: isParenthesized,
+					Indentation:     level,
+					Dimension:       *dimension,
+					TypedDomain:     typedDomain,
+				})
+			}
+		}
+		if len(node.Children) <= 0 {
+			return
+		}
+		sort.SliceStable(node.Children, func(p, q int) bool {
+			return node.Children[p].Order < node.Children[q].Order
+		})
+		for _, c := range node.Children {
+			makeIndents(c, level+1, isParenthesized)
+		}
+	}
+	makeIndents(&reducedSegmentTypedDomainTree, 0, false)
+	makeIndents(&reducedScenarioTypedDomainTree, 0, true)
 	return ret
+}
+
+func reduceTrees(trees []locatorNode) locatorNode {
+	ret := locatorNode{}
+	hasNonblankRoots := true
+	dimensions := make([]*locatorNode, 0, len(trees))
+	for _, root := range trees {
+		if root.Locator == "" && len(root.Children) > 0 {
+			dimensions = append(dimensions, root.Children...)
+		} else {
+			hasNonblankRoots = false
+		}
+	}
+	if !hasNonblankRoots {
+		return locatorNode{}
+	}
+	ret.Order = 0
+	ret.Locator = ""
+	ret.Children = make([]*locatorNode, 0)
+	ret = *dedupNodes(dimensions, ret, int(ret.Order))
+	return ret
+}
+
+func dedupNodes(children []*locatorNode, dst locatorNode, order int) *locatorNode {
+	if children == nil || len(children) <= 0 {
+		return &dst
+	}
+	ret := dst
+	ret.Order = float64(order)
+	dupLocators := make([]string, 0, len(children))
+	for _, node := range children {
+		dupLocators = append(dupLocators, node.Locator)
+	}
+	dedupLocators := dedup(dupLocators)
+	dedupLocators = sort.StringSlice(dedupLocators)
+	dedupChildren := make([]*locatorNode, 0)
+	for _, dedupLocator := range dedupLocators {
+		order++
+		dupGrandchildren := make([]*locatorNode, 0)
+		for _, dupChild := range children {
+			if dupChild.Locator == dedupLocator {
+				copied := make([]*locatorNode, len(dupChild.Children))
+				copy(copied, dupChild.Children)
+				dupGrandchildren = append(dupGrandchildren, copied...)
+			}
+		}
+		dstChild := locatorNode{
+			Locator: dedupLocator,
+			Order:   float64(order),
+		}
+		dstChild = *dedupNodes(dupGrandchildren, dstChild, order)
+		dedupChildren = append(dedupChildren, &dstChild)
+	}
+	ret.Children = dedupChildren
+	return &ret
 }
