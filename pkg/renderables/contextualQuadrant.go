@@ -1,7 +1,6 @@
 package renderables
 
 import (
-	"fmt"
 	"sort"
 )
 
@@ -62,42 +61,30 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 		}
 		row := make([]*ContextualMemberCell, colCount)
 		for j, ctx := range relevantContexts {
-			cell := &ContextualMemberCell{
-				TypedMember: ctx.PeriodHeader[PureLabel],
+			cell := &ContextualMemberCell{}
+			for _, ctxMember := range ctx.Members {
+				if ctxMember.Dimension.Href == voidCell.Dimension.Href {
+					if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
+						if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
+							cell = &ContextualMemberCell{
+								TypedMember: ctxMember.TypedMember,
+							}
+							break
+						}
+					} else {
+						if ctxMember.TypedDomain == nil && ctxMember.TypedDomain == nil {
+							cell = &ContextualMemberCell{
+								ExplicitMember: ctxMember.ExplicitMember,
+							}
+							break
+						}
+					}
+				}
 			}
 			row[j] = cell
 		}
 		ret[i] = row
 	}
-	// for i := 0; i < rowCount; i++ {
-	// 	row := make([]*ContextualMemberCell, colCount)
-	// 	voidCell := voidQuadrant[i]
-	// 	if voidCell == nil {
-	// 		return ContextualMemberGrid{}, VoidQuadrant{}
-	// 	}
-	// 	for j := 0; j < colCount; j++ {
-	// 		ctx := relevantContexts[j]
-	// 		for _, ctxMember := range ctx.Members {
-	// 			if ctxMember.Dimension.Href == voidCell.Dimension.Href {
-	// 				if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
-	// 					if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
-	// 						row[j] = &ContextualMemberCell{
-	// 							TypedMember: ctxMember.TypedMember,
-	// 						}
-	// 						continue
-	// 					}
-	// 				} else {
-	// 					row[j] = &ContextualMemberCell{
-	// 						ExplicitMember: ctxMember.ExplicitMember,
-	// 					}
-	// 					continue
-	// 				}
-	// 			}
-	// 		}
-	// 		row[j] = &ContextualMemberCell{}
-	// 	}
-	// 	ret = append(ret, row)
-	// }
 	return ret, voidQuadrant
 }
 
@@ -163,13 +150,11 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 		var makeIndents func(node *locatorNode, level int)
 		makeIndents = func(node *locatorNode, level int) {
 			if len(node.Children) <= 0 {
-				fmt.Println("line 149")
 				ret = VoidQuadrant{}
 				return
 			}
 			dimension, ok := allDimensionMap[node.Locator]
 			if !ok {
-				fmt.Println("line 155")
 				ret = VoidQuadrant{}
 				return
 			}
@@ -186,7 +171,6 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 				} else {
 					typedDomain, ok := allTypedDomainMap[node.Locator]
 					if !ok {
-						fmt.Println("line 172")
 						ret = VoidQuadrant{}
 						return
 					}
