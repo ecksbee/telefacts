@@ -72,7 +72,7 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 							break
 						}
 					} else {
-						if ctxMember.TypedDomain == nil && ctxMember.TypedDomain == nil {
+						if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
 							cell = &ContextualMemberCell{
 								ExplicitMember: ctxMember.ExplicitMember,
 							}
