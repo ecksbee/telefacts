@@ -13,6 +13,7 @@ type Folder struct {
 	Dir                   string
 	Namespaces            map[string]string
 	Instances             map[string]InstanceFile
+	IxbrlFiles            map[string]IxbrlFile
 	Schemas               map[string]SchemaFile
 	LabelLinkbases        map[string]LabelLinkbaseFile
 	PresentationLinkbases map[string]PresentationLinkbaseFile
@@ -30,81 +31,37 @@ func Discover(id string) (*Folder, error) {
 		Dir:                   workingDir,
 		Namespaces:            make(map[string]string),
 		Instances:             make(map[string]InstanceFile),
+		IxbrlFiles:            make(map[string]IxbrlFile),
 		Schemas:               make(map[string]SchemaFile),
 		LabelLinkbases:        make(map[string]LabelLinkbaseFile),
 		PresentationLinkbases: make(map[string]PresentationLinkbaseFile),
 		DefinitionLinkbases:   make(map[string]DefinitionLinkbaseFile),
 		CalculationLinkbases:  make(map[string]CalculationLinkbaseFile),
 	}
-	filepath := path.Join(workingDir, entryFileName)
-	instanceFile, err := ReadInstanceFile(filepath)
-	if err != nil {
-		return nil, err
+	ext := path.Ext(entryFileName)
+	switch ext {
+	case ".xml", ".xbrl":
+		filepath := path.Join(workingDir, entryFileName)
+		instanceFile, err := ReadInstanceFile(filepath)
+		if err != nil {
+			return nil, err
+		}
+		ret.schemaRef(instanceFile)
+		ret.wLock.Lock()
+		defer ret.wLock.Unlock()
+		ret.Instances[entryFileName] = *instanceFile
+	case ".htm", ".xhtml":
+		filepath := path.Join(workingDir, entryFileName)
+		ixbrlFile, err := ReadIxbrlFile(filepath)
+		if err != nil {
+			return nil, err
+		}
+		ret.inlineSchemaRef(ixbrlFile)
+		ret.wLock.Lock()
+		defer ret.wLock.Unlock()
+		ret.IxbrlFiles[entryFileName] = *ixbrlFile
 	}
-	ret.schemaRef(instanceFile)
-	ret.wLock.Lock()
-	defer ret.wLock.Unlock()
-	ret.Instances[entryFileName] = *instanceFile
 	return ret, nil
-}
-
-func (folder *Folder) schemaRef(file *InstanceFile) {
-	if file == nil {
-		return
-	}
-	schemaRefs := file.SchemaRef
-	var wg sync.WaitGroup
-	wg.Add(len(schemaRefs))
-	for _, iitem := range schemaRefs {
-		go func(item struct {
-			XMLName  xml.Name
-			XMLAttrs []xml.Attr "xml:\",any,attr\""
-		}) {
-			defer wg.Done()
-			if item.XMLName.Space != attr.LINK {
-				return
-			}
-			hrefAttr := attr.FindAttr(item.XMLAttrs, "href")
-			if hrefAttr == nil || hrefAttr.Value == "" || hrefAttr.Name.Space != attr.XLINK {
-				return
-			}
-			if attr.IsValidUrl(hrefAttr.Value) {
-				go DiscoverGlobalSchema(hrefAttr.Value)
-				return
-			}
-			filepath := path.Join(folder.Dir, hrefAttr.Value)
-			discoveredSchema, err := ReadSchemaFile(filepath)
-			if err != nil {
-				return
-			}
-			targetNS := attr.FindAttr(discoveredSchema.XMLAttrs, "targetNamespace")
-			if targetNS == nil || targetNS.Value == "" {
-				return
-			}
-			folder.wLock.Lock()
-			folder.Namespaces[targetNS.Value] = hrefAttr.Value
-			folder.wLock.Unlock()
-			var wwg sync.WaitGroup
-			wwg.Add(3)
-			go func() {
-				defer wwg.Done()
-				folder.importSchema(discoveredSchema)
-			}()
-			go func() {
-				defer wwg.Done()
-				folder.includeSchema(discoveredSchema)
-			}()
-			go func() {
-				defer wwg.Done()
-				folder.linkbaseRefSchema(discoveredSchema)
-			}()
-			wwg.Wait()
-			folder.wLock.Lock()
-			folder.Schemas[hrefAttr.Value] = *discoveredSchema
-			folder.wLock.Unlock()
-		}(iitem)
-	}
-	wg.Wait()
 }
 
 func (folder *Folder) includeSchema(file *SchemaFile) {

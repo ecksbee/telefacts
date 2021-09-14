@@ -13,7 +13,6 @@ import (
 type Underscore struct {
 	Entry    string
 	Checksum string
-	Ixbrl    string
 	Note     string
 }
 

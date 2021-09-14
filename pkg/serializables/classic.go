@@ -4,7 +4,10 @@ import (
 	"bytes"
 	"encoding/xml"
 	"io/ioutil"
+	"path"
+	"sync"
 
+	"ecksbee.com/telefacts/pkg/attr"
 	"golang.org/x/net/html/charset"
 )
 
@@ -150,4 +153,63 @@ func ReadInstanceFile(filepath string) (*InstanceFile, error) {
 		return nil, err
 	}
 	return decoded, nil
+}
+
+func (folder *Folder) schemaRef(file *InstanceFile) {
+	if file == nil {
+		return
+	}
+	schemaRefs := file.SchemaRef
+	var wg sync.WaitGroup
+	wg.Add(len(schemaRefs))
+	for _, iitem := range schemaRefs {
+		go func(item struct {
+			XMLName  xml.Name
+			XMLAttrs []xml.Attr "xml:\",any,attr\""
+		}) {
+			defer wg.Done()
+			if item.XMLName.Space != attr.LINK {
+				return
+			}
+			hrefAttr := attr.FindAttr(item.XMLAttrs, "href")
+			if hrefAttr == nil || hrefAttr.Value == "" || hrefAttr.Name.Space != attr.XLINK {
+				return
+			}
+			if attr.IsValidUrl(hrefAttr.Value) {
+				go DiscoverGlobalSchema(hrefAttr.Value)
+				return
+			}
+			filepath := path.Join(folder.Dir, hrefAttr.Value)
+			discoveredSchema, err := ReadSchemaFile(filepath)
+			if err != nil {
+				return
+			}
+			targetNS := attr.FindAttr(discoveredSchema.XMLAttrs, "targetNamespace")
+			if targetNS == nil || targetNS.Value == "" {
+				return
+			}
+			folder.wLock.Lock()
+			folder.Namespaces[targetNS.Value] = hrefAttr.Value
+			folder.wLock.Unlock()
+			var wwg sync.WaitGroup
+			wwg.Add(3)
+			go func() {
+				defer wwg.Done()
+				folder.importSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				folder.includeSchema(discoveredSchema)
+			}()
+			go func() {
+				defer wwg.Done()
+				folder.linkbaseRefSchema(discoveredSchema)
+			}()
+			wwg.Wait()
+			folder.wLock.Lock()
+			folder.Schemas[hrefAttr.Value] = *discoveredSchema
+			folder.wLock.Unlock()
+		}(iitem)
+	}
+	wg.Wait()
 }
