@@ -1,5 +1,6 @@
 package attr
 
+const IX = `http://www.xbrl.org/2013/inlineXBRL`
 const UTR = `http://www.xbrl.org/utr/utr.xml`
 const LRR = `http://www.xbrl.org/2003/xbrl-role-2003-07-31.xsd`
 const XSD = `http://www.w3.org/2001/XMLSchema`

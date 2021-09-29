@@ -1,12 +1,60 @@
 package serializables
 
 import (
+	"encoding/xml"
 	"fmt"
 	"io/ioutil"
 )
 
+type IxbrlNonfraction struct {
+	XMLName  xml.Name
+	XMLAttrs []xml.Attr `xml:",any,attr"`
+	XMLInner string     `xml:",innerxml"`
+}
+
+type IxbrlNonnumeric struct {
+	XMLName  xml.Name
+	XMLAttrs []xml.Attr `xml:",any,attr"`
+	XMLInner string     `xml:",innerxml"`
+}
+
+type IxbrlFootnote struct {
+	XMLName  xml.Name
+	XMLAttrs []xml.Attr `xml:",any,attr"`
+	XMLInner string     `xml:",innerxml"`
+}
+
+type IxReferences struct {
+	SchemaRef   []string
+	LinkbaseRef []string
+}
+
+type IxResources struct {
+	Contexts []CommonContext
+	Units    []CommonUnit
+}
+
+type IxHiddenFacts struct {
+	Nonfractions []IxbrlNonfraction
+	Nonnumeric   []IxbrlNonnumeric
+	Footnotes    []IxbrlFootnote
+}
+
+type IxLexicalFacts struct {
+	Nonfractions []IxbrlNonfraction
+	Nonnumeric   []IxbrlNonnumeric
+	Footnotes    []IxbrlFootnote
+}
+
+type IxbrlHeader struct {
+	References IxReferences
+	Resources  IxResources
+	Hidden     IxHiddenFacts
+}
+
 type IxbrlFile struct {
-	//todo add all sort of stuff
+	Header       IxbrlHeader
+	LexicalFacts IxLexicalFacts
 }
 
 func ReadIxbrlFile(filepath string) (*IxbrlFile, error) {
@@ -14,11 +62,10 @@ func ReadIxbrlFile(filepath string) (*IxbrlFile, error) {
 	if err != nil {
 		return nil, err
 	}
-	if len(data) == 0 {
-		return nil, fmt.Errorf("//todo decode ixbrl file")
+	if len(data) <= 0 {
+		return nil, fmt.Errorf("reading ixbrl file failed")
 	}
-	var decoded *IxbrlFile
-	return decoded, nil
+	return DecodeIxbrl(data)
 }
 
 func (folder *Folder) inlineSchemaRef(file *IxbrlFile) {

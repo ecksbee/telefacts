@@ -61,3 +61,35 @@ func TestDiscover_Gold(t *testing.T) {
 		t.Fatalf("expected 1 LabelLinkbase; outcome %d;\n", len(f.LabelLinkbases))
 	}
 }
+
+func TestDiscover_Ixbrl(t *testing.T) {
+	serializables.VolumePath = path.Join(".", "data")
+	workingDir := path.Join(serializables.VolumePath, "folders", "test_ixbrl")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	entryFilePath := "wk-20200930.htm"
+	f, err := serializables.Discover("test_ixbrl")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	ixbrl, found := f.IxbrlFiles[entryFilePath]
+	if !found {
+		t.Fatalf("expected %s Ixbrl file to be found;\n", entryFilePath)
+	}
+	if len(ixbrl.Header.References.SchemaRef) != 1 {
+		t.Fatalf("expected 1 schemaRef; outcome %d", len(ixbrl.Header.References.SchemaRef))
+	}
+	if ixbrl.Header.References.SchemaRef[0] != "wk-20200930.xsd" {
+		t.Fatalf("expected wk-20200930.xsd schemaRef; outcome %s", ixbrl.Header.References.SchemaRef[0])
+	}
+	if len(ixbrl.Header.Resources.Contexts) != 248 {
+		t.Fatalf("expected 248 inline context; outcome %d", len(ixbrl.Header.Resources.Contexts))
+	}
+	if len(ixbrl.Header.Resources.Units) != 4 {
+		t.Fatalf("expected 4 inline unit; outcome %d", len(ixbrl.Header.Resources.Units))
+	}
+
+}
