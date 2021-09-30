@@ -36,13 +36,13 @@ type IxResources struct {
 
 type IxHiddenFacts struct {
 	Nonfractions []IxbrlNonfraction
-	Nonnumeric   []IxbrlNonnumeric
+	Nonnumerics  []IxbrlNonnumeric
 	Footnotes    []IxbrlFootnote
 }
 
-type IxLexicalFacts struct {
+type IxRenderedFacts struct {
 	Nonfractions []IxbrlNonfraction
-	Nonnumeric   []IxbrlNonnumeric
+	Nonnumerics  []IxbrlNonnumeric
 	Footnotes    []IxbrlFootnote
 }
 
@@ -53,8 +53,8 @@ type IxbrlHeader struct {
 }
 
 type IxbrlFile struct {
-	Header       IxbrlHeader
-	LexicalFacts IxLexicalFacts
+	Header        IxbrlHeader
+	RenderedFacts IxRenderedFacts
 }
 
 func ReadIxbrlFile(filepath string) (*IxbrlFile, error) {

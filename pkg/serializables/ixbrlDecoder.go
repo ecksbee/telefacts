@@ -26,11 +26,11 @@ func DecodeIxbrl(byteArray []byte) (*IxbrlFile, error) {
 		ixResources, errRes = DecodeIxResources(byteArray)
 	}()
 	var ixHiddenFacts *IxHiddenFacts
-	var ixLexicalFacts *IxLexicalFacts
+	var ixRenderedFacts *IxRenderedFacts
 	var errFacts error
 	go func() {
-		wg.Done()
-		ixHiddenFacts, ixLexicalFacts, errFacts = DecodeInlineFacts(byteArray)
+		defer wg.Done()
+		ixHiddenFacts, ixRenderedFacts, errFacts = DecodeInlineFacts(byteArray)
 	}()
 	wg.Wait()
 	for _, err := range []error{
@@ -46,7 +46,7 @@ func DecodeIxbrl(byteArray []byte) (*IxbrlFile, error) {
 	decoded.Header.References = *ixReferences
 	decoded.Header.Resources = *ixResources
 	decoded.Header.Hidden = *ixHiddenFacts
-	decoded.LexicalFacts = *ixLexicalFacts
+	decoded.RenderedFacts = *ixRenderedFacts
 	return &decoded, nil
 }
 

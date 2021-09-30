@@ -91,5 +91,23 @@ func TestDiscover_Ixbrl(t *testing.T) {
 	if len(ixbrl.Header.Resources.Units) != 4 {
 		t.Fatalf("expected 4 inline unit; outcome %d", len(ixbrl.Header.Resources.Units))
 	}
+	if len(ixbrl.Header.Hidden.Nonfractions) != 1 {
+		t.Fatalf("expected 1 inline hidden nonfraction; outcome %d", len(ixbrl.Header.Hidden.Nonfractions))
+	}
+	if len(ixbrl.Header.Hidden.Nonnumerics) != 7 {
+		t.Fatalf("expected 7 inline hidden nonnumeric; outcome %d", len(ixbrl.Header.Hidden.Nonnumerics))
+	}
+	if len(ixbrl.RenderedFacts.Nonfractions) != 798 {
+		t.Fatalf("expected 798 inline rendered nonfraction; outcome %d", len(ixbrl.RenderedFacts.Nonfractions))
+	}
+	if len(ixbrl.RenderedFacts.Nonnumerics) != 68 {
+		t.Fatalf("expected 68 inline rendered nonfraction; outcome %d", len(ixbrl.RenderedFacts.Nonnumerics))
+	}
+	if len(ixbrl.Header.Hidden.Footnotes) > 0 {
+		t.Fatalf("expected 0 inline hidden footnote; outcome %d", len(ixbrl.Header.Hidden.Footnotes))
+	}
+	if len(ixbrl.RenderedFacts.Footnotes) > 0 {
+		t.Fatalf("expected 0 inline rendered footnote; outcome %d", len(ixbrl.RenderedFacts.Footnotes))
+	}
 
 }
