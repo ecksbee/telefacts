@@ -16,6 +16,7 @@ const hiddenNonnumericXPath = "//html/body//*[local-name()='header' and namespac
 const renderedNonnumericXPath = "//html/body//*[local-name()='nonNumeric' and namespace-uri()='" + attr.IX + "' and not(ancestor::*[local-name()='hidden' and namespace-uri()='" + attr.IX + "'])]"
 const hiddenFootnoteXPath = "//html/body//*[local-name()='header' and namespace-uri()='" + attr.IX + "']//*[local-name()='hidden' and namespace-uri()='" + attr.IX + "']//*[local-name()='footnote' and namespace-uri()='" + attr.IX + "']"
 const renderedFootnoteXPath = "//html/body//*[local-name()='footnote' and namespace-uri()='" + attr.IX + "' and not(ancestor::*[local-name()='hidden' and namespace-uri()='" + attr.IX + "'])]"
+const continuationXPath = "//html/body//*[local-name()='continuation' and namespace-uri()='" + attr.IX + "' and not(ancestor::*[local-name()='hidden' and namespace-uri()='" + attr.IX + "'])]"
 
 func DecodeInlineFacts(byteArray []byte) (*IxHiddenFacts, *IxRenderedFacts, error) {
 	ixHidden := IxHiddenFacts{
@@ -24,9 +25,10 @@ func DecodeInlineFacts(byteArray []byte) (*IxHiddenFacts, *IxRenderedFacts, erro
 		Footnotes:    make([]IxbrlFootnote, 0),
 	}
 	ixRenderedFacts := IxRenderedFacts{
-		Nonfractions: make([]IxbrlNonfraction, 0),
-		Nonnumerics:  make([]IxbrlNonnumeric, 0),
-		Footnotes:    make([]IxbrlFootnote, 0),
+		Nonfractions:  make([]IxbrlNonfraction, 0),
+		Nonnumerics:   make([]IxbrlNonnumeric, 0),
+		Footnotes:     make([]IxbrlFootnote, 0),
+		Continuations: make([]IxbrlContinuation, 0),
 	}
 	hiddenNonfractions, err := decodeHiddenNonfractions(byteArray)
 	if err != nil {
@@ -59,6 +61,11 @@ func DecodeInlineFacts(byteArray []byte) (*IxHiddenFacts, *IxRenderedFacts, erro
 		return nil, nil, err
 	}
 	ixRenderedFacts.Footnotes = renderedFootnotes
+	continuations, err := decodeContinuations(byteArray)
+	if err != nil {
+		return nil, nil, err
+	}
+	ixRenderedFacts.Continuations = continuations
 	return &ixHidden, &ixRenderedFacts, nil
 }
 
@@ -203,6 +210,31 @@ func decodeRenderedFootnotes(byteArray []byte) ([]IxbrlFootnote, error) {
 		decoder := xml.NewDecoder(reader)
 		decoder.CharsetReader = charset.NewReaderLabel
 		decoded := IxbrlFootnote{}
+		err := decoder.Decode(&decoded)
+		if err != nil {
+			return nil, err
+		}
+		ret = append(ret, decoded)
+	}
+	return ret, nil
+}
+
+func decodeContinuations(byteArray []byte) ([]IxbrlContinuation, error) {
+	doc, err := xmlquery.Parse(bytes.NewBuffer(byteArray))
+	if err != nil {
+		return nil, err
+	}
+	list, err := xmlquery.QueryAll(doc, continuationXPath)
+	if err != nil {
+		return nil, err
+	}
+	ret := make([]IxbrlContinuation, 0, len(list))
+	for _, item := range list {
+		xmlData := item.OutputXML(true)
+		reader := strings.NewReader(xmlData)
+		decoder := xml.NewDecoder(reader)
+		decoder.CharsetReader = charset.NewReaderLabel
+		decoded := IxbrlContinuation{}
 		err := decoder.Decode(&decoded)
 		if err != nil {
 			return nil, err

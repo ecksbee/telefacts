@@ -24,6 +24,12 @@ type IxbrlFootnote struct {
 	XMLInner string     `xml:",innerxml"`
 }
 
+type IxbrlContinuation struct {
+	XMLName  xml.Name
+	XMLAttrs []xml.Attr `xml:",any,attr"`
+	XMLInner string     `xml:",innerxml"`
+}
+
 type IxReferences struct {
 	SchemaRef   []string
 	LinkbaseRef []string
@@ -41,9 +47,10 @@ type IxHiddenFacts struct {
 }
 
 type IxRenderedFacts struct {
-	Nonfractions []IxbrlNonfraction
-	Nonnumerics  []IxbrlNonnumeric
-	Footnotes    []IxbrlFootnote
+	Nonfractions  []IxbrlNonfraction
+	Nonnumerics   []IxbrlNonnumeric
+	Footnotes     []IxbrlFootnote
+	Continuations []IxbrlContinuation
 }
 
 type IxbrlHeader struct {

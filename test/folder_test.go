@@ -109,5 +109,8 @@ func TestDiscover_Ixbrl(t *testing.T) {
 	if len(ixbrl.RenderedFacts.Footnotes) > 0 {
 		t.Fatalf("expected 0 inline rendered footnote; outcome %d", len(ixbrl.RenderedFacts.Footnotes))
 	}
+	if len(ixbrl.RenderedFacts.Continuations) != 28 {
+		t.Fatalf("expected 27 continuations; outcome %d", len(ixbrl.RenderedFacts.Continuations))
+	}
 
 }
