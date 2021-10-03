@@ -26,6 +26,7 @@ func getFactualQuadrant(hrefs []string, relevantContexts []relevantContext,
 	}
 	ret := make([][]*MultilingualFact, rowCount)
 	footnoteGrid := make([][][]*hydratables.Footnote, rowCount)
+	idMap := make(map[string]*hydratables.Footnote)
 	for i := 0; i < rowCount; i++ {
 		row := make([]*MultilingualFact, colCount)
 		footnoteRow := make([][]*hydratables.Footnote, colCount)
@@ -36,6 +37,11 @@ func getFactualQuadrant(hrefs []string, relevantContexts []relevantContext,
 			contextRef := relevantContexts[j].ContextRef
 			fact = factFinder.FindFact(href, contextRef)
 			footnotes = factFinder.GetFootnotes(fact)
+			for _, footnote := range footnotes {
+				if _, found := idMap[footnote.ID]; !found {
+					idMap[footnote.ID] = footnote
+				}
+			}
 			row[j] = render(fact, conceptFinder, measurementFinder, langs)
 			footnoteRow[j] = footnotes
 		}
@@ -44,6 +50,26 @@ func getFactualQuadrant(hrefs []string, relevantContexts []relevantContext,
 	}
 	grid := make([][][]int, rowCount)
 	arr := make([]string, 0)
-	//todo fill grid and arr
+	for i := 0; i < rowCount; i++ {
+		grid[i] = make([][]int, colCount)
+		for j := 0; j < colCount; j++ {
+			footnotes := footnoteGrid[i][j]
+			k := 1
+			ints := make([]int, 0)
+			for id := range idMap {
+				for _, footnote := range footnotes {
+					if footnote.ID == id {
+						ints = append(ints, k)
+						break
+					}
+				}
+				k++
+			}
+			grid[i][j] = ints
+		}
+	}
+	for _, footnote := range idMap {
+		arr = append(arr, footnote.CharData)
+	}
 	return ret, grid, arr
 }
