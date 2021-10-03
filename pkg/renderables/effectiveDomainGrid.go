@@ -217,7 +217,7 @@ func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []r
 	for _, primaryItem := range incompleteRootDomain.PrimaryItems {
 		hrefs = append(hrefs, primaryItem.Href)
 	}
-	factualQuadrant := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
+	factualQuadrant, _, _ := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
 		measurementFinder, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
 	return incompleteRootDomain

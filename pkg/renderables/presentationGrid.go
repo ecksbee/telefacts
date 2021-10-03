@@ -19,6 +19,8 @@ type PGrid struct {
 	ContextualMemberGrid
 	VoidQuadrant
 	FactualQuadrant FactualQuadrant
+	FootnoteGrid    [][][]int
+	Footnotes       []string
 }
 
 func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
@@ -36,8 +38,8 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	if reduced != nil {
 		labelRoles, langs = destruct(*reduced)
 	}
-	factualQuadrant := getPFactualQuadrant(indentedLabels, relevantContexts,
-		factFinder, conceptFinder, measurementFinder, langs)
+	factualQuadrant, footnoteGrid, footnotes := getPFactualQuadrant(indentedLabels,
+		relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
 	memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(relevantContexts,
 		segmentTypedDomainTrees, scenarioTypedDomainTrees)
 	return PGrid{
@@ -46,6 +48,8 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 		ContextualMemberGrid: memberGrid,
 		VoidQuadrant:         voidQuadrant,
 		FactualQuadrant:      factualQuadrant,
+		FootnoteGrid:         footnoteGrid,
+		Footnotes:            footnotes,
 	}, labelRoles, langs, nil
 }
 
@@ -119,12 +123,13 @@ func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
 func getPFactualQuadrant(indentedLabels []IndentedLabel,
 	relevantContexts []relevantContext, factFinder FactFinder,
 	conceptFinder ConceptFinder, measurementFinder MeasurementFinder,
-	langs []Lang) FactualQuadrant {
+	langs []Lang) (FactualQuadrant, [][][]int, []string) {
 	hrefs := make([]string, 0, len(indentedLabels))
 	for _, indentedLabel := range indentedLabels {
 		hrefs = append(hrefs, indentedLabel.Href)
 	}
-	ret := getFactualQuadrant(hrefs, relevantContexts,
-		factFinder, conceptFinder, measurementFinder, langs)
-	return ret
+	ret, footnoteGrid, footnotes := getFactualQuadrant(hrefs,
+		relevantContexts, factFinder, conceptFinder,
+		measurementFinder, langs)
+	return ret, footnoteGrid, footnotes
 }
