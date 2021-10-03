@@ -11,6 +11,7 @@ import (
 
 type FactFinder interface {
 	FindFact(href string, contextRef string) *hydratables.Fact
+	GetFootnotes(fact *hydratables.Fact) []*hydratables.Footnote
 }
 
 type MeasurementFinder interface {

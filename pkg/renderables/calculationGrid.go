@@ -124,7 +124,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					if reduced != nil {
 						labelRoles, langs = destruct(*reduced)
 					}
-					factualQuadrant := getFactualQuadrant(fqLabels, relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
+					factualQuadrant, _, _ := getFactualQuadrant(fqLabels, relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
 					_, sumConcept, err := h.HashQuery(from)
 					if err != nil {
 						continue

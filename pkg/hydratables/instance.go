@@ -100,8 +100,9 @@ type FootnoteLinkLoc struct {
 }
 
 type FootnoteArc struct {
-	From string
-	To   string
+	From    string
+	To      string
+	Arcrole string
 }
 
 func HydrateInstance(file *serializables.InstanceFile, fileName string, h *Hydratable) (*Instance, error) {
@@ -627,8 +628,9 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 				continue
 			}
 			newFootnoteArc := FootnoteArc{
-				From: footnoteArcfromAttr.Value,
-				To:   footnoteArctoAttr.Value,
+				Arcrole: footnoteArcarcroleAttr.Value,
+				From:    footnoteArcfromAttr.Value,
+				To:      footnoteArctoAttr.Value,
 			}
 			item.FootnoteArcs = append(item.FootnoteArcs, newFootnoteArc)
 		}
