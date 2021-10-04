@@ -3,6 +3,7 @@ package renderables
 import (
 	"sort"
 
+	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/hydratables"
 )
@@ -40,10 +41,10 @@ type EffectiveMember struct {
 	IsStrikethrough bool
 }
 
-func dArcs(dArcs []hydratables.DefinitionArc) []arc {
-	ret := make([]arc, 0, len(dArcs))
+func dArcs(dArcs []hydratables.DefinitionArc) []graph.Arc {
+	ret := make([]graph.Arc, 0, len(dArcs))
 	for _, dArc := range dArcs {
-		ret = append(ret, arc{
+		ret = append(ret, graph.Arc{
 			Arcrole: dArc.Arcrole,
 			Order:   dArc.Order,
 			From:    dArc.From,
@@ -71,8 +72,8 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 			if definitionLink.Role == linkroleURI {
 				arcs := definitionLink.DefinitionArcs
 				indentedItems := make([]PrimaryItem, 0, len(arcs))
-				var makeIndents func(node *locatorNode, level int)
-				makeIndents = func(node *locatorNode, level int) {
+				var makeIndents func(node *graph.LocatorNode, level int)
+				makeIndents = func(node *graph.LocatorNode, level int) {
 					if len(node.Children) <= 0 {
 						return
 					}
@@ -92,18 +93,18 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 					}
 				}
 				dArcs := dArcs(arcs)
-				domainMemberNetwork := tree(dArcs, attr.DomainMemberArcrole)
+				domainMemberNetwork := graph.Tree(dArcs, attr.DomainMemberArcrole)
 				effectiveDimensions, effectiveDimensionHrefs, edLabelRoles, edLangs := getEffectiveDimensions(linkroleURI, arcs, h)
 				labelRoles = append(labelRoles, edLabelRoles...)
 				langs = append(langs, edLangs...)
-				dimensionDomainNetwork := tree(dArcs, attr.DimensionDomainArcrole)
-				defaultDimensionsNetwork := tree(dArcs, attr.DimensionDefaultArcrole)
+				dimensionDomainNetwork := graph.Tree(dArcs, attr.DimensionDomainArcrole)
+				defaultDimensionsNetwork := graph.Tree(dArcs, attr.DimensionDefaultArcrole)
 				primaryItemNetwork, explicitDomainNetwork :=
 					getPrimaryItemNetworkAndExplicitDomainNetwork(&domainMemberNetwork, &dimensionDomainNetwork,
 						&defaultDimensionsNetwork)
-				exclusiveHypercubeNetwork := tree(dArcs, attr.HasExclusiveHypercubeArcrole)
-				inclusiveHypercubeNetwork := tree(dArcs, attr.HasInclusiveHypercubeArcrole)
-				hypercubeDimensionNetwork := tree(dArcs, attr.HypercubeDimensionArcrole)
+				exclusiveHypercubeNetwork := graph.Tree(dArcs, attr.HasExclusiveHypercubeArcrole)
+				inclusiveHypercubeNetwork := graph.Tree(dArcs, attr.HasInclusiveHypercubeArcrole)
+				hypercubeDimensionNetwork := graph.Tree(dArcs, attr.HypercubeDimensionArcrole)
 				for _, root := range primaryItemNetwork.Children {
 					makeIndents(root, 0)
 					rootHref := mapDLocatorToHref(linkroleURI, &definition, root.Locator)
@@ -184,10 +185,10 @@ func getEffectiveDimensions(linkroleURI string,
 	return effectiveDimensions, effectiveDimensionHrefs, labelRoles, langs
 }
 
-func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *locatorNode,
-	dimensionDomainNetwork *locatorNode, defaultDimensionsNetwork *locatorNode) (*locatorNode, *locatorNode) {
-	primaryItemNetwork := locatorNode{}
-	explicitDomainNetwork := locatorNode{}
+func getPrimaryItemNetworkAndExplicitDomainNetwork(domainMemberNetwork *graph.LocatorNode,
+	dimensionDomainNetwork *graph.LocatorNode, defaultDimensionsNetwork *graph.LocatorNode) (*graph.LocatorNode, *graph.LocatorNode) {
+	primaryItemNetwork := graph.LocatorNode{}
+	explicitDomainNetwork := graph.LocatorNode{}
 	hypercubeDomains := make([]string, 0, len(dimensionDomainNetwork.Children)+len(defaultDimensionsNetwork.Children))
 	for _, dimNode := range dimensionDomainNetwork.Children {
 		for _, domNode := range dimNode.Children {
@@ -224,9 +225,9 @@ func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []r
 }
 
 func getEffectiveDomainGrid(primaryItemHrefs []string, effectiveDimensionHrefs []string,
-	dimensionDomainNetwork *locatorNode, primaryItemNetwork *locatorNode,
-	explicitDomainNetwork *locatorNode, exclusiveHypercubeNetwork *locatorNode, inclusiveHypercubeNetwork *locatorNode,
-	hypercubeDimensionNetwork *locatorNode, dimensionDefaultNetwork *locatorNode,
+	dimensionDomainNetwork *graph.LocatorNode, primaryItemNetwork *graph.LocatorNode,
+	explicitDomainNetwork *graph.LocatorNode, exclusiveHypercubeNetwork *graph.LocatorNode, inclusiveHypercubeNetwork *graph.LocatorNode,
+	hypercubeDimensionNetwork *graph.LocatorNode, dimensionDefaultNetwork *graph.LocatorNode,
 	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) ([][]EffectiveDomain, []LabelPack) {
 	ret := make([][]EffectiveDomain, 0, len(primaryItemHrefs))
 	labelPacks := make([]LabelPack, 0, len(primaryItemHrefs))
@@ -245,9 +246,9 @@ func getEffectiveDomainGrid(primaryItemHrefs []string, effectiveDimensionHrefs [
 }
 
 func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
-	dimensionDomainNetwork *locatorNode, primaryItemNetwork *locatorNode,
-	explicitDomainNetwork *locatorNode, exclusiveHypercubeNetwork *locatorNode, inclusiveHypercubeNetwork *locatorNode,
-	hypercubeDimensionNetwork *locatorNode, dimensionDefaultNetwork *locatorNode,
+	dimensionDomainNetwork *graph.LocatorNode, primaryItemNetwork *graph.LocatorNode,
+	explicitDomainNetwork *graph.LocatorNode, exclusiveHypercubeNetwork *graph.LocatorNode, inclusiveHypercubeNetwork *graph.LocatorNode,
+	hypercubeDimensionNetwork *graph.LocatorNode, dimensionDefaultNetwork *graph.LocatorNode,
 	mapDLocatorToHref func(string) string, h *hydratables.Hydratable) (EffectiveDomain, []LabelPack) {
 	inclusiveHypercubeHrefs := []string{}
 	exclusiveHypercubeHrefs := []string{}
@@ -351,8 +352,8 @@ func getEffectiveDomain(primaryItemHref string, effectiveDimensionHref string,
 
 	membersMap := make(map[string]bool)
 	excludedMembersMap := make(map[string]bool)
-	var traverseExplicitDomainNetwork func(*locatorNode, bool)
-	traverseExplicitDomainNetwork = func(node *locatorNode, isInclusive bool) {
+	var traverseExplicitDomainNetwork func(*graph.LocatorNode, bool)
+	traverseExplicitDomainNetwork = func(node *graph.LocatorNode, isInclusive bool) {
 		memberHref := mapDLocatorToHref(node.Locator)
 		if isInclusive {
 			if membersMap[memberHref] {

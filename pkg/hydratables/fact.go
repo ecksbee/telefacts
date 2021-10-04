@@ -3,6 +3,7 @@ package hydratables
 import (
 	"strings"
 
+	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/attr"
 )
 
@@ -27,10 +28,10 @@ func (h *Hydratable) FindFact(href string, contextRef string) *Fact {
 	return nil
 }
 
-func fnoteArcs(fnoteArcs []FootnoteArc) []arc {
-	ret := make([]arc, 0, len(fnoteArcs))
+func fnoteArcs(fnoteArcs []FootnoteArc) []graph.Arc {
+	ret := make([]graph.Arc, 0, len(fnoteArcs))
 	for i, fnoteArc := range fnoteArcs {
-		ret = append(ret, arc{
+		ret = append(ret, graph.Arc{
 			Arcrole: fnoteArc.Arcrole,
 			Order:   float64(i),
 			From:    fnoteArc.From,
@@ -45,7 +46,7 @@ func (h *Hydratable) GetFootnotes(fact *Fact) []*Footnote {
 		for _, footnoteLink := range instance.FootnoteLinks {
 			arcs := footnoteLink.FootnoteArcs
 			fnoteArcs := fnoteArcs(arcs)
-			root := tree(fnoteArcs, attr.FactFootnoteArcrole)
+			root := graph.Tree(fnoteArcs, attr.FactFootnoteArcrole)
 			ret := make([]*Footnote, 0, len(arcs))
 			if len(root.Children) <= 0 {
 				return nil

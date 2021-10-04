@@ -2,6 +2,8 @@ package renderables
 
 import (
 	"sort"
+
+	"ecksbee.com/telefacts/internal/graph"
 )
 
 type PeriodHeaders []LanguagePack
@@ -31,7 +33,7 @@ func getPeriodHeaders(relevantContexts []relevantContext) PeriodHeaders {
 }
 
 func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
-	segmentTypedDomainTrees []locatorNode, scenarioTypedDomainTrees []locatorNode) (ContextualMemberGrid,
+	segmentTypedDomainTrees []graph.LocatorNode, scenarioTypedDomainTrees []graph.LocatorNode) (ContextualMemberGrid,
 	VoidQuadrant) {
 	if len(relevantContexts) <= 0 {
 		return ContextualMemberGrid{}, VoidQuadrant{}
@@ -88,12 +90,12 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 	return ret, voidQuadrant
 }
 
-func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []locatorNode,
-	scenarioTypedDomainTrees []locatorNode) VoidQuadrant {
+func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []graph.LocatorNode,
+	scenarioTypedDomainTrees []graph.LocatorNode) VoidQuadrant {
 	segmentExplicitDimensionMap := make(map[string]*RelevantMember)
 	scenarioExplicitDimensionMap := make(map[string]*RelevantMember)
-	segmentTypedDimensionMap := make(map[string]*locatorNode)
-	scenarioTypedDimensionMap := make(map[string]*locatorNode)
+	segmentTypedDimensionMap := make(map[string]*graph.LocatorNode)
+	scenarioTypedDimensionMap := make(map[string]*graph.LocatorNode)
 	allDimensionMap := make(map[string]*Dimension)
 	allTypedDomainMap := make(map[string]*TypedDomain)
 	for i := 0; i < len(relevantContexts); i++ {
@@ -136,8 +138,8 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 	reducedSegmentTypedDomainTree := reduceTrees(segmentTypedDomainTrees)
 	reducedScenarioTypedDomainTree := reduceTrees(scenarioTypedDomainTrees)
 	var dimension *Dimension
-	var makeIndents func(node *locatorNode, level int, isParenthesized bool)
-	makeIndents = func(node *locatorNode, level int, isParenthesized bool) {
+	var makeIndents func(node *graph.LocatorNode, level int, isParenthesized bool)
+	makeIndents = func(node *graph.LocatorNode, level int, isParenthesized bool) {
 		if dimension == nil && node.Locator != "" {
 			mappedDimension, ok := allDimensionMap[node.Locator]
 			if !ok {
@@ -184,10 +186,10 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 	return ret
 }
 
-func reduceTrees(trees []locatorNode) locatorNode {
-	ret := locatorNode{}
+func reduceTrees(trees []graph.LocatorNode) graph.LocatorNode {
+	ret := graph.LocatorNode{}
 	hasNonblankRoots := true
-	dimensions := make([]*locatorNode, 0, len(trees))
+	dimensions := make([]*graph.LocatorNode, 0, len(trees))
 	for _, root := range trees {
 		if root.Locator == "" && len(root.Children) > 0 {
 			dimensions = append(dimensions, root.Children...)
@@ -196,16 +198,16 @@ func reduceTrees(trees []locatorNode) locatorNode {
 		}
 	}
 	if !hasNonblankRoots {
-		return locatorNode{}
+		return graph.LocatorNode{}
 	}
 	ret.Order = 0
 	ret.Locator = ""
-	ret.Children = make([]*locatorNode, 0)
+	ret.Children = make([]*graph.LocatorNode, 0)
 	ret = *dedupNodes(dimensions, ret, int(ret.Order))
 	return ret
 }
 
-func dedupNodes(children []*locatorNode, dst locatorNode, order int) *locatorNode {
+func dedupNodes(children []*graph.LocatorNode, dst graph.LocatorNode, order int) *graph.LocatorNode {
 	if children == nil || len(children) <= 0 {
 		return &dst
 	}
@@ -217,18 +219,18 @@ func dedupNodes(children []*locatorNode, dst locatorNode, order int) *locatorNod
 	}
 	dedupLocators := dedup(dupLocators)
 	dedupLocators = sort.StringSlice(dedupLocators)
-	dedupChildren := make([]*locatorNode, 0)
+	dedupChildren := make([]*graph.LocatorNode, 0)
 	for _, dedupLocator := range dedupLocators {
 		order++
-		dupGrandchildren := make([]*locatorNode, 0)
+		dupGrandchildren := make([]*graph.LocatorNode, 0)
 		for _, dupChild := range children {
 			if dupChild.Locator == dedupLocator {
-				copied := make([]*locatorNode, len(dupChild.Children))
+				copied := make([]*graph.LocatorNode, len(dupChild.Children))
 				copy(copied, dupChild.Children)
 				dupGrandchildren = append(dupGrandchildren, copied...)
 			}
 		}
-		dstChild := locatorNode{
+		dstChild := graph.LocatorNode{
 			Locator: dedupLocator,
 			Order:   float64(order),
 		}

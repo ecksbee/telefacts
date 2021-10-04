@@ -1,86 +1,88 @@
-package renderables
+package telefacts_test
 
 import (
 	"testing"
+
+	"ecksbee.com/telefacts/internal/graph"
 )
 
 func TestPaths(t *testing.T) {
-	b := &locatorNode{
+	b := &graph.LocatorNode{
 		Locator: "B",
 		Order:   1,
 	}
-	c := &locatorNode{
+	c := &graph.LocatorNode{
 		Locator: "C",
 		Order:   1,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			b,
 		},
 	}
-	stimulus := &locatorNode{
+	stimulus := &graph.LocatorNode{
 		Locator: "A",
 		Order:   1,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			b,
 			c,
 		},
 	}
-	start := path{}
-	output := paths(stimulus, start)
+	start := graph.Path{}
+	output := graph.Paths(stimulus, start)
 	if len(output) != 2 {
 		t.Fatalf("expected 2 paths; outcome %d;\n%v\n", len(output), output)
 	}
 }
 
 func TestManyPaths(t *testing.T) {
-	f := &locatorNode{
+	f := &graph.LocatorNode{
 		Locator: "F",
 		Order:   1,
 	}
-	d := &locatorNode{
+	d := &graph.LocatorNode{
 		Locator: "D",
 		Order:   1,
 	}
-	b := &locatorNode{
+	b := &graph.LocatorNode{
 		Locator: "B",
 		Order:   1,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			d,
 		},
 	}
-	c := &locatorNode{
+	c := &graph.LocatorNode{
 		Locator: "C",
 		Order:   2,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			b,
 			f,
 		},
 	}
-	a := &locatorNode{
+	a := &graph.LocatorNode{
 		Locator: "A",
 		Order:   1,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			b,
 			d,
 		},
 	}
-	e := &locatorNode{
+	e := &graph.LocatorNode{
 		Locator: "F",
 		Order:   3,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			d,
 		},
 	}
-	stimulus := &locatorNode{
+	stimulus := &graph.LocatorNode{
 		Locator: "root",
 		Order:   1,
-		Children: []*locatorNode{
+		Children: []*graph.LocatorNode{
 			a,
 			c,
 			e,
 		},
 	}
-	start := path{}
-	output := paths(stimulus, start)
+	start := graph.Path{}
+	output := graph.Paths(stimulus, start)
 	if len(output) != 5 {
 		t.Fatalf("expected 5 paths; outcome %d;\n%v\n", len(output), output)
 	}
