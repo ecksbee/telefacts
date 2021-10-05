@@ -21,7 +21,6 @@ func main() {
 	var ctx = context.Background()
 	srv := setupServer()
 	go func() {
-		fmt.Println("Listening")
 		if err := srv.ListenAndServe(); err != nil {
 			log.Println(err)
 		}
@@ -45,6 +44,7 @@ func setupServer() *http.Server {
 	hydratables.HydrateUnitTypeRegistry()
 	r := web.NewRouter()
 
+	fmt.Println("telefacts<-0.0.0.0:8080")
 	return &http.Server{
 		Addr:         "0.0.0.0:8080",
 		WriteTimeout: time.Second * 15,
