@@ -524,15 +524,11 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 	ret := make([]FootnoteLink, 0, len(instanceFile.FootnoteLink))
 	for _, footnoteLink := range instanceFile.FootnoteLink {
 		item := FootnoteLink{}
-		nsAttr := attr.FindAttr(footnoteLink.XMLAttrs, "xmlns")
-		if nsAttr == nil || nsAttr.Value != attr.XLINK {
-			continue
-		}
 		typeAttr := attr.FindAttr(footnoteLink.XMLAttrs, "type")
 		if typeAttr == nil || typeAttr.Value != "extended" {
 			continue
 		}
-		roleAttr := attr.FindAttr(footnoteLink.XMLAttrs, "xmlns")
+		roleAttr := attr.FindAttr(footnoteLink.XMLAttrs, "role")
 		if roleAttr == nil || roleAttr.Value != attr.ROLELINK {
 			continue
 		}
@@ -544,10 +540,6 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 		for _, loc := range footnoteLink.Loc {
 			loctypeAttr := attr.FindAttr(loc.XMLAttrs, "type")
 			if loctypeAttr == nil || loctypeAttr.Value != "locator" {
-				continue
-			}
-			locnsAttr := attr.FindAttr(loc.XMLAttrs, "xmlns")
-			if locnsAttr == nil || locnsAttr.Value != attr.XLINK {
 				continue
 			}
 			hrefAttr := attr.FindAttr(loc.XMLAttrs, "href")
@@ -574,10 +566,6 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 			if footnoteidAttr == nil || footnoteidAttr.Value == "" {
 				continue
 			}
-			footnotensAttr := attr.FindAttr(footnote.XMLAttrs, "xmlns")
-			if footnotensAttr == nil || footnotensAttr.Value != attr.LINK {
-				continue
-			}
 			footnotelabelAttr := attr.FindAttr(footnote.XMLAttrs, "label")
 			if footnotelabelAttr == nil || footnotelabelAttr.Value == "" {
 				continue
@@ -596,10 +584,6 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 		}
 		item.FootnoteArcs = make([]FootnoteArc, 0, len(footnoteLink.FootnoteArc))
 		for _, footnoteArc := range footnoteLink.FootnoteArc {
-			footnoteArcnsAttr := attr.FindAttr(footnoteArc.XMLAttrs, "xmlns")
-			if footnoteArcnsAttr == nil || footnoteArcnsAttr.Value != attr.LINK {
-				continue
-			}
 			footnoteArcarcroleAttr := attr.FindAttr(footnoteArc.XMLAttrs, "arcrole")
 			if footnoteArcarcroleAttr == nil || footnoteArcarcroleAttr.Value != attr.FactFootnoteArcrole {
 				continue

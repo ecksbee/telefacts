@@ -42,6 +42,9 @@ func fnoteArcs(fnoteArcs []FootnoteArc) []graph.Arc {
 }
 
 func (h *Hydratable) GetFootnotes(fact *Fact) []*Footnote {
+	if fact == nil {
+		return make([]*Footnote, 0)
+	}
 	for _, instance := range h.Instances {
 		for _, footnoteLink := range instance.FootnoteLinks {
 			arcs := footnoteLink.FootnoteArcs
