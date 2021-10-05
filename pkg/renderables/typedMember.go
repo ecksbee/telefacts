@@ -1,15 +1,16 @@
 package renderables
 
 import (
+	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/hydratables"
 )
 
 const typedDomainArcRole = "http://ecksbee.com/arc-role/typed-domain"
 
-func tDomArcs(pArcs []hydratables.TypedDomainArc) []arc {
-	ret := make([]arc, 0, len(pArcs))
+func tDomArcs(pArcs []hydratables.TypedDomainArc) []graph.Arc {
+	ret := make([]graph.Arc, 0, len(pArcs))
 	for _, pArc := range pArcs {
-		ret = append(ret, arc{
+		ret = append(ret, graph.Arc{
 			Arcrole: typedDomainArcRole,
 			Order:   pArc.Order,
 			From:    pArc.From,
@@ -19,7 +20,8 @@ func tDomArcs(pArcs []hydratables.TypedDomainArc) []arc {
 	return ret
 }
 
-func getTypedMember(typedMember hydratables.TypedMember, dimension Dimension, isSegment bool, h *hydratables.Hydratable) ([]RelevantMember, []arc, []LabelPack) {
+func getTypedMember(typedMember hydratables.TypedMember, dimension Dimension,
+	isSegment bool, h *hydratables.Hydratable) ([]RelevantMember, []graph.Arc, []LabelPack) {
 	ret := make([]RelevantMember, 0, len(typedMember.TypedMembersMap))
 	arcs := tDomArcs(typedMember.TypedDomainArcs)
 	labelPacks := []LabelPack{

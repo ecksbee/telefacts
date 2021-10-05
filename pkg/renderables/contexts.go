@@ -3,6 +3,7 @@ package renderables
 import (
 	"sort"
 
+	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/hydratables"
 )
 
@@ -149,7 +150,7 @@ func stringify(e *Entity) string {
 }
 
 func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
-	hrefs []string) ([]relevantContext, []locatorNode, []locatorNode, []LabelPack) {
+	hrefs []string) ([]relevantContext, []graph.LocatorNode, []graph.LocatorNode, []LabelPack) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
 		_, c, err := h.HashQuery(href)
@@ -158,10 +159,10 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 		}
 	}
 	if len(factuaHrefs) <= 0 {
-		return []relevantContext{}, []locatorNode{}, []locatorNode{}, []LabelPack{}
+		return []relevantContext{}, []graph.LocatorNode{}, []graph.LocatorNode{}, []LabelPack{}
 	}
-	segmentTypedDomainTrees := make([]locatorNode, 0)
-	scenarioTypedDomainTrees := make([]locatorNode, 0)
+	segmentTypedDomainTrees := make([]graph.LocatorNode, 0)
+	scenarioTypedDomainTrees := make([]graph.LocatorNode, 0)
 	ret := make([]relevantContext, 0, len(hrefs)*4)
 	labelPacks := make([]LabelPack, 0, len(hrefs)*4)
 	for _, instance := range h.Instances {
@@ -198,12 +199,12 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getContextualMembers(context *hydratables.Context,
-	h *hydratables.Hydratable) ([]RelevantMember, []locatorNode,
-	[]locatorNode, []LabelPack) {
+	h *hydratables.Hydratable) ([]RelevantMember, []graph.LocatorNode,
+	[]graph.LocatorNode, []LabelPack) {
 	ret := make([]RelevantMember, 0)
 	labelPacks := make([]LabelPack, 0)
-	segmentTypedDomainTrees := make([]locatorNode, 0)
-	scenarioTypedDomainTrees := make([]locatorNode, 0)
+	segmentTypedDomainTrees := make([]graph.LocatorNode, 0)
+	scenarioTypedDomainTrees := make([]graph.LocatorNode, 0)
 	if len(context.Entity.Segment.ExplicitMembers) > 0 {
 		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
 			member := explicitMember.Member.Href
@@ -234,7 +235,7 @@ func getContextualMembers(context *hydratables.Context,
 				Href:  dimension,
 				Label: dimensionLabel,
 			}, true, h)
-			segmentTypedDomainTrees = append(segmentTypedDomainTrees, tree(typedDomainArcs, typedDomainArcRole))
+			segmentTypedDomainTrees = append(segmentTypedDomainTrees, graph.Tree(typedDomainArcs, typedDomainArcRole))
 			labelPacks = append(labelPacks, typedDomainMemberLabels...)
 			ret = append(ret, typedDomainMembers...)
 		}
@@ -269,7 +270,7 @@ func getContextualMembers(context *hydratables.Context,
 				Href:  dimension,
 				Label: dimensionLabel,
 			}, false, h)
-			scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, tree(typedDomainArcs, typedDomainArcRole))
+			scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, graph.Tree(typedDomainArcs, typedDomainArcRole))
 			labelPacks = append(labelPacks, typedDomainMemberLabels...)
 			ret = append(ret, typedDomainMembers...)
 		}
