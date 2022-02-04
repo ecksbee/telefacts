@@ -45,7 +45,7 @@ func NewFolder(underscore Underscore) (string, error) {
 		return "", err
 	}
 	meta := path.Join(pathStr, "_")
-	file, _ := os.OpenFile(meta, os.O_CREATE, 0755)
+	file, _ := os.OpenFile(meta, os.O_CREATE|os.O_WRONLY, 0755)
 	defer file.Close()
 	encoder := json.NewEncoder(file)
 	err = encoder.Encode(underscore)
