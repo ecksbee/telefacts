@@ -69,12 +69,9 @@ func NewRouter() http.Handler {
 	projectIDRoute.HandleFunc("/{hash}", Renderable()).Methods("GET")
 	wd, err := os.Getwd()
 	if err != nil {
-		r.HandleFunc("/", func(w http.ResponseWriter, req *http.Request) {
-			http.Error(w, "Error: renderer failed to load", http.StatusInternalServerError)
-		})
-		return r
+		panic(err)
 	}
-	fs := http.FileServer(http.Dir((filepath.Join(wd, "renderer"))))
+	fs := http.FileServer(http.Dir((filepath.Join(wd, "data", "renderer"))))
 	r.PathPrefix("/").Handler(fs)
 	return r
 }
