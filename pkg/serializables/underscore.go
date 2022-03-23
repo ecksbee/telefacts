@@ -11,10 +11,8 @@ import (
 )
 
 type Underscore struct {
-	Entry    string
-	Checksum string
-	Ixbrl    string
-	Note     string
+	Entry string
+	Note  string
 }
 
 func GetEntryFileName(id string) (string, error) {
