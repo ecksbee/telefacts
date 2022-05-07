@@ -12,6 +12,7 @@ type Catalog struct {
 	Subjects         []Subject
 	RelationshipSets []RelationshipSet
 	Networks         map[string]map[string]string
+	Expressions      map[string]Expressable //todo
 }
 
 func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
