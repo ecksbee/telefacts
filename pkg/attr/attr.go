@@ -3,9 +3,20 @@ package attr
 import (
 	"encoding/xml"
 	"strings"
+
+	"github.com/antchfx/xmlquery"
 )
 
 func FindAttr(attrs []xml.Attr, attr string) *xml.Attr {
+	for _, a := range attrs {
+		if a.Name.Local == attr {
+			return &a
+		}
+	}
+	return nil
+}
+
+func FindXpathAttr(attrs []xmlquery.Attr, attr string) *xmlquery.Attr {
 	for _, a := range attrs {
 		if a.Name.Local == attr {
 			return &a

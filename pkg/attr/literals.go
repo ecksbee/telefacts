@@ -2,6 +2,8 @@ package attr
 
 const UTR = `http://www.xbrl.org/utr/utr.xml`
 const LRR = `http://www.xbrl.org/2003/xbrl-role-2003-07-31.xsd`
+const IX = `http://www.xbrl.org/2013/inlineXBRL`
+const IXT = `http://www.xbrl.org/inlineXBRL/transformation/2015-02-26`
 const XSD = `http://www.w3.org/2001/XMLSchema`
 const XLINK = `http://www.w3.org/1999/xlink`
 const XBRLI = `http://www.xbrl.org/2003/instance`
@@ -16,6 +18,8 @@ const DTRNONNUM = `http://www.xbrl.org/dtr/type/nonNumeric-2009-12-16.xsd`
 const DTRNUM = `http://www.xbrl.org/dtr/type/numeric-2009-12-16.xsd`
 const NONNUM = `http://www.xbrl.org/dtr/type/non-numeric`
 const NUM = `http://www.xbrl.org/dtr/type/numeric`
+const XSI = `http://www.w3.org/2001/XMLSchema-instance`
+const ISO4217 = `http://www.xbrl.org/2003/iso4217`
 const LabelLinkbaseRef = `http://www.xbrl.org/2003/role/labelLinkbaseRef`
 const CalculationLinkbaseRef = `http://www.xbrl.org/2003/role/calculationLinkbaseRef`
 const DefinitionLinkbaseRef = `http://www.xbrl.org/2003/role/definitionLinkbaseRef`
