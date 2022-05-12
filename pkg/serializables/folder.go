@@ -11,6 +11,7 @@ import (
 type Folder struct {
 	wLock                 sync.Mutex
 	Dir                   string
+	Document              *Document
 	Namespaces            map[string]string
 	Instances             map[string]InstanceFile
 	Schemas               map[string]SchemaFile
@@ -45,6 +46,11 @@ func Discover(id string) (*Folder, error) {
 	ret.wLock.Lock()
 	defer ret.wLock.Unlock()
 	ret.Instances[entryFileName] = *instanceFile
+	doc, err := GetDocument(id)
+	if err != nil {
+		return nil, err
+	}
+	ret.Document = doc
 	return ret, nil
 }
 

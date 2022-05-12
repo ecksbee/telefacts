@@ -15,6 +15,11 @@ type Underscore struct {
 	Note  string
 }
 
+func GetDocument(id string) (*Document, error) {
+	//todo
+	return nil, nil
+}
+
 func GetEntryFileName(id string) (string, error) {
 	underscore := Underscore{}
 	b, err := ioutil.ReadFile(path.Join(VolumePath, "folders", id, "_"))

@@ -7,7 +7,6 @@ type Expressable struct {
 
 func getExpressions(h *hydratables.Hydratable) (map[string]Expressable, error) {
 	ret := make(map[string]Expressable)
-
 	//todo
 	return ret, nil
 }
