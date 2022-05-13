@@ -2,7 +2,9 @@ package serializables
 
 import (
 	"encoding/xml"
+	"io/ioutil"
 	"path"
+	osFilepath "path/filepath"
 	"sync"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -37,20 +39,44 @@ func Discover(id string) (*Folder, error) {
 		DefinitionLinkbases:   make(map[string]DefinitionLinkbaseFile),
 		CalculationLinkbases:  make(map[string]CalculationLinkbaseFile),
 	}
-	filepath := path.Join(workingDir, entryFileName)
-	instanceFile, err := ReadInstanceFile(filepath)
-	if err != nil {
-		return nil, err
+	ext := osFilepath.Ext(entryFileName)
+	switch ext {
+	case ".xhtml", ".htm":
+		filepath := path.Join(workingDir, entryFileName)
+		data, err := ioutil.ReadFile(filepath)
+		if err != nil {
+			return nil, err
+		}
+		doc, err := DecodeIxbrlFile(data)
+		if err != nil {
+			return nil, err
+		}
+		ret.Document = doc
+		extracted := path.Join(workingDir, entryFileName+".xml")
+		err = doc.Extract(extracted)
+		if err != nil {
+			return nil, err
+		}
+		instanceFilePath := path.Join(workingDir, extracted)
+		instanceFile, err := ReadInstanceFile(instanceFilePath)
+		if err != nil {
+			return nil, err
+		}
+		ret.schemaRef(instanceFile)
+		ret.wLock.Lock()
+		defer ret.wLock.Unlock()
+		ret.Instances[entryFileName] = *instanceFile
+	case ".xbrl", ".xml":
+		filepath := path.Join(workingDir, entryFileName)
+		instanceFile, err := ReadInstanceFile(filepath)
+		if err != nil {
+			return nil, err
+		}
+		ret.schemaRef(instanceFile)
+		ret.wLock.Lock()
+		defer ret.wLock.Unlock()
+		ret.Instances[entryFileName] = *instanceFile
 	}
-	ret.schemaRef(instanceFile)
-	ret.wLock.Lock()
-	defer ret.wLock.Unlock()
-	ret.Instances[entryFileName] = *instanceFile
-	doc, err := GetDocument(id)
-	if err != nil {
-		return nil, err
-	}
-	ret.Document = doc
 	return ret, nil
 }
 

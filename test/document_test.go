@@ -13,7 +13,7 @@ import (
 	"ecksbee.com/telefacts/pkg/serializables"
 )
 
-func TestDecode_Large(t *testing.T) {
+func TestDecode(t *testing.T) {
 	workingDir := path.Join(".", "data", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
@@ -45,7 +45,7 @@ func TestDecode_Large(t *testing.T) {
 	}
 }
 
-func TestExtract_Large(t *testing.T) {
+func TestExtract(t *testing.T) {
 	serializables.INDENT = true
 	workingDir := path.Join(".", "data", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
