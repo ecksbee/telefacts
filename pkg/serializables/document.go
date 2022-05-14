@@ -2,7 +2,9 @@ package serializables
 
 import (
 	"bytes"
+	"encoding/hex"
 	"fmt"
+	"hash/fnv"
 	"strings"
 
 	"ecksbee.com/telefacts/internal/actions"
@@ -163,6 +165,15 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
 			classicFact.CreateAttr(n, contextRef.Value)
 		}
+		idAttr := attr.FindXpathAttr(nonFraction.Attr, "id")
+		if idAttr == nil {
+			h := fnv.New128a()
+			h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
+			idVal := hex.EncodeToString(h.Sum([]byte{}))
+			classicFact.CreateAttr("id", idVal)
+		} else {
+			classicFact.CreateAttr("id", idAttr.Value)
+		}
 		decimals := attr.FindXpathAttr(nonFraction.Attr, "decimals")
 		if decimals != nil {
 			n := np.ProvideName(attr.XBRLI, decimals.Name.Local)
@@ -190,6 +201,15 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 		} else {
 			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
 			classicFact.CreateAttr(n, contextRef.Value)
+		}
+		idAttr := attr.FindXpathAttr(nonNumeric.Attr, "id")
+		if idAttr == nil {
+			h := fnv.New128a()
+			h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
+			idVal := hex.EncodeToString(h.Sum([]byte{}))
+			classicFact.CreateAttr("id", idVal)
+		} else {
+			classicFact.CreateAttr("id", idAttr.Value)
 		}
 		// format := attr.FindXpathAttr(nonFraction.Attr, "format")
 		err := doc.completeTextNode(classicFact, nonNumeric, np)
