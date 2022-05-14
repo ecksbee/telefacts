@@ -57,8 +57,7 @@ func Discover(id string) (*Folder, error) {
 		if err != nil {
 			return nil, err
 		}
-		instanceFilePath := path.Join(workingDir, extracted)
-		instanceFile, err := ReadInstanceFile(instanceFilePath)
+		instanceFile, err := ReadInstanceFile(extracted)
 		if err != nil {
 			return nil, err
 		}
