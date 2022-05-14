@@ -1,7 +1,9 @@
 package hydratables
 
 import (
+	"encoding/hex"
 	"encoding/xml"
+	"hash/fnv"
 	"strconv"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -74,7 +76,9 @@ func HydrateExpressable(node *xmlquery.Node, np *attr.NameProvider) (*Expressabl
 	id := attr.FindXpathAttr(node.Attr, "id")
 	if id == nil {
 		if name != nil && contextRef != nil {
-			idVal = name.Value + "_" + contextRef.Value
+			h := fnv.New128a()
+			h.Write([]byte(name.Value + "_" + contextRef.Value))
+			idVal = hex.EncodeToString(h.Sum([]byte{}))
 		}
 	} else {
 		idVal = id.Value

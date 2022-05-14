@@ -157,7 +157,9 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 		factName := np.ProvideConceptName(nameAttr.Value)
 		classicFact := xbrl.CreateElement(factName)
 		contextRef := attr.FindXpathAttr(nonFraction.Attr, "contextRef")
-		if contextRef != nil {
+		if contextRef == nil {
+			continue
+		} else {
 			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
 			classicFact.CreateAttr(n, contextRef.Value)
 		}
@@ -184,6 +186,8 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 		classicFact := xbrl.CreateElement(factName)
 		contextRef := attr.FindXpathAttr(nonNumeric.Attr, "contextRef")
 		if contextRef != nil {
+			continue
+		} else {
 			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
 			classicFact.CreateAttr(n, contextRef.Value)
 		}
