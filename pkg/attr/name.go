@@ -1,6 +1,8 @@
 package attr
 
 import (
+	"encoding/xml"
+	"fmt"
 	"strings"
 
 	"github.com/antchfx/xmlquery"
@@ -56,6 +58,24 @@ func (np *NameProvider) ProvideConceptName(prefixed string) string {
 		}
 	}
 	panic("prefix, " + prefix + ", does not match a namespace")
+}
+
+func (np *NameProvider) ProvideXmlName(prefixed string) (*xml.Name, error) {
+	i := strings.IndexRune(prefixed, ':')
+	if i < 0 {
+		return &xml.Name{
+			Space: "",
+			Local: prefixed[i+1:],
+		}, nil
+	}
+	prefix := prefix(prefixed[:i])
+	if space, hit1 := np.originPrefixes[prefix]; hit1 {
+		return &xml.Name{
+			Space: string(space),
+			Local: prefixed[i:],
+		}, nil
+	}
+	return nil, fmt.Errorf("prefix, %s, does not match a namespace", prefix)
 }
 
 func (np *NameProvider) ProvideName(ns string, local string) string {

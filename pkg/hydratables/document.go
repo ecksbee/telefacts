@@ -1,6 +1,7 @@
 package hydratables
 
 import (
+	"encoding/xml"
 	"strconv"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -9,7 +10,7 @@ import (
 )
 
 type Expressable struct {
-	Href       string
+	Name       xml.Name
 	ID         string
 	ContextRef string
 	UnitRef    string
@@ -27,13 +28,23 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 	if source == nil {
 		return nil, nil
 	}
+	np, err := attr.NewNameProvider(source.Html.Attr)
+	if err != nil {
+		return nil, err
+	}
 	ret := make([]Expressable, 0)
 	for _, nonNumeric := range source.NonNumerics {
-		expressable := HydrateExpressable(nonNumeric)
+		expressable, err := HydrateExpressable(nonNumeric, np)
+		if err != nil {
+			return nil, err
+		}
 		ret = append(ret, *expressable)
 	}
 	for _, nonFraction := range source.NonFractions {
-		expressable := HydrateExpressable(nonFraction)
+		expressable, err := HydrateExpressable(nonFraction, np)
+		if err != nil {
+			return nil, err
+		}
 		ret = append(ret, *expressable)
 	}
 	return &Document{
@@ -41,10 +52,9 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 	}, nil
 }
 
-func HydrateExpressable(node *xmlquery.Node) *Expressable {
+func HydrateExpressable(node *xmlquery.Node, np *attr.NameProvider) (*Expressable, error) {
 	var idVal, unitRefVal string
 	decimals := Precisionless
-	href := "//todo"
 	name := attr.FindXpathAttr(node.Attr, "name")
 	contextRef := attr.FindXpathAttr(node.Attr, "contextRef")
 	unitRef := attr.FindXpathAttr(node.Attr, "unitRef")
@@ -72,13 +82,17 @@ func HydrateExpressable(node *xmlquery.Node) *Expressable {
 	if unitRef != nil {
 		unitRefVal = unitRef.Value
 	}
+	xmlName, err := np.ProvideXmlName(name.Value)
+	if err != nil {
+		return nil, err
+	}
 	return &Expressable{
-		Href:       href,
+		Name:       *xmlName,
 		ID:         idVal,
 		ContextRef: contextRef.Value,
 		UnitRef:    unitRefVal,
 		Precision:  Precision(decimals),
 		IsNil:      false, //todo
 		XMLInner:   "",    //todo
-	}
+	}, nil
 }

@@ -114,7 +114,7 @@ func TestHydrate_Gold(t *testing.T) {
 	}
 }
 
-func TestDecode_Ix(t *testing.T) {
+func TestHydrate_Ix(t *testing.T) {
 	workingDir := path.Join(".", "data", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
