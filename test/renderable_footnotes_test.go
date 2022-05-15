@@ -16,13 +16,13 @@ func TestMarshalRenderable_Large_Footnote(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.VolumePath = path.Join(".", "data")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.VolumePath, "folders", "test_large")
+	workingDir := path.Join(serializables.VolumePath, "folders", "test_erroneous")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	f, err := serializables.Discover("test_large")
+	f, err := serializables.Discover("test_erroneous")
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}

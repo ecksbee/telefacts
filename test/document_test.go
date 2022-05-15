@@ -28,7 +28,7 @@ func TestDecode(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	sourceFilePath := "fizz20200502_10k.htm"
+	sourceFilePath := "cmg-20200331x10q.htm"
 	filepath := path.Join(workingDir, sourceFilePath)
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
@@ -61,7 +61,7 @@ func TestExtract(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	sourceFilePath := "fizz20200502_10k.htm"
+	sourceFilePath := "cmg-20200331x10q.htm"
 	filepath := path.Join(workingDir, sourceFilePath)
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
