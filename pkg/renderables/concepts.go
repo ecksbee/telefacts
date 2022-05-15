@@ -8,6 +8,7 @@ import (
 
 type ConceptFinder interface {
 	HashQuery(query string) (string, *hydratables.Concept, error)
+	NameQuery(namespace string, localName string) (string, *hydratables.Concept, error)
 }
 
 func mapPLocatorToHref(relationshipSetCurrentlyViewing string, presentation *hydratables.PresentationLinkbase, locator string) string {

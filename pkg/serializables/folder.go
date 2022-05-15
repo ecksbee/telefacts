@@ -96,7 +96,7 @@ func (folder *Folder) schemaRef(file *InstanceFile) {
 				return
 			}
 			hrefAttr := attr.FindAttr(item.XMLAttrs, "href")
-			if hrefAttr == nil || hrefAttr.Value == "" || hrefAttr.Name.Space != attr.XLINK {
+			if hrefAttr == nil || hrefAttr.Value == "" {
 				return
 			}
 			if attr.IsValidUrl(hrefAttr.Value) {
