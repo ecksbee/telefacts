@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp03' xlink:href='../elts/us-roles-2020-01-31.xsd#cecltmp03' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp03' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:label='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:label='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FixedRateResidentialMortgageMember' xlink:label='loc_FixedRateResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AdjustableRateResidentialMortgageMember' xlink:label='loc_AdjustableRateResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_HomeEquityMember' xlink:label='loc_HomeEquityMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialAndIndustrialSectorMember' xlink:label='loc_CommercialAndIndustrialSectorMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialRealEstateMember' xlink:label='loc_CommercialRealEstateMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableTroubledDebtRestructuringAbstract' xlink:label='loc_FinancingReceivableTroubledDebtRestructuringAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ScheduleOfFinancingReceivableTroubledDebtRestructuringsTable' xlink:label='loc_ScheduleOfFinancingReceivableTroubledDebtRestructuringsTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsLineItems' xlink:label='loc_FinancingReceivableModificationsLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsPostModificationRecordedInvestment2' xlink:label='loc_FinancingReceivableModificationsPostModificationRecordedInvestment2' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsNumberOfContracts2' xlink:label='loc_FinancingReceivableModificationsNumberOfContracts2' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsPreModificationRecordedInvestment2' xlink:label='loc_FinancingReceivableModificationsPreModificationRecordedInvestment2' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableTroubledDebtRestructuringIncreaseDecreaseFromModification' xlink:label='loc_FinancingReceivableTroubledDebtRestructuringIncreaseDecreaseFromModification' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsSubsequentDefaultRecordedInvestment1' xlink:label='loc_FinancingReceivableModificationsSubsequentDefaultRecordedInvestment1' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableModificationsSubsequentDefaultNumberOfContracts1' xlink:label='loc_FinancingReceivableModificationsSubsequentDefaultNumberOfContracts1' xlink:type='locator' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:to='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_FixedRateResidentialMortgageMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_AdjustableRateResidentialMortgageMember' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_HomeEquityMember' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_CommercialAndIndustrialSectorMember' xlink:type='arc' />
+<link:presentationArc order='50' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_CommercialRealEstateMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableTroubledDebtRestructuringAbstract' xlink:to='loc_ScheduleOfFinancingReceivableTroubledDebtRestructuringsTable' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableModificationsPostModificationRecordedInvestment2' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableModificationsNumberOfContracts2' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableModificationsPreModificationRecordedInvestment2' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableTroubledDebtRestructuringIncreaseDecreaseFromModification' xlink:type='arc' />
+<link:presentationArc order='50' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableModificationsSubsequentDefaultRecordedInvestment1' xlink:type='arc' />
+<link:presentationArc order='60' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableModificationsLineItems' xlink:to='loc_FinancingReceivableModificationsSubsequentDefaultNumberOfContracts1' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivableTroubledDebtRestructuringsTable' xlink:to='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivableTroubledDebtRestructuringsTable' xlink:to='loc_FinancingReceivableModificationsLineItems' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>

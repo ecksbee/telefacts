@@ -5580,7 +5580,7 @@
     <!-- Proposed New Units For Solar -->
     <!-- Temperature Items -->
     <unit id="u00280">
-      <unitId>Cel</unitId>
+      <unitId>Celsius</unitId>
       <unitName>Celsius</unitName>
       <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
       <itemType>temperatureItemType</itemType>
@@ -5605,7 +5605,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00281">
@@ -5634,7 +5634,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00282">
@@ -5681,7 +5681,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!-- Pressure Item Types -->
@@ -5726,7 +5726,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00284">
@@ -5775,7 +5775,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00285">
@@ -5818,7 +5818,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00286">
@@ -5847,7 +5847,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!--  The force item type -->
@@ -5889,7 +5889,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!--  The Power item type -->
@@ -5920,7 +5920,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00289">
@@ -5949,7 +5949,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!-- Energy Item Types -->
@@ -5961,7 +5961,7 @@
       <itemTypeDate>2009-12-16</itemTypeDate>
       <symbol>Wh</symbol>
       <definition>Watt-Hours of Energy</definition>
-      <baseStandard>SI</baseStandard>
+      <baseStandard>Customary</baseStandard>
       <conversionPresentation>
         <math xmlns="http://www.w3.org/1998/Math/MathML">
           <mrow>
@@ -5990,7 +5990,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00291">
@@ -6002,7 +6002,35 @@
       <symbol>VAh</symbol>
       <definition>Volt-ampere (VA) hours of energy.</definition>
       <baseStandard>Customary</baseStandard>
-      <status>CR</status>
+      <conversionPresentation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn>3.6</mn>
+            <mo>&#xB7;</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+            <mo>&#xB7;</mo>
+            <mi>J</mi>
+          </mrow>
+        </math>
+      </conversionPresentation>
+      <conversionContent>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn>3.6</cn>
+            <apply>
+              <power/>
+              <cn>10</cn>
+              <cn>3</cn>
+            </apply>
+            <ci>J</ci>
+          </apply>
+        </math>
+      </conversionContent>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!-- Units of Electrical Charge -->
@@ -6030,7 +6058,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00293">
@@ -6057,7 +6085,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <!-- Angle item type -->
@@ -6092,7 +6120,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
     <unit id="u00295">
@@ -6103,7 +6131,7 @@
       <symbol>rad</symbol>
       <definition>The radian is the standard unit of angular measure. The radian is an SI derived unit.</definition>
       <baseStandard>SI</baseStandard>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2017-07-12</versionDate>
     </unit>
 <!-- Additional measures of Energy for FERC and SASB -->
@@ -6144,7 +6172,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
 
@@ -6185,7 +6213,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
     <unit id="u00305">
@@ -6222,7 +6250,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
     <unit id="u00306">
@@ -6259,7 +6287,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
     <unit id="u00307">
@@ -6296,7 +6324,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
     <unit id="u00308">
@@ -6333,7 +6361,7 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
     </unit>
     <unit id="u00309">
@@ -6363,8 +6391,161 @@
           </apply>
         </math>
       </conversionContent>
-      <status>CR</status>
+      <status>REC</status>
       <versionDate>2021-02-16</versionDate>
+    </unit>
+    <unit id="u00310">
+      <unitId>MVA</unitId>
+      <unitName>MegaVolt-ampere</unitName>
+      <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
+      <itemType>powerItemType</itemType>
+      <itemTypeDate>2009-12-16</itemTypeDate>
+      <symbol>MVA</symbol>
+      <definition>A megavolt-ampere (MVA) is the unit used for the apparent power in an electrical circuit, equal to the product of root-mean-square (RMS) voltage and RMS current. In direct current (DC) circuits, this product is equal to the real power (active power) in watts. Volt-amperes are useful only in the context of alternating current (AC) circuits.</definition>
+      <baseStandard>SI</baseStandard>
+      <conversionPresentation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn>1000000</mn>
+            <mo>&#xB7;</mo>
+            <mi>VA</mi>
+          </mrow>
+        </math>
+      </conversionPresentation>
+      <conversionContent>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <cn>1000000</cn>
+            <ci>VA</ci>
+          </apply>
+        </math>
+      </conversionContent>
+      <status>REC</status>
+      <versionDate>2021-06-30</versionDate>
+    </unit>
+    <unit id="u00311">
+      <unitId>tCO2e</unitId>
+      <unitName>Metric tonnes of CO2 equivalent</unitName>
+      <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
+      <itemType>ghgEmissionsItemType</itemType>
+      <itemTypeDate>2021-08-09</itemTypeDate>
+      <symbol>tCO2e</symbol>
+      <definition>Carbon dioxide equivalent is calculated for emissions other than carbon dioxide according to their global warming potential (GWP). As estimates of GWP may change over time, the UTR defines no fixed conversion rates.</definition>
+      <baseStandard>Non-SI</baseStandard>
+      <status>REC</status>
+      <versionDate>2021-06-30</versionDate>
+    </unit>
+    <unit id="u00312">
+      <unitId>ktCO2e</unitId>
+      <unitName>Thousand metric tonnes of CO2 equivalent</unitName>
+      <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
+      <itemType>ghgEmissionsItemType</itemType>
+      <itemTypeDate>2021-08-09</itemTypeDate>
+      <symbol>ktCO2e</symbol>
+      <definition>Carbon dioxide equivalent is calculated for emissions other than carbon dioxide according to their global warming potential (GWP). As estimates of GWP may change over time, the UTR defines no fixed conversion rates.</definition>
+      <baseStandard>Non-SI</baseStandard>
+      <conversionPresentation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+            <mo>*</mo>
+            <mi>tCO2e</mi>
+          </mrow>
+        </math>
+      </conversionPresentation>
+      <conversionContent>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn>10</cn>
+              <cn>3</cn>
+            </apply>
+            <ci>tCO2e</ci>
+          </apply>
+        </math>
+      </conversionContent>
+      <status>REC</status>
+      <versionDate>2021-06-30</versionDate>
+    </unit>
+    <unit id="u00313">
+      <unitId>MtCO2e</unitId>
+      <unitName>Million metric tonnes of CO2 equivalent</unitName>
+      <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
+      <itemType>ghgEmissionsItemType</itemType>
+      <itemTypeDate>2021-08-09</itemTypeDate>
+      <symbol>MtCO2e</symbol>
+      <definition>Carbon dioxide equivalent is calculated for emissions other than carbon dioxide according to their global warming potential (GWP). As estimates of GWP may change over time, the UTR defines no fixed conversion rates.</definition>
+      <baseStandard>Non-SI</baseStandard>
+      <conversionPresentation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <msup>
+              <mn>10</mn>
+              <mn>6</mn>
+            </msup>
+            <mo>*</mo>
+            <mi>tCO2e</mi>
+          </mrow>
+        </math>
+      </conversionPresentation>
+      <conversionContent>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn>10</cn>
+              <cn>6</cn>
+            </apply>
+            <ci>tCO2e</ci>
+          </apply>
+        </math>
+      </conversionContent>
+      <status>REC</status>
+      <versionDate>2021-06-30</versionDate>
+    </unit>
+    <unit id="u00314">
+      <unitId>GtCO2e</unitId>
+      <unitName>Thousand million metric tonnes of CO2 equivalent</unitName>
+      <nsUnit>http://www.xbrl.org/2009/utr</nsUnit>
+      <itemType>ghgEmissionsItemType</itemType>
+      <itemTypeDate>2021-08-09</itemTypeDate>
+      <symbol>GtCO2e</symbol>
+      <definition>Carbon dioxide equivalent is calculated for emissions other than carbon dioxide according to their global warming potential (GWP). As estimates of GWP may change over time, the UTR defines no fixed conversion rates.</definition>
+      <baseStandard>Non-SI</baseStandard>
+      <conversionPresentation>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <msup>
+              <mn>10</mn>
+              <mn>9</mn>
+            </msup>
+            <mo>*</mo>
+            <mi>tCO2e</mi>
+          </mrow>
+        </math>
+      </conversionPresentation>
+      <conversionContent>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply>
+            <times/>
+            <apply>
+              <power/>
+              <cn>10</cn>
+              <cn>9</cn>
+            </apply>
+            <ci>tCO2e</ci>
+          </apply>
+        </math>
+      </conversionContent>
+      <status>REC</status>
+      <versionDate>2021-06-30</versionDate>
     </unit>
   </units>
 </utr>

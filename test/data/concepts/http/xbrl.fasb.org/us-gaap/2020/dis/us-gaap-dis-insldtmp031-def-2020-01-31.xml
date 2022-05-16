@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:href='../elts/us-roles-2020-01-31.xsd#FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='locator' />
+<link:definitionArc order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeAxis' xlink:label='loc_RangeAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeMember' xlink:label='loc_RangeMember' xlink:type='locator' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_RangeAxis' xlink:to='loc_RangeMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeAxis' xlink:label='loc_RangeAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeMember' xlink:label='loc_RangeMember' xlink:type='locator' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_RangeAxis' xlink:to='loc_RangeMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0200To0299Member' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0200To0299Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0300To0399Member' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0300To0399Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0400AndGreaterMember' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0400AndGreaterMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditRating' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditRating' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRate' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRate' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderFunds' xlink:label='loc_PolicyholderFunds' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAtGuaranteedMinimumCreditingRateMember' xlink:label='loc_PolicyholderAccountBalanceAtGuaranteedMinimumCreditingRateMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0001To0050Member' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0001To0050Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0051To0150Member' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0051To0150Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0151AndGreaterMember' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0151AndGreaterMember' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_UniversalLifeMember' xlink:label='loc_UniversalLifeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FixedAnnuityMember' xlink:label='loc_FixedAnnuityMember' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeMember' xlink:label='loc_RangeMember' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_MaximumMember' xlink:label='loc_MaximumMember' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_MinimumMember' xlink:label='loc_MinimumMember' xlink:type='locator' />
+<link:definitionArc order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0200To0299Member' xlink:type='arc' />
+<link:definitionArc order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0300To0399Member' xlink:type='arc' />
+<link:definitionArc order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeDomain' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeFrom0400AndGreaterMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditRating' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRate' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateLineItems' xlink:to='loc_PolicyholderFunds' xlink:type='arc' />
+<link:definitionArc order='8.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:to='loc_PolicyholderAccountBalanceAtGuaranteedMinimumCreditingRateMember' xlink:type='arc' />
+<link:definitionArc order='9.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0001To0050Member' xlink:type='arc' />
+<link:definitionArc order='10.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0051To0150Member' xlink:type='arc' />
+<link:definitionArc order='11.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateDomain' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateRangeFrom0151AndGreaterMember' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_UniversalLifeMember' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_FixedAnnuityMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_RangeMember' xlink:to='loc_MaximumMember' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_RangeMember' xlink:to='loc_MinimumMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp031PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RangeAxis' xlink:label='loc_RangeAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:label='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:label='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:to='loc_RangeAxis' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:to='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateRangeAxis' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_PolicyholderAccountBalanceGuaranteedMinimumCreditingRateTable' xlink:to='loc_PolicyholderAccountBalanceAboveGuaranteedMinimumCreditingRateAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

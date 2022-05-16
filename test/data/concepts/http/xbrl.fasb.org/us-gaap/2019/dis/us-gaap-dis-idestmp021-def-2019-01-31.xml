@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:href='../elts/us-roles-2019-01-31.xsd#InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:label='loc_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DebtSecuritiesAvailableForSaleTable' xlink:label='loc_DebtSecuritiesAvailableForSaleTable' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:to='loc_DebtSecuritiesAvailableForSaleTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:label='loc_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearFairValue' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearFairValue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsFairValue' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsFairValue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsFairValue' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsFairValue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsFairValue' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsFairValue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtSecurities' xlink:label='loc_AvailableForSaleSecuritiesDebtSecurities' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearAmortizedCost' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearAmortizedCost' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsAmortizedCost' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsAmortizedCost' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsAmortizedCost' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsAmortizedCost' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsAmortizedCost' xlink:label='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsAmortizedCost' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_AvailableForSaleDebtSecuritiesAmortizedCostBasis' xlink:label='loc_AvailableForSaleDebtSecuritiesAmortizedCostBasis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_USTreasurySecuritiesMember' xlink:label='loc_USTreasurySecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ForeignGovernmentDebtSecuritiesMember' xlink:label='loc_ForeignGovernmentDebtSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DomesticCorporateDebtSecuritiesMember' xlink:label='loc_DomesticCorporateDebtSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ForeignCorporateDebtSecuritiesMember' xlink:label='loc_ForeignCorporateDebtSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_CollateralizedLoanObligationsMember' xlink:label='loc_CollateralizedLoanObligationsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_USStatesAndPoliticalSubdivisionsMember' xlink:label='loc_USStatesAndPoliticalSubdivisionsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_MortgageBackedSecuritiesMember' xlink:label='loc_MortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:type='arc' />
+<link:definitionArc priority='10' order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfAvailableForSaleSecuritiesLineItems' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearFairValue' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsFairValue' xlink:type='arc' />
+<link:definitionArc priority='10' order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsFairValue' xlink:type='arc' />
+<link:definitionArc priority='10' order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsFairValue' xlink:type='arc' />
+<link:definitionArc priority='10' order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtSecurities' xlink:type='arc' />
+<link:definitionArc priority='10' order='8.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesWithinOneYearAmortizedCost' xlink:type='arc' />
+<link:definitionArc priority='10' order='9.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterOneThroughFiveYearsAmortizedCost' xlink:type='arc' />
+<link:definitionArc priority='10' order='10.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterFiveThroughTenYearsAmortizedCost' xlink:type='arc' />
+<link:definitionArc priority='10' order='11.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:to='loc_AvailableForSaleSecuritiesDebtMaturitiesAfterTenYearsAmortizedCost' xlink:type='arc' />
+<link:definitionArc priority='10' order='12.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_AvailableForSaleSecuritiesDebtMaturitiesSingleMaturityDateAmortizedCostBasisAbstract' xlink:to='loc_AvailableForSaleDebtSecuritiesAmortizedCostBasis' xlink:type='arc' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_USTreasurySecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_ForeignGovernmentDebtSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_DomesticCorporateDebtSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_ForeignCorporateDebtSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CollateralizedLoanObligationsMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_USStatesAndPoliticalSubdivisionsMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_MortgageBackedSecuritiesMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp021DebtSecuritiesAvailableForSaleTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DebtSecuritiesAvailableForSaleTable' xlink:label='loc_DebtSecuritiesAvailableForSaleTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_DebtSecuritiesAvailableForSaleTable' xlink:to='loc_FinancialInstrumentAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

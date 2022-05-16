@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:href='../elts/us-roles-2019-01-31.xsd#FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostLineItems' xlink:label='loc_DeferredPolicyAcquisitionCostLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostTable' xlink:label='loc_DeferredPolicyAcquisitionCostTable' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostLineItems' xlink:label='loc_DeferredPolicyAcquisitionCostLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCosts' xlink:label='loc_DeferredPolicyAcquisitionCosts' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostsAdditions' xlink:label='loc_DeferredPolicyAcquisitionCostsAdditions' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:label='loc_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:label='loc_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_WholeLifeInsuranceMember' xlink:label='loc_WholeLifeInsuranceMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_UniversalLifeMember' xlink:label='loc_UniversalLifeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_VariableUniversalLifeMember' xlink:label='loc_VariableUniversalLifeMember' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCosts' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostsAdditions' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:type='arc' />
+<link:definitionArc priority='10' order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:type='arc' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_WholeLifeInsuranceMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_UniversalLifeMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableUniversalLifeMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01DeferredPolicyAcquisitionCostTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostTable' xlink:label='loc_DeferredPolicyAcquisitionCostTable' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2019/elts/srt-2019-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_DeferredPolicyAcquisitionCostTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

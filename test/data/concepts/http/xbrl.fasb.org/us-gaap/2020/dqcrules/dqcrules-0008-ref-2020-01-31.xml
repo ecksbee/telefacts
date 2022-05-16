@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.; (c) 2020 XBRL US, Inc. All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:ref='http://www.xbrl.org/2006/ref' xmlns:dqcrules='http://fasb.org/dqcrules/2020-01-31' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd  http://fasb.org/dqcrules/2020-01-31 dqcrules-2020-01-31.xsd' xmlns:xlink='http://www.w3.org/1999/xlink'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/dqc/dqcNote' xlink:href='dqcrules-2020-01-31.xsd#dqcn' xlink:type='simple' />
+<link:referenceLink xlink:role='http://www.xbrl.org/2003/role/link' xlink:type='extended'>
+<link:loc xlink:href='dqcrules-2020-01-31.xsd#dqcrules_Dqc_0008' xlink:label='loc_Dqc_0008' xlink:type='locator'/>
+<link:loc xlink:href='dqcrules-2020-01-31.xsd#dqcrules_Dqc_0008_ReversalOfElementCalculations' xlink:label='loc_Dqc_0008_ReversalOfElementCalculations' xlink:type='locator'/>
+<link:reference xlink:label='dqc_0008' xlink:role='http://fasb.org/us-gaap/role/dqc/dqcNote' xlink:type='resource'>
+<ref:Publisher>XBRL US</ref:Publisher>
+<dqcrules:ruleId>DQC.0008</dqcrules:ruleId>
+<dqcrules:ruleName>Reversed Calculation</dqcrules:ruleName>
+<dqcrules:ruleDocumentation>This rule evaluates whether a calculation relationship in the company’s extension is a reversal of the calculation defined in the base taxonomy used for the filing. The rule checks if the element representing the calculation total and the element representing the component are a reversal of those same elements defined in the base taxonomy with the same calculation weight. This rule only compares the defined relationship between two elements joined by a single calculation arc in a company’s calculation relationship and checks if the opposite of that relationship exists in the base taxonomy. Both elements in the calculation relationship must have a balance attribute of either debit or credit.</dqcrules:ruleDocumentation>
+<ref:URI>https://xbrl.us/data-rule/dqc_0008/</ref:URI>
+</link:reference>
+<link:referenceArc order='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/concept-reference' xlink:from='loc_Dqc_0008_ReversalOfElementCalculations' xlink:to='dqc_0008' xlink:type='arc'/>
+<link:referenceArc order='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/concept-reference' xlink:from='loc_Dqc_0008' xlink:to='dqc_0008' xlink:type='arc'/>
+</link:referenceLink>
+</link:linkbase>

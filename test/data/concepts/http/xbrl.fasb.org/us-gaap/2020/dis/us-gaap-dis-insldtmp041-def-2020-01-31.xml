@@ -1,0 +1,72 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:href='../elts/us-roles-2020-01-31.xsd#FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitLineItems' xlink:label='loc_MarketRiskBenefitLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitTable' xlink:label='loc_MarketRiskBenefitTable' xlink:type='locator' />
+<link:definitionArc order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitLineItems' xlink:label='loc_MarketRiskBenefitLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:label='loc_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitBeforeReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:label='loc_MarketRiskBenefitBeforeReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIssuance' xlink:label='loc_MarketRiskBenefitIssuance' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitInterestExpense' xlink:label='loc_MarketRiskBenefitInterestExpense' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitAttributedFeeCollected' xlink:label='loc_MarketRiskBenefitAttributedFeeCollected' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitBenefitPayment' xlink:label='loc_MarketRiskBenefitBenefitPayment' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromInterestRateChange' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromInterestRateChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromEquityMarketChange' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromEquityMarketChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromVolatility' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromVolatility' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromActualPolicyholderBehaviorDifferentFromExpected' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromActualPolicyholderBehaviorDifferentFromExpected' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromFutureExpectedPolicyholderBehaviorAssumption' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromFutureExpectedPolicyholderBehaviorAssumption' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitIncreaseDecreaseFromOtherAssumption' xlink:label='loc_MarketRiskBenefitIncreaseDecreaseFromOtherAssumption' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AociMarketRiskBenefitInstrumentSpecificCreditRiskBeforeTax' xlink:label='loc_AociMarketRiskBenefitInstrumentSpecificCreditRiskBeforeTax' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitReinsuranceRecoverableAfterAllowance' xlink:label='loc_MarketRiskBenefitReinsuranceRecoverableAfterAllowance' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitAfterReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:label='loc_MarketRiskBenefitAfterReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VariableAnnuityMember' xlink:label='loc_VariableAnnuityMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_IndexedAnnuityMember' xlink:label='loc_IndexedAnnuityMember' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitBeforeReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIssuance' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitInterestExpense' xlink:type='arc' />
+<link:definitionArc order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitAttributedFeeCollected' xlink:type='arc' />
+<link:definitionArc order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitBenefitPayment' xlink:type='arc' />
+<link:definitionArc order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromInterestRateChange' xlink:type='arc' />
+<link:definitionArc order='8.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromEquityMarketChange' xlink:type='arc' />
+<link:definitionArc order='9.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromVolatility' xlink:type='arc' />
+<link:definitionArc order='10.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromActualPolicyholderBehaviorDifferentFromExpected' xlink:type='arc' />
+<link:definitionArc order='11.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromFutureExpectedPolicyholderBehaviorAssumption' xlink:type='arc' />
+<link:definitionArc order='12.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitIncreaseDecreaseFromOtherAssumption' xlink:type='arc' />
+<link:definitionArc order='13.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_AociMarketRiskBenefitInstrumentSpecificCreditRiskBeforeTax' xlink:type='arc' />
+<link:definitionArc order='14.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitReinsuranceRecoverableAfterAllowance' xlink:type='arc' />
+<link:definitionArc order='15.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitAfterReinsuranceAndCumulativeIncreaseDecreaseFromInstrumentSpecificCreditRiskChange' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableAnnuityMember' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_IndexedAnnuityMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp041MarketRiskBenefitTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitTable' xlink:label='loc_MarketRiskBenefitTable' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_MarketRiskBenefitTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>
