@@ -20,7 +20,7 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 	rsets := sortedRelationshipSets(h)
 	subjects := make([]Subject, 0, len(schemedEntities))
 	networks := map[string]map[string]string{}
-	expressions, err := getExpressions(h, h)
+	expressions, err := getExpressions(h, h, h)
 	if err != nil {
 		return nil, err
 	}

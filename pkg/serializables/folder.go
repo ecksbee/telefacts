@@ -64,7 +64,7 @@ func Discover(id string) (*Folder, error) {
 		ret.schemaRef(instanceFile)
 		ret.wLock.Lock()
 		defer ret.wLock.Unlock()
-		ret.Instances[entryFileName] = *instanceFile
+		ret.Instances[entryFileName+".xml"] = *instanceFile
 	case ".xbrl", ".xml":
 		filepath := path.Join(workingDir, entryFileName)
 		instanceFile, err := ReadInstanceFile(filepath)

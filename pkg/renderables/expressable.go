@@ -16,7 +16,7 @@ type Expressable struct {
 	Value       string
 }
 
-func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder) (map[string]Expressable, error) {
+func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, measurementFinder MeasurementFinder) (map[string]Expressable, error) {
 	ret := make(map[string]Expressable)
 	source := h.Document
 	if source != nil {
@@ -30,6 +30,10 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder) (map
 				continue
 			}
 			var extracted *hydratables.Instance
+			for _, instance := range h.Instances {
+				extracted = &instance
+				break
+			}
 			context := getContext(extracted, item.ContextRef)
 			period := periodString(context)
 			entity := stringify(&Entity{
@@ -47,6 +51,23 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder) (map
 				}
 			}
 			memberGrid, voidQuadrant := getMemberGridAndVoidQuadrant(expressedContexts, segment, scenario)
+			numerator, denominator := measurementFinder.FindMeasurement(item.UnitRef)
+			var measurementExpression string
+			if numerator != nil {
+				if numerator.Symbol != "" {
+					measurementExpression = numerator.Symbol
+				} else {
+					measurementExpression = numerator.UnitName
+				}
+				if denominator != nil {
+					measurementExpression += "/"
+					if denominator.Symbol != "" {
+						measurementExpression += denominator.Symbol
+					} else {
+						measurementExpression += denominator.UnitName
+					}
+				}
+			}
 			ret[id] = Expressable{
 				Href:   href,
 				Labels: GetLabel(h, href),
@@ -59,7 +80,7 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder) (map
 					VoidQuadrant:         voidQuadrant,
 					ContextualMemberGrid: memberGrid,
 				},
-				Measurement: "//todo", //todo
+				Measurement: measurementExpression,
 				Precision:   "",
 				Footnotes:   make([]string, 0),
 				Value:       "",
