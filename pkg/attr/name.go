@@ -65,14 +65,14 @@ func (np *NameProvider) ProvideXmlName(prefixed string) (*xml.Name, error) {
 	if i < 0 {
 		return &xml.Name{
 			Space: "",
-			Local: prefixed[i+1:],
+			Local: prefixed[i:],
 		}, nil
 	}
 	prefix := prefix(prefixed[:i])
 	if space, hit1 := np.originPrefixes[prefix]; hit1 {
 		return &xml.Name{
 			Space: string(space),
-			Local: prefixed[i:],
+			Local: prefixed[i+1:],
 		}, nil
 	}
 	return nil, fmt.Errorf("prefix, %s, does not match a namespace", prefix)
