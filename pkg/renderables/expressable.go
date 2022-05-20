@@ -81,11 +81,47 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, meas
 					ContextualMemberGrid: memberGrid,
 				},
 				Measurement: measurementExpression,
-				Precision:   "",
+				Precision:   expressPrecision(item.Precision),
 				Footnotes:   make([]string, 0),
 				Value:       "",
 			}
 		}
 	}
 	return ret, nil
+}
+
+func expressPrecision(p hydratables.Precision) string {
+	pmap := map[hydratables.Precision]string{
+		hydratables.Exact:             "Exact",
+		hydratables.Precisionless:     "Precisionless",
+		hydratables.Trillions:         "Trillions (-12)",
+		hydratables.HundredBillions:   "Hundred Billions (-11)",
+		hydratables.TenBillions:       "Ten Billions (-10)",
+		hydratables.Billions:          "Billions (-9)",
+		hydratables.HundredMillions:   "Hundred Millions (-8)",
+		hydratables.TenMillions:       "Ten Millions (-7)",
+		hydratables.Millions:          "Millions (-6)",
+		hydratables.HundredThousands:  "Hundred Thousands (-5)",
+		hydratables.TenThousands:      "Ten Thousands (-4)",
+		hydratables.Thousands:         "Thousands (-3)",
+		hydratables.Hundreds:          "Hundreds (-2)",
+		hydratables.Tens:              "Tens (-1)",
+		hydratables.Oneth:             "Ones (0)",
+		hydratables.Tenth:             "Tenth (1)",
+		hydratables.Hundredth:         "Hundredth (2)",
+		hydratables.Thousandth:        "Thousandth (3)",
+		hydratables.TenThousandth:     "Ten Thousandth (4)",
+		hydratables.HundredThousandth: "Hundred Thousandth (5)",
+		hydratables.Millionth:         "Millionth (6)",
+		hydratables.TenMillionth:      "Ten Millionth (7)",
+		hydratables.HundredMillionth:  "Hundred Millionth (8)",
+		hydratables.Billionth:         "Billionth (9)",
+		hydratables.TenBillionth:      "Ten Billionth (10)",
+		hydratables.HundredBillionth:  "Hundred Billionth (11)",
+		hydratables.Trillionth:        "Trillionth (12)",
+	}
+	if ret, ok := pmap[p]; ok {
+		return ret
+	}
+	return ""
 }
