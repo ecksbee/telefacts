@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/ReceivablesLoansNotesReceivableAndOthersLoansAlternate' xlink:href='../elts/us-roles-2019-01-31.xsd#rlnro2' xlink:type='simple' />
+<link:calculationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/ReceivablesLoansNotesReceivableAndOthersLoansAlternate' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainage' xlink:label='loc_ContractReceivableRetainage' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:label='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueInRollingYearTwo' xlink:label='loc_ContractReceivableRetainageDueInRollingYearTwo' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueInRollingYearThree' xlink:label='loc_ContractReceivableRetainageDueInRollingYearThree' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueInRollingYearFour' xlink:label='loc_ContractReceivableRetainageDueInRollingYearFour' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueInRollingYearFive' xlink:label='loc_ContractReceivableRetainageDueInRollingYearFive' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueAfterRollingYearFive' xlink:label='loc_ContractReceivableRetainageDueAfterRollingYearFive' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractReceivableRetainageDueInNextRollingTwelveMonths' xlink:label='loc_ContractReceivableRetainageDueInNextRollingTwelveMonths' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractsReceivableClaimsAndUncertainAmounts' xlink:label='loc_ContractsReceivableClaimsAndUncertainAmounts' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedInNextRollingTwelveMonths' xlink:label='loc_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedInNextRollingTwelveMonths' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedAfterNextRollingTwelveMonths' xlink:label='loc_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedAfterNextRollingTwelveMonths' xlink:type='locator' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainage' xlink:to='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:to='loc_ContractReceivableRetainageDueInRollingYearTwo' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:to='loc_ContractReceivableRetainageDueInRollingYearThree' xlink:type='arc' />
+<link:calculationArc order='30' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:to='loc_ContractReceivableRetainageDueInRollingYearFour' xlink:type='arc' />
+<link:calculationArc order='40' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:to='loc_ContractReceivableRetainageDueInRollingYearFive' xlink:type='arc' />
+<link:calculationArc order='50' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainageDueAfterNextRollingTwelveMonths' xlink:to='loc_ContractReceivableRetainageDueAfterRollingYearFive' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractReceivableRetainage' xlink:to='loc_ContractReceivableRetainageDueInNextRollingTwelveMonths' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractsReceivableClaimsAndUncertainAmounts' xlink:to='loc_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedInNextRollingTwelveMonths' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractsReceivableClaimsAndUncertainAmounts' xlink:to='loc_ContractsReceivableClaimsAndUncertainAmountsExpectedToBeCollectedAfterNextRollingTwelveMonths' xlink:type='arc' />
+</link:calculationLink>
+</link:linkbase>

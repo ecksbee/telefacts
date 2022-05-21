@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:href='../elts/us-roles-2020-01-31.xsd#CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualStatusLineItems' xlink:label='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualTable' xlink:label='loc_FinancingReceivableNonaccrualTable' xlink:type='locator' />
+<link:definitionArc order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:to='loc_FinancingReceivableNonaccrualTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:label='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:label='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentAxis' xlink:label='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentDomain' xlink:label='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='locator' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:to='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FinancingReceivablePortfolioSegmentAxis' xlink:to='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:label='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:label='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentAxis' xlink:label='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentDomain' xlink:label='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='locator' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:to='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FinancingReceivablePortfolioSegmentAxis' xlink:to='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:label='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FixedRateResidentialMortgageMember' xlink:label='loc_FixedRateResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AdjustableRateResidentialMortgageMember' xlink:label='loc_AdjustableRateResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_HomeEquityLoanMember' xlink:label='loc_HomeEquityLoanMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialAndIndustrialSectorMember' xlink:label='loc_CommercialAndIndustrialSectorMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialRealEstateMember' xlink:label='loc_CommercialRealEstateMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentDomain' xlink:label='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialPortfolioSegmentMember' xlink:label='loc_CommercialPortfolioSegmentMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ConsumerPortfolioSegmentMember' xlink:label='loc_ConsumerPortfolioSegmentMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualStatusLineItems' xlink:label='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:label='loc_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:label='loc_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualInterestIncome' xlink:label='loc_FinancingReceivableNonaccrualInterestIncome' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualNoAllowance' xlink:label='loc_FinancingReceivableNonaccrualNoAllowance' xlink:type='locator' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_FixedRateResidentialMortgageMember' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_AdjustableRateResidentialMortgageMember' xlink:type='arc' />
+<link:definitionArc order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_HomeEquityLoanMember' xlink:type='arc' />
+<link:definitionArc order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_CommercialAndIndustrialSectorMember' xlink:type='arc' />
+<link:definitionArc order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_CommercialRealEstateMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivablePortfolioSegmentDomain' xlink:to='loc_CommercialPortfolioSegmentMember' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivablePortfolioSegmentDomain' xlink:to='loc_ConsumerPortfolioSegmentMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:to='loc_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:to='loc_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:to='loc_FinancingReceivableNonaccrualInterestIncome' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FinancingReceivableNonaccrualStatusLineItems' xlink:to='loc_FinancingReceivableNonaccrualNoAllowance' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp05FinancingReceivableNonaccrualTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableNonaccrualTable' xlink:label='loc_FinancingReceivableNonaccrualTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentAxis' xlink:label='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:label='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_FinancingReceivableNonaccrualTable' xlink:to='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_FinancingReceivableNonaccrualTable' xlink:to='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

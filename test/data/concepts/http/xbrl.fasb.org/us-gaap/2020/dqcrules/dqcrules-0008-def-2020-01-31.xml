@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!--
+2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.; (c) 2020 XBRL US, Inc. All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd' xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink'>
+  <link:roleRef roleURI='http://fasb.org/us-gaap/role/dqc/0008' xlink:type='simple' xlink:href='dqcrules-2020-01-31.xsd#dqc_0008'/>
+  <link:arcroleRef arcroleURI='http://fasb.org/dqcrules/arcrole/concept-rule' xlink:href='dqcrules-2020-01-31.xsd#concept-rule' xlink:type='simple'/>
+  <link:definitionLink xlink:type='extended' xlink:role='http://fasb.org/us-gaap/role/dqc/0008'>
+    <link:loc xlink:type='locator' xlink:href='dqcrules-2020-01-31.xsd#dqcrules_Dqc_0008' xlink:label='loc_dqcrules_Dqc_0008'/>
+    <link:loc xlink:type='locator' xlink:href='dqcrules-2020-01-31.xsd#dqcrules_Dqc_0008_ReversalOfElementCalculations' xlink:label='loc_Dqc_0008_ReversalOfElementCalculations'/>
+    <link:definitionArc xlink:type='arc' xlink:arcrole='http://fasb.org/dqcrules/arcrole/concept-rule' xlink:from='loc_dqcrules_Dqc_0008' xlink:to='loc_Dqc_0008_ReversalOfElementCalculations' order='1.0'/>
+  </link:definitionLink>
+</link:linkbase>

@@ -1,0 +1,98 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:href='../elts/us-roles-2020-01-31.xsd#FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:label='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:label='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='locator' />
+<link:definitionArc order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueByFairValueHierarchyLevelAxis' xlink:label='loc_FairValueByFairValueHierarchyLevelAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueMeasurementsFairValueHierarchyDomain' xlink:label='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesByIndustryAxis' xlink:label='loc_EquitySecuritiesByIndustryAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesIndustryMember' xlink:label='loc_EquitySecuritiesIndustryMember' xlink:type='locator' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FairValueByFairValueHierarchyLevelAxis' xlink:to='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_EquitySecuritiesByIndustryAxis' xlink:to='loc_EquitySecuritiesIndustryMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueByFairValueHierarchyLevelAxis' xlink:label='loc_FairValueByFairValueHierarchyLevelAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueMeasurementsFairValueHierarchyDomain' xlink:label='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesByIndustryAxis' xlink:label='loc_EquitySecuritiesByIndustryAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesIndustryMember' xlink:label='loc_EquitySecuritiesIndustryMember' xlink:type='locator' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FairValueByFairValueHierarchyLevelAxis' xlink:to='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_EquitySecuritiesByIndustryAxis' xlink:to='loc_EquitySecuritiesIndustryMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueMeasurementsFairValueHierarchyDomain' xlink:label='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueInputsLevel1Member' xlink:label='loc_FairValueInputsLevel1Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueInputsLevel2Member' xlink:label='loc_FairValueInputsLevel2Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueInputsLevel3Member' xlink:label='loc_FairValueInputsLevel3Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueMeasuredAtNetAssetValuePerShareMember' xlink:label='loc_FairValueMeasuredAtNetAssetValuePerShareMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:label='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AvailableForSaleSecuritiesDebtSecurities' xlink:label='loc_AvailableForSaleSecuritiesDebtSecurities' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AlternativeInvestment' xlink:label='loc_AlternativeInvestment' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DerivativeAssets' xlink:label='loc_DerivativeAssets' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesFvNi' xlink:label='loc_EquitySecuritiesFvNi' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AssetsFairValueDisclosure' xlink:label='loc_AssetsFairValueDisclosure' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ResidentialMortgageBackedSecuritiesMember' xlink:label='loc_ResidentialMortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialMortgageBackedSecuritiesMember' xlink:label='loc_CommercialMortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CollateralizedDebtObligationsMember' xlink:label='loc_CollateralizedDebtObligationsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CorporateDebtSecuritiesMember' xlink:label='loc_CorporateDebtSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_USTreasurySecuritiesMember' xlink:label='loc_USTreasurySecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InterestRateContractMember' xlink:label='loc_InterestRateContractMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CreditRiskContractMember' xlink:label='loc_CreditRiskContractMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ForeignExchangeContractMember' xlink:label='loc_ForeignExchangeContractMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VentureCapitalFundsMember' xlink:label='loc_VentureCapitalFundsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_HedgeFundsMember' xlink:label='loc_HedgeFundsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesIndustryMember' xlink:label='loc_EquitySecuritiesIndustryMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_RealEstateSectorMember' xlink:label='loc_RealEstateSectorMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_TechnologySectorMember' xlink:label='loc_TechnologySectorMember' xlink:type='locator' />
+<link:definitionArc order='11.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:to='loc_FairValueInputsLevel1Member' xlink:type='arc' />
+<link:definitionArc order='12.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:to='loc_FairValueInputsLevel2Member' xlink:type='arc' />
+<link:definitionArc order='13.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:to='loc_FairValueInputsLevel3Member' xlink:type='arc' />
+<link:definitionArc order='14.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueMeasurementsFairValueHierarchyDomain' xlink:to='loc_FairValueMeasuredAtNetAssetValuePerShareMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_AvailableForSaleSecuritiesDebtSecurities' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_AlternativeInvestment' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_DerivativeAssets' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_EquitySecuritiesFvNi' xlink:type='arc' />
+<link:definitionArc order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisLineItems' xlink:to='loc_AssetsFairValueDisclosure' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_ResidentialMortgageBackedSecuritiesMember' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CommercialMortgageBackedSecuritiesMember' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CollateralizedDebtObligationsMember' xlink:type='arc' />
+<link:definitionArc order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CorporateDebtSecuritiesMember' xlink:type='arc' />
+<link:definitionArc order='5.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_USTreasurySecuritiesMember' xlink:type='arc' />
+<link:definitionArc order='6.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_InterestRateContractMember' xlink:type='arc' />
+<link:definitionArc order='7.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CreditRiskContractMember' xlink:type='arc' />
+<link:definitionArc order='8.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_ForeignExchangeContractMember' xlink:type='arc' />
+<link:definitionArc order='9.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_VentureCapitalFundsMember' xlink:type='arc' />
+<link:definitionArc order='10.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_HedgeFundsMember' xlink:type='arc' />
+<link:definitionArc order='15.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_EquitySecuritiesIndustryMember' xlink:to='loc_RealEstateSectorMember' xlink:type='arc' />
+<link:definitionArc order='16.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_EquitySecuritiesIndustryMember' xlink:to='loc_TechnologySectorMember' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FairValueMeasuresAndDisclosuresTmp01FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:label='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FairValueByFairValueHierarchyLevelAxis' xlink:label='loc_FairValueByFairValueHierarchyLevelAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EquitySecuritiesByIndustryAxis' xlink:label='loc_EquitySecuritiesByIndustryAxis' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:to='loc_FinancialInstrumentAxis' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:to='loc_FairValueByFairValueHierarchyLevelAxis' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_FairValueAssetsAndLiabilitiesMeasuredOnRecurringAndNonrecurringBasisValuationTechniquesTable' xlink:to='loc_EquitySecuritiesByIndustryAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

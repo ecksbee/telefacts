@@ -71,7 +71,9 @@ func NewRouter() http.Handler {
 	if err != nil {
 		panic(err)
 	}
-	fs := http.FileServer(http.Dir((filepath.Join(wd, "data", "renderer"))))
-	r.PathPrefix("/").Handler(fs)
+	conceptnetworkbrowser := http.FileServer(http.Dir((filepath.Join(wd, "data", "conceptnetworkbrowser"))))
+	r.PathPrefix("/conceptnetworkbrowser").Handler(conceptnetworkbrowser)
+	factexpressionviewer := http.FileServer(http.Dir((filepath.Join(wd, "data", "factexpressionviewer"))))
+	r.PathPrefix("/factexpressionviewer").Handler(factexpressionviewer)
 	return r
 }

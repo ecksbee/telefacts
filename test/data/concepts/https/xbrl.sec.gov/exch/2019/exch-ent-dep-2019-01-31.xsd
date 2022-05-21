@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<xs:schema targetNamespace="http://xbrl.sec.gov/exch-ent-dep/2019-01-31"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:nonnum="http://www.xbrl.org/dtr/type/non-numeric"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" elementFormDefault="qualified"
+xmlns:deprecated="http://www.xbrl.org/2009/role/deprecated"
+xmlns:exch="http://xbrl.sec.gov/exch/2019-01-31"
+xmlns:exch-all="http://xbrl.sec.gov/exch-all/2019-01-31"
+xmlns:exch-ent-dep="http://xbrl.sec.gov/exch-ent-dep/2019-01-31"
+xmlns:exch-ent-std="http://xbrl.sec.gov/exch-ent-std/2019-01-31"
+xmlns:exch-std="http://xbrl.sec.gov/exch-std/2019-01-31"
+xmlns:ref="http://www.xbrl.org/2006/ref">
+<xs:import schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" namespace="http://www.xbrl.org/2003/instance" />
+<xs:import schemaLocation="exch-all-2019-01-31.xsd" namespace="http://xbrl.sec.gov/exch-all/2019-01-31" />
+<xs:import schemaLocation="exch-ent-std-2019-01-31.xsd" namespace="http://xbrl.sec.gov/exch-ent-std/2019-01-31" />
+</xs:schema>

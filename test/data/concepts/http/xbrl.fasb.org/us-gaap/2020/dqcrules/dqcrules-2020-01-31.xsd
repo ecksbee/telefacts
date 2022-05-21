@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.; (c) 2020 XBRL US, Inc. All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<xs:schema targetNamespace="http://fasb.org/dqcrules/2020-01-31" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:dqcrules="http://fasb.org/dqcrules/2020-01-31" xmlns:us-gaap="http://fasb.org/us-gaap/2020-01-31" xmlns:dei="http://xbrl.sec.gov/dei/2019-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns="http://www.xbrl.org/2003/linkbase">
+  <xs:annotation>
+    <xs:appinfo>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="../dis/us-gaap-dis-fs-bt-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="../dis/us-gaap-dis-hco-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="../dis/us-gaap-dis-oi-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0001-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0001-ref-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0008-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0008-ref-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0015-def-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:type="simple" xlink:href="dqcrules-0015-ref-2020-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+      <link:roleType roleURI="http://fasb.org/us-gaap/role/dqc/dqcNote" id="dqcn">
+        <link:definition>DQC Rule Note</link:definition>
+        <link:usedOn>link:reference</link:usedOn>
+      </link:roleType>
+	  <link:arcroleType arcroleURI="http://fasb.org/dqcrules/arcrole/concept-rule" cyclesAllowed="undirected" id="concept-rule">
+        <link:definition>
+          Concept-Rule
+        </link:definition>
+        <link:usedOn>link:definitionArc</link:usedOn>
+      </link:arcroleType>
+      <link:roleType roleURI="http://fasb.org/us-gaap/role/dqc/0001" id="dqc_0001">
+        <link:definition>DQC.US.0001</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+	  <link:roleType roleURI="http://fasb.org/us-gaap/role/dqc/0008" id="dqc_0008">
+        <link:definition>DQC.US.0008</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+	  <link:roleType roleURI="http://fasb.org/us-gaap/role/dqc/0015" id="dqc_0015">
+        <link:definition>DQC.US.0015</link:definition>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+	  <linkbase>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0001" xlink:label="loc_dqcrules_Dqc_0001"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0001" xlink:to="lbl_dqcrules_Dqc_0001"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0001" xml:lang="en-US">DQC.US.0001 [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract" xlink:label="loc_dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract" xlink:to="lbl_dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract" xml:lang="en-US">DQC.US.0001.Axis allows extensions [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract" xlink:label="loc_dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract" xlink:to="lbl_dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract" xml:lang="en-US">DQC.US.0001.Axis restricts extensions [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract" xlink:label="loc_dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract" xlink:to="lbl_dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract" xml:lang="en-US">DQC.US.0001.Axis allows listed base members and extensions [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0008" xlink:label="loc_dqcrules_Dqc_0008"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0008" xlink:to="lbl_dqcrules_Dqc_0008"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0008" xml:lang="en-US">DQC.US.0008 [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0008_ReversalOfElementCalculations" xlink:label="loc_dqcrules_Dqc_0008_ReversalOfElementCalculations"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0008_ReversalOfElementCalculations" xlink:to="lbl_dqcrules_Dqc_0008_ReversalOfElementCalculations"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0008_ReversalOfElementCalculations" xml:lang="en-US">DQC.US.0008.Reversal of Element Calculations [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015" xlink:label="loc_dqcrules_Dqc_0015"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015" xlink:to="lbl_dqcrules_Dqc_0015"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015" xml:lang="en-US">DQC.US.0015 [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015_ListOfElements" xlink:label="loc_dqcrules_Dqc_0015_ListOfElements"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015_ListOfElements" xlink:to="lbl_dqcrules_Dqc_0015_ListOfElements"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015_ListOfElements" xml:lang="en-US">DQC.US.0015.Non-negative Items [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract" xlink:label="loc_dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract" xlink:to="lbl_dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract" xml:lang="en-US">DQC.US.0015.Exclude Non-negative Members [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract" xlink:label="loc_dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract" xlink:to="lbl_dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract" xml:lang="en-US">DQC.US.0015.Exclude Non-negative Axis [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract" xlink:label="loc_dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract" xlink:to="lbl_dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract" xml:lang="en-US">DQC.US.0015.Exclude Non-negative Axis and Members [Abstract]</label>
+				</labelLink>
+				<labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+					<loc xlink:type="locator" xlink:href="#dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract" xlink:label="loc_dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract"/>
+					<labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="loc_dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract" xlink:to="lbl_dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract"/>
+					<label xlink:type="resource" xlink:role="http://www.xbrl.org/2003/role/label" xlink:label="lbl_dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract" xml:lang="en-US">DQC.US.0015.Exclude Non-negative Member Strings [Abstract]</label>
+				</labelLink>
+	 </linkbase> 
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+  <xs:import namespace="http://fasb.org/us-gaap/2020-01-31" schemaLocation="../elts/us-gaap-2020-01-31.xsd"/>
+  <xs:import namespace="http://xbrl.sec.gov/dei/2019-01-31" schemaLocation="https://xbrl.sec.gov/dei/2019/dei-2019-01-31.xsd"/>
+  <xs:element id="dqcrules_ruleId" name="ruleId" substitutionGroup="link:part" type="dqcrules:ruleIdItemType">
+  <xs:annotation>
+  <xs:documentation xml:lang="en">
+   Rule identification as published by XBRL US.
+  </xs:documentation>
+  </xs:annotation>
+  </xs:element>
+  <xs:element id="dqcrules_ruleName" name="ruleName" substitutionGroup="link:part" type="xs:string">
+  <xs:annotation>
+  <xs:documentation xml:lang="en">
+   Short name for rule, for example, “Negative Values.”
+  </xs:documentation>
+  </xs:annotation>
+  </xs:element>
+  <xs:element id="dqcrules_ruleDocumentation" name="ruleDocumentation" substitutionGroup="link:part" type="xs:string">
+  <xs:annotation>
+  <xs:documentation xml:lang="en">
+   Definition of the rule.
+  </xs:documentation>
+  </xs:annotation>
+  </xs:element>
+  <xs:element id="dqcrules_ruleElementId" name="ruleElementId" substitutionGroup="link:part" type="dqcrules:elementIdItemType">
+  <xs:annotation>
+  <xs:documentation xml:lang="en">
+   Element ID to facilitate identification from rule applications.
+  </xs:documentation>
+  </xs:annotation>
+  </xs:element>
+  <xs:element id="dqcrules_allowableSubString" name="allowableSubString" substitutionGroup="link:part" type="xs:string">
+  <xs:annotation>
+  <xs:documentation xml:lang="en">
+   REGEX pattern used in an element extension name that may put the element on the exclusion list.
+  </xs:documentation>
+  </xs:annotation>
+  </xs:element>
+ <xs:simpleType name="ruleIdItemType">
+  <xs:restriction base="xs:token">
+  <xs:pattern value="DQC.[0-9]{4}"/>
+  </xs:restriction>
+  </xs:simpleType>
+ <xs:simpleType name="elementIdItemType">
+  <xs:restriction base="xs:token">
+  <xs:pattern value="DQC.US.[0-9]{4}.[0-9]{1,8}"/>
+  </xs:restriction>
+  </xs:simpleType>
+  <xs:element name="Dqc_0001" id="dqcrules_Dqc_0001" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0001_AxisAllowExtensionsOnlyAbstract" id="dqcrules_Dqc_0001_AxisAllowExtensionsOnlyAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0001_AxisRestrictExtensionsAbstract" id="dqcrules_Dqc_0001_AxisRestrictExtensionsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract" id="dqcrules_Dqc_0001_AxisAllowListedBaseMembersAndExtensionsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0008" id="dqcrules_Dqc_0008" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0008_ReversalOfElementCalculations" id="dqcrules_Dqc_0008_ReversalOfElementCalculations" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015" id="dqcrules_Dqc_0015" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015_ListOfElements" id="dqcrules_Dqc_0015_ListOfElements" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015_ExcludeNonNegMembersAbstract" id="dqcrules_Dqc_0015_ExcludeNonNegMembersAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015_ExcludeNonNegAxisAbstract" id="dqcrules_Dqc_0015_ExcludeNonNegAxisAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015_ExcludeNonNegAxisMembersAbstract" id="dqcrules_Dqc_0015_ExcludeNonNegAxisMembersAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+  <xs:element name="Dqc_0015_ExcludeNonNegMemberStringsAbstract" id="dqcrules_Dqc_0015_ExcludeNonNegMemberStringsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+</xs:schema>

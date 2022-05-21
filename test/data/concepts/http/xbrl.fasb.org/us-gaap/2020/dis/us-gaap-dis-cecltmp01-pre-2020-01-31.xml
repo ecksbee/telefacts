@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp01' xlink:href='../elts/us-roles-2020-01-31.xsd#cecltmp01' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp01' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:label='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:label='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ResidentialMortgageMember' xlink:label='loc_ResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FixedRateResidentialMortgageMember' xlink:label='loc_FixedRateResidentialMortgageMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_HomeEquityLoanMember' xlink:label='loc_HomeEquityLoanMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CreditLossStatusAxis' xlink:label='loc_CreditLossStatusAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CreditLossStatusDomain' xlink:label='loc_CreditLossStatusDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancialAssetOtherThanFinancialAssetAcquiredWithCreditDeteriorationMember' xlink:label='loc_FinancialAssetOtherThanFinancialAssetAcquiredWithCreditDeteriorationMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablesPeriodPastDueAxis' xlink:label='loc_FinancingReceivablesPeriodPastDueAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablesPeriodPastDueDomain' xlink:label='loc_FinancingReceivablesPeriodPastDueDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivables1To29DaysPastDueMember' xlink:label='loc_FinancingReceivables1To29DaysPastDueMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentAxis' xlink:label='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentDomain' xlink:label='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:label='loc_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:label='loc_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:label='loc_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:label='loc_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ScheduleOfFinancingReceivablesPastDueTable' xlink:label='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LienCategoryAxis' xlink:label='loc_LienCategoryAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InternalCreditAssessmentAxis' xlink:label='loc_InternalCreditAssessmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LoansInsuredOrGuaranteedByGovernmentAuthoritiesAxis' xlink:label='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentCurrent' xlink:label='loc_FinancingReceivableRecordedInvestmentCurrent' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentPastDue' xlink:label='loc_FinancingReceivableRecordedInvestmentPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NotesReceivableGross' xlink:label='loc_NotesReceivableGross' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InternalCreditAssessmentDomain' xlink:label='loc_InternalCreditAssessmentDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PrimeMember' xlink:label='loc_PrimeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SubprimeMember' xlink:label='loc_SubprimeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LienCategoryDomain' xlink:label='loc_LienCategoryDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeniorLienMember' xlink:label='loc_SeniorLienMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_JuniorLienMember' xlink:label='loc_JuniorLienMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LoansInsuredOrGuaranteedByGovernmentAuthoritiesDomain' xlink:label='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_UsGovernmentAgencyInsuredLoansMember' xlink:label='loc_UsGovernmentAgencyInsuredLoansMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_PastDueFinancialInstrumentAbstract' xlink:label='loc_PastDueFinancialInstrumentAbstract' xlink:type='locator' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:to='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_ResidentialMortgageMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_FixedRateResidentialMortgageMember' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentClassOfFinancingReceivableDomain' xlink:to='loc_HomeEquityLoanMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_CreditLossStatusAxis' xlink:to='loc_CreditLossStatusDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_CreditLossStatusDomain' xlink:to='loc_FinancialAssetOtherThanFinancialAssetAcquiredWithCreditDeteriorationMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablesPeriodPastDueAxis' xlink:to='loc_FinancingReceivablesPeriodPastDueDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablesPeriodPastDueDomain' xlink:to='loc_FinancingReceivables1To29DaysPastDueMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePortfolioSegmentAxis' xlink:to='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:to='loc_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:to='loc_FinancingReceivableRecordedInvestment90DaysPastDueAndStillAccruing' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:to='loc_FinancingReceivableRecordedInvestmentNonaccrualStatus' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_FinancingReceivableRecordedInvestmentByClassOfFinancingReceivableAxis' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_CreditLossStatusAxis' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_LienCategoryAxis' xlink:type='arc' />
+<link:presentationArc order='50' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_InternalCreditAssessmentAxis' xlink:type='arc' />
+<link:presentationArc order='60' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesAxis' xlink:type='arc' />
+<link:presentationArc order='70' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_FinancingReceivablesPeriodPastDueAxis' xlink:type='arc' />
+<link:presentationArc order='80' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:to='loc_FinancingReceivableRecordedInvestmentPastDueLineItems' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:to='loc_FinancingReceivableRecordedInvestmentCurrent' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:to='loc_FinancingReceivableRecordedInvestmentPastDue' xlink:type='arc' />
+<link:presentationArc order='30' preferredLabel='http://www.xbrl.org/2003/role/totalLabel' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePastDueAndNotPastDueAbstract' xlink:to='loc_NotesReceivableGross' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InternalCreditAssessmentAxis' xlink:to='loc_InternalCreditAssessmentDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InternalCreditAssessmentDomain' xlink:to='loc_PrimeMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InternalCreditAssessmentDomain' xlink:to='loc_SubprimeMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_LienCategoryAxis' xlink:to='loc_LienCategoryDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_LienCategoryDomain' xlink:to='loc_SeniorLienMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_LienCategoryDomain' xlink:to='loc_JuniorLienMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesAxis' xlink:to='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_LoansInsuredOrGuaranteedByGovernmentAuthoritiesDomain' xlink:to='loc_UsGovernmentAgencyInsuredLoansMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_PastDueFinancialInstrumentAbstract' xlink:to='loc_ScheduleOfFinancingReceivablesPastDueTable' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>

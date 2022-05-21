@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesCalc3' xlink:href='../elts/us-roles-2020-01-31.xsd#ceclcalc3l' xlink:type='simple' />
+<link:calculationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesCalc3' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AccountsReceivableGrossNoncurrent' xlink:label='loc_AccountsReceivableGrossNoncurrent' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AccountsReceivableNoncurrentNotPastDue' xlink:label='loc_AccountsReceivableNoncurrentNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AccountsReceivableNoncurrentPastDue' xlink:label='loc_AccountsReceivableNoncurrentPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ContractWithCustomerAssetGross' xlink:label='loc_ContractWithCustomerAssetGross' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ContractWithCustomerAssetNotPastDue' xlink:label='loc_ContractWithCustomerAssetNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ContractWithCustomerAssetPastDue' xlink:label='loc_ContractWithCustomerAssetPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_HeldToMaturitySecurities' xlink:label='loc_HeldToMaturitySecurities' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DebtSecuritiesHeldToMaturityNotPastDue' xlink:label='loc_DebtSecuritiesHeldToMaturityNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DebtSecuritiesHeldToMaturityPastDue' xlink:label='loc_DebtSecuritiesHeldToMaturityPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DirectFinancingLeaseNetInvestmentInLease' xlink:label='loc_DirectFinancingLeaseNetInvestmentInLease' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DirectFinancingLeaseNetInvestmentInLeaseNotPastDue' xlink:label='loc_DirectFinancingLeaseNetInvestmentInLeaseNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DirectFinancingLeaseNetInvestmentInLeasePastDue' xlink:label='loc_DirectFinancingLeaseNetInvestmentInLeasePastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NotesReceivableGross' xlink:label='loc_NotesReceivableGross' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentCurrent' xlink:label='loc_FinancingReceivableRecordedInvestmentCurrent' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRecordedInvestmentPastDue' xlink:label='loc_FinancingReceivableRecordedInvestmentPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NetInvestmentInLease' xlink:label='loc_NetInvestmentInLease' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NetInvestmentInLeaseNotPastDue' xlink:label='loc_NetInvestmentInLeaseNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NetInvestmentInLeasePastDue' xlink:label='loc_NetInvestmentInLeasePastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ReinsuranceRecoverablesGross' xlink:label='loc_ReinsuranceRecoverablesGross' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ReinsuranceRecoverableNotPastDue' xlink:label='loc_ReinsuranceRecoverableNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ReinsuranceRecoverablePastDue' xlink:label='loc_ReinsuranceRecoverablePastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SalesTypeLeaseNetInvestmentInLease' xlink:label='loc_SalesTypeLeaseNetInvestmentInLease' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SalesTypeLeaseNetInvestmentInLeaseNotPastDue' xlink:label='loc_SalesTypeLeaseNetInvestmentInLeaseNotPastDue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SalesTypeLeaseNetInvestmentInLeasePastDue' xlink:label='loc_SalesTypeLeaseNetInvestmentInLeasePastDue' xlink:type='locator' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_AccountsReceivableGrossNoncurrent' xlink:to='loc_AccountsReceivableNoncurrentNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_AccountsReceivableGrossNoncurrent' xlink:to='loc_AccountsReceivableNoncurrentPastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractWithCustomerAssetGross' xlink:to='loc_ContractWithCustomerAssetNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ContractWithCustomerAssetGross' xlink:to='loc_ContractWithCustomerAssetPastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_HeldToMaturitySecurities' xlink:to='loc_DebtSecuritiesHeldToMaturityNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_HeldToMaturitySecurities' xlink:to='loc_DebtSecuritiesHeldToMaturityPastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_DirectFinancingLeaseNetInvestmentInLease' xlink:to='loc_DirectFinancingLeaseNetInvestmentInLeaseNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_DirectFinancingLeaseNetInvestmentInLease' xlink:to='loc_DirectFinancingLeaseNetInvestmentInLeasePastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableRecordedInvestmentCurrent' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableRecordedInvestmentPastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NetInvestmentInLease' xlink:to='loc_NetInvestmentInLeaseNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NetInvestmentInLease' xlink:to='loc_NetInvestmentInLeasePastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ReinsuranceRecoverablesGross' xlink:to='loc_ReinsuranceRecoverableNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_ReinsuranceRecoverablesGross' xlink:to='loc_ReinsuranceRecoverablePastDue' xlink:type='arc' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_SalesTypeLeaseNetInvestmentInLease' xlink:to='loc_SalesTypeLeaseNetInvestmentInLeaseNotPastDue' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_SalesTypeLeaseNetInvestmentInLease' xlink:to='loc_SalesTypeLeaseNetInvestmentInLeasePastDue' xlink:type='arc' />
+</link:calculationLink>
+</link:linkbase>

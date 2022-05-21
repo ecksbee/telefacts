@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<xs:schema targetNamespace="http://fasb.org/dis/rcctmp/2019-01-31" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:rcctmp="http://fasb.org/dis/rcctmp/2019-01-31" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="us-gaap-dis-rcctmp-pre-2019-01-31.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase"/>
+	  <link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple" xlink:href="../elts/us-gaap-doc-2019-01-31.xml"/>
+<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:type="simple" xlink:href="../elts/us-gaap-ref-2019-01-31.xml"/>
+<link:linkbaseRef xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:role="http://www.xbrl.org/2003/role/referenceLinkbaseRef" xlink:type="simple" xlink:href="../elts/us-gaap-tin-ref-2019-01-31.xml"/>
+    </xs:appinfo>
+    <xs:documentation>
+                    This file is the entry point file for disclosure Revenue from Contract with Customer TIG Templates (rcctmp).
+      
+                    The DTS starting with this entry point includes the following presentation, calculation and definition linkbases:
+                        606xxx - Disclosure - Revenue from Contract with Customer TIG Templates    (presentation)	
+                        606001 - Disclosure - Revenue from Contract with Customer TIG Template 01  (definition)	
+                        606003 - Disclosure - Revenue from Contract with Customer TIG Template 03  (definition)	
+                        606004 - Disclosure - Revenue from Contract with Customer TIG Template 04  (calculation)
+                        606004 - Disclosure - Revenue from Contract with Customer TIG Template 04  (definition)	
+                        606005 - Disclosure - Revenue from Contract with Customer TIG Template 05  (definition)	
+    </xs:documentation>
+  </xs:annotation>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace='http://fasb.org/us-gaap-std/2019-01-31' schemaLocation='../elts/us-gaap-std-2019-01-31.xsd' />
+  <xs:import namespace='http://fasb.org/srt-std/2019-01-31' schemaLocation='http://xbrl.fasb.org/srt/2019/elts/srt-std-2019-01-31.xsd' />
+  <xs:import namespace="http://fasb.org/dis/rcctmp01/2019-01-31" schemaLocation="us-gaap-dis-rcctmp01-2019-01-31.xsd"/>
+  <xs:import namespace="http://fasb.org/dis/rcctmp03/2019-01-31" schemaLocation="us-gaap-dis-rcctmp03-2019-01-31.xsd"/>
+  <xs:import namespace="http://fasb.org/dis/rcctmp04/2019-01-31" schemaLocation="us-gaap-dis-rcctmp04-2019-01-31.xsd"/>
+  <xs:import namespace="http://fasb.org/dis/rcctmp05/2019-01-31" schemaLocation="us-gaap-dis-rcctmp05-2019-01-31.xsd"/>
+</xs:schema>

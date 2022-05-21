@@ -1,6 +1,7 @@
 package telefacts_test
 
 import (
+	"io/fs"
 	"os"
 	"path"
 	"testing"
@@ -110,5 +111,33 @@ func TestHydrate_Gold(t *testing.T) {
 	}
 	if len(lab.LabelLink) != 1 {
 		t.Fatalf("expected 1 label Network; outcome %d;\n", len(lab.LabelLink))
+	}
+}
+
+func TestHydrate_Ix(t *testing.T) {
+	workingDir := path.Join(".", "data", "folders", "test_ix")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		os.MkdirAll(workingDir, fs.FileMode(0700))
+	}
+	defer func() {
+		os.RemoveAll(workingDir)
+	}()
+	zipFile := path.Join(".", "data", "test_ix.zip")
+	err = unZipTestData(workingDir, zipFile)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.VolumePath = path.Join(".", "data")
+	hydratables.InjectCache(hcache)
+	f, err := serializables.Discover("test_ix")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	_, err = hydratables.Hydrate(f)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
 	}
 }

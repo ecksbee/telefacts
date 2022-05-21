@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp04' xlink:href='../elts/us-roles-2020-01-31.xsd#cecltmp04' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp04' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AllowanceForCreditLossAbstract' xlink:label='loc_AllowanceForCreditLossAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ScheduleOfFinancingReceivableAllowanceForCreditLossesTable' xlink:label='loc_ScheduleOfFinancingReceivableAllowanceForCreditLossesTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentAxis' xlink:label='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivablePortfolioSegmentDomain' xlink:label='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_CommercialPortfolioSegmentMember' xlink:label='loc_CommercialPortfolioSegmentMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ConsumerPortfolioSegmentMember' xlink:label='loc_ConsumerPortfolioSegmentMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:label='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLosses' xlink:label='loc_FinancingReceivableAllowanceForCreditLosses' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_ProvisionForLoanLossesExpensed' xlink:label='loc_ProvisionForLoanLossesExpensed' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:label='loc_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossPurchasedWithCreditDeteriorationIncrease' xlink:label='loc_FinancingReceivableAllowanceForCreditLossPurchasedWithCreditDeteriorationIncrease' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossForeignCurrencyTranslation' xlink:label='loc_FinancingReceivableAllowanceForCreditLossForeignCurrencyTranslation' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableChangeInPresentValueExpenseReversal' xlink:label='loc_FinancingReceivableChangeInPresentValueExpenseReversal' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossesWriteOffs' xlink:label='loc_FinancingReceivableAllowanceForCreditLossesWriteOffs' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossesRecovery' xlink:label='loc_FinancingReceivableAllowanceForCreditLossesRecovery' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableAllowanceForCreditLossWriteoffAfterRecovery' xlink:label='loc_FinancingReceivableAllowanceForCreditLossWriteoffAfterRecovery' xlink:type='locator' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_AllowanceForCreditLossAbstract' xlink:to='loc_ScheduleOfFinancingReceivableAllowanceForCreditLossesTable' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePortfolioSegmentAxis' xlink:to='loc_FinancingReceivablePortfolioSegmentDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePortfolioSegmentDomain' xlink:to='loc_CommercialPortfolioSegmentMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivablePortfolioSegmentDomain' xlink:to='loc_ConsumerPortfolioSegmentMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_FinancingReceivableAllowanceForCreditLosses' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_ProvisionForLoanLossesExpensed' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_FinancingReceivableAllowanceForCreditLossPurchasedWithCreditDeteriorationIncrease' xlink:type='arc' />
+<link:presentationArc order='50' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_FinancingReceivableAllowanceForCreditLossForeignCurrencyTranslation' xlink:type='arc' />
+<link:presentationArc order='60' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:to='loc_FinancingReceivableChangeInPresentValueExpenseReversal' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivableAllowanceForCreditLossesTable' xlink:to='loc_FinancingReceivablePortfolioSegmentAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ScheduleOfFinancingReceivableAllowanceForCreditLossesTable' xlink:to='loc_FinancingReceivableAllowanceForCreditLossesLineItems' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:to='loc_FinancingReceivableAllowanceForCreditLossesWriteOffs' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:to='loc_FinancingReceivableAllowanceForCreditLossesRecovery' xlink:type='arc' />
+<link:presentationArc order='30' preferredLabel='http://www.xbrl.org/2003/role/totalLabel' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_AllowanceForLoanAndLeaseLossesWriteoffsNetAbstract' xlink:to='loc_FinancingReceivableAllowanceForCreditLossWriteoffAfterRecovery' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>

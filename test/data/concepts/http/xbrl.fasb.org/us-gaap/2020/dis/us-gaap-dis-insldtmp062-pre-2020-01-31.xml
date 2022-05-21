@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp062' xlink:href='../elts/us-roles-2020-01-31.xsd#insldtmp062' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp062' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AdjustmentsForNewAccountingPronouncementsAxis' xlink:label='loc_AdjustmentsForNewAccountingPronouncementsAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_TypeOfAdoptionMember' xlink:label='loc_TypeOfAdoptionMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InsuranceAbstract' xlink:label='loc_InsuranceAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:label='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:label='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilityForFuturePolicyBenefitExpectedNetPremiumBeforeReinsuranceAfterDiscountRateChange' xlink:label='loc_LiabilityForFuturePolicyBenefitExpectedNetPremiumBeforeReinsuranceAfterDiscountRateChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilityForFuturePolicyBenefitExpectedNetPremiumCumulativeIncreaseDecreaseFromCashFlowChange' xlink:label='loc_LiabilityForFuturePolicyBenefitExpectedNetPremiumCumulativeIncreaseDecreaseFromCashFlowChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitBeforeReinsuranceAfterDiscountRateChange' xlink:label='loc_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitBeforeReinsuranceAfterDiscountRateChange' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitCumulativeIncreaseDecreaseFromCashFlowChange' xlink:label='loc_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitCumulativeIncreaseDecreaseFromCashFlowChange' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RestatementAxis' xlink:label='loc_RestatementAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RestatementDomain' xlink:label='loc_RestatementDomain' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ScenarioPreviouslyReportedMember' xlink:label='loc_ScenarioPreviouslyReportedMember' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_RevisionOfPriorPeriodAccountingStandardsUpdateAdjustmentMember' xlink:label='loc_RevisionOfPriorPeriodAccountingStandardsUpdateAdjustmentMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EffectOfModifiedRetrospectiveApplicationAccountingStandardsUpdate201812Member' xlink:label='loc_EffectOfModifiedRetrospectiveApplicationAccountingStandardsUpdate201812Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_EffectOfRetrospectiveApplicationOfAccountingStandardsUpdate201812Member' xlink:label='loc_EffectOfRetrospectiveApplicationOfAccountingStandardsUpdate201812Member' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_AccountingStandardsUpdate201812Member' xlink:label='loc_AccountingStandardsUpdate201812Member' xlink:type='locator' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_AdjustmentsForNewAccountingPronouncementsAxis' xlink:to='loc_TypeOfAdoptionMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InsuranceAbstract' xlink:to='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:to='loc_LiabilityForFuturePolicyBenefitExpectedNetPremiumBeforeReinsuranceAfterDiscountRateChange' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:to='loc_LiabilityForFuturePolicyBenefitExpectedNetPremiumCumulativeIncreaseDecreaseFromCashFlowChange' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:to='loc_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitBeforeReinsuranceAfterDiscountRateChange' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:to='loc_LiabilityForFuturePolicyBenefitExpectedFuturePolicyBenefitCumulativeIncreaseDecreaseFromCashFlowChange' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:to='loc_RestatementAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:to='loc_AdjustmentsForNewAccountingPronouncementsAxis' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleTable' xlink:to='loc_NewAccountingPronouncementsOrChangeInAccountingPrincipleLineItems' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_RestatementAxis' xlink:to='loc_RestatementDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_RestatementDomain' xlink:to='loc_ScenarioPreviouslyReportedMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_RestatementDomain' xlink:to='loc_RevisionOfPriorPeriodAccountingStandardsUpdateAdjustmentMember' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_RevisionOfPriorPeriodAccountingStandardsUpdateAdjustmentMember' xlink:to='loc_EffectOfModifiedRetrospectiveApplicationAccountingStandardsUpdate201812Member' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_RevisionOfPriorPeriodAccountingStandardsUpdateAdjustmentMember' xlink:to='loc_EffectOfRetrospectiveApplicationOfAccountingStandardsUpdate201812Member' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_TypeOfAdoptionMember' xlink:to='loc_AccountingStandardsUpdate201812Member' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>

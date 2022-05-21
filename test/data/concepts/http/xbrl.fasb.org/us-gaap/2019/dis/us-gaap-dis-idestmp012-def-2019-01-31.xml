@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:href='../elts/us-roles-2019-01-31.xsd#InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:label='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfHeldToMaturitySecuritiesTable' xlink:label='loc_ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:to='loc_ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_FinancialInstrumentAxis' xlink:to='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:label='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ResidentialMortgageBackedSecuritiesMember' xlink:label='loc_ResidentialMortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_CommercialMortgageBackedSecuritiesMember' xlink:label='loc_CommercialMortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_MortgageBackedSecuritiesMember' xlink:label='loc_MortgageBackedSecuritiesMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_USStatesAndPoliticalSubdivisionsMember' xlink:label='loc_USStatesAndPoliticalSubdivisionsMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:label='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_HeldToMaturitySecuritiesFairValue' xlink:label='loc_HeldToMaturitySecuritiesFairValue' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingLoss' xlink:label='loc_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingLoss' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingGain' xlink:label='loc_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingGain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_HeldToMaturitySecurities' xlink:label='loc_HeldToMaturitySecurities' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_ResidentialMortgageBackedSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_CommercialMortgageBackedSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_MortgageBackedSecuritiesMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_TransfersAndServicingOfFinancialInstrumentsTypesOfFinancialInstrumentsDomain' xlink:to='loc_USStatesAndPoliticalSubdivisionsMember' xlink:type='arc' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:to='loc_HeldToMaturitySecuritiesFairValue' xlink:type='arc' />
+<link:definitionArc priority='10' order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:to='loc_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingLoss' xlink:type='arc' />
+<link:definitionArc priority='10' order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:to='loc_HeldToMaturitySecuritiesAccumulatedUnrecognizedHoldingGain' xlink:type='arc' />
+<link:definitionArc priority='10' order='4.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesLineItems' xlink:to='loc_HeldToMaturitySecurities' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/InvestmentsDebtAndEquitySecuritiesTmp012ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_ScheduleOfHeldToMaturitySecuritiesTable' xlink:label='loc_ScheduleOfHeldToMaturitySecuritiesTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2019-01-31.xsd#us-gaap_FinancialInstrumentAxis' xlink:label='loc_FinancialInstrumentAxis' xlink:type='locator' />
+<link:definitionArc priority='10' order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_ScheduleOfHeldToMaturitySecuritiesTable' xlink:to='loc_FinancialInstrumentAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

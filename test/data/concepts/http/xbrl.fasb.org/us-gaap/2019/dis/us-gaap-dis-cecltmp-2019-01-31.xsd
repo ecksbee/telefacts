@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2019 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Right Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<xs:schema elementFormDefault='qualified' targetNamespace='http://fasb.org/dis/cecltmp/2019-01-31' xmlns:cecltmp='http://fasb.org/dis/cecltmp/2019-01-31' xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xs='http://www.w3.org/2001/XMLSchema' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'>
+<xs:annotation>
+<xs:appinfo>
+<link:linkbaseRef xlink:arcrole='http://www.w3.org/1999/xlink/properties/linkbase' xlink:href='us-gaap-dis-cecltmp-pre-2019-01-31.xml' xlink:role='http://www.xbrl.org/2003/role/presentationLinkbaseRef' xlink:type='simple' />
+<link:linkbaseRef xlink:arcrole='http://www.w3.org/1999/xlink/properties/linkbase' xlink:role='http://www.xbrl.org/2003/role/labelLinkbaseRef' xlink:type='simple' xlink:href='../elts/us-gaap-doc-2019-01-31.xml'/>
+<link:linkbaseRef xlink:arcrole='http://www.w3.org/1999/xlink/properties/linkbase' xlink:role='http://www.xbrl.org/2003/role/referenceLinkbaseRef' xlink:type='simple' xlink:href='../elts/us-gaap-ref-2019-01-31.xml'/>
+<link:linkbaseRef xlink:arcrole='http://www.w3.org/1999/xlink/properties/linkbase' xlink:role='http://www.xbrl.org/2003/role/referenceLinkbaseRef' xlink:type='simple' xlink:href='../elts/us-gaap-tin-ref-2019-01-31.xml'/>
+</xs:appinfo>
+<xs:documentation>
+                This file is the entry point file for disclosure Credit Losses TIG Templates (cecltmp).
+                
+                The DTS starting with this entry point includes the following presentation, calculation and definition linkbases:
+                    326XXX - Disclosure - Credit Losses TIG Template     (presentation)	
+                    326003 - Disclosure - Credit Losses TIG Template 01  (calculation)
+                    326003 - Disclosure - Credit Losses TIG Template 01  (definition)	
+				    326004 - Disclosure - Credit Losses TIG Template 02  (calculation)
+                    326004 - Disclosure - Credit Losses TIG Template 02  (definition)	
+				    326005 - Disclosure - Credit Losses TIG Template 03  (definition)		
+				    326006 - Disclosure - Credit Losses TIG Template 04  (calculation)
+                    326006 - Disclosure - Credit Losses TIG Template 04  (definition)		
+				    326007 - Disclosure - Credit Losses TIG Template 05  (definition)
+                </xs:documentation>
+</xs:annotation>
+<xs:import namespace='http://www.xbrl.org/2003/instance' schemaLocation='http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd' />
+<xs:import namespace='http://fasb.org/us-gaap-std/2019-01-31' schemaLocation='../elts/us-gaap-std-2019-01-31.xsd' />
+<xs:import namespace='http://fasb.org/dis/cecltmp01/2019-01-31' schemaLocation='../dis/us-gaap-dis-cecltmp01-2019-01-31.xsd' />
+<xs:import namespace='http://fasb.org/dis/cecltmp02/2019-01-31' schemaLocation='../dis/us-gaap-dis-cecltmp02-2019-01-31.xsd' />
+<xs:import namespace='http://fasb.org/dis/cecltmp03/2019-01-31' schemaLocation='../dis/us-gaap-dis-cecltmp03-2019-01-31.xsd' />
+<xs:import namespace='http://fasb.org/dis/cecltmp04/2019-01-31' schemaLocation='../dis/us-gaap-dis-cecltmp04-2019-01-31.xsd' />
+<xs:import namespace='http://fasb.org/dis/cecltmp05/2019-01-31' schemaLocation='../dis/us-gaap-dis-cecltmp05-2019-01-31.xsd' />
+
+
+</xs:schema>

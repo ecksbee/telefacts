@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:href='../elts/us-roles-2020-01-31.xsd#FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/all' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#all' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/domain-member' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member' xlink:type='simple' />
+<link:arcroleRef arcroleURI='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:href='http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension' xlink:type='simple' />
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeparateAccountLiabilityLineItems' xlink:label='loc_SeparateAccountLiabilityLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeparateAccountLiabilityTable' xlink:label='loc_SeparateAccountLiabilityTable' xlink:type='locator' />
+<link:definitionArc order='1.0' xbrldt:closed='true' xbrldt:contextElement='segment' xlink:arcrole='http://xbrl.org/int/dim/arcrole/all' xlink:from='loc_SeparateAccountLiabilityLineItems' xlink:to='loc_SeparateAccountLiabilityTable' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-default' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/dimension-domain' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='extended'>
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VariableAnnuityMember' xlink:label='loc_VariableAnnuityMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_OtherLongdurationInsuranceProductLineMember' xlink:label='loc_OtherLongdurationInsuranceProductLineMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VariableUniversalLifeMember' xlink:label='loc_VariableUniversalLifeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeparateAccountLiabilityLineItems' xlink:label='loc_SeparateAccountLiabilityLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeparateAccountsLiability' xlink:label='loc_SeparateAccountsLiability' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableAnnuityMember' xlink:type='arc' />
+<link:definitionArc order='2.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_OtherLongdurationInsuranceProductLineMember' xlink:type='arc' />
+<link:definitionArc order='3.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableUniversalLifeMember' xlink:type='arc' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/domain-member' xlink:from='loc_SeparateAccountLiabilityLineItems' xlink:to='loc_SeparateAccountsLiability' xlink:type='arc' />
+</link:definitionLink>
+<link:definitionLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp052SeparateAccountLiabilityTable' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_SeparateAccountLiabilityTable' xlink:label='loc_SeparateAccountLiabilityTable' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:definitionArc order='1.0' xlink:arcrole='http://xbrl.org/int/dim/arcrole/hypercube-dimension' xlink:from='loc_SeparateAccountLiabilityTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+</link:definitionLink>
+</link:linkbase>

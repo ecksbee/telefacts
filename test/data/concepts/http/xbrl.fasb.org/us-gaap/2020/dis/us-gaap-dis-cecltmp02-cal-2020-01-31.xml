@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp02' xlink:href='../elts/us-roles-2020-01-31.xsd#cecltmp02' xlink:type='simple' />
+<link:calculationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/CreditLossesTmp02' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_NotesReceivableGross' xlink:label='loc_NotesReceivableGross' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedInCurrentFiscalYear' xlink:label='loc_FinancingReceivableOriginatedInCurrentFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedInFiscalYearBeforeLatestFiscalYear' xlink:label='loc_FinancingReceivableOriginatedInFiscalYearBeforeLatestFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedTwoYearsBeforeLatestFiscalYear' xlink:label='loc_FinancingReceivableOriginatedTwoYearsBeforeLatestFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedThreeYearsBeforeLatestFiscalYear' xlink:label='loc_FinancingReceivableOriginatedThreeYearsBeforeLatestFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedFourYearsBeforeLatestFiscalYear' xlink:label='loc_FinancingReceivableOriginatedFourYearsBeforeLatestFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableOriginatedFiveOrMoreYearsBeforeLatestFiscalYear' xlink:label='loc_FinancingReceivableOriginatedFiveOrMoreYearsBeforeLatestFiscalYear' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_FinancingReceivableRevolving' xlink:label='loc_FinancingReceivableRevolving' xlink:type='locator' />
+<link:calculationArc order='10' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedInCurrentFiscalYear' xlink:type='arc' />
+<link:calculationArc order='20' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedInFiscalYearBeforeLatestFiscalYear' xlink:type='arc' />
+<link:calculationArc order='30' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedTwoYearsBeforeLatestFiscalYear' xlink:type='arc' />
+<link:calculationArc order='40' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedThreeYearsBeforeLatestFiscalYear' xlink:type='arc' />
+<link:calculationArc order='50' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedFourYearsBeforeLatestFiscalYear' xlink:type='arc' />
+<link:calculationArc order='60' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableOriginatedFiveOrMoreYearsBeforeLatestFiscalYear' xlink:type='arc' />
+<link:calculationArc order='70' weight='1.0' xlink:arcrole='http://www.xbrl.org/2003/arcrole/summation-item' xlink:from='loc_NotesReceivableGross' xlink:to='loc_FinancingReceivableRevolving' xlink:type='arc' />
+</link:calculationLink>
+</link:linkbase>

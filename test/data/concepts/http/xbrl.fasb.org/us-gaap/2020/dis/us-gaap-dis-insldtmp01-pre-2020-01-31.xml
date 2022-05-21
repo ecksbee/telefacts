@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01' xlink:href='../elts/us-roles-2020-01-31.xsd#insldtmp01' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp01' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostLineItems' xlink:label='loc_DeferredPolicyAcquisitionCostLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCosts' xlink:label='loc_DeferredPolicyAcquisitionCosts' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostsAdditions' xlink:label='loc_DeferredPolicyAcquisitionCostsAdditions' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:label='loc_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:label='loc_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCosts' xlink:label='loc_DeferredPolicyAcquisitionCosts_1' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_DeferredPolicyAcquisitionCostTable' xlink:label='loc_DeferredPolicyAcquisitionCostTable' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InsuranceAbstract' xlink:label='loc_InsuranceAbstract' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_WholeLifeInsuranceMember' xlink:label='loc_WholeLifeInsuranceMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_UniversalLifeMember' xlink:label='loc_UniversalLifeMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VariableUniversalLifeMember' xlink:label='loc_VariableUniversalLifeMember' xlink:type='locator' />
+<link:presentationArc order='10' preferredLabel='http://www.xbrl.org/2003/role/periodStartLabel' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCosts' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostsAdditions' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostAmortizationExpense' xlink:type='arc' />
+<link:presentationArc order='40' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCostExperienceAdjustment' xlink:type='arc' />
+<link:presentationArc order='50' preferredLabel='http://www.xbrl.org/2003/role/periodEndLabel' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostLineItems' xlink:to='loc_DeferredPolicyAcquisitionCosts_1' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_DeferredPolicyAcquisitionCostTable' xlink:to='loc_DeferredPolicyAcquisitionCostLineItems' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InsuranceAbstract' xlink:to='loc_DeferredPolicyAcquisitionCostTable' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_WholeLifeInsuranceMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_UniversalLifeMember' xlink:type='arc' />
+<link:presentationArc order='30' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableUniversalLifeMember' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>

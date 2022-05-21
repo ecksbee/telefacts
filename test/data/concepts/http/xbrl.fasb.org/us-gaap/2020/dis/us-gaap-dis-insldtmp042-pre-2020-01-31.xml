@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+(c) 2010-2020 Financial Accounting Foundation; (c) 2007-2010 XBRL US, Inc.  All Rights Reserved.
+Notice: Authorized Uses are Set Forth at http://xbrl.fasb.org/terms/TaxonomiesTermsConditions.html
+  -->
+<link:linkbase xmlns:link='http://www.xbrl.org/2003/linkbase' xmlns:xbrldt='http://xbrl.org/2005/xbrldt' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd'>
+<link:roleRef roleURI='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp042' xlink:href='../elts/us-roles-2020-01-31.xsd#insldtmp042' xlink:type='simple' />
+<link:presentationLink xlink:role='http://fasb.org/us-gaap/role/disclosure/FinancialServicesInsuranceLongDurationContractsTmp042' xlink:type='extended'>
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_InsuranceAbstract' xlink:label='loc_InsuranceAbstract' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitTable' xlink:label='loc_MarketRiskBenefitTable' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitLineItems' xlink:label='loc_MarketRiskBenefitLineItems' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitAssetAmount' xlink:label='loc_MarketRiskBenefitAssetAmount' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitLiabilityAmount' xlink:label='loc_MarketRiskBenefitLiabilityAmount' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:label='loc_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductOrServiceAxis' xlink:label='loc_ProductOrServiceAxis' xlink:type='locator' />
+<link:loc xlink:href='http://xbrl.fasb.org/srt/2020/elts/srt-2020-01-31.xsd#srt_ProductsAndServicesDomain' xlink:label='loc_ProductsAndServicesDomain' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_VariableAnnuityMember' xlink:label='loc_VariableAnnuityMember' xlink:type='locator' />
+<link:loc xlink:href='../elts/us-gaap-2020-01-31.xsd#us-gaap_IndexedAnnuityMember' xlink:label='loc_IndexedAnnuityMember' xlink:type='locator' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_InsuranceAbstract' xlink:to='loc_MarketRiskBenefitTable' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitAssetAmount' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitLiabilityAmount' xlink:type='arc' />
+<link:presentationArc order='30' preferredLabel='http://www.xbrl.org/2003/role/totalLabel' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_MarketRiskBenefitLineItems' xlink:to='loc_MarketRiskBenefitAfterIncreaseDecreaseFromInstrumentSpecificCreditRisk' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_MarketRiskBenefitTable' xlink:to='loc_ProductOrServiceAxis' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_MarketRiskBenefitTable' xlink:to='loc_MarketRiskBenefitLineItems' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductOrServiceAxis' xlink:to='loc_ProductsAndServicesDomain' xlink:type='arc' />
+<link:presentationArc order='10' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_VariableAnnuityMember' xlink:type='arc' />
+<link:presentationArc order='20' xlink:arcrole='http://www.xbrl.org/2003/arcrole/parent-child' xlink:from='loc_ProductsAndServicesDomain' xlink:to='loc_IndexedAnnuityMember' xlink:type='arc' />
+</link:presentationLink>
+</link:linkbase>
