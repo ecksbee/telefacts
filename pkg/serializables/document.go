@@ -109,7 +109,7 @@ func (doc *Document) Convert() ([]byte, error) {
 	}
 	eDoc := etree.NewDocument()
 	eDoc.CreateProcInst("xml", `version="1.0" encoding="UTF-8"`)
-	// eDoc.CreateComment("  ecksbee.com/ink  ")	//todo
+	eDoc.CreateComment("  ecksbee.com/telefacts  ")
 	xbrlName := np.ProvideName(attr.XBRLI, "xbrl")
 	xbrl := eDoc.CreateElement(xbrlName)
 	eDoc, err = doc.classicSchemaRef(eDoc, np)
