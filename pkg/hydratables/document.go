@@ -18,7 +18,6 @@ type Expressable struct {
 	UnitRef    string
 	Precision  Precision
 	IsNil      bool
-	XMLInner   string
 }
 
 type Document struct {
@@ -90,13 +89,20 @@ func HydrateExpressable(node *xmlquery.Node, np *attr.NameProvider) (*Expressabl
 	if err != nil {
 		return nil, err
 	}
+	nilAttr := attr.FindXpathAttr(node.Attr, "nil")
+	isNil := false
+	if nilAttr != nil {
+		isNil, err = strconv.ParseBool(nilAttr.Value)
+		if err != nil {
+			isNil = false
+		}
+	}
 	return &Expressable{
 		Name:       *xmlName,
 		ID:         idVal,
 		ContextRef: contextRef.Value,
 		UnitRef:    unitRefVal,
 		Precision:  Precision(decimals),
-		IsNil:      false, //todo
-		XMLInner:   "",    //todo
+		IsNil:      isNil,
 	}, nil
 }
