@@ -13,10 +13,9 @@ type Expressable struct {
 	Measurement string
 	Precision   string
 	Footnotes   []string
-	Value       string
 }
 
-func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, measurementFinder MeasurementFinder) (map[string]Expressable, error) {
+func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, measurementFinder MeasurementFinder, factFinder FactFinder) (map[string]Expressable, error) {
 	ret := make(map[string]Expressable)
 	source := h.Document
 	if source != nil {
@@ -68,6 +67,12 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, meas
 					}
 				}
 			}
+			hydratedFact := factFinder.FindFact(href, item.ContextRef)
+			footnotes := factFinder.GetFootnotes(hydratedFact)
+			footnoteTexts := make([]string, len(footnotes))
+			for _, footnote := range footnotes {
+				footnoteTexts = append(footnoteTexts, footnote.CharData)
+			}
 			ret[id] = Expressable{
 				Href:   href,
 				Labels: GetLabel(h, href),
@@ -82,8 +87,7 @@ func getExpressions(h *hydratables.Hydratable, conceptFinder ConceptFinder, meas
 				},
 				Measurement: measurementExpression,
 				Precision:   expressPrecision(item.Precision),
-				Footnotes:   make([]string, 0),
-				Value:       "",
+				Footnotes:   footnoteTexts,
 			}
 		}
 	}
