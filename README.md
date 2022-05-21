@@ -1,4 +1,4 @@
-# TeleFacts
+# Telefacts
 
 XBRL file storage, data types, and renderer.
 
@@ -13,4 +13,6 @@ Supports XBRL 2.1 except for the following:
 Supports the following XBRL extensions:
  - Dimensions 1.0 to include `typedMember` and nested hypercubes
 
-Does not (and will most likely never) support inline XBRL
+~~Does not (and will most likely never) support inline XBRL~~
+
+Telefacts v1.1 now supports inline XBRL!
