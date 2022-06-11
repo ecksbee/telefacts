@@ -35,17 +35,32 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 		}
 
 		switch tt {
+		case html.SelfClosingTagToken, html.StartTagToken:
+			blockElems := []string{
+				"div",
+				"p",
+				"h1",
+				"h2",
+				"h3",
+				"h4",
+				"h5",
+				"h6",
+			}
+			for _, elem := range blockElems {
+				if elem == token.Data {
+					tokenized += "<br /><br />"
+					break
+				}
+			}
 		case html.TextToken:
 			data := strings.TrimSpace(token.Data)
-
 			if len(data) > 0 {
-				tokenized += data + "<br></br><br></br> "
+				tokenized += data
 			}
 		}
 	}
 
 	return &FactExpression{
-		CharData:  fact.XMLInner,
-		TextBlock: tokenized,
+		InnerHtml: tokenized,
 	}
 }

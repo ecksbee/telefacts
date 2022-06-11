@@ -47,7 +47,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	}
 	if fact.Precision == hydratables.Precisionless {
 		return &FactExpression{
-			CharData: fact.XMLInner,
+			Core: fact.XMLInner,
 		}
 	}
 	isPercent := concept.Type.Space == attr.NUM &&
@@ -56,7 +56,7 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	sigFig, err := SigFigs(fact.XMLInner, fact.Precision, concept, ',')
 	if err != nil {
 		return &FactExpression{
-			CharData: fact.XMLInner,
+			Core: fact.XMLInner,
 		}
 	}
 	if numerator != nil {
@@ -83,9 +83,9 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	}
 
 	return &FactExpression{
-		Head:     sigFig.Head,
-		Core:     sigFig.Core,
-		Tail:     sigFig.Tail,
-		CharData: fact.XMLInner,
+		Head:      sigFig.Head,
+		Core:      sigFig.Core,
+		Tail:      sigFig.Tail,
+		InnerHtml: fact.XMLInner,
 	}
 }

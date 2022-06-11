@@ -8,8 +8,7 @@ type FactExpression struct {
 	Head      string
 	Core      string
 	Tail      string
-	CharData  string
-	TextBlock string
+	InnerHtml string
 }
 
 type MultilingualFact map[Lang]FactExpression
