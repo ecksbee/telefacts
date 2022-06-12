@@ -26,6 +26,7 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 	r := strings.NewReader(gohtml.UnescapeString(fact.XMLInner))
 	tokenizer := html.NewTokenizer(r)
 	tokenized := ""
+	disableBr := 0
 	for {
 		tt := tokenizer.Next()
 		token := tokenizer.Token()
@@ -36,26 +37,51 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 
 		switch tt {
 		case html.SelfClosingTagToken, html.StartTagToken:
-			blockElems := []string{
-				"div",
-				"p",
-				"h1",
-				"h2",
-				"h3",
-				"h4",
-				"h5",
-				"h6",
+			switch token.Data {
+			case "table":
+				disableBr++
+				tokenized += "<table>"
+			case "tr":
+				tokenized += "<tr>"
+			case "th":
+				tokenized += "<th>"
+			case "td":
+				tokenized += "<td>"
 			}
-			for _, elem := range blockElems {
-				if elem == token.Data {
-					tokenized += "<br /><br />"
-					break
+			if disableBr <= 0 {
+				blockElems := []string{
+					"div",
+					"p",
+					"h1",
+					"h2",
+					"h3",
+					"h4",
+					"h5",
+					"h6",
+				}
+				for _, elem := range blockElems {
+					if elem == token.Data {
+						tokenized += "<br /><br />"
+						break
+					}
 				}
 			}
 		case html.TextToken:
 			data := strings.TrimSpace(token.Data)
 			if len(data) > 0 {
-				tokenized += data
+				tokenized += data + " "
+			}
+		case html.EndTagToken:
+			switch token.Data {
+			case "table":
+				disableBr--
+				tokenized += "</table>"
+			case "tr":
+				tokenized += "</tr>"
+			case "th":
+				tokenized += "</th>"
+			case "td":
+				tokenized += "</td>"
 			}
 		}
 	}
