@@ -83,9 +83,8 @@ func renderEnglishFact(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementF
 	}
 
 	return &FactExpression{
-		Head:      sigFig.Head,
-		Core:      sigFig.Core,
-		Tail:      sigFig.Tail,
-		InnerHtml: fact.XMLInner,
+		Head: sigFig.Head,
+		Core: sigFig.Core,
+		Tail: sigFig.Tail,
 	}
 }
