@@ -18,6 +18,8 @@ type SummationItem struct {
 	VoidQuadrant
 	ContributingConcepts []ContributingConcept
 	FactualQuadrant      FactualQuadrant
+	FootnoteGrid         [][][]int
+	Footnotes            []string
 }
 
 type ContributingConcept struct {
@@ -124,7 +126,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					if reduced != nil {
 						labelRoles, langs = destruct(*reduced)
 					}
-					factualQuadrant, _, _ := getFactualQuadrant(fqLabels, relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
+					factualQuadrant, footnoteGrid, footnotes := getFactualQuadrant(fqLabels, relevantContexts, factFinder, conceptFinder, measurementFinder, langs)
 					_, sumConcept, err := h.HashQuery(from)
 					if err != nil {
 						continue
@@ -139,6 +141,8 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						ContextualMemberGrid: memberGrid,
 						VoidQuadrant:         voidQuadrant,
 						FactualQuadrant:      factualQuadrant,
+						FootnoteGrid:         footnoteGrid,
+						Footnotes:            footnotes,
 					})
 				}
 				sort.SliceStable(ret, func(i, j int) bool {
