@@ -16,6 +16,8 @@ type RootDomain struct {
 	ContextualMemberGrid
 	VoidQuadrant
 	FactualQuadrant     FactualQuadrant
+	FootnoteGrid        [][][]int
+	Footnotes           []string
 	EffectiveDomainGrid [][]EffectiveDomain
 	EffectiveDimensions []EffectiveDimension
 	DRSNodes            []DRSNode `json:",omitempty"`
@@ -218,9 +220,11 @@ func injectFactualQuadrant(incompleteRootDomain RootDomain, relevantContexts []r
 	for _, primaryItem := range incompleteRootDomain.PrimaryItems {
 		hrefs = append(hrefs, primaryItem.Href)
 	}
-	factualQuadrant, _, _ := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
+	factualQuadrant, footnoteGrid, footnotes := getFactualQuadrant(hrefs, relevantContexts, factFinder, conceptFinder,
 		measurementFinder, langs)
 	incompleteRootDomain.FactualQuadrant = factualQuadrant
+	incompleteRootDomain.FootnoteGrid = footnoteGrid
+	incompleteRootDomain.Footnotes = footnotes
 	return incompleteRootDomain
 }
 
