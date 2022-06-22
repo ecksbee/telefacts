@@ -2,6 +2,7 @@ package cache
 
 import (
 	"fmt"
+	"path/filepath"
 	"sync"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
@@ -27,10 +28,6 @@ func Marshal(id string, hash string) ([]byte, error) {
 	if appCache == nil {
 		return nil, fmt.Errorf("no accessible cache")
 	}
-	h, err := hydratable(id)
-	if err != nil {
-		return nil, err
-	}
 	lock.RLock()
 	if x, found := appCache.Get(id + "/" + hash); found {
 		ret := x.([]byte)
@@ -38,6 +35,23 @@ func Marshal(id string, hash string) ([]byte, error) {
 		return ret, nil
 	}
 	lock.RUnlock()
+	h, err := hydratable(id)
+	if err != nil {
+		return nil, err
+	}
+	ext := filepath.Ext(hash)
+	if ext == ".xhtml" || ext == ".htm" {
+		entryFileName := h.Folder.EntryFileName
+		if entryFileName == hash {
+			data := h.Folder.Document.Bytes
+			go func() {
+				lock.Lock()
+				defer lock.Unlock()
+				appCache.Set(id+"/"+hash, data, gocache.DefaultExpiration)
+			}()
+			return data, nil
+		}
+	}
 	byteArr, err := renderables.MarshalRenderable(hash, h)
 	go func() {
 		lock.Lock()

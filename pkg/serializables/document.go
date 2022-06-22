@@ -16,6 +16,7 @@ import (
 var INDENT bool
 
 type Document struct {
+	Bytes                 []byte
 	Root                  *xmlquery.Node
 	Html                  *xmlquery.Node
 	Excludes              []*xmlquery.Node
@@ -81,6 +82,7 @@ func DecodeIxbrlFile(xmlData []byte) (*Document, error) {
 		factMap[id.Value] = nonNumeric
 	}
 	return &Document{
+		Bytes:                 xmlData,
 		Root:                  doc,
 		Html:                  html,
 		SchemaRefs:            schemaRefs,

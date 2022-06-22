@@ -48,4 +48,7 @@ func TestCatalag_Expressables(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
+	if c.DocumentName != "cmg-20200331x10q.htm" {
+		t.Fatalf("expected cmg-20200331x10q.htm; outcome %s;\n", c.DocumentName)
+	}
 }
