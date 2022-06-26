@@ -43,8 +43,15 @@ func Xmlns(attrs []xml.Attr, prefixedName string) xml.Name {
 	if len(local) <= 0 {
 		return xml.Name{}
 	}
+	space := Ns(attrs, prefix)
+	if space == "" {
+		defaultAttr := FindAttr(attrs, `xmlns`)
+		if defaultAttr != nil {
+			space = defaultAttr.Value
+		}
+	}
 	return xml.Name{
-		Space: Ns(attrs, prefix),
+		Space: space,
 		Local: local,
 	}
 }
