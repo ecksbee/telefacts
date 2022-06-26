@@ -12,6 +12,7 @@ import (
 
 type Folder struct {
 	wLock                 sync.Mutex
+	EntryFileName         string
 	Dir                   string
 	Document              *Document
 	Namespaces            map[string]string
@@ -30,6 +31,7 @@ func Discover(id string) (*Folder, error) {
 	}
 	workingDir := path.Join(VolumePath, "folders", id)
 	ret := &Folder{
+		EntryFileName:         entryFileName,
 		Dir:                   workingDir,
 		Namespaces:            make(map[string]string),
 		Instances:             make(map[string]InstanceFile),

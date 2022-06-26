@@ -13,6 +13,7 @@ type Catalog struct {
 	RelationshipSets []RelationshipSet
 	Networks         map[string]map[string]string
 	Expressions      map[string]Expressable
+	DocumentName     string
 }
 
 func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
@@ -23,6 +24,10 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 	expressions, err := getExpressions(h, h, h, h)
 	if err != nil {
 		return nil, err
+	}
+	documentName := ""
+	if len(expressions) > 0 {
+		documentName = h.Folder.EntryFileName
 	}
 	for _, schemedEntity := range schemedEntities {
 		entityStr := stringify(&schemedEntity)
@@ -47,6 +52,7 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 		RelationshipSets: rsets,
 		Networks:         networks,
 		Expressions:      expressions,
+		DocumentName:     documentName,
 	})
 }
 
