@@ -5,6 +5,7 @@ import (
 	"encoding/xml"
 	"hash/fnv"
 	"strconv"
+	"sync"
 
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/serializables"
@@ -34,19 +35,41 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 		return nil, err
 	}
 	ret := make([]Expressable, 0)
-	for _, nonNumeric := range source.NonNumerics {
-		expressable, err := HydrateExpressable(nonNumeric, np)
-		if err != nil {
-			return nil, err
-		}
-		ret = append(ret, *expressable)
+	eerrChan := make(chan error)
+	var wg1 sync.WaitGroup
+	wg1.Add(len(source.NonNumerics))
+	for _, nnonNumeric := range source.NonNumerics {
+		go func(nonNumeric *xmlquery.Node, errChan chan error) {
+			expressable, err := HydrateExpressable(nonNumeric, np)
+			if err != nil {
+				errChan <- err
+				return
+			}
+			ret = append(ret, *expressable)
+			errChan <- nil
+		}(nnonNumeric, eerrChan)
 	}
-	for _, nonFraction := range source.NonFractions {
-		expressable, err := HydrateExpressable(nonFraction, np)
-		if err != nil {
-			return nil, err
-		}
-		ret = append(ret, *expressable)
+	wg1.Wait()
+	err = <-eerrChan
+	if err != nil {
+		return nil, err
+	}
+	var wg2 sync.WaitGroup
+	wg2.Add(len(source.NonFractions))
+	for _, nnonFraction := range source.NonFractions {
+		go func(nonFraction *xmlquery.Node, errChan chan error) {
+			expressable, err := HydrateExpressable(nonFraction, np)
+			if err != nil {
+				errChan <- err
+				return
+			}
+			ret = append(ret, *expressable)
+		}(nnonFraction, eerrChan)
+	}
+	wg2.Wait()
+	err = <-eerrChan
+	if err != nil {
+		return nil, err
 	}
 	return &Document{
 		Expressions: ret,

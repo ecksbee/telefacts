@@ -3,6 +3,7 @@ package telefacts_test
 import (
 	"encoding/json"
 	"fmt"
+	"io/fs"
 	"os"
 	"path"
 	"testing"
@@ -12,6 +13,44 @@ import (
 	"ecksbee.com/telefacts/pkg/serializables"
 	gocache "github.com/patrickmn/go-cache"
 )
+
+func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.VolumePath = path.Join(".", "data")
+	hydratables.InjectCache(hcache)
+	workingDir := path.Join(".", "data", "folders", "test_ix")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		os.MkdirAll(workingDir, fs.FileMode(0700))
+	}
+	defer func() {
+		os.RemoveAll(workingDir)
+	}()
+	zipFile := path.Join(".", "data", "test_ix.zip")
+	err = unZipTestData(workingDir, zipFile)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	f, err := serializables.Discover("test_ix")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	h, err := hydratables.Hydrate(f)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	slug := "37d4e3d950af1aa368ee7940e5885bea"
+	data, err := renderables.MarshalRenderable(slug, h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	r := renderables.Renderable{}
+	err = json.Unmarshal(data, &r)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+}
 
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)

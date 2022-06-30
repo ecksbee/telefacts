@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"hash/fnv"
 	"strings"
+	"sync"
 
 	"ecksbee.com/telefacts/internal/actions"
 	"ecksbee.com/telefacts/pkg/attr"
@@ -29,42 +30,106 @@ type Document struct {
 	footnoteRelationships []*xmlquery.Node
 }
 
-func DecodeIxbrlFile(xmlData []byte) (*Document, error) {
+func DecodeIxbrlFile(xmlData []byte) *Document {
 	doc, err := xmlquery.Parse(bytes.NewReader(xmlData))
 	if err != nil {
-		return nil, err
+		fmt.Printf("Error: " + err.Error())
+		return nil
 	}
-	html, err := xmlquery.Query(doc, "//*[local-name()='html']")
-	if err != nil || html == nil {
-		return nil, err
-	}
-	schemaRefs, err := xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='schemaRef' and namespace-uri()='"+attr.LINK+"']")
-	if err != nil {
-		return nil, err
-	}
-	contexts, err := xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='context' and namespace-uri()='"+attr.XBRLI+"']")
-	if err != nil {
-		return nil, err
-	}
-	units, err := xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='unit' and namespace-uri()='"+attr.XBRLI+"']")
-	if err != nil {
-		return nil, err
-	}
-	nonFractions, err := xmlquery.QueryAll(doc, "//*[local-name()='nonFraction' and namespace-uri()='"+attr.IX+"']")
-	if err != nil {
-		return nil, err
-	}
-	nonNumerics, err := xmlquery.QueryAll(doc, "//*[local-name()='nonNumeric' and namespace-uri()='"+attr.IX+"']")
-	if err != nil {
-		return nil, err
-	}
-	excludes, err := xmlquery.QueryAll(doc, "//*[local-name()='exclude' and namespace-uri()='"+attr.IX+"']")
-	if err != nil {
-		return nil, err
-	}
-	footnoteRelationships, err := xmlquery.QueryAll(doc, "//*[local-name()='relationship' and namespace-uri()='"+attr.IX+"' and @arcrole='"+attr.FactFootnoteArcrole+"']")
-	if err != nil {
-		return nil, err
+	var html *xmlquery.Node
+	var goErr error
+	htmlDone := make(chan bool)
+	go func() {
+		defer func() { htmlDone <- true }()
+		html, goErr = xmlquery.Query(doc, "//*[local-name()='html']")
+		if html == nil {
+			fmt.Println("Error: missing html")
+		}
+		if goErr != nil {
+			html = nil
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var schemaRefs []*xmlquery.Node
+	schemaRefsDone := make(chan bool)
+	go func() {
+		defer func() { schemaRefsDone <- true }()
+		schemaRefs, goErr = xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='schemaRef' and namespace-uri()='"+attr.LINK+"']")
+		if goErr != nil {
+			schemaRefs = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var contexts []*xmlquery.Node
+	contextsDone := make(chan bool)
+	go func() {
+		defer func() { contextsDone <- true }()
+		contexts, err = xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='context' and namespace-uri()='"+attr.XBRLI+"']")
+		if goErr != nil {
+			contexts = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var units []*xmlquery.Node
+	unitsDone := make(chan bool)
+	go func() {
+		defer func() { unitsDone <- true }()
+		units, err = xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='unit' and namespace-uri()='"+attr.XBRLI+"']")
+		if goErr != nil {
+			units = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var nonFractions []*xmlquery.Node
+	nonFractionsDone := make(chan bool)
+	go func() {
+		defer func() { nonFractionsDone <- true }()
+		nonFractions, err = xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='unit' and namespace-uri()='"+attr.XBRLI+"']")
+		if goErr != nil {
+			nonFractions = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var nonNumerics []*xmlquery.Node
+	nonNumericsDone := make(chan bool)
+	go func() {
+		defer func() { nonNumericsDone <- true }()
+		nonNumerics, err = xmlquery.QueryAll(doc, "//*[local-name()='nonNumeric' and namespace-uri()='"+attr.IX+"']")
+		if goErr != nil {
+			nonNumerics = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var excludes []*xmlquery.Node
+	excludesDone := make(chan bool)
+	go func() {
+		defer func() { excludesDone <- true }()
+		excludes, err = xmlquery.QueryAll(doc, "//*[local-name()='exclude' and namespace-uri()='"+attr.IX+"']")
+		if goErr != nil {
+			excludes = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	var footnoteRelationships []*xmlquery.Node
+	footnoteRelationshipsDone := make(chan bool)
+	go func() {
+		defer func() { footnoteRelationshipsDone <- true }()
+		footnoteRelationships, err = xmlquery.QueryAll(doc, "//*[local-name()='relationship' and namespace-uri()='"+attr.IX+"' and @arcrole='"+attr.FactFootnoteArcrole+"']")
+		if goErr != nil {
+			footnoteRelationships = make([]*xmlquery.Node, 0)
+			fmt.Printf("Error: " + goErr.Error())
+		}
+	}()
+	<-htmlDone
+	<-schemaRefsDone
+	<-contextsDone
+	<-unitsDone
+	<-nonFractionsDone
+	<-nonNumericsDone
+	<-excludesDone
+	<-footnoteRelationshipsDone
+	if html == nil {
+		return nil
 	}
 	factMap := make(map[string](*xmlquery.Node))
 	for _, nonFraction := range nonFractions {
@@ -93,7 +158,7 @@ func DecodeIxbrlFile(xmlData []byte) (*Document, error) {
 		footnoteRelationships: footnoteRelationships,
 		Units:                 units,
 		factMap:               factMap,
-	}, nil
+	}
 }
 
 func (doc *Document) Extract(destination string) error {
@@ -153,72 +218,81 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 	if xbrl == nil {
 		return nil, fmt.Errorf("no root xbrl element")
 	}
-	for _, nonFraction := range doc.NonFractions {
-		nameAttr := attr.FindXpathAttr(nonFraction.Attr, "name")
-		if nameAttr == nil {
-			continue
-		}
-		factName := np.ProvideConceptName(nameAttr.Value)
-		classicFact := xbrl.CreateElement(factName)
-		contextRef := attr.FindXpathAttr(nonFraction.Attr, "contextRef")
-		if contextRef == nil {
-			continue
-		} else {
-			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
-			classicFact.CreateAttr(n, contextRef.Value)
-		}
-		idAttr := attr.FindXpathAttr(nonFraction.Attr, "id")
-		if idAttr == nil {
-			h := fnv.New128a()
-			h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
-			idVal := hex.EncodeToString(h.Sum([]byte{}))
-			classicFact.CreateAttr("id", idVal)
-		} else {
-			classicFact.CreateAttr("id", idAttr.Value)
-		}
-		decimals := attr.FindXpathAttr(nonFraction.Attr, "decimals")
-		if decimals != nil {
-			n := np.ProvideName(attr.XBRLI, decimals.Name.Local)
-			classicFact.CreateAttr(n, decimals.Value)
-		}
-		unitRef := attr.FindXpathAttr(nonFraction.Attr, "unitRef")
-		if unitRef != nil {
-			n := np.ProvideName(attr.XBRLI, unitRef.Name.Local)
-			classicFact.CreateAttr(n, unitRef.Value)
-		}
-		// format := attr.FindXpathAttr(nonFraction.Attr, "format")
-		// scale := attr.FindXpathAttr(nonFraction.Attr, "scale")
-		classicFact.CreateText(nonFraction.InnerText())
+	var wg1 sync.WaitGroup
+	wg1.Add(len(doc.NonFractions))
+	for _, nnonFraction := range doc.NonFractions {
+		go func(nonFraction *xmlquery.Node) {
+			defer wg1.Done()
+			nameAttr := attr.FindXpathAttr(nonFraction.Attr, "name")
+			if nameAttr == nil {
+				return
+			}
+			factName := np.ProvideConceptName(nameAttr.Value)
+			classicFact := xbrl.CreateElement(factName)
+			contextRef := attr.FindXpathAttr(nonFraction.Attr, "contextRef")
+			if contextRef == nil {
+				return
+			} else {
+				n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
+				classicFact.CreateAttr(n, contextRef.Value)
+			}
+			idAttr := attr.FindXpathAttr(nonFraction.Attr, "id")
+			if idAttr == nil {
+				h := fnv.New128a()
+				h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
+				idVal := hex.EncodeToString(h.Sum([]byte{}))
+				classicFact.CreateAttr("id", idVal)
+			} else {
+				classicFact.CreateAttr("id", idAttr.Value)
+			}
+			decimals := attr.FindXpathAttr(nonFraction.Attr, "decimals")
+			if decimals != nil {
+				n := np.ProvideName(attr.XBRLI, decimals.Name.Local)
+				classicFact.CreateAttr(n, decimals.Value)
+			}
+			unitRef := attr.FindXpathAttr(nonFraction.Attr, "unitRef")
+			if unitRef != nil {
+				n := np.ProvideName(attr.XBRLI, unitRef.Name.Local)
+				classicFact.CreateAttr(n, unitRef.Value)
+			}
+			// format := attr.FindXpathAttr(nonFraction.Attr, "format")
+			// scale := attr.FindXpathAttr(nonFraction.Attr, "scale")
+			classicFact.CreateText(nonFraction.InnerText())
+		}(nnonFraction)
 	}
-	for _, nonNumeric := range doc.NonNumerics {
-		nameAttr := attr.FindXpathAttr(nonNumeric.Attr, "name")
-		if nameAttr == nil {
-			continue
-		}
-		factName := np.ProvideConceptName(nameAttr.Value)
-		classicFact := xbrl.CreateElement(factName)
-		contextRef := attr.FindXpathAttr(nonNumeric.Attr, "contextRef")
-		if contextRef != nil {
-			continue
-		} else {
-			n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
-			classicFact.CreateAttr(n, contextRef.Value)
-		}
-		idAttr := attr.FindXpathAttr(nonNumeric.Attr, "id")
-		if idAttr == nil {
-			h := fnv.New128a()
-			h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
-			idVal := hex.EncodeToString(h.Sum([]byte{}))
-			classicFact.CreateAttr("id", idVal)
-		} else {
-			classicFact.CreateAttr("id", idAttr.Value)
-		}
-		// format := attr.FindXpathAttr(nonFraction.Attr, "format")
-		err := doc.completeTextNode(classicFact, nonNumeric, np)
-		if err != nil {
-			return nil, err
-		}
+	wg1.Wait()
+	var wg2 sync.WaitGroup
+	wg2.Add(len(doc.NonNumerics))
+	for _, nnonNumeric := range doc.NonNumerics {
+		go func(nonNumeric *xmlquery.Node) {
+			defer wg2.Done()
+			nameAttr := attr.FindXpathAttr(nonNumeric.Attr, "name")
+			if nameAttr == nil {
+				return
+			}
+			factName := np.ProvideConceptName(nameAttr.Value)
+			classicFact := xbrl.CreateElement(factName)
+			contextRef := attr.FindXpathAttr(nonNumeric.Attr, "contextRef")
+			if contextRef == nil {
+				return
+			} else {
+				n := np.ProvideName(attr.XBRLI, contextRef.Name.Local)
+				classicFact.CreateAttr(n, contextRef.Value)
+			}
+			idAttr := attr.FindXpathAttr(nonNumeric.Attr, "id")
+			if idAttr == nil {
+				h := fnv.New128a()
+				h.Write([]byte(nameAttr.Value + "_" + contextRef.Value))
+				idVal := hex.EncodeToString(h.Sum([]byte{}))
+				classicFact.CreateAttr("id", idVal)
+			} else {
+				classicFact.CreateAttr("id", idAttr.Value)
+			}
+			// format := attr.FindXpathAttr(nonFraction.Attr, "format")
+			doc.completeTextNode(classicFact, nonNumeric, np)
+		}(nnonNumeric)
 	}
+	wg2.Wait()
 	for _, unit := range doc.Units {
 		classicUnit := etree.NewDocument()
 		err := classicUnit.ReadFromString(np.ProvideOutputXml(unit, true))
@@ -243,41 +317,45 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 	return eDoc, nil
 }
 
-func (doc *Document) completeTextNode(classicFact *etree.Element, nonNumeric *xmlquery.Node, np *attr.NameProvider) error {
-	acc := ""
-	sourceNode := nonNumeric
-	for {
-		if sourceNode != nil {
-			acc = acc + np.ProvideOutputXml(sourceNode, false)
+func (doc *Document) completeTextNode(classicFact *etree.Element, nonNumeric *xmlquery.Node, np *attr.NameProvider) {
+	go func() {
+		acc := ""
+		sourceNode := nonNumeric
+		for {
+			if sourceNode != nil {
+				acc = acc + np.ProvideOutputXml(sourceNode, false)
+			}
+			continuedAt := attr.FindXpathAttr(sourceNode.Attr, "continuedAt")
+			if continuedAt == nil {
+				break
+			}
+			sourceNode = doc.findContinuation(continuedAt)
+			if sourceNode == nil {
+				break
+			}
 		}
-		continuedAt := attr.FindXpathAttr(sourceNode.Attr, "continuedAt")
-		if continuedAt == nil {
-			break
+		textNode := etree.NewDocument()
+		err := textNode.ReadFromString(acc)
+		if err != nil {
+			fmt.Println("Error: " + err.Error())
+			return
 		}
-		sourceNode = doc.findContinuation(continuedAt)
-		if sourceNode == nil {
-			break
+		if textNode.Root() == nil {
+			classicFact.CreateText(acc)
+		} else {
+			excluded := exclude(textNode.Root())
+			if excluded == nil {
+				fmt.Println("Error: nil text node")
+				return
+			}
+			stripped := stripIx(excluded)
+			if stripped == nil {
+				fmt.Println("Error: nil resultant text node")
+				return
+			}
+			classicFact.AddChild(*stripped)
 		}
-	}
-	textNode := etree.NewDocument()
-	err := textNode.ReadFromString(acc)
-	if err != nil {
-		return err
-	}
-	if textNode.Root() == nil {
-		classicFact.CreateText(acc)
-	} else {
-		excluded := exclude(textNode.Root())
-		if excluded == nil {
-			panic("nil text node")
-		}
-		stripped := stripIx(excluded)
-		if stripped == nil {
-			panic("nil resultant text node")
-		}
-		classicFact.AddChild(*stripped)
-	}
-	return nil
+	}()
 }
 
 func (doc *Document) findContinuation(continuedAt *xmlquery.Attr) *xmlquery.Node {
@@ -342,10 +420,7 @@ func (doc *Document) classicFootnoteLink(np *attr.NameProvider) (*etree.Element,
 				}
 				classicFootnote := link.CreateElement("footnote")
 				classicFootnote.Space = "link"
-				err := doc.completeTextNode(classicFootnote, footnote, np)
-				if err != nil {
-					return nil, err
-				}
+				doc.completeTextNode(classicFootnote, footnote, np)
 				for _, fattr := range footnote.Attr {
 					classicFootnote.CreateAttr(fattr.Name.Space+":"+fattr.Name.Local, fattr.Value)
 				}

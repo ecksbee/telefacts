@@ -35,9 +35,9 @@ func TestDecode(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	doc, err := serializables.DecodeIxbrlFile(data)
-	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+	doc := serializables.DecodeIxbrlFile(data)
+	if doc == nil {
+		t.Fatalf("Error: failed to decode IXBRL source document")
 		return
 	}
 	if len(doc.SchemaRefs) != 1 {
@@ -68,9 +68,9 @@ func TestExtract(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	doc, err := serializables.DecodeIxbrlFile(data)
-	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+	doc := serializables.DecodeIxbrlFile(data)
+	if doc == nil {
+		t.Fatalf("Error: failed to decode IXBRL source document")
 		return
 	}
 	targetpath := path.Join(workingDir, "test_ix_extracted.xml")
