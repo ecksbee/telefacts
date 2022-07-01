@@ -3,6 +3,7 @@ package attr
 import (
 	"encoding/xml"
 	"fmt"
+	"html"
 	"strings"
 
 	"github.com/antchfx/xmlquery"
@@ -102,7 +103,7 @@ func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string 
 	}
 	recur = func(recurringNode *xmlquery.Node, nosiblings bool) string {
 		if recurringNode.FirstChild == nil {
-			return recurringNode.InnerText()
+			return html.EscapeString(recurringNode.InnerText())
 		} else {
 			acc := ""
 			temp := etree.NewDocument()
@@ -138,7 +139,7 @@ func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string 
 		return recur(node, true)
 	}
 	if node.FirstChild == nil {
-		return node.InnerText()
+		return html.EscapeString(node.InnerText())
 	}
 	return recur(node.FirstChild, false)
 }

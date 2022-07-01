@@ -14,7 +14,7 @@ import (
 )
 
 func TestDecode(t *testing.T) {
-	workingDir := path.Join(".", "data", "folders", "test_ix")
+	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -22,7 +22,7 @@ func TestDecode(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "data", "test_ix.zip")
+	zipFile := path.Join(".", "data", "test_ix_extract.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -35,9 +35,9 @@ func TestDecode(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	doc, err := serializables.DecodeIxbrlFile(data)
-	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+	doc := serializables.DecodeIxbrlFile(data)
+	if doc == nil {
+		t.Fatalf("Error: failed to decode IXBRL source document")
 		return
 	}
 	if len(doc.SchemaRefs) != 1 {
@@ -47,7 +47,7 @@ func TestDecode(t *testing.T) {
 
 func TestExtract(t *testing.T) {
 	serializables.INDENT = true
-	workingDir := path.Join(".", "data", "folders", "test_ix")
+	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -55,7 +55,7 @@ func TestExtract(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "data", "test_ix.zip")
+	zipFile := path.Join(".", "data", "test_ix_extract.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -68,9 +68,9 @@ func TestExtract(t *testing.T) {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
-	doc, err := serializables.DecodeIxbrlFile(data)
-	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+	doc := serializables.DecodeIxbrlFile(data)
+	if doc == nil {
+		t.Fatalf("Error: failed to decode IXBRL source document")
 		return
 	}
 	targetpath := path.Join(workingDir, "test_ix_extracted.xml")

@@ -4,6 +4,7 @@
 !.gitignore
 !names.json
 !test_ix.zip
+!test_ix_extract.zip
 !/concepts
 !/concepts/**
 !/folders
