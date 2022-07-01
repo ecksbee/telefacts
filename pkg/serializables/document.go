@@ -84,7 +84,7 @@ func DecodeIxbrlFile(xmlData []byte) *Document {
 	nonFractionsDone := make(chan bool)
 	go func() {
 		defer func() { nonFractionsDone <- true }()
-		nonFractions, err = xmlquery.QueryAll(doc, "//*[local-name()='header' and namespace-uri()='"+attr.IX+"']//*[local-name()='resources' and namespace-uri()='"+attr.IX+"']//*[local-name()='unit' and namespace-uri()='"+attr.XBRLI+"']")
+		nonFractions, err = xmlquery.QueryAll(doc, "//*[local-name()='nonFraction' and namespace-uri()='"+attr.IX+"']")
 		if goErr != nil {
 			nonFractions = make([]*xmlquery.Node, 0)
 			fmt.Printf("Error: " + goErr.Error())

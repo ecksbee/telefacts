@@ -59,11 +59,7 @@ func Discover(id string) (*Folder, error) {
 		ret.Document = doc
 		extracted := path.Join(workingDir, entryFileName+".xml")
 		if _, err := os.Stat(extracted); errors.Is(err, os.ErrNotExist) {
-			fmt.Println(extracted + " does not exists")
-			err = doc.Extract(extracted)
-			if err != nil {
-				return nil, err
-			}
+			return nil, fmt.Errorf("%s does not exists", extracted)
 		}
 		instanceFile, err := ReadInstanceFile(extracted)
 		if err != nil {

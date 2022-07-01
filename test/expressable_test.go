@@ -13,7 +13,7 @@ import (
 	gocache "github.com/patrickmn/go-cache"
 )
 
-func TestCatalag_Expressables(t *testing.T) {
+func TestCatalog_Expressables(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.VolumePath = path.Join(".", "data")
 	hydratables.InjectCache(hcache)
