@@ -51,4 +51,7 @@ func TestCatalog_Expressables(t *testing.T) {
 	if c.DocumentName != "cmg-20200331x10q.htm" {
 		t.Fatalf("expected cmg-20200331x10q.htm; outcome %s;\n", c.DocumentName)
 	}
+	if len(c.Expressions) != 502 {
+		t.Fatalf("expected 502 Expressions; outcome %d;\n", len(c.Expressions))
+	}
 }

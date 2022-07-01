@@ -34,14 +34,15 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 	if err != nil {
 		return nil, err
 	}
-	ret := make([]Expressable, 0)
+	ret1 := make([]Expressable, 0)
+	var lock1 sync.Mutex
 	var goErr error
 	var wg1 sync.WaitGroup
 	wg1.Add(len(source.NonNumerics))
 	for _, nnonNumeric := range source.NonNumerics {
 		go func(nonNumeric *xmlquery.Node) {
 			defer wg1.Done()
-			if goErr == nil {
+			if goErr != nil {
 				return
 			}
 			expressable, err := HydrateExpressable(nonNumeric, np)
@@ -49,13 +50,17 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 				goErr = err
 				return
 			}
-			ret = append(ret, *expressable)
+			lock1.Lock()
+			ret1 = append(ret1, *expressable)
+			lock1.Unlock()
 		}(nnonNumeric)
 	}
 	wg1.Wait()
 	if goErr != nil {
 		return nil, goErr
 	}
+	ret2 := make([]Expressable, 0)
+	var lock2 sync.Mutex
 	var goErr2 error
 	var wg2 sync.WaitGroup
 	wg2.Add(len(source.NonFractions))
@@ -70,7 +75,9 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 				goErr2 = err
 				return
 			}
-			ret = append(ret, *expressable)
+			lock2.Lock()
+			ret2 = append(ret2, *expressable)
+			lock2.Unlock()
 		}(nnonFraction)
 	}
 	wg2.Wait()
@@ -78,7 +85,7 @@ func HydrateDocument(folder *serializables.Folder) (*Document, error) {
 		return nil, goErr2
 	}
 	return &Document{
-		Expressions: ret,
+		Expressions: append(ret1, ret2...),
 	}, nil
 }
 
