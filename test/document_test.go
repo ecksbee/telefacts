@@ -45,7 +45,17 @@ func TestDecode(t *testing.T) {
 	}
 }
 
-func TestExtract(t *testing.T) {
+func bencmarkExtract(targetPath string, doc serializables.Document, b *testing.B) {
+	b.ResetTimer()
+	for n := 0; n < b.N; n++ {
+		err := doc.Extract(targetPath)
+		if err != nil {
+			b.Fatalf("Error: " + err.Error())
+		}
+	}
+}
+
+func BenchmarkExtract_Ix_Narrative(b *testing.B) {
 	serializables.INDENT = true
 	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
 	_, err := os.Stat(workingDir)
@@ -58,27 +68,28 @@ func TestExtract(t *testing.T) {
 	zipFile := path.Join(".", "data", "test_ix_extract.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+		b.Fatalf("Error: " + err.Error())
 		return
 	}
 	sourceFilePath := "cmg-20200331x10q.htm"
 	filepath := path.Join(workingDir, sourceFilePath)
 	data, err := ioutil.ReadFile(filepath)
 	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+		b.Fatalf("Error: " + err.Error())
 		return
 	}
 	doc := serializables.DecodeIxbrlFile(data)
 	if doc == nil {
-		t.Fatalf("Error: failed to decode IXBRL source document")
+		b.Fatalf("Error: failed to decode IXBRL source document")
 		return
 	}
 	targetpath := path.Join(workingDir, "test_ix_extracted.xml")
 	err = doc.Extract(targetpath)
 	if err != nil {
-		t.Fatalf("Error: " + err.Error())
+		b.Fatalf("Error: " + err.Error())
 		return
 	}
+	bencmarkExtract(targetpath, *doc, b)
 }
 
 func unzip(bytes []byte) ([]*zipPkg.File, error) {
