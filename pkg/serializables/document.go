@@ -12,9 +12,12 @@ import (
 	"ecksbee.com/telefacts/pkg/attr"
 	"github.com/antchfx/xmlquery"
 	"github.com/beevik/etree"
+	"github.com/jbowtie/gokogiri/xml"
+	"github.com/jbowtie/ratago/xslt"
 )
 
 var INDENT bool
+var XSLT_NRTV string
 
 type Document struct {
 	Bytes                 []byte
@@ -170,6 +173,17 @@ func (doc *Document) Extract(destination string) error {
 }
 
 func (doc *Document) Convert() ([]byte, error) {
+	if XSLT_NRTV == "" {
+		return nil, fmt.Errorf("XSLT_NRTV invalid")
+	}
+	nrtvXslFile, err := xml.ReadFile(XSLT_NRTV, xml.StrictParseOption)
+	if err != nil {
+		return nil, err
+	}
+	nrtvStyle, err := xslt.ParseStylesheet(nrtvXslFile, XSLT_NRTV)
+	if err != nil {
+		return nil, err
+	}
 	np, err := attr.NewNameProvider(doc.Html.Attr)
 	if err != nil {
 		return nil, err
@@ -179,11 +193,11 @@ func (doc *Document) Convert() ([]byte, error) {
 	eDoc.CreateComment("  ecksbee.com/telefacts  ")
 	xbrlName := np.ProvideName(attr.XBRLI, "xbrl")
 	xbrl := eDoc.CreateElement(xbrlName)
-	eDoc, err = doc.classicSchemaRef(eDoc, np)
+	err = doc.classicSchemaRef(eDoc, np)
 	if err != nil {
 		return nil, err
 	}
-	eDoc, err = doc.classicFacts(eDoc, np)
+	err = doc.classicFacts(eDoc, np, nrtvStyle)
 	if err != nil {
 		return nil, err
 	}
@@ -196,11 +210,11 @@ func (doc *Document) Convert() ([]byte, error) {
 	return b.Bytes(), err
 }
 
-func (doc *Document) classicSchemaRef(eDoc *etree.Document, np *attr.NameProvider) (*etree.Document, error) {
+func (doc *Document) classicSchemaRef(eDoc *etree.Document, np *attr.NameProvider) error {
 	xbrlName := np.ProvideName(attr.XBRLI, "xbrl")
 	xbrl := eDoc.SelectElement(xbrlName)
 	if xbrl == nil {
-		return nil, fmt.Errorf("no root xbrl element")
+		return fmt.Errorf("no root xbrl element")
 	}
 	for _, schemaRef := range doc.SchemaRefs {
 		schemaRefName := np.ProvideName(schemaRef.NamespaceURI, schemaRef.Data)
@@ -209,14 +223,14 @@ func (doc *Document) classicSchemaRef(eDoc *etree.Document, np *attr.NameProvide
 			curr.CreateAttr(a.Name.Local, a.Value)
 		}
 	}
-	return eDoc, nil
+	return nil
 }
 
-func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (*etree.Document, error) {
+func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider, nrtvStyle *xslt.Stylesheet) error {
 	xbrlName := np.ProvideName(attr.XBRLI, "xbrl")
 	xbrl := eDoc.SelectElement(xbrlName)
 	if xbrl == nil {
-		return nil, fmt.Errorf("no root xbrl element")
+		return fmt.Errorf("no root xbrl element")
 	}
 	var wg1 sync.WaitGroup
 	wg1.Add(len(doc.NonFractions))
@@ -289,7 +303,9 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 				classicFact.CreateAttr("id", idAttr.Value)
 			}
 			// format := attr.FindXpathAttr(nonFraction.Attr, "format")
-			doc.completeTextNode(classicFact, nonNumeric, np)
+			done := make(chan bool)
+			doc.completeTextNode(classicFact, nonNumeric, np, nrtvStyle, done)
+			<-done
 		}(nnonNumeric)
 	}
 	wg2.Wait()
@@ -297,7 +313,7 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 		classicUnit := etree.NewDocument()
 		err := classicUnit.ReadFromString(np.ProvideOutputXml(unit, true))
 		if err != nil {
-			return nil, err
+			return err
 		}
 		xbrl.AddChild(classicUnit.Root())
 	}
@@ -305,25 +321,26 @@ func (doc *Document) classicFacts(eDoc *etree.Document, np *attr.NameProvider) (
 		classicContext := etree.NewDocument()
 		err := classicContext.ReadFromString(np.ProvideOutputXml(context, true))
 		if err != nil {
-			return nil, err
+			return err
 		}
 		xbrl.AddChild(classicContext.Root())
 	}
-	classicFootnoteLink, err := doc.classicFootnoteLink(np)
+	classicFootnoteLink, err := doc.classicFootnoteLink(np, nrtvStyle)
 	if err != nil {
-		return nil, err
+		return err
 	}
 	xbrl.AddChild(classicFootnoteLink)
-	return eDoc, nil
+	return nil
 }
 
-func (doc *Document) completeTextNode(classicFact *etree.Element, nonNumeric *xmlquery.Node, np *attr.NameProvider) {
-	go func() {
+func (doc *Document) completeTextNode(classicFact *etree.Element, nonNumeric *xmlquery.Node, np *attr.NameProvider, nrtvStyle *xslt.Stylesheet, done chan<- bool) {
+	go func(cclassicFact *etree.Element, nnonNumeric *xmlquery.Node) {
+		defer func() { done <- true }()
 		acc := ""
-		sourceNode := nonNumeric
+		sourceNode := nnonNumeric
 		for {
 			if sourceNode != nil {
-				acc = acc + np.ProvideOutputXml(sourceNode, false)
+				acc = acc + np.ProvideOutputXml(sourceNode, false) + " "
 			}
 			continuedAt := attr.FindXpathAttr(sourceNode.Attr, "continuedAt")
 			if continuedAt == nil {
@@ -334,28 +351,39 @@ func (doc *Document) completeTextNode(classicFact *etree.Element, nonNumeric *xm
 				break
 			}
 		}
+		acc = "<data>" + acc + "</data>"
+		procdoc := xml.CreateEmptyDocument(nil, xml.DefaultEncodingBytes)
+		procdoc.AddChild(acc)
+		options := xslt.StylesheetOptions{INDENT, nil}
+		output, err := nrtvStyle.Process(procdoc, options)
+		if err != nil {
+			panic(err)
+		}
+		// func blacklist(tag string) bool {
+		// 	list := []string{"footnote", "nonNumeric", "nonFraction", "exclude"}
+		// 	for _, i := range list {
+		// 		if i == tag {
+		// 			return true
+		// 		}
+		// 	}
+		// 	return false
+		// }
 		textNode := etree.NewDocument()
-		err := textNode.ReadFromString(acc)
+		err = textNode.ReadFromString(output)
 		if err != nil {
 			fmt.Println("Error: " + err.Error())
 			return
 		}
-		if textNode.Root() == nil {
-			classicFact.CreateText(acc)
-		} else {
-			excluded := exclude(textNode.Root())
-			if excluded == nil {
-				fmt.Println("Error: nil text node")
-				return
+		textNodeRoot := textNode.Root()
+		for _, child := range textNodeRoot.Child {
+			asserted, ok := child.(*etree.Element)
+			if !ok {
+				classicFact.AddChild(child)
+				continue
 			}
-			stripped := stripIx(excluded)
-			if stripped == nil {
-				fmt.Println("Error: nil resultant text node")
-				return
-			}
-			classicFact.AddChild(*stripped)
+			classicFact.AddChild(asserted)
 		}
-	}()
+	}(classicFact, nonNumeric)
 }
 
 func (doc *Document) findContinuation(continuedAt *xmlquery.Attr) *xmlquery.Node {
@@ -363,7 +391,7 @@ func (doc *Document) findContinuation(continuedAt *xmlquery.Attr) *xmlquery.Node
 	return continuation
 }
 
-func (doc *Document) classicFootnoteLink(np *attr.NameProvider) (*etree.Element, error) {
+func (doc *Document) classicFootnoteLink(np *attr.NameProvider, nrtvStyle *xslt.Stylesheet) (*etree.Element, error) {
 	footnoteLinkName := np.ProvideName(attr.LINK, "footnoteLink")
 	link := etree.NewElement(footnoteLinkName)
 	roleName := np.ProvideName(attr.XLINK, "role")
@@ -420,7 +448,9 @@ func (doc *Document) classicFootnoteLink(np *attr.NameProvider) (*etree.Element,
 				}
 				classicFootnote := link.CreateElement("footnote")
 				classicFootnote.Space = "link"
-				doc.completeTextNode(classicFootnote, footnote, np)
+				done := make(chan bool)
+				doc.completeTextNode(classicFootnote, footnote, np, nrtvStyle, done)
+				<-done
 				for _, fattr := range footnote.Attr {
 					classicFootnote.CreateAttr(fattr.Name.Space+":"+fattr.Name.Local, fattr.Value)
 				}
@@ -431,81 +461,4 @@ func (doc *Document) classicFootnoteLink(np *attr.NameProvider) (*etree.Element,
 		}
 	}
 	return link, nil
-}
-
-func exclude(elem *etree.Element) *etree.Element {
-	ret := elem.Copy()
-	if len(elem.Child) > 0 {
-		if elem.Tag == "exclude" {
-			return nil
-		} else {
-			oldChild := ret.Child
-			newChild := make([]etree.Token, 0)
-			elem.Child = []etree.Token{}
-			for _, i := range oldChild {
-				child, ok := i.(*etree.Element)
-				if !ok {
-					newChild = append(newChild, i)
-					continue
-				} else {
-					excluded := exclude(child)
-					if excluded == nil {
-						continue
-					}
-					newChild = append(newChild, excluded)
-				}
-			}
-			ret.Child = newChild
-			return ret
-		}
-	}
-	if elem.Tag == "exclude" {
-		return nil
-	} else {
-		return ret
-	}
-}
-
-func stripIx(elem *etree.Element) *etree.Token {
-	ret := elem.Copy()
-	if len(elem.Child) > 0 {
-		oldChild := ret.Child
-		newChild := []etree.Token{}
-		for c := 0; c < len(oldChild); c++ {
-			i := oldChild[c]
-			child, ok := i.(*etree.Element)
-			if !ok {
-				newChild = append(newChild, i)
-			} else {
-				if blacklist(child.Tag) {
-					temp := oldChild[:c]
-					temp = append(temp, child.Child...)
-					temp = append(temp, oldChild[c:]...)
-					oldChild = temp
-					c--
-					continue
-				} else {
-					stripped := stripIx(child)
-					newChild = append(newChild, *stripped)
-				}
-			}
-		}
-		ret.Child = newChild
-		var token etree.Token
-		token = etree.Token(ret)
-		return &token
-	}
-	var token etree.Token
-	token = etree.Token(ret)
-	return &token
-}
-
-func blacklist(tag string) bool {
-	list := []string{"footnote", "nonNumeric", "nonFraction"}
-	for _, i := range list {
-		if i == tag {
-			return true
-		}
-	}
-	return false
 }

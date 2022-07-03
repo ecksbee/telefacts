@@ -58,6 +58,7 @@ func bencmarkExtract(targetPath string, doc serializables.Document, b *testing.B
 func BenchmarkExtract_Ix_Narrative(b *testing.B) {
 	serializables.INDENT = true
 	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
+	serializables.XSLT_NRTV = path.Join(".", "XSLT_NRTV.xslt")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -84,11 +85,6 @@ func BenchmarkExtract_Ix_Narrative(b *testing.B) {
 		return
 	}
 	targetpath := path.Join(workingDir, "test_ix_extracted.xml")
-	err = doc.Extract(targetpath)
-	if err != nil {
-		b.Fatalf("Error: " + err.Error())
-		return
-	}
 	bencmarkExtract(targetpath, *doc, b)
 }
 
