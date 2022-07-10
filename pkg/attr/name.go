@@ -4,10 +4,14 @@ import (
 	"encoding/xml"
 	"fmt"
 	"html"
+	"path"
 	"strings"
 
+	"ecksbee.com/telefacts/internal/actions"
 	"github.com/antchfx/xmlquery"
 	"github.com/beevik/etree"
+	parsexml "github.com/jbowtie/gokogiri/xml"
+	"github.com/jbowtie/ratago/xslt"
 )
 
 const xmlns = "xmlns"
@@ -45,6 +49,68 @@ func (np *NameProvider) NsAttrs() []etree.Attr {
 		ret = append(ret, a)
 	}
 	return ret
+}
+
+func (np *NameProvider) Stylesheet(destination string) (*xslt.Stylesheet, error) {
+	presets := map[string]bool{
+		"xbrli": true,
+		"link":  true,
+		"xlink": true,
+		"ix":    true,
+		"x":     true,
+	}
+	filename := path.Join(destination, "_.xslt")
+	namespaces := ""
+	excludes := ""
+	for originPrefix, originNamespaces := range np.originPrefixes {
+		myprefix := string(originPrefix)
+		if found := presets[myprefix]; found {
+			continue
+		}
+		excludes += myprefix + " "
+		namespaces += "xmlns:" + myprefix + "=\"" + string(originNamespaces) + "\" "
+	}
+
+	err := actions.WriteFile(filename, []byte(`
+		<!DOCTYPE xsl:stylesheet [
+		<!-- Namespaces which will be excluded from the result -->
+		<!ENTITY ix    "`+IX+`">
+		<!ENTITY xhtml "http://www.w3.org/1999/xhtml">
+		]>
+		<xsl:stylesheet version="1.0"
+		  xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+		  xmlns:xbrli="`+XBRLI+`"
+		  xmlns:link="`+LINK+`"
+		  xmlns:xlink="`+XLINK+`" `+namespaces+`
+		  xmlns:ix="&ix;"
+		  xmlns:x="&xhtml;"
+		  exclude-result-prefixes="xbrli link xlink `+excludes+`ix x">
+		
+		<xsl:template match="/*">
+		  <TargetDocument default="yes">
+			<xsl:call-template name="strip-tags"/>
+		  </TargetDocument>
+		</xsl:template>
+		<xsl:template name="strip-tags">
+		  <xsl:apply-templates mode="completeText" select="."/>
+		</xsl:template>
+		<xsl:template mode="completeText" match="ix:exclude"/>
+		<xsl:template mode="completeText"
+					match="ix:nonFraction
+						  | ix:nonNumeric
+						  | ix:tuple">
+						  <xsl:value-of select="$text"/>
+		</xsl:template>
+		</xsl:stylesheet>
+	`))
+	if err != nil {
+		return nil, err
+	}
+	xslFile, err := parsexml.ReadFile(filename, parsexml.StrictParseOption)
+	if err != nil {
+		return nil, err
+	}
+	return xslt.ParseStylesheet(xslFile, destination)
 }
 
 func (np *NameProvider) ProvideConceptName(prefixed string) string {

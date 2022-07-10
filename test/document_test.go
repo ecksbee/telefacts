@@ -58,20 +58,19 @@ func bencmarkExtract(targetPath string, doc serializables.Document, b *testing.B
 func BenchmarkExtract_Ix_Narrative(b *testing.B) {
 	serializables.INDENT = true
 	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
-	serializables.XSLT_NRTV = path.Join(".", "XSLT_NRTV.xslt")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
 	}
-	defer func() {
-		os.RemoveAll(workingDir)
-	}()
-	zipFile := path.Join(".", "data", "test_ix_extract.zip")
-	err = unZipTestData(workingDir, zipFile)
-	if err != nil {
-		b.Fatalf("Error: " + err.Error())
-		return
-	}
+	// defer func() {
+	// 	os.RemoveAll(workingDir)
+	// }()
+	// zipFile := path.Join(".", "data", "test_ix_extract.zip")
+	// err = unZipTestData(workingDir, zipFile)
+	// if err != nil {
+	// 	b.Fatalf("Error: " + err.Error())
+	// 	return
+	// }
 	sourceFilePath := "cmg-20200331x10q.htm"
 	filepath := path.Join(workingDir, sourceFilePath)
 	data, err := ioutil.ReadFile(filepath)

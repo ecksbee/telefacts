@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"hash/fnv"
+	"path"
 	"strings"
 	"sync"
 
@@ -17,7 +18,6 @@ import (
 )
 
 var INDENT bool
-var XSLT_NRTV string
 
 type Document struct {
 	Bytes                 []byte
@@ -165,26 +165,20 @@ func DecodeIxbrlFile(xmlData []byte) *Document {
 }
 
 func (doc *Document) Extract(destination string) error {
-	b, err := doc.Convert()
+	b, err := doc.Convert(destination)
 	if err != nil {
 		return err
 	}
 	return actions.WriteFile(destination, b)
 }
 
-func (doc *Document) Convert() ([]byte, error) {
-	if XSLT_NRTV == "" {
-		return nil, fmt.Errorf("XSLT_NRTV invalid")
-	}
-	nrtvXslFile, err := xml.ReadFile(XSLT_NRTV, xml.StrictParseOption)
-	if err != nil {
-		return nil, err
-	}
-	nrtvStyle, err := xslt.ParseStylesheet(nrtvXslFile, XSLT_NRTV)
-	if err != nil {
-		return nil, err
-	}
+func (doc *Document) Convert(destination string) ([]byte, error) {
 	np, err := attr.NewNameProvider(doc.Html.Attr)
+	if err != nil {
+		return nil, err
+	}
+	folder := path.Dir(destination)
+	nrtvStyle, err := np.Stylesheet(folder)
 	if err != nil {
 		return nil, err
 	}
