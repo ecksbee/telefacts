@@ -98,10 +98,10 @@ func (np *NameProvider) ProvideName(ns string, local string) string {
 }
 
 func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string {
-	var recur func(recurringNode *xmlquery.Node, nosiblings bool) string
+	var recur func(recurringNode *xmlquery.Node) string
 	{
 	}
-	recur = func(recurringNode *xmlquery.Node, nosiblings bool) string {
+	recur = func(recurringNode *xmlquery.Node) string {
 		if recurringNode.FirstChild == nil {
 			return html.EscapeString(recurringNode.InnerText())
 		} else {
@@ -113,7 +113,13 @@ func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string 
 				targetNameAttr := np.ProvideName(myAttr.NamespaceURI, myAttr.Name.Local)
 				attrs = attrs + " " + targetNameAttr + "=" + "\"" + strings.ReplaceAll(myAttr.Value, "\"", "'") + "\""
 			}
-			err := temp.ReadFromString("<" + targetName + attrs + ">" + recur(recurringNode.FirstChild, false) + "</" + targetName + ">")
+			miniacc := ""
+			mychild := recurringNode.FirstChild
+			for mychild != nil {
+				miniacc += recur(mychild)
+				mychild = mychild.NextSibling
+			}
+			err := temp.ReadFromString("<" + targetName + attrs + ">" + miniacc + "</" + targetName + ">")
 			if err != nil {
 				panic(err)
 			}
@@ -122,26 +128,19 @@ func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string 
 				panic(err)
 			}
 			acc += str
-			curr := recurringNode.NextSibling
-			if !nosiblings {
-				for {
-					if curr == nil {
-						break
-					}
-					acc += recur(curr, false)
-					curr = curr.NextSibling
-				}
-			}
 			return acc
 		}
-	}
-	if self {
-		return recur(node, true)
 	}
 	if node.FirstChild == nil {
 		return html.EscapeString(node.InnerText())
 	}
-	return recur(node.FirstChild, false)
+	acc := ""
+	child := node.FirstChild
+	for child != nil {
+		acc += recur(child)
+		child = child.NextSibling
+	}
+	return acc
 }
 
 func processPrefixes(attrs []xmlquery.Attr) (map[prefix]space, map[prefix]prefix) {
