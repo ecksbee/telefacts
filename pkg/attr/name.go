@@ -3,11 +3,9 @@ package attr
 import (
 	"encoding/xml"
 	"fmt"
-	"html"
 	"strings"
 
 	"github.com/antchfx/xmlquery"
-	"github.com/beevik/etree"
 )
 
 const xmlns = "xmlns"
@@ -27,24 +25,6 @@ func NewNameProvider(attrs []xmlquery.Attr) (*NameProvider, error) {
 	ret.originPrefixes = originPrefixes
 	ret.targetPrefixes = targetPrefixes
 	return &ret, nil
-}
-
-func (np *NameProvider) NsAttrs() []etree.Attr {
-	ret := make([]etree.Attr, 0)
-	for originPrefix, targetPrefix := range np.targetPrefixes {
-		a := etree.Attr{}
-		if targetPrefix == "" {
-			a.Space = ""
-			a.Key = xmlns
-		} else {
-			a.Space = xmlns
-			a.Key = string(targetPrefix)
-		}
-		targetNs := np.originPrefixes[originPrefix]
-		a.Value = string(targetNs)
-		ret = append(ret, a)
-	}
-	return ret
 }
 
 func (np *NameProvider) ProvideConceptName(prefixed string) string {
@@ -95,52 +75,6 @@ func (np *NameProvider) ProvideName(ns string, local string) string {
 		return local
 	}
 	panic("not a valid name space, " + ns)
-}
-
-func (np *NameProvider) ProvideOutputXml(node *xmlquery.Node, self bool) string {
-	var recur func(recurringNode *xmlquery.Node) string
-	{
-	}
-	recur = func(recurringNode *xmlquery.Node) string {
-		if recurringNode.FirstChild == nil {
-			return html.EscapeString(recurringNode.InnerText())
-		} else {
-			acc := ""
-			temp := etree.NewDocument()
-			targetName := np.ProvideName(recurringNode.NamespaceURI, recurringNode.Data)
-			attrs := " "
-			for _, myAttr := range recurringNode.Attr {
-				targetNameAttr := np.ProvideName(myAttr.NamespaceURI, myAttr.Name.Local)
-				attrs = attrs + " " + targetNameAttr + "=" + "\"" + strings.ReplaceAll(myAttr.Value, "\"", "'") + "\""
-			}
-			miniacc := ""
-			mychild := recurringNode.FirstChild
-			for mychild != nil {
-				miniacc += recur(mychild)
-				mychild = mychild.NextSibling
-			}
-			err := temp.ReadFromString("<" + targetName + attrs + ">" + miniacc + "</" + targetName + ">")
-			if err != nil {
-				panic(err)
-			}
-			str, err := temp.WriteToString()
-			if err != nil {
-				panic(err)
-			}
-			acc += str
-			return acc
-		}
-	}
-	if node.FirstChild == nil {
-		return html.EscapeString(node.InnerText())
-	}
-	acc := ""
-	child := node.FirstChild
-	for child != nil {
-		acc += recur(child)
-		child = child.NextSibling
-	}
-	return acc
 }
 
 func processPrefixes(attrs []xmlquery.Attr) (map[prefix]space, map[prefix]prefix) {

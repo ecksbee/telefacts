@@ -4,7 +4,6 @@ go 1.16
 
 require (
 	github.com/antchfx/xmlquery v1.3.10
-	github.com/beevik/etree v1.1.0
 	github.com/google/uuid v1.3.0
 	github.com/gorilla/mux v1.8.0
 	github.com/joshuanario/digits v0.4.0
