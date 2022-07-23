@@ -37,8 +37,16 @@ func setupServer() *http.Server {
 	if err != nil {
 		dir = path.Join(".")
 	}
-	serializables.WorkingDirectoryPath = path.Join(dir, "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(dir, "gts")
+	wd := os.Getenv("WD")
+	if wd == "" {
+		wd = dir
+	}
+	serializables.WorkingDirectoryPath = path.Join(wd, "wd")
+	gts := os.Getenv("GTS")
+	if gts == "" {
+		gts = dir
+	}
+	serializables.GlobalTaxonomySetPath = path.Join(gts, "gts")
 	hydratables.InjectCache(appCache)
 	hydratables.HydrateEntityNames()
 	hydratables.HydrateFundamentalSchema()
