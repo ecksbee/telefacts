@@ -13,6 +13,7 @@ import (
 func TestHashQuery_Gold(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)

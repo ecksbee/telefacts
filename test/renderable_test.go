@@ -17,6 +17,7 @@ import (
 func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(".", "wd", "folders", "test_ix")
 	_, err := os.Stat(workingDir)

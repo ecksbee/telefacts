@@ -15,6 +15,7 @@ import (
 func TestMarshalRenderable_Large_Footnote(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
 	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
 	_, err := os.Stat(workingDir)
