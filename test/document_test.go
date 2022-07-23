@@ -14,7 +14,7 @@ import (
 )
 
 func TestDecode(t *testing.T) {
-	workingDir := path.Join(".", "data", "folders", "test_ix_extract")
+	workingDir := path.Join(".", "wd", "folders", "test_ix_extract")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -22,7 +22,7 @@ func TestDecode(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "data", "test_ix_extract.zip")
+	zipFile := path.Join(".", "wd", "test_ix_extract.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())

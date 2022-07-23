@@ -15,9 +15,10 @@ import (
 
 func TestCatalog_Expressables(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.VolumePath = path.Join(".", "data")
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "data", "folders", "test_ix")
+	workingDir := path.Join(".", "wd", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -25,7 +26,7 @@ func TestCatalog_Expressables(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "data", "test_ix.zip")
+	zipFile := path.Join(".", "wd", "test_ix.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())

@@ -13,7 +13,8 @@ import (
 )
 
 var (
-	VolumePath string
+	WorkingDirectoryPath  string
+	GlobalTaxonomySetPath string
 )
 
 func DiscoverFundamentalSchema() (*SchemaFile, error) {
@@ -42,7 +43,7 @@ func UrlToFilename(urlStr string) (string, error) {
 	for _, split := range splits {
 		dest = path.Join(dest, split)
 	}
-	return path.Join(VolumePath, "concepts", dest), nil
+	return path.Join(GlobalTaxonomySetPath, "concepts", dest), nil
 }
 
 func DiscoverGlobalFile(urlStr string) ([]byte, error) {
@@ -72,7 +73,7 @@ func DiscoverGlobalSchema(urlStr string) (*SchemaFile, error) {
 }
 
 func DiscoverEntityNames() (map[string]map[string]string, error) {
-	filename := path.Join(VolumePath, "names.json")
+	filename := path.Join(WorkingDirectoryPath, "names.json")
 	names := make(map[string]map[string]string)
 	b, err := ioutil.ReadFile(filename)
 	if err != nil {

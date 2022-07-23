@@ -13,9 +13,10 @@ import (
 
 func TestHydrate_Gold(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.VolumePath = path.Join(".", "data")
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -115,7 +116,7 @@ func TestHydrate_Gold(t *testing.T) {
 }
 
 func TestHydrate_Ix(t *testing.T) {
-	workingDir := path.Join(".", "data", "folders", "test_ix")
+	workingDir := path.Join(".", "wd", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -123,14 +124,15 @@ func TestHydrate_Ix(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "data", "test_ix.zip")
+	zipFile := path.Join(".", "wd", "test_ix.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.VolumePath = path.Join(".", "data")
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
 	hydratables.InjectCache(hcache)
 	f, err := serializables.Discover("test_ix")
 	if err != nil {

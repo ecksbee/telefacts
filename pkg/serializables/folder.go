@@ -32,7 +32,7 @@ func Discover(id string) (*Folder, error) {
 	if err != nil {
 		return nil, err
 	}
-	workingDir := path.Join(VolumePath, "folders", id)
+	workingDir := path.Join(WorkingDirectoryPath, "folders", id)
 	ret := &Folder{
 		EntryFileName:         entryFileName,
 		Dir:                   workingDir,
