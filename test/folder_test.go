@@ -9,8 +9,8 @@ import (
 )
 
 func TestDiscover_Gold(t *testing.T) {
-	serializables.VolumePath = path.Join(".", "data")
-	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())

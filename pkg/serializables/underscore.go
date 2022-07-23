@@ -17,7 +17,7 @@ type Underscore struct {
 
 func GetEntryFileName(id string) (string, error) {
 	underscore := Underscore{}
-	b, err := ioutil.ReadFile(path.Join(VolumePath, "folders", id, "_"))
+	b, err := ioutil.ReadFile(path.Join(WorkingDirectoryPath, "folders", id, "_"))
 	if err != nil {
 		return "", err
 	}
@@ -26,10 +26,10 @@ func GetEntryFileName(id string) (string, error) {
 }
 
 func NewFolder(underscore Underscore) (string, error) {
-	if VolumePath == "" {
-		return "", fmt.Errorf("empty VolumePath")
+	if WorkingDirectoryPath == "" {
+		return "", fmt.Errorf("empty WorkingDirectoryPath")
 	}
-	workingDir := path.Join(VolumePath, "folders")
+	workingDir := path.Join(WorkingDirectoryPath, "folders")
 	id := uuid.New()
 	pathStr := path.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)

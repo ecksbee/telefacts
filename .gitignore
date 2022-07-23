@@ -16,5 +16,5 @@
 
 .DS_Store
 .vscode/
-/cmd/telefacts/data/**
-/cmd/telefacts/renderer/**
+/cmd/telefacts/gts/**
+/cmd/telefacts/wd/**

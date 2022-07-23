@@ -12,9 +12,9 @@ import (
 
 func TestHashQuery_Gold(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.VolumePath = path.Join(".", "data")
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.VolumePath, "folders", "test_gold")
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
