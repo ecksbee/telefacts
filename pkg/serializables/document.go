@@ -3,6 +3,7 @@ package serializables
 import (
 	"bytes"
 	"fmt"
+	"sync"
 
 	"ecksbee.com/telefacts/pkg/attr"
 	"github.com/antchfx/xmlquery"
@@ -127,21 +128,38 @@ func DecodeIxbrlFile(xmlData []byte) *Document {
 	if html == nil {
 		return nil
 	}
+	var lock sync.Mutex
+	var wg1 sync.WaitGroup
+	var wg2 sync.WaitGroup
 	factMap := make(map[string](*xmlquery.Node))
+	wg1.Add(len(nonFractions))
 	for _, nonFraction := range nonFractions {
-		id := attr.FindXpathAttr(nonFraction.Attr, "id")
-		if id == nil || len(id.Value) < 1 {
-			continue
-		}
-		factMap[id.Value] = nonFraction
+		go func(nnonFraction *xmlquery.Node) {
+			defer wg1.Done()
+			id := attr.FindXpathAttr(nnonFraction.Attr, "id")
+			if id == nil || len(id.Value) < 1 {
+				return
+			}
+			lock.Lock()
+			defer lock.Unlock()
+			factMap[id.Value] = nnonFraction
+		}(nonFraction)
 	}
+	wg2.Add(len(nonNumerics))
 	for _, nonNumeric := range nonNumerics {
-		id := attr.FindXpathAttr(nonNumeric.Attr, "id")
-		if id == nil || len(id.Value) < 1 {
-			continue
-		}
-		factMap[id.Value] = nonNumeric
+		go func(nnonNumeric *xmlquery.Node) {
+			defer wg2.Done()
+			id := attr.FindXpathAttr(nnonNumeric.Attr, "id")
+			if id == nil || len(id.Value) < 1 {
+				return
+			}
+			lock.Lock()
+			defer lock.Unlock()
+			factMap[id.Value] = nnonNumeric
+		}(nonNumeric)
 	}
+	wg1.Wait()
+	wg2.Wait()
 	return &Document{
 		Bytes:                 xmlData,
 		Root:                  doc,
