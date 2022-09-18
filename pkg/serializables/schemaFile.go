@@ -46,7 +46,7 @@ type SchemaFile struct {
 					XMLName  xml.Name
 					XMLAttrs []xml.Attr `xml:",any,attr"`
 					CharData string     `xml:",chardata"`
-				} `xml:"definition"`
+				} `xml:"roleType"`
 				UsedOn []struct {
 					XMLName  xml.Name
 					XMLAttrs []xml.Attr `xml:",any,attr"`
