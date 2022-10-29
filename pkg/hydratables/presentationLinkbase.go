@@ -116,10 +116,6 @@ func hydratePresentationLink(linkbaseFile *serializables.PresentationLinkbaseFil
 			if arcroleAttr == nil || arcroleAttr.Name.Space != attr.XLINK || arcroleAttr.Value == "" {
 				continue
 			}
-			preferredLabelAttr := attr.FindAttr(arc.XMLAttrs, "preferredLabel")
-			if preferredLabelAttr == nil || preferredLabelAttr.Value == "" {
-				continue
-			}
 			fromAttr := attr.FindAttr(arc.XMLAttrs, "from")
 			if fromAttr == nil || fromAttr.Name.Space != attr.XLINK || fromAttr.Value == "" {
 				continue
@@ -134,7 +130,10 @@ func hydratePresentationLink(linkbaseFile *serializables.PresentationLinkbaseFil
 				order = math.MaxFloat64
 			}
 			newArc.Order = order
-			newArc.PreferredLabel = preferredLabelAttr.Value
+			preferredLabelAttr := attr.FindAttr(arc.XMLAttrs, "preferredLabel")
+			if preferredLabelAttr != nil {
+				newArc.PreferredLabel = preferredLabelAttr.Value
+			}
 			newArc.From = fromAttr.Value
 			newArc.To = toAttr.Value
 			newLink.PresentationArcs = append(newLink.PresentationArcs, newArc)
