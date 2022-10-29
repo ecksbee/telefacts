@@ -12,12 +12,17 @@ import (
 )
 
 var (
+	dry      bool
 	lock     sync.RWMutex
 	once     sync.Once
 	appCache *gocache.Cache
 )
 
-func NewCache() *gocache.Cache {
+func NewCache(runDry bool) *gocache.Cache {
+	dry = runDry
+	if dry {
+		return appCache
+	}
 	once.Do(func() {
 		appCache = gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	})
@@ -25,14 +30,13 @@ func NewCache() *gocache.Cache {
 }
 
 func Marshal(id string, hash string) ([]byte, error) {
-	if appCache == nil {
-		return nil, fmt.Errorf("no accessible cache")
-	}
 	lock.RLock()
-	if x, found := appCache.Get(id + "/" + hash); found {
-		ret := x.([]byte)
-		lock.RUnlock()
-		return ret, nil
+	if !dry {
+		if x, found := appCache.Get(id + "/" + hash); found {
+			ret := x.([]byte)
+			lock.RUnlock()
+			return ret, nil
+		}
 	}
 	lock.RUnlock()
 	h, err := hydratable(id)
@@ -44,6 +48,9 @@ func Marshal(id string, hash string) ([]byte, error) {
 		entryFileName := h.Folder.EntryFileName
 		if entryFileName == hash {
 			data := h.Folder.Document.Bytes
+			if dry {
+				return data, nil
+			}
 			go func() {
 				lock.Lock()
 				defer lock.Unlock()
@@ -54,6 +61,9 @@ func Marshal(id string, hash string) ([]byte, error) {
 	}
 	byteArr, err := renderables.MarshalRenderable(hash, h)
 	go func() {
+		if dry {
+			return
+		}
 		lock.Lock()
 		defer lock.Unlock()
 		appCache.Set(id+"/"+hash, byteArr, gocache.DefaultExpiration)
@@ -62,22 +72,24 @@ func Marshal(id string, hash string) ([]byte, error) {
 }
 
 func MarshalCatalog(id string) ([]byte, error) {
-	if appCache == nil {
-		return nil, fmt.Errorf("no accessible cache")
-	}
 	h, err := hydratable(id)
 	if err != nil {
 		return nil, err
 	}
 	lock.RLock()
-	if x, found := appCache.Get(id + "/"); found {
-		ret := x.([]byte)
-		lock.RUnlock()
-		return ret, nil
+	if !dry {
+		if x, found := appCache.Get(id + "/"); found {
+			ret := x.([]byte)
+			lock.RUnlock()
+			return ret, nil
+		}
 	}
 	lock.RUnlock()
 	byteArr, err := renderables.MarshalCatalog(h)
 	go func() {
+		if dry {
+			return
+		}
 		lock.Lock()
 		defer lock.Unlock()
 		appCache.Set(id+"/", byteArr, gocache.DefaultExpiration)
@@ -87,10 +99,12 @@ func MarshalCatalog(id string) ([]byte, error) {
 
 func hydratable(id string) (*hydratables.Hydratable, error) {
 	lock.RLock()
-	if x, found := appCache.Get(id); found {
-		ret := x.(*hydratables.Hydratable)
-		lock.RUnlock()
-		return ret, nil
+	if !dry {
+		if x, found := appCache.Get(id); found {
+			ret := x.(*hydratables.Hydratable)
+			lock.RUnlock()
+			return ret, nil
+		}
 	}
 	lock.RUnlock()
 	folder, err := serializables.Discover(id)
@@ -99,6 +113,9 @@ func hydratable(id string) (*hydratables.Hydratable, error) {
 	}
 	ret, err := hydratables.Hydrate(folder)
 	go func() {
+		if dry {
+			return
+		}
 		lock.Lock()
 		defer lock.Unlock()
 		appCache.Set(id, ret, gocache.DefaultExpiration)

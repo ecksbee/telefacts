@@ -5,7 +5,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"ecksbee.com/telefacts/internal/cache"
+	"ecksbee.com/telefacts/pkg/cache"
 	"github.com/gorilla/mux"
 )
 
