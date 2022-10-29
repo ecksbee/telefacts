@@ -145,5 +145,23 @@ func hydrateCalculationLink(linkbaseFile *serializables.CalculationLinkbaseFile)
 		}
 		ret = append(ret, newLink)
 	}
+	return dedupCalculationLink(ret)
+}
+
+func dedupCalculationLink(links []CalculationLink) []CalculationLink {
+	occured := map[string]CalculationLink{}
+	for _, link := range links {
+		if merged, found := occured[link.Role]; found {
+			merged.Locs = append(merged.Locs, link.Locs...)
+			merged.CalculationArcs = append(merged.CalculationArcs, link.CalculationArcs...)
+			occured[link.Role] = merged
+		} else {
+			occured[link.Role] = link
+		}
+	}
+	ret := make([]CalculationLink, 0)
+	for _, r := range occured {
+		ret = append(ret, r)
+	}
 	return ret
 }

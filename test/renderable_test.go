@@ -327,3 +327,30 @@ func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
 	slug := "4d034c1e44b980a9940e857682b81991"
 	bencmarkMarshalRenderable(slug, h, b)
 }
+
+func ExampleMarshalCatalog_Hello() {
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	hydratables.InjectCache(hcache)
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "hello")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		panic("Error: " + err.Error())
+	}
+	f, err := serializables.Discover("hello")
+	if err != nil {
+		panic("Error: " + err.Error())
+	}
+	h, err := hydratables.Hydrate(f)
+	if err != nil {
+		panic("Error: " + err.Error())
+	}
+	slug := "df04370db2715d6f00d8b6c299cb9028"
+	_, err = renderables.MarshalRenderable(slug, h)
+	if err != nil {
+		panic("Error: " + err.Error())
+	}
+	fmt.Println(slug)
+	// Output: df04370db2715d6f00d8b6c299cb9028
+}

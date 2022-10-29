@@ -140,5 +140,23 @@ func hydratePresentationLink(linkbaseFile *serializables.PresentationLinkbaseFil
 		}
 		ret = append(ret, newLink)
 	}
+	return dedupPresentationLink(ret)
+}
+
+func dedupPresentationLink(links []PresentationLink) []PresentationLink {
+	occured := map[string]PresentationLink{}
+	for _, link := range links {
+		if merged, found := occured[link.Role]; found {
+			merged.Locs = append(merged.Locs, link.Locs...)
+			merged.PresentationArcs = append(merged.PresentationArcs, link.PresentationArcs...)
+			occured[link.Role] = merged
+		} else {
+			occured[link.Role] = link
+		}
+	}
+	ret := make([]PresentationLink, 0)
+	for _, r := range occured {
+		ret = append(ret, r)
+	}
 	return ret
 }

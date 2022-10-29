@@ -163,5 +163,23 @@ func hydrateDefinitionLink(linkbaseFile *serializables.DefinitionLinkbaseFile) [
 		}
 		ret = append(ret, newLink)
 	}
+	return dedupDefinitionLink(ret)
+}
+
+func dedupDefinitionLink(links []DefinitionLink) []DefinitionLink {
+	occured := map[string]DefinitionLink{}
+	for _, link := range links {
+		if merged, found := occured[link.Role]; found {
+			merged.Locs = append(merged.Locs, link.Locs...)
+			merged.DefinitionArcs = append(merged.DefinitionArcs, link.DefinitionArcs...)
+			occured[link.Role] = merged
+		} else {
+			occured[link.Role] = link
+		}
+	}
+	ret := make([]DefinitionLink, 0)
+	for _, r := range occured {
+		ret = append(ret, r)
+	}
 	return ret
 }
