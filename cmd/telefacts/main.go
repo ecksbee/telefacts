@@ -11,8 +11,8 @@ import (
 	"path"
 	"time"
 
-	"ecksbee.com/telefacts/internal/cache"
 	"ecksbee.com/telefacts/internal/web"
+	"ecksbee.com/telefacts/pkg/cache"
 	"ecksbee.com/telefacts/pkg/hydratables"
 	"ecksbee.com/telefacts/pkg/serializables"
 )
@@ -32,7 +32,7 @@ func main() {
 }
 
 func setupServer() *http.Server {
-	appCache := cache.NewCache()
+	appCache := cache.NewCache(false)
 	dir, err := os.Getwd()
 	if err != nil {
 		dir = path.Join(".")

@@ -5,6 +5,7 @@ import (
 
 	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/attr"
+	myarcs "github.com/joshuanario/arcs"
 )
 
 type Fact struct {
@@ -28,10 +29,10 @@ func (h *Hydratable) FindFact(href string, contextRef string) *Fact {
 	return nil
 }
 
-func fnoteArcs(fnoteArcs []FootnoteArc) []graph.Arc {
-	ret := make([]graph.Arc, 0, len(fnoteArcs))
+func fnoteArcs(fnoteArcs []FootnoteArc) []myarcs.Arc {
+	ret := make([]myarcs.Arc, 0, len(fnoteArcs))
 	for i, fnoteArc := range fnoteArcs {
-		ret = append(ret, graph.Arc{
+		ret = append(ret, myarcs.Arc{
 			Arcrole: fnoteArc.Arcrole,
 			Order:   float64(i),
 			From:    fnoteArc.From,

@@ -116,10 +116,6 @@ func hydratePresentationLink(linkbaseFile *serializables.PresentationLinkbaseFil
 			if arcroleAttr == nil || arcroleAttr.Name.Space != attr.XLINK || arcroleAttr.Value == "" {
 				continue
 			}
-			preferredLabelAttr := attr.FindAttr(arc.XMLAttrs, "preferredLabel")
-			if preferredLabelAttr == nil || preferredLabelAttr.Value == "" {
-				continue
-			}
 			fromAttr := attr.FindAttr(arc.XMLAttrs, "from")
 			if fromAttr == nil || fromAttr.Name.Space != attr.XLINK || fromAttr.Value == "" {
 				continue
@@ -134,12 +130,33 @@ func hydratePresentationLink(linkbaseFile *serializables.PresentationLinkbaseFil
 				order = math.MaxFloat64
 			}
 			newArc.Order = order
-			newArc.PreferredLabel = preferredLabelAttr.Value
+			preferredLabelAttr := attr.FindAttr(arc.XMLAttrs, "preferredLabel")
+			if preferredLabelAttr != nil {
+				newArc.PreferredLabel = preferredLabelAttr.Value
+			}
 			newArc.From = fromAttr.Value
 			newArc.To = toAttr.Value
 			newLink.PresentationArcs = append(newLink.PresentationArcs, newArc)
 		}
 		ret = append(ret, newLink)
+	}
+	return dedupPresentationLink(ret)
+}
+
+func dedupPresentationLink(links []PresentationLink) []PresentationLink {
+	occured := map[string]PresentationLink{}
+	for _, link := range links {
+		if merged, found := occured[link.Role]; found {
+			merged.Locs = append(merged.Locs, link.Locs...)
+			merged.PresentationArcs = append(merged.PresentationArcs, link.PresentationArcs...)
+			occured[link.Role] = merged
+		} else {
+			occured[link.Role] = link
+		}
+	}
+	ret := make([]PresentationLink, 0)
+	for _, r := range occured {
+		ret = append(ret, r)
 	}
 	return ret
 }

@@ -467,8 +467,9 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 	ret := make([]Fact, 0, len(instanceFile.Facts))
 	for _, fact := range instanceFile.Facts {
 		idAttr := attr.FindAttr(fact.XMLAttrs, "id")
-		if idAttr == nil || idAttr.Value == "" {
-			continue
+		idVal := ""
+		if idAttr != nil {
+			idVal = idAttr.Value
 		}
 		if fact.XMLName.Local == "" || fact.XMLName.Space == "" {
 			continue
@@ -504,7 +505,7 @@ func hydrateFacts(instanceFile *serializables.InstanceFile, h *Hydratable) []Fac
 			nilVal, _ = strconv.ParseBool(nilAttr.Value)
 		}
 		newFact := Fact{
-			ID:         idAttr.Value,
+			ID:         idVal,
 			Href:       factRef,
 			ContextRef: contextRefAttr.Value,
 			UnitRef:    unitVal,

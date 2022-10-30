@@ -3,7 +3,7 @@ package renderables
 import (
 	"sort"
 
-	"ecksbee.com/telefacts/internal/graph"
+	myarcs "github.com/joshuanario/arcs"
 )
 
 type PeriodHeaders []LanguagePack
@@ -33,7 +33,7 @@ func getPeriodHeaders(relevantContexts []relevantContext) PeriodHeaders {
 }
 
 func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
-	segmentTypedDomainTrees []graph.LocatorNode, scenarioTypedDomainTrees []graph.LocatorNode) (ContextualMemberGrid,
+	segmentTypedDomainTrees []myarcs.RArc, scenarioTypedDomainTrees []myarcs.RArc) (ContextualMemberGrid,
 	VoidQuadrant) {
 	if len(relevantContexts) <= 0 {
 		return ContextualMemberGrid{}, VoidQuadrant{}
@@ -66,19 +66,37 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 			cell := &ContextualMemberCell{}
 			for _, ctxMember := range ctx.Members {
 				if ctxMember.Dimension.Href == voidCell.Dimension.Href {
-					if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
-						if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
-							cell = &ContextualMemberCell{
-								TypedMember: ctxMember.TypedMember,
+					if ctxMember.IsSegment != voidCell.IsParenthesized {
+						if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
+							if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
+								cell = &ContextualMemberCell{
+									TypedMember: ctxMember.TypedMember,
+								}
+								break
 							}
-							break
+						} else {
+							if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
+								cell = &ContextualMemberCell{
+									ExplicitMember: ctxMember.ExplicitMember,
+								}
+								break
+							}
 						}
 					} else {
-						if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
-							cell = &ContextualMemberCell{
-								ExplicitMember: ctxMember.ExplicitMember,
+						if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
+							if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
+								cell = &ContextualMemberCell{
+									TypedMember: ctxMember.TypedMember,
+								}
+								break
 							}
-							break
+						} else {
+							if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
+								cell = &ContextualMemberCell{
+									ExplicitMember: ctxMember.ExplicitMember,
+								}
+								break
+							}
 						}
 					}
 				}
@@ -90,56 +108,71 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 	return ret, voidQuadrant
 }
 
-func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []graph.LocatorNode,
-	scenarioTypedDomainTrees []graph.LocatorNode) VoidQuadrant {
-	segmentExplicitDimensionMap := make(map[string]*RelevantMember)
-	scenarioExplicitDimensionMap := make(map[string]*RelevantMember)
-	segmentTypedDimensionMap := make(map[string]*graph.LocatorNode)
-	scenarioTypedDimensionMap := make(map[string]*graph.LocatorNode)
+func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []myarcs.RArc,
+	scenarioTypedDomainTrees []myarcs.RArc) VoidQuadrant {
+	segmentExplicitDimensionMap := make(map[string]map[string]RelevantMember)
+	scenarioExplicitDimensionMap := make(map[string]map[string]RelevantMember)
 	allDimensionMap := make(map[string]*Dimension)
 	allTypedDomainMap := make(map[string]*TypedDomain)
+	allDimensionHrefs := make([]string, 0)
 	for i := 0; i < len(relevantContexts); i++ {
 		members := relevantContexts[i].Members
 		for _, member := range members {
-			if member.Dimension.Href != "" {
-				allDimensionMap[member.Dimension.Href] = &member.Dimension
+			if member.Dimension.Href == "" {
+				continue
 			}
+			if _, found := allDimensionMap[member.Dimension.Href]; !found {
+				allDimensionHrefs = append(allDimensionHrefs, member.Dimension.Href)
+			}
+			allDimensionMap[member.Dimension.Href] = &member.Dimension
 			if member.TypedDomain != nil {
 				allTypedDomainMap[member.TypedDomain.Href] = member.TypedDomain
 			}
 			if member.ExplicitMember != nil {
 				if member.IsSegment {
-					segmentExplicitDimensionMap[member.Dimension.Href] = &member
+					if segmentExplicitDimensionMap[member.Dimension.Href] == nil {
+						segmentExplicitDimensionMap[member.Dimension.Href] = make(map[string]RelevantMember)
+					}
+					segmentExplicitDimensionMap[member.Dimension.Href][member.ExplicitMember.Href] = member
 				} else {
-					scenarioExplicitDimensionMap[member.Dimension.Href] = &member
+					if scenarioExplicitDimensionMap[member.Dimension.Href] == nil {
+						scenarioExplicitDimensionMap[member.Dimension.Href] = make(map[string]RelevantMember)
+					}
+					scenarioExplicitDimensionMap[member.Dimension.Href][member.ExplicitMember.Href] = member
 				}
 			}
 		}
 	}
-
-	ret := make(VoidQuadrant, 0, len(segmentTypedDimensionMap)+
-		len(scenarioTypedDimensionMap)+len(segmentExplicitDimensionMap)+
-		len(scenarioExplicitDimensionMap))
-	for _, member := range segmentExplicitDimensionMap {
-		ret = append(ret, &VoidCell{
-			IsParenthesized: false,
-			Indentation:     0,
-			Dimension:       member.Dimension,
-		})
-	}
-	for _, member := range scenarioExplicitDimensionMap {
-		ret = append(ret, &VoidCell{
-			IsParenthesized: true,
-			Indentation:     0,
-			Dimension:       member.Dimension,
-		})
+	sort.Strings(allDimensionHrefs)
+	ret := make(VoidQuadrant, 0, len(allDimensionHrefs))
+	for _, href := range allDimensionHrefs {
+		if mapval, found := segmentExplicitDimensionMap[href]; found {
+			for _, member := range mapval {
+				ret = append(ret, &VoidCell{
+					IsParenthesized: false,
+					Indentation:     0,
+					Dimension:       member.Dimension,
+				})
+				break
+			}
+		}
+		if mapval, found := scenarioExplicitDimensionMap[href]; found {
+			for _, member := range mapval {
+				ret = append(ret, &VoidCell{
+					IsParenthesized: false,
+					Indentation:     0,
+					Dimension:       member.Dimension,
+				})
+				break
+			}
+		}
 	}
 
 	reducedSegmentTypedDomainTree := reduceTrees(segmentTypedDomainTrees)
 	reducedScenarioTypedDomainTree := reduceTrees(scenarioTypedDomainTrees)
 	var dimension *Dimension
-	var makeIndents func(node *graph.LocatorNode, level int, isParenthesized bool)
-	makeIndents = func(node *graph.LocatorNode, level int, isParenthesized bool) {
+	var makeIndents func(node *myarcs.RArc, level int, isParenthesized bool)
+	makeIndents = func(node *myarcs.RArc, level int, isParenthesized bool) {
 		if dimension == nil && node.Locator != "" {
 			mappedDimension, ok := allDimensionMap[node.Locator]
 			if !ok {
@@ -186,10 +219,10 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 	return ret
 }
 
-func reduceTrees(trees []graph.LocatorNode) graph.LocatorNode {
-	ret := graph.LocatorNode{}
+func reduceTrees(trees []myarcs.RArc) myarcs.RArc {
+	ret := myarcs.RArc{}
 	hasNonblankRoots := true
-	dimensions := make([]*graph.LocatorNode, 0, len(trees))
+	dimensions := make([]*myarcs.RArc, 0, len(trees))
 	for _, root := range trees {
 		if root.Locator == "" && len(root.Children) > 0 {
 			dimensions = append(dimensions, root.Children...)
@@ -198,16 +231,16 @@ func reduceTrees(trees []graph.LocatorNode) graph.LocatorNode {
 		}
 	}
 	if !hasNonblankRoots {
-		return graph.LocatorNode{}
+		return myarcs.RArc{}
 	}
 	ret.Order = 0
 	ret.Locator = ""
-	ret.Children = make([]*graph.LocatorNode, 0)
+	ret.Children = make([]*myarcs.RArc, 0)
 	ret = *dedupNodes(dimensions, ret, int(ret.Order))
 	return ret
 }
 
-func dedupNodes(children []*graph.LocatorNode, dst graph.LocatorNode, order int) *graph.LocatorNode {
+func dedupNodes(children []*myarcs.RArc, dst myarcs.RArc, order int) *myarcs.RArc {
 	if children == nil || len(children) <= 0 {
 		return &dst
 	}
@@ -219,18 +252,18 @@ func dedupNodes(children []*graph.LocatorNode, dst graph.LocatorNode, order int)
 	}
 	dedupLocators := dedup(dupLocators)
 	dedupLocators = sort.StringSlice(dedupLocators)
-	dedupChildren := make([]*graph.LocatorNode, 0)
+	dedupChildren := make([]*myarcs.RArc, 0)
 	for _, dedupLocator := range dedupLocators {
 		order++
-		dupGrandchildren := make([]*graph.LocatorNode, 0)
+		dupGrandchildren := make([]*myarcs.RArc, 0)
 		for _, dupChild := range children {
 			if dupChild.Locator == dedupLocator {
-				copied := make([]*graph.LocatorNode, len(dupChild.Children))
+				copied := make([]*myarcs.RArc, len(dupChild.Children))
 				copy(copied, dupChild.Children)
 				dupGrandchildren = append(dupGrandchildren, copied...)
 			}
 		}
-		dstChild := graph.LocatorNode{
+		dstChild := myarcs.RArc{
 			Locator: dedupLocator,
 			Order:   float64(order),
 		}

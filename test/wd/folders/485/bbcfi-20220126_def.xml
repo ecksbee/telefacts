@@ -1,0 +1,989 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!--XBRL document created by GIM iX https://www.dfinsolutions.com/-->
+<link:linkbase xmlns="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" xmlns:link="http://www.xbrl.org/2003/linkbase" xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd">
+  <link:roleRef xlink:type="simple" xlink:href="bbcfi-20220126.xsd#httpwwwblackrockcomroleDocumentDocumentandEntityInformationElements000000" roleURI="http://www.blackrock.com/role/DocumentDocumentandEntityInformationElements000000" />
+  <link:roleRef xlink:type="simple" xlink:href="bbcfi-20220126.xsd#httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" />
+  <link:roleRef xlink:type="simple" xlink:href="bbcfi-20220126.xsd#httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo" roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo" />
+  <link:roleRef xlink:type="simple" xlink:href="bbcfi-20220126.xsd#httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCClassK000041" roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" />
+  <link:arcroleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension" arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" />
+  <link:arcroleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" />
+  <link:arcroleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default" arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" />
+  <link:arcroleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member" arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" />
+  <link:arcroleRef xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all" arcroleURI="http://xbrl.org/int/dim/arcrole/all" />
+  <!-- Hypercube Definition (All)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DocumentDocumentandEntityInformationElements000000" xlink:title="000000 - Document - Document and Entity Information {Elements}">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ProspectusTable" order="1" xbrldt:closed="true" xbrldt:contextElement="segment" />
+  </link:definitionLink>
+  <!-- Inheritance for Line Items:  rr:RiskReturnAbstract-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DocumentDocumentandEntityInformationElements000000" xlink:title="000000 - Document - Document and Entity Information {Elements}">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentType" xlink:label="dei_DocumentType" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentPeriodEndDate" xlink:label="dei_DocumentPeriodEndDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityRegistrantName" xlink:label="dei_EntityRegistrantName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityCentralIndexKey" xlink:label="dei_EntityCentralIndexKey" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_AmendmentFlag" xlink:label="dei_AmendmentFlag" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_AmendmentDescription" xlink:label="dei_AmendmentDescription" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_TradingSymbol" xlink:label="dei_TradingSymbol" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentCreationDate" xlink:label="dei_DocumentCreationDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentEffectiveDate" xlink:label="dei_DocumentEffectiveDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusDate" xlink:label="rr_ProspectusDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityIdentifier" xlink:label="dei_LegalEntityIdentifier" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityInvCompanyType" xlink:label="dei_EntityInvCompanyType" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_DocumentType" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_DocumentPeriodEndDate" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_EntityRegistrantName" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_EntityCentralIndexKey" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_AmendmentFlag" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_AmendmentDescription" order="6" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_TradingSymbol" order="7" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_DocumentCreationDate" order="8" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_DocumentEffectiveDate" order="9" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ProspectusDate" order="10" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_LegalEntityIdentifier" order="11" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="dei_EntityInvCompanyType" order="12" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentInformationDocumentAxis" xlink:label="dei_DocumentInformationDocumentAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="dei_DocumentInformationDocumentAxis" order="1" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentInformationDocumentAxis" xlink:label="dei_DocumentInformationDocumentAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentDomain" xlink:label="dei_DocumentDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_ClassRInvestorCInstitutionalandInvestorAMember" xlink:label="bbcfi_ClassRInvestorCInstitutionalandInvestorAMember" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_DocumentInformationDocumentAxis" xlink:to="dei_DocumentDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_DocumentInformationDocumentAxis" xlink:to="bbcfi_ClassRInvestorCInstitutionalandInvestorAMember" order="2" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantAxis" xlink:label="rr_CoregistrantAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_CoregistrantAxis" order="2" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantAxis" xlink:label="rr_CoregistrantAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantDomain" xlink:label="rr_CoregistrantDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_CoregistrantAxis" xlink:to="rr_CoregistrantDomain" order="1" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityAxis" xlink:label="dei_LegalEntityAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="dei_LegalEntityAxis" order="3" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityAxis" xlink:label="dei_LegalEntityAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityDomain" xlink:label="dei_EntityDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_S000002175Member" xlink:label="bbcfi_S000002175Member" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_LegalEntityAxis" xlink:to="dei_EntityDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="dei_EntityDomain" xlink:to="bbcfi_S000002175Member" order="1" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_PerformanceMeasureAxis" order="4" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureDomain" xlink:label="rr_PerformanceMeasureDomain" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsMember" xlink:label="rr_AfterTaxesOnDistributionsMember" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsAndSalesMember" xlink:label="rr_AfterTaxesOnDistributionsAndSalesMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_RussellOneThousandIndexMember" xlink:label="bbcfi_RussellOneThousandIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_BloombergBarclaysUSAggregateBondIndexMember" xlink:label="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" xlink:label="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_PerformanceMeasureDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsMember" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsAndSalesMember" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_RussellOneThousandIndexMember" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" order="6" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusShareClassAxis" xlink:label="rr_ProspectusShareClassAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_ProspectusShareClassAxis" order="5" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusShareClassAxis" xlink:label="rr_ProspectusShareClassAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareClassDomain" xlink:label="rr_ShareClassDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_C000005578Member" xlink:label="bbcfi_C000005578Member" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_C000005580Member" xlink:label="bbcfi_C000005580Member" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_C000005581Member" xlink:label="bbcfi_C000005581Member" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_C000005582Member" xlink:label="bbcfi_C000005582Member" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="rr_ShareClassDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="bbcfi_C000005578Member" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="bbcfi_C000005580Member" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="bbcfi_C000005581Member" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="bbcfi_C000005582Member" order="5" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (All)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ProspectusTable" order="6" xbrldt:closed="true" xbrldt:contextElement="segment" />
+  </link:definitionLink>
+  <!-- Inheritance for Line Items:  rr:RiskReturnAbstract-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnHeading" xlink:label="rr_RiskReturnHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectiveHeading" xlink:label="rr_ObjectiveHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectivePrimaryTextBlock" xlink:label="rr_ObjectivePrimaryTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectiveSecondaryTextBlock" xlink:label="rr_ObjectiveSecondaryTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseHeading" xlink:label="rr_ExpenseHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseNarrativeTextBlock" xlink:label="rr_ExpenseNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeesCaption" xlink:label="rr_ShareholderFeesCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeesColumnName" xlink:label="rr_ShareholderFeesColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:label="rr_MaximumCumulativeSalesChargeOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumCumulativeSalesChargeOverOther" xlink:label="rr_MaximumCumulativeSalesChargeOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:label="rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumDeferredSalesChargeOverOfferingPrice" xlink:label="rr_MaximumDeferredSalesChargeOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumDeferredSalesChargeOverOther" xlink:label="rr_MaximumDeferredSalesChargeOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:label="rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RedemptionFeeOverRedemption" xlink:label="rr_RedemptionFeeOverRedemption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RedemptionFee" xlink:label="rr_RedemptionFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExchangeFeeOverRedemption" xlink:label="rr_ExchangeFeeOverRedemption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExchangeFee" xlink:label="rr_ExchangeFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumAccountFeeOverAssets" xlink:label="rr_MaximumAccountFeeOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumAccountFee" xlink:label="rr_MaximumAccountFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeeOther" xlink:label="rr_ShareholderFeeOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OperatingExpensesCaption" xlink:label="rr_OperatingExpensesCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OperatingExpensesColumnName" xlink:label="rr_OperatingExpensesColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ManagementFeesOverAssets" xlink:label="rr_ManagementFeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionAndService12b1FeesOverAssets" xlink:label="rr_DistributionAndService12b1FeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="rr_DistributionOrSimilarNon12b1FeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="rr_Component1OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="rr_Component2OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component3OtherExpensesOverAssets" xlink:label="rr_Component3OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OtherExpensesOverAssets" xlink:label="rr_OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AcquiredFundFeesAndExpensesOverAssets" xlink:label="rr_AcquiredFundFeesAndExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesOverAssets" xlink:label="rr_ExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_FeeWaiverOrReimbursementOverAssets" xlink:label="rr_FeeWaiverOrReimbursementOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_NetExpensesOverAssets" xlink:label="rr_NetExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:label="rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverHeading" xlink:label="rr_PortfolioTurnoverHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverTextBlock" xlink:label="rr_PortfolioTurnoverTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverRate" xlink:label="rr_PortfolioTurnoverRate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseFootnotesTextBlock" xlink:label="rr_ExpenseFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesDeferredChargesTextBlock" xlink:label="rr_ExpensesDeferredChargesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRangeOfExchangeFeesTextBlock" xlink:label="rr_ExpensesRangeOfExchangeFeesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseBreakpointDiscounts" xlink:label="rr_ExpenseBreakpointDiscounts" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:label="rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRepresentBothMasterAndFeeder" xlink:label="rr_ExpensesRepresentBothMasterAndFeeder" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesExplanationOfNonrecurringAccountFee" xlink:label="rr_ExpensesExplanationOfNonrecurringAccountFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OtherExpensesNewFundBasedOnEstimates" xlink:label="rr_OtherExpensesNewFundBasedOnEstimates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:label="rr_AcquiredFundFeesAndExpensesBasedOnEstimates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:label="rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRestatedToReflectCurrent" xlink:label="rr_ExpensesRestatedToReflectCurrent" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:label="rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleHeading" xlink:label="rr_ExpenseExampleHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleByYearHeading" xlink:label="rr_ExpenseExampleByYearHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNarrativeTextBlock" xlink:label="rr_ExpenseExampleNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleByYearCaption" xlink:label="rr_ExpenseExampleByYearCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear01" xlink:label="rr_ExpenseExampleYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear03" xlink:label="rr_ExpenseExampleYear03" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear05" xlink:label="rr_ExpenseExampleYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear10" xlink:label="rr_ExpenseExampleYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:label="rr_ExpenseExampleNoRedemptionNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionByYearCaption" xlink:label="rr_ExpenseExampleNoRedemptionByYearCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear01" xlink:label="rr_ExpenseExampleNoRedemptionYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear03" xlink:label="rr_ExpenseExampleNoRedemptionYear03" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear05" xlink:label="rr_ExpenseExampleNoRedemptionYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear10" xlink:label="rr_ExpenseExampleNoRedemptionYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleFootnotesTextBlock" xlink:label="rr_ExpenseExampleFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleClosingTextBlock" xlink:label="rr_ExpenseExampleClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyHeading" xlink:label="rr_StrategyHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyNarrativeTextBlock" xlink:label="rr_StrategyNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyPortfolioConcentration" xlink:label="rr_StrategyPortfolioConcentration" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskHeading" xlink:label="rr_RiskHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNarrativeTextBlock" xlink:label="rr_RiskNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskFootnotesTextBlock" xlink:label="rr_RiskFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskClosingTextBlock" xlink:label="rr_RiskClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskLoseMoney" xlink:label="rr_RiskLoseMoney" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundPriceFluctuates" xlink:label="rr_RiskMoneyMarketFundPriceFluctuates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundMayNotPreserveDollar" xlink:label="rr_RiskMoneyMarketFundMayNotPreserveDollar" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" xlink:label="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNotInsuredDepositoryInstitution" xlink:label="rr_RiskNotInsuredDepositoryInstitution" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNotInsured" xlink:label="rr_RiskNotInsured" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" xlink:label="rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNondiversifiedStatus" xlink:label="rr_RiskNondiversifiedStatus" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskCaption" xlink:label="rr_RiskCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskColumnName" xlink:label="rr_RiskColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Risk" xlink:label="rr_Risk" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartAndPerformanceTableHeading" xlink:label="rr_BarChartAndPerformanceTableHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceNarrativeTextBlock" xlink:label="rr_PerformanceNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceInformationIllustratesVariabilityOfReturns" xlink:label="rr_PerformanceInformationIllustratesVariabilityOfReturns" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceOneYearOrLess" xlink:label="rr_PerformanceOneYearOrLess" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAdditionalMarketIndex" xlink:label="rr_PerformanceAdditionalMarketIndex" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAvailabilityPhone" xlink:label="rr_PerformanceAvailabilityPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAvailabilityWebSiteAddress" xlink:label="rr_PerformanceAvailabilityWebSiteAddress" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformancePastDoesNotIndicateFuture" xlink:label="rr_PerformancePastDoesNotIndicateFuture" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHeading" xlink:label="rr_BarChartHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartNarrativeTextBlock" xlink:label="rr_BarChartNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartDoesNotReflectSalesLoads" xlink:label="rr_BarChartDoesNotReflectSalesLoads" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnCaption" xlink:label="rr_AnnualReturnCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnColumnName" xlink:label="rr_AnnualReturnColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnInceptionDate" xlink:label="rr_AnnualReturnInceptionDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1990" xlink:label="rr_AnnualReturn1990" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1991" xlink:label="rr_AnnualReturn1991" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1992" xlink:label="rr_AnnualReturn1992" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1993" xlink:label="rr_AnnualReturn1993" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1994" xlink:label="rr_AnnualReturn1994" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1995" xlink:label="rr_AnnualReturn1995" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1996" xlink:label="rr_AnnualReturn1996" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1997" xlink:label="rr_AnnualReturn1997" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1998" xlink:label="rr_AnnualReturn1998" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1999" xlink:label="rr_AnnualReturn1999" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2000" xlink:label="rr_AnnualReturn2000" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2001" xlink:label="rr_AnnualReturn2001" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2002" xlink:label="rr_AnnualReturn2002" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2003" xlink:label="rr_AnnualReturn2003" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2004" xlink:label="rr_AnnualReturn2004" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2005" xlink:label="rr_AnnualReturn2005" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2006" xlink:label="rr_AnnualReturn2006" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2007" xlink:label="rr_AnnualReturn2007" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2008" xlink:label="rr_AnnualReturn2008" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2009" xlink:label="rr_AnnualReturn2009" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2010" xlink:label="rr_AnnualReturn2010" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2011" xlink:label="rr_AnnualReturn2011" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2012" xlink:label="rr_AnnualReturn2012" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2013" xlink:label="rr_AnnualReturn2013" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2014" xlink:label="rr_AnnualReturn2014" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2015" xlink:label="rr_AnnualReturn2015" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2016" xlink:label="rr_AnnualReturn2016" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2017" xlink:label="rr_AnnualReturn2017" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2018" xlink:label="rr_AnnualReturn2018" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2019" xlink:label="rr_AnnualReturn2019" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2020" xlink:label="rr_AnnualReturn2020" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2021" xlink:label="rr_AnnualReturn2021" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2022" xlink:label="rr_AnnualReturn2022" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2023" xlink:label="rr_AnnualReturn2023" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2024" xlink:label="rr_AnnualReturn2024" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2025" xlink:label="rr_AnnualReturn2025" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartFootnotesTextBlock" xlink:label="rr_BarChartFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartClosingTextBlock" xlink:label="rr_BarChartClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartReturnsForClassNotOfferedInProspectus" xlink:label="rr_BarChartReturnsForClassNotOfferedInProspectus" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_YearToDateReturnLabel" xlink:label="rr_YearToDateReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartYearToDateReturnDate" xlink:label="rr_BarChartYearToDateReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartYearToDateReturn" xlink:label="rr_BarChartYearToDateReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_HighestQuarterlyReturnLabel" xlink:label="rr_HighestQuarterlyReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHighestQuarterlyReturnDate" xlink:label="rr_BarChartHighestQuarterlyReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHighestQuarterlyReturn" xlink:label="rr_BarChartHighestQuarterlyReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_LowestQuarterlyReturnLabel" xlink:label="rr_LowestQuarterlyReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartLowestQuarterlyReturnDate" xlink:label="rr_BarChartLowestQuarterlyReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartLowestQuarterlyReturn" xlink:label="rr_BarChartLowestQuarterlyReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableHeading" xlink:label="rr_PerformanceTableHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableDoesReflectSalesLoads" xlink:label="rr_PerformanceTableDoesReflectSalesLoads" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableMarketIndexChanged" xlink:label="rr_PerformanceTableMarketIndexChanged" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_IndexNoDeductionForFeesExpensesTaxes" xlink:label="rr_IndexNoDeductionForFeesExpensesTaxes" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableUsesHighestFederalRate" xlink:label="rr_PerformanceTableUsesHighestFederalRate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableNotRelevantToTaxDeferred" xlink:label="rr_PerformanceTableNotRelevantToTaxDeferred" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableOneClassOfAfterTaxShown" xlink:label="rr_PerformanceTableOneClassOfAfterTaxShown" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableExplanationAfterTaxHigher" xlink:label="rr_PerformanceTableExplanationAfterTaxHigher" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableNarrativeTextBlock" xlink:label="rr_PerformanceTableNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableFootnotesTextBlock" xlink:label="rr_PerformanceTableFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableClosingTextBlock" xlink:label="rr_PerformanceTableClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnCaption" xlink:label="rr_AverageAnnualReturnCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnColumnName" xlink:label="rr_AverageAnnualReturnColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnLabel" xlink:label="rr_AverageAnnualReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear01" xlink:label="rr_AverageAnnualReturnYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear05" xlink:label="rr_AverageAnnualReturnYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear10" xlink:label="rr_AverageAnnualReturnYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnSinceInception" xlink:label="rr_AverageAnnualReturnSinceInception" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnInceptionDate" xlink:label="rr_AverageAnnualReturnInceptionDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldCaption" xlink:label="rr_MoneyMarketSevenDayYieldCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldColumnName" xlink:label="rr_MoneyMarketSevenDayYieldColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldPhone" xlink:label="rr_MoneyMarketSevenDayYieldPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYield" xlink:label="rr_MoneyMarketSevenDayYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayTaxEquivalentYield" xlink:label="rr_MoneyMarketSevenDayTaxEquivalentYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldCaption" xlink:label="rr_ThirtyDayYieldCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldColumnName" xlink:label="rr_ThirtyDayYieldColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldPhone" xlink:label="rr_ThirtyDayYieldPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYield" xlink:label="rr_ThirtyDayYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayTaxEquivalentYield" xlink:label="rr_ThirtyDayTaxEquivalentYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_SupplementToProspectusTextBlock" xlink:label="rr_SupplementToProspectusTextBlock" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskReturnHeading" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectiveHeading" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectivePrimaryTextBlock" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectiveSecondaryTextBlock" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseHeading" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseNarrativeTextBlock" order="6" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeesCaption" order="7" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeesColumnName" order="8" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumCumulativeSalesChargeOverOfferingPrice" order="9" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumCumulativeSalesChargeOverOther" order="10" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" order="11" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumDeferredSalesChargeOverOfferingPrice" order="12" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumDeferredSalesChargeOverOther" order="13" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" order="14" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RedemptionFeeOverRedemption" order="15" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RedemptionFee" order="16" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExchangeFeeOverRedemption" order="17" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExchangeFee" order="18" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumAccountFeeOverAssets" order="19" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumAccountFee" order="20" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeeOther" order="21" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OperatingExpensesCaption" order="22" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OperatingExpensesColumnName" order="23" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ManagementFeesOverAssets" order="24" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_DistributionAndService12b1FeesOverAssets" order="25" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_DistributionOrSimilarNon12b1FeesOverAssets" order="26" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component1OtherExpensesOverAssets" order="27" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component2OtherExpensesOverAssets" order="28" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component3OtherExpensesOverAssets" order="29" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OtherExpensesOverAssets" order="30" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AcquiredFundFeesAndExpensesOverAssets" order="31" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesOverAssets" order="32" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_FeeWaiverOrReimbursementOverAssets" order="33" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_NetExpensesOverAssets" order="34" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" order="35" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverHeading" order="36" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverTextBlock" order="37" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverRate" order="38" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseFootnotesTextBlock" order="39" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesDeferredChargesTextBlock" order="40" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRangeOfExchangeFeesTextBlock" order="41" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseBreakpointDiscounts" order="42" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" order="43" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRepresentBothMasterAndFeeder" order="44" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesExplanationOfNonrecurringAccountFee" order="45" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OtherExpensesNewFundBasedOnEstimates" order="46" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AcquiredFundFeesAndExpensesBasedOnEstimates" order="47" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" order="48" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRestatedToReflectCurrent" order="49" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" order="50" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleHeading" order="51" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleByYearHeading" order="52" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNarrativeTextBlock" order="53" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleByYearCaption" order="54" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear01" order="55" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear03" order="56" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear05" order="57" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear10" order="58" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionNarrativeTextBlock" order="59" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionByYearCaption" order="60" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear01" order="61" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear03" order="62" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear05" order="63" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear10" order="64" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleFootnotesTextBlock" order="65" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleClosingTextBlock" order="66" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyHeading" order="67" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyNarrativeTextBlock" order="68" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyPortfolioConcentration" order="69" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskHeading" order="70" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNarrativeTextBlock" order="71" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskFootnotesTextBlock" order="72" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskClosingTextBlock" order="73" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskLoseMoney" order="74" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundPriceFluctuates" order="75" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundMayNotPreserveDollar" order="76" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" order="77" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNotInsuredDepositoryInstitution" order="78" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNotInsured" order="79" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" order="80" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNondiversifiedStatus" order="81" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskCaption" order="82" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskColumnName" order="83" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Risk" order="84" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartAndPerformanceTableHeading" order="85" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceNarrativeTextBlock" order="86" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceInformationIllustratesVariabilityOfReturns" order="87" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceOneYearOrLess" order="88" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAdditionalMarketIndex" order="89" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAvailabilityPhone" order="90" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAvailabilityWebSiteAddress" order="91" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformancePastDoesNotIndicateFuture" order="92" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHeading" order="93" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartNarrativeTextBlock" order="94" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartDoesNotReflectSalesLoads" order="95" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnCaption" order="96" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnColumnName" order="97" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnInceptionDate" order="98" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1990" order="99" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1991" order="100" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1992" order="101" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1993" order="102" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1994" order="103" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1995" order="104" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1996" order="105" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1997" order="106" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1998" order="107" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1999" order="108" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2000" order="109" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2001" order="110" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2002" order="111" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2003" order="112" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2004" order="113" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2005" order="114" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2006" order="115" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2007" order="116" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2008" order="117" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2009" order="118" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2010" order="119" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2011" order="120" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2012" order="121" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2013" order="122" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2014" order="123" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2015" order="124" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2016" order="125" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2017" order="126" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2018" order="127" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2019" order="128" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2020" order="129" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2021" order="130" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2022" order="131" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2023" order="132" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2024" order="133" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2025" order="134" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartFootnotesTextBlock" order="135" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartClosingTextBlock" order="136" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" order="137" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartReturnsForClassNotOfferedInProspectus" order="138" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_YearToDateReturnLabel" order="139" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartYearToDateReturnDate" order="140" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartYearToDateReturn" order="141" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_HighestQuarterlyReturnLabel" order="142" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHighestQuarterlyReturnDate" order="143" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHighestQuarterlyReturn" order="144" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_LowestQuarterlyReturnLabel" order="145" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartLowestQuarterlyReturnDate" order="146" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartLowestQuarterlyReturn" order="147" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableHeading" order="148" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableDoesReflectSalesLoads" order="149" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableMarketIndexChanged" order="150" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_IndexNoDeductionForFeesExpensesTaxes" order="151" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableUsesHighestFederalRate" order="152" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableNotRelevantToTaxDeferred" order="153" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableOneClassOfAfterTaxShown" order="154" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableExplanationAfterTaxHigher" order="155" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableNarrativeTextBlock" order="156" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" order="157" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableFootnotesTextBlock" order="158" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableClosingTextBlock" order="159" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnCaption" order="160" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnColumnName" order="161" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnLabel" order="162" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear01" order="163" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear05" order="164" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear10" order="165" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnSinceInception" order="166" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnInceptionDate" order="167" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldCaption" order="168" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldColumnName" order="169" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldPhone" order="170" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYield" order="171" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayTaxEquivalentYield" order="172" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldCaption" order="173" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldColumnName" order="174" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldPhone" order="175" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYield" order="176" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayTaxEquivalentYield" order="177" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_SupplementToProspectusTextBlock" order="178" />
+  </link:definitionLink>
+  <!-- Dimension Defaults -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentInformationDocumentAxis" xlink:label="dei_DocumentInformationDocumentAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentDomain" xlink:label="dei_DocumentDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="dei_DocumentInformationDocumentAxis" xlink:to="dei_DocumentDomain" order="1" />
+  </link:definitionLink>
+  <!-- Dimension Defaults -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantAxis" xlink:label="rr_CoregistrantAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantDomain" xlink:label="rr_CoregistrantDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="rr_CoregistrantAxis" xlink:to="rr_CoregistrantDomain" order="2" />
+  </link:definitionLink>
+  <!-- Dimension Defaults -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityAxis" xlink:label="dei_LegalEntityAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityDomain" xlink:label="dei_EntityDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="dei_LegalEntityAxis" xlink:to="dei_EntityDomain" order="3" />
+  </link:definitionLink>
+  <!-- Dimension Defaults -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureDomain" xlink:label="rr_PerformanceMeasureDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_PerformanceMeasureDomain" order="4" />
+  </link:definitionLink>
+  <!-- Dimension Defaults -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" xlink:title="000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusShareClassAxis" xlink:label="rr_ProspectusShareClassAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareClassDomain" xlink:label="rr_ShareClassDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="rr_ProspectusShareClassAxis" xlink:to="rr_ShareClassDomain" order="5" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo" xlink:title="0000212 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R) Two">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_PerformanceMeasureAxis" order="1" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo" xlink:title="0000212 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R) Two">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureDomain" xlink:label="rr_PerformanceMeasureDomain" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsMember" xlink:label="rr_AfterTaxesOnDistributionsMember" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsAndSalesMember" xlink:label="rr_AfterTaxesOnDistributionsAndSalesMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_RussellOneThousandIndexMember" xlink:label="bbcfi_RussellOneThousandIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" xlink:label="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_BloombergBarclaysUSAggregateBondIndexMember" xlink:label="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_PerformanceMeasureDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsMember" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsAndSalesMember" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_RussellOneThousandIndexMember" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" xlink:to="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" order="1" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentInformationDocumentAxis" xlink:label="dei_DocumentInformationDocumentAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="dei_DocumentInformationDocumentAxis" order="1" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentInformationDocumentAxis" xlink:label="dei_DocumentInformationDocumentAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_DocumentDomain" xlink:label="dei_DocumentDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_ClassKMember" xlink:label="bbcfi_ClassKMember" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_DocumentInformationDocumentAxis" xlink:to="dei_DocumentDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_DocumentInformationDocumentAxis" xlink:to="bbcfi_ClassKMember" order="2" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantAxis" xlink:label="rr_CoregistrantAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_CoregistrantAxis" order="2" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantAxis" xlink:label="rr_CoregistrantAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_CoregistrantDomain" xlink:label="rr_CoregistrantDomain" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_CoregistrantAxis" xlink:to="rr_CoregistrantDomain" order="1" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityAxis" xlink:label="dei_LegalEntityAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="dei_LegalEntityAxis" order="3" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_LegalEntityAxis" xlink:label="dei_LegalEntityAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2021/dei-2021.xsd#dei_EntityDomain" xlink:label="dei_EntityDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_S000002175Member" xlink:label="bbcfi_S000002175Member" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="dei_LegalEntityAxis" xlink:to="dei_EntityDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="dei_EntityDomain" xlink:to="bbcfi_S000002175Member" order="1" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_PerformanceMeasureAxis" order="4" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureAxis" xlink:label="rr_PerformanceMeasureAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceMeasureDomain" xlink:label="rr_PerformanceMeasureDomain" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsMember" xlink:label="rr_AfterTaxesOnDistributionsMember" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AfterTaxesOnDistributionsAndSalesMember" xlink:label="rr_AfterTaxesOnDistributionsAndSalesMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_RussellOneThousandIndexMember" xlink:label="bbcfi_RussellOneThousandIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_BloombergBarclaysUSAggregateBondIndexMember" xlink:label="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" xlink:label="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_PerformanceMeasureDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsMember" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="rr_AfterTaxesOnDistributionsAndSalesMember" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_RussellOneThousandIndexMember" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_PerformanceMeasureAxis" xlink:to="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" order="6" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (Line Items to Hypercube)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusShareClassAxis" xlink:label="rr_ProspectusShareClassAxis" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="rr_ProspectusTable" xlink:to="rr_ProspectusShareClassAxis" order="5" />
+  </link:definitionLink>
+  <!-- Domain Members -->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusShareClassAxis" xlink:label="rr_ProspectusShareClassAxis" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareClassDomain" xlink:label="rr_ShareClassDomain" />
+    <link:loc xlink:type="locator" xlink:href="bbcfi-20220126.xsd#bbcfi_C000199764Member" xlink:label="bbcfi_C000199764Member" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="rr_ShareClassDomain" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="rr_ProspectusShareClassAxis" xlink:to="bbcfi_C000199764Member" order="2" />
+  </link:definitionLink>
+  <!-- Hypercube Definition (All)-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ProspectusTable" xlink:label="rr_ProspectusTable" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ProspectusTable" order="6" xbrldt:closed="true" xbrldt:contextElement="segment" />
+  </link:definitionLink>
+  <!-- Inheritance for Line Items:  rr:RiskReturnAbstract-->
+  <link:definitionLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" xlink:title="000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)">
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnAbstract" xlink:label="rr_RiskReturnAbstract" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskReturnHeading" xlink:label="rr_RiskReturnHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectiveHeading" xlink:label="rr_ObjectiveHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectivePrimaryTextBlock" xlink:label="rr_ObjectivePrimaryTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ObjectiveSecondaryTextBlock" xlink:label="rr_ObjectiveSecondaryTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseHeading" xlink:label="rr_ExpenseHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseNarrativeTextBlock" xlink:label="rr_ExpenseNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeesCaption" xlink:label="rr_ShareholderFeesCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeesColumnName" xlink:label="rr_ShareholderFeesColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:label="rr_MaximumCumulativeSalesChargeOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumCumulativeSalesChargeOverOther" xlink:label="rr_MaximumCumulativeSalesChargeOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:label="rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumDeferredSalesChargeOverOfferingPrice" xlink:label="rr_MaximumDeferredSalesChargeOverOfferingPrice" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumDeferredSalesChargeOverOther" xlink:label="rr_MaximumDeferredSalesChargeOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:label="rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RedemptionFeeOverRedemption" xlink:label="rr_RedemptionFeeOverRedemption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RedemptionFee" xlink:label="rr_RedemptionFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExchangeFeeOverRedemption" xlink:label="rr_ExchangeFeeOverRedemption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExchangeFee" xlink:label="rr_ExchangeFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumAccountFeeOverAssets" xlink:label="rr_MaximumAccountFeeOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MaximumAccountFee" xlink:label="rr_MaximumAccountFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ShareholderFeeOther" xlink:label="rr_ShareholderFeeOther" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OperatingExpensesCaption" xlink:label="rr_OperatingExpensesCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OperatingExpensesColumnName" xlink:label="rr_OperatingExpensesColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ManagementFeesOverAssets" xlink:label="rr_ManagementFeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionAndService12b1FeesOverAssets" xlink:label="rr_DistributionAndService12b1FeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="rr_DistributionOrSimilarNon12b1FeesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="rr_Component1OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="rr_Component2OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component3OtherExpensesOverAssets" xlink:label="rr_Component3OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OtherExpensesOverAssets" xlink:label="rr_OtherExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AcquiredFundFeesAndExpensesOverAssets" xlink:label="rr_AcquiredFundFeesAndExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesOverAssets" xlink:label="rr_ExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_FeeWaiverOrReimbursementOverAssets" xlink:label="rr_FeeWaiverOrReimbursementOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_NetExpensesOverAssets" xlink:label="rr_NetExpensesOverAssets" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:label="rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverHeading" xlink:label="rr_PortfolioTurnoverHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverTextBlock" xlink:label="rr_PortfolioTurnoverTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PortfolioTurnoverRate" xlink:label="rr_PortfolioTurnoverRate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseFootnotesTextBlock" xlink:label="rr_ExpenseFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesDeferredChargesTextBlock" xlink:label="rr_ExpensesDeferredChargesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRangeOfExchangeFeesTextBlock" xlink:label="rr_ExpensesRangeOfExchangeFeesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseBreakpointDiscounts" xlink:label="rr_ExpenseBreakpointDiscounts" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:label="rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRepresentBothMasterAndFeeder" xlink:label="rr_ExpensesRepresentBothMasterAndFeeder" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesExplanationOfNonrecurringAccountFee" xlink:label="rr_ExpensesExplanationOfNonrecurringAccountFee" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OtherExpensesNewFundBasedOnEstimates" xlink:label="rr_OtherExpensesNewFundBasedOnEstimates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:label="rr_AcquiredFundFeesAndExpensesBasedOnEstimates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:label="rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesRestatedToReflectCurrent" xlink:label="rr_ExpensesRestatedToReflectCurrent" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:label="rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleHeading" xlink:label="rr_ExpenseExampleHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleByYearHeading" xlink:label="rr_ExpenseExampleByYearHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNarrativeTextBlock" xlink:label="rr_ExpenseExampleNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleByYearCaption" xlink:label="rr_ExpenseExampleByYearCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear01" xlink:label="rr_ExpenseExampleYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear03" xlink:label="rr_ExpenseExampleYear03" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear05" xlink:label="rr_ExpenseExampleYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleYear10" xlink:label="rr_ExpenseExampleYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:label="rr_ExpenseExampleNoRedemptionNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionByYearCaption" xlink:label="rr_ExpenseExampleNoRedemptionByYearCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear01" xlink:label="rr_ExpenseExampleNoRedemptionYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear03" xlink:label="rr_ExpenseExampleNoRedemptionYear03" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear05" xlink:label="rr_ExpenseExampleNoRedemptionYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleNoRedemptionYear10" xlink:label="rr_ExpenseExampleNoRedemptionYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleFootnotesTextBlock" xlink:label="rr_ExpenseExampleFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpenseExampleClosingTextBlock" xlink:label="rr_ExpenseExampleClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyHeading" xlink:label="rr_StrategyHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyNarrativeTextBlock" xlink:label="rr_StrategyNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_StrategyPortfolioConcentration" xlink:label="rr_StrategyPortfolioConcentration" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskHeading" xlink:label="rr_RiskHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNarrativeTextBlock" xlink:label="rr_RiskNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskFootnotesTextBlock" xlink:label="rr_RiskFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskClosingTextBlock" xlink:label="rr_RiskClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskLoseMoney" xlink:label="rr_RiskLoseMoney" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundPriceFluctuates" xlink:label="rr_RiskMoneyMarketFundPriceFluctuates" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundMayNotPreserveDollar" xlink:label="rr_RiskMoneyMarketFundMayNotPreserveDollar" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" xlink:label="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNotInsuredDepositoryInstitution" xlink:label="rr_RiskNotInsuredDepositoryInstitution" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNotInsured" xlink:label="rr_RiskNotInsured" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" xlink:label="rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskNondiversifiedStatus" xlink:label="rr_RiskNondiversifiedStatus" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskCaption" xlink:label="rr_RiskCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_RiskColumnName" xlink:label="rr_RiskColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Risk" xlink:label="rr_Risk" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartAndPerformanceTableHeading" xlink:label="rr_BarChartAndPerformanceTableHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceNarrativeTextBlock" xlink:label="rr_PerformanceNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceInformationIllustratesVariabilityOfReturns" xlink:label="rr_PerformanceInformationIllustratesVariabilityOfReturns" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceOneYearOrLess" xlink:label="rr_PerformanceOneYearOrLess" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAdditionalMarketIndex" xlink:label="rr_PerformanceAdditionalMarketIndex" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAvailabilityPhone" xlink:label="rr_PerformanceAvailabilityPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceAvailabilityWebSiteAddress" xlink:label="rr_PerformanceAvailabilityWebSiteAddress" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformancePastDoesNotIndicateFuture" xlink:label="rr_PerformancePastDoesNotIndicateFuture" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHeading" xlink:label="rr_BarChartHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartNarrativeTextBlock" xlink:label="rr_BarChartNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartDoesNotReflectSalesLoads" xlink:label="rr_BarChartDoesNotReflectSalesLoads" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnCaption" xlink:label="rr_AnnualReturnCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnColumnName" xlink:label="rr_AnnualReturnColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturnInceptionDate" xlink:label="rr_AnnualReturnInceptionDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1990" xlink:label="rr_AnnualReturn1990" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1991" xlink:label="rr_AnnualReturn1991" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1992" xlink:label="rr_AnnualReturn1992" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1993" xlink:label="rr_AnnualReturn1993" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1994" xlink:label="rr_AnnualReturn1994" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1995" xlink:label="rr_AnnualReturn1995" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1996" xlink:label="rr_AnnualReturn1996" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1997" xlink:label="rr_AnnualReturn1997" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1998" xlink:label="rr_AnnualReturn1998" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn1999" xlink:label="rr_AnnualReturn1999" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2000" xlink:label="rr_AnnualReturn2000" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2001" xlink:label="rr_AnnualReturn2001" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2002" xlink:label="rr_AnnualReturn2002" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2003" xlink:label="rr_AnnualReturn2003" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2004" xlink:label="rr_AnnualReturn2004" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2005" xlink:label="rr_AnnualReturn2005" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2006" xlink:label="rr_AnnualReturn2006" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2007" xlink:label="rr_AnnualReturn2007" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2008" xlink:label="rr_AnnualReturn2008" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2009" xlink:label="rr_AnnualReturn2009" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2010" xlink:label="rr_AnnualReturn2010" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2011" xlink:label="rr_AnnualReturn2011" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2012" xlink:label="rr_AnnualReturn2012" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2013" xlink:label="rr_AnnualReturn2013" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2014" xlink:label="rr_AnnualReturn2014" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2015" xlink:label="rr_AnnualReturn2015" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2016" xlink:label="rr_AnnualReturn2016" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2017" xlink:label="rr_AnnualReturn2017" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2018" xlink:label="rr_AnnualReturn2018" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2019" xlink:label="rr_AnnualReturn2019" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2020" xlink:label="rr_AnnualReturn2020" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2021" xlink:label="rr_AnnualReturn2021" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2022" xlink:label="rr_AnnualReturn2022" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2023" xlink:label="rr_AnnualReturn2023" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2024" xlink:label="rr_AnnualReturn2024" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AnnualReturn2025" xlink:label="rr_AnnualReturn2025" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartFootnotesTextBlock" xlink:label="rr_BarChartFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartClosingTextBlock" xlink:label="rr_BarChartClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartReturnsForClassNotOfferedInProspectus" xlink:label="rr_BarChartReturnsForClassNotOfferedInProspectus" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_YearToDateReturnLabel" xlink:label="rr_YearToDateReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartYearToDateReturnDate" xlink:label="rr_BarChartYearToDateReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartYearToDateReturn" xlink:label="rr_BarChartYearToDateReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_HighestQuarterlyReturnLabel" xlink:label="rr_HighestQuarterlyReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHighestQuarterlyReturnDate" xlink:label="rr_BarChartHighestQuarterlyReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartHighestQuarterlyReturn" xlink:label="rr_BarChartHighestQuarterlyReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_LowestQuarterlyReturnLabel" xlink:label="rr_LowestQuarterlyReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartLowestQuarterlyReturnDate" xlink:label="rr_BarChartLowestQuarterlyReturnDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_BarChartLowestQuarterlyReturn" xlink:label="rr_BarChartLowestQuarterlyReturn" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableHeading" xlink:label="rr_PerformanceTableHeading" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableDoesReflectSalesLoads" xlink:label="rr_PerformanceTableDoesReflectSalesLoads" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableMarketIndexChanged" xlink:label="rr_PerformanceTableMarketIndexChanged" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_IndexNoDeductionForFeesExpensesTaxes" xlink:label="rr_IndexNoDeductionForFeesExpensesTaxes" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableUsesHighestFederalRate" xlink:label="rr_PerformanceTableUsesHighestFederalRate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableNotRelevantToTaxDeferred" xlink:label="rr_PerformanceTableNotRelevantToTaxDeferred" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableOneClassOfAfterTaxShown" xlink:label="rr_PerformanceTableOneClassOfAfterTaxShown" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableExplanationAfterTaxHigher" xlink:label="rr_PerformanceTableExplanationAfterTaxHigher" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableNarrativeTextBlock" xlink:label="rr_PerformanceTableNarrativeTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableFootnotesTextBlock" xlink:label="rr_PerformanceTableFootnotesTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_PerformanceTableClosingTextBlock" xlink:label="rr_PerformanceTableClosingTextBlock" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnCaption" xlink:label="rr_AverageAnnualReturnCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnColumnName" xlink:label="rr_AverageAnnualReturnColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnLabel" xlink:label="rr_AverageAnnualReturnLabel" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear01" xlink:label="rr_AverageAnnualReturnYear01" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear05" xlink:label="rr_AverageAnnualReturnYear05" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnYear10" xlink:label="rr_AverageAnnualReturnYear10" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnSinceInception" xlink:label="rr_AverageAnnualReturnSinceInception" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AverageAnnualReturnInceptionDate" xlink:label="rr_AverageAnnualReturnInceptionDate" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldCaption" xlink:label="rr_MoneyMarketSevenDayYieldCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldColumnName" xlink:label="rr_MoneyMarketSevenDayYieldColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYieldPhone" xlink:label="rr_MoneyMarketSevenDayYieldPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayYield" xlink:label="rr_MoneyMarketSevenDayYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_MoneyMarketSevenDayTaxEquivalentYield" xlink:label="rr_MoneyMarketSevenDayTaxEquivalentYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldCaption" xlink:label="rr_ThirtyDayYieldCaption" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldColumnName" xlink:label="rr_ThirtyDayYieldColumnName" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYieldPhone" xlink:label="rr_ThirtyDayYieldPhone" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayYield" xlink:label="rr_ThirtyDayYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ThirtyDayTaxEquivalentYield" xlink:label="rr_ThirtyDayTaxEquivalentYield" />
+    <link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_SupplementToProspectusTextBlock" xlink:label="rr_SupplementToProspectusTextBlock" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskReturnHeading" order="1" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectiveHeading" order="2" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectivePrimaryTextBlock" order="3" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ObjectiveSecondaryTextBlock" order="4" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseHeading" order="5" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseNarrativeTextBlock" order="6" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeesCaption" order="7" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeesColumnName" order="8" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumCumulativeSalesChargeOverOfferingPrice" order="9" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumCumulativeSalesChargeOverOther" order="10" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" order="11" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumDeferredSalesChargeOverOfferingPrice" order="12" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumDeferredSalesChargeOverOther" order="13" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" order="14" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RedemptionFeeOverRedemption" order="15" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RedemptionFee" order="16" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExchangeFeeOverRedemption" order="17" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExchangeFee" order="18" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumAccountFeeOverAssets" order="19" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MaximumAccountFee" order="20" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ShareholderFeeOther" order="21" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OperatingExpensesCaption" order="22" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OperatingExpensesColumnName" order="23" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ManagementFeesOverAssets" order="24" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_DistributionAndService12b1FeesOverAssets" order="25" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_DistributionOrSimilarNon12b1FeesOverAssets" order="26" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component1OtherExpensesOverAssets" order="27" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component2OtherExpensesOverAssets" order="28" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Component3OtherExpensesOverAssets" order="29" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OtherExpensesOverAssets" order="30" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AcquiredFundFeesAndExpensesOverAssets" order="31" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesOverAssets" order="32" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_FeeWaiverOrReimbursementOverAssets" order="33" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_NetExpensesOverAssets" order="34" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_FeeWaiverOrReimbursementOverAssetsDateOfTermination" order="35" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverHeading" order="36" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverTextBlock" order="37" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PortfolioTurnoverRate" order="38" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseFootnotesTextBlock" order="39" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesDeferredChargesTextBlock" order="40" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRangeOfExchangeFeesTextBlock" order="41" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseBreakpointDiscounts" order="42" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseBreakpointMinimumInvestmentRequiredAmount" order="43" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRepresentBothMasterAndFeeder" order="44" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesExplanationOfNonrecurringAccountFee" order="45" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_OtherExpensesNewFundBasedOnEstimates" order="46" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AcquiredFundFeesAndExpensesBasedOnEstimates" order="47" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" order="48" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesRestatedToReflectCurrent" order="49" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" order="50" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleHeading" order="51" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleByYearHeading" order="52" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNarrativeTextBlock" order="53" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleByYearCaption" order="54" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear01" order="55" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear03" order="56" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear05" order="57" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleYear10" order="58" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionNarrativeTextBlock" order="59" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionByYearCaption" order="60" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear01" order="61" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear03" order="62" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear05" order="63" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleNoRedemptionYear10" order="64" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleFootnotesTextBlock" order="65" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ExpenseExampleClosingTextBlock" order="66" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyHeading" order="67" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyNarrativeTextBlock" order="68" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_StrategyPortfolioConcentration" order="69" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskHeading" order="70" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNarrativeTextBlock" order="71" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskFootnotesTextBlock" order="72" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskClosingTextBlock" order="73" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskLoseMoney" order="74" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundPriceFluctuates" order="75" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundMayNotPreserveDollar" order="76" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundMayImposeFeesOrSuspendSales" order="77" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNotInsuredDepositoryInstitution" order="78" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNotInsured" order="79" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskMoneyMarketFundSponsorMayNotProvideSupport" order="80" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskNondiversifiedStatus" order="81" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskCaption" order="82" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_RiskColumnName" order="83" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_Risk" order="84" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartAndPerformanceTableHeading" order="85" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceNarrativeTextBlock" order="86" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceInformationIllustratesVariabilityOfReturns" order="87" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceOneYearOrLess" order="88" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAdditionalMarketIndex" order="89" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAvailabilityPhone" order="90" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceAvailabilityWebSiteAddress" order="91" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformancePastDoesNotIndicateFuture" order="92" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHeading" order="93" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartNarrativeTextBlock" order="94" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartDoesNotReflectSalesLoads" order="95" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnCaption" order="96" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnColumnName" order="97" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturnInceptionDate" order="98" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1990" order="99" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1991" order="100" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1992" order="101" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1993" order="102" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1994" order="103" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1995" order="104" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1996" order="105" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1997" order="106" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1998" order="107" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn1999" order="108" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2000" order="109" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2001" order="110" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2002" order="111" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2003" order="112" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2004" order="113" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2005" order="114" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2006" order="115" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2007" order="116" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2008" order="117" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2009" order="118" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2010" order="119" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2011" order="120" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2012" order="121" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2013" order="122" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2014" order="123" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2015" order="124" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2016" order="125" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2017" order="126" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2018" order="127" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2019" order="128" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2020" order="129" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2021" order="130" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2022" order="131" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2023" order="132" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2024" order="133" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AnnualReturn2025" order="134" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartFootnotesTextBlock" order="135" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartClosingTextBlock" order="136" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" order="137" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartReturnsForClassNotOfferedInProspectus" order="138" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_YearToDateReturnLabel" order="139" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartYearToDateReturnDate" order="140" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartYearToDateReturn" order="141" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_HighestQuarterlyReturnLabel" order="142" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHighestQuarterlyReturnDate" order="143" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartHighestQuarterlyReturn" order="144" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_LowestQuarterlyReturnLabel" order="145" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartLowestQuarterlyReturnDate" order="146" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_BarChartLowestQuarterlyReturn" order="147" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableHeading" order="148" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableDoesReflectSalesLoads" order="149" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableMarketIndexChanged" order="150" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_IndexNoDeductionForFeesExpensesTaxes" order="151" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableUsesHighestFederalRate" order="152" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableNotRelevantToTaxDeferred" order="153" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableOneClassOfAfterTaxShown" order="154" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableExplanationAfterTaxHigher" order="155" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableNarrativeTextBlock" order="156" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" order="157" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableFootnotesTextBlock" order="158" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_PerformanceTableClosingTextBlock" order="159" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnCaption" order="160" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnColumnName" order="161" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnLabel" order="162" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear01" order="163" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear05" order="164" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnYear10" order="165" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnSinceInception" order="166" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_AverageAnnualReturnInceptionDate" order="167" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldCaption" order="168" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldColumnName" order="169" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYieldPhone" order="170" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayYield" order="171" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_MoneyMarketSevenDayTaxEquivalentYield" order="172" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldCaption" order="173" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldColumnName" order="174" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYieldPhone" order="175" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayYield" order="176" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_ThirtyDayTaxEquivalentYield" order="177" />
+    <link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="rr_RiskReturnAbstract" xlink:to="rr_SupplementToProspectusTextBlock" order="178" />
+  </link:definitionLink>
+</link:linkbase>
