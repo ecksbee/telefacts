@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!--XBRL document created by GIM iX https://www.dfinsolutions.com/  using Fujitsu Interstage XWand-->
+<schema targetNamespace="http://www.blackrock.com/20220126" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:bbcfi="http://www.blackrock.com/20220126" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21">
+  <annotation>
+    <appinfo>
+      <link:linkbaseRef xlink:type="simple" xlink:href="bbcfi-20220126_pre.xml" xlink:title="Presentation Links, all" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="bbcfi-20220126_cal.xml" xlink:title="Calculation Links, all" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="bbcfi-20220126_def.xml" xlink:title="Definition Links, all" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="bbcfi-20220126_lab.xml" xlink:title="Label Links, all" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" />
+      <link:roleType roleURI="http://www.blackrock.com/role/DocumentDocumentandEntityInformationElements000000" id="httpwwwblackrockcomroleDocumentDocumentandEntityInformationElements000000">
+        <link:definition>000000 - Document - Document and Entity Information {Elements}</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR" id="httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassR">
+        <link:definition>000021 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.blackrock.com/role/ScheduleAnnualFundOperatingExpenses000021" id="httpwwwblackrockcomroleScheduleAnnualFundOperatingExpenses000021">
+        <link:definition>000021 - Schedule - Annual Fund Operating Expenses</link:definition>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo" id="httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCInvestorACInstitutionalandClassRTwo">
+        <link:definition>0000212 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Investor A, C, Institutional and Class R) Two</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://www.blackrock.com/role/DisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUND,INC.ClassK000041" id="httpwwwblackrockcomroleDisclosureRiskReturnDetailDataElementsBLACKROCKBALANCEDCAPITALFUNDINCClassK000041">
+        <link:definition>000041 - Disclosure - Risk/Return Detail Data {Elements} - BLACKROCK BALANCED CAPITAL FUND, INC. (Class K)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+  <import namespace="http://xbrl.sec.gov/rr/2021" schemaLocation="https://xbrl.sec.gov/rr/2021/rr-2021.xsd" />
+  <import namespace="http://xbrl.sec.gov/dei/2021" schemaLocation="https://xbrl.sec.gov/dei/2021/dei-2021.xsd" />
+  <import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd" />
+  <element name="ClassRInvestorCInstitutionalandInvestorAMember" id="bbcfi_ClassRInvestorCInstitutionalandInvestorAMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="S000002175Member" id="bbcfi_S000002175Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="RussellOneThousandIndexMember" id="bbcfi_RussellOneThousandIndexMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="BloombergBarclaysUSAggregateBondIndexMember" id="bbcfi_BloombergBarclaysUSAggregateBondIndexMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" id="bbcfi_SixtyPercentRussellThousandIndexFortyPercentBloombergBarclaysUsAggregateBondIndexMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="C000005578Member" id="bbcfi_C000005578Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="C000005580Member" id="bbcfi_C000005580Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="C000005581Member" id="bbcfi_C000005581Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="C000005582Member" id="bbcfi_C000005582Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="ClassKMember" id="bbcfi_ClassKMember" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+  <element name="C000199764Member" id="bbcfi_C000199764Member" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration" />
+</schema>

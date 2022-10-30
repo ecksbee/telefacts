@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!--XBRL document created by GIM iX https://www.dfinsolutions.com/  using Fujitsu Interstage XWand-->
+<linkbase xmlns="http://www.xbrl.org/2003/linkbase" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <roleRef roleURI="http://www.blackrock.com/role/ScheduleAnnualFundOperatingExpenses000021" xlink:type="simple" xlink:href="bbcfi-20220126.xsd#httpwwwblackrockcomroleScheduleAnnualFundOperatingExpenses000021" />
+  <calculationLink xlink:type="extended" xlink:role="http://www.blackrock.com/role/ScheduleAnnualFundOperatingExpenses000021" xlink:title="000021 - Schedule - Annual Fund Operating Expenses">
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_NetExpensesOverAssets" xlink:label="NetExpensesOverAssets" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ExpensesOverAssets" xlink:label="ExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetExpensesOverAssets" xlink:to="ExpensesOverAssets" order="10.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_ManagementFeesOverAssets" xlink:label="ManagementFeesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="ManagementFeesOverAssets" order="10.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionAndService12b1FeesOverAssets" xlink:label="DistributionAndService12b1FeesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="DistributionAndService12b1FeesOverAssets" order="20.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="DistributionOrSimilarNon12b1FeesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="DistributionOrSimilarNon12b1FeesOverAssets" order="30.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_OtherExpensesOverAssets" xlink:label="OtherExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="OtherExpensesOverAssets" order="40.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component1OtherExpensesOverAssets" xlink:label="Component1OtherExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component1OtherExpensesOverAssets" order="10.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component2OtherExpensesOverAssets" xlink:label="Component2OtherExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component2OtherExpensesOverAssets" order="20.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_Component3OtherExpensesOverAssets" xlink:label="Component3OtherExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component3OtherExpensesOverAssets" order="30.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_AcquiredFundFeesAndExpensesOverAssets" xlink:label="AcquiredFundFeesAndExpensesOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="AcquiredFundFeesAndExpensesOverAssets" order="50.0" weight="1" />
+    <loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/rr/2021/rr-2021.xsd#rr_FeeWaiverOrReimbursementOverAssets" xlink:label="FeeWaiverOrReimbursementOverAssets" />
+    <calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetExpensesOverAssets" xlink:to="FeeWaiverOrReimbursementOverAssets" order="20.0" weight="1" />
+  </calculationLink>
+</linkbase>

@@ -66,19 +66,37 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 			cell := &ContextualMemberCell{}
 			for _, ctxMember := range ctx.Members {
 				if ctxMember.Dimension.Href == voidCell.Dimension.Href {
-					if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
-						if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
-							cell = &ContextualMemberCell{
-								TypedMember: ctxMember.TypedMember,
+					if ctxMember.IsSegment != voidCell.IsParenthesized {
+						if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
+							if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
+								cell = &ContextualMemberCell{
+									TypedMember: ctxMember.TypedMember,
+								}
+								break
 							}
-							break
+						} else {
+							if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
+								cell = &ContextualMemberCell{
+									ExplicitMember: ctxMember.ExplicitMember,
+								}
+								break
+							}
 						}
 					} else {
-						if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
-							cell = &ContextualMemberCell{
-								ExplicitMember: ctxMember.ExplicitMember,
+						if ctxMember.TypedDomain != nil && voidCell.TypedDomain != nil {
+							if ctxMember.TypedDomain.Href == voidCell.TypedDomain.Href {
+								cell = &ContextualMemberCell{
+									TypedMember: ctxMember.TypedMember,
+								}
+								break
 							}
-							break
+						} else {
+							if ctxMember.TypedDomain == nil && voidCell.TypedDomain == nil {
+								cell = &ContextualMemberCell{
+									ExplicitMember: ctxMember.ExplicitMember,
+								}
+								break
+							}
 						}
 					}
 				}
@@ -92,47 +110,62 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 
 func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []myarcs.RArc,
 	scenarioTypedDomainTrees []myarcs.RArc) VoidQuadrant {
-	segmentExplicitDimensionMap := make(map[string]*RelevantMember)
-	scenarioExplicitDimensionMap := make(map[string]*RelevantMember)
-	segmentTypedDimensionMap := make(map[string]*myarcs.RArc)
-	scenarioTypedDimensionMap := make(map[string]*myarcs.RArc)
+	segmentExplicitDimensionMap := make(map[string]map[string]RelevantMember)
+	scenarioExplicitDimensionMap := make(map[string]map[string]RelevantMember)
 	allDimensionMap := make(map[string]*Dimension)
 	allTypedDomainMap := make(map[string]*TypedDomain)
+	allDimensionHrefs := make([]string, 0)
 	for i := 0; i < len(relevantContexts); i++ {
 		members := relevantContexts[i].Members
 		for _, member := range members {
-			if member.Dimension.Href != "" {
-				allDimensionMap[member.Dimension.Href] = &member.Dimension
+			if member.Dimension.Href == "" {
+				continue
 			}
+			if _, found := allDimensionMap[member.Dimension.Href]; !found {
+				allDimensionHrefs = append(allDimensionHrefs, member.Dimension.Href)
+			}
+			allDimensionMap[member.Dimension.Href] = &member.Dimension
 			if member.TypedDomain != nil {
 				allTypedDomainMap[member.TypedDomain.Href] = member.TypedDomain
 			}
 			if member.ExplicitMember != nil {
 				if member.IsSegment {
-					segmentExplicitDimensionMap[member.Dimension.Href] = &member
+					if segmentExplicitDimensionMap[member.Dimension.Href] == nil {
+						segmentExplicitDimensionMap[member.Dimension.Href] = make(map[string]RelevantMember)
+					}
+					segmentExplicitDimensionMap[member.Dimension.Href][member.ExplicitMember.Href] = member
 				} else {
-					scenarioExplicitDimensionMap[member.Dimension.Href] = &member
+					if scenarioExplicitDimensionMap[member.Dimension.Href] == nil {
+						scenarioExplicitDimensionMap[member.Dimension.Href] = make(map[string]RelevantMember)
+					}
+					scenarioExplicitDimensionMap[member.Dimension.Href][member.ExplicitMember.Href] = member
 				}
 			}
 		}
 	}
-
-	ret := make(VoidQuadrant, 0, len(segmentTypedDimensionMap)+
-		len(scenarioTypedDimensionMap)+len(segmentExplicitDimensionMap)+
-		len(scenarioExplicitDimensionMap))
-	for _, member := range segmentExplicitDimensionMap {
-		ret = append(ret, &VoidCell{
-			IsParenthesized: false,
-			Indentation:     0,
-			Dimension:       member.Dimension,
-		})
-	}
-	for _, member := range scenarioExplicitDimensionMap {
-		ret = append(ret, &VoidCell{
-			IsParenthesized: true,
-			Indentation:     0,
-			Dimension:       member.Dimension,
-		})
+	sort.Strings(allDimensionHrefs)
+	ret := make(VoidQuadrant, 0, len(allDimensionHrefs))
+	for _, href := range allDimensionHrefs {
+		if mapval, found := segmentExplicitDimensionMap[href]; found {
+			for _, member := range mapval {
+				ret = append(ret, &VoidCell{
+					IsParenthesized: false,
+					Indentation:     0,
+					Dimension:       member.Dimension,
+				})
+				break
+			}
+		}
+		if mapval, found := scenarioExplicitDimensionMap[href]; found {
+			for _, member := range mapval {
+				ret = append(ret, &VoidCell{
+					IsParenthesized: false,
+					Indentation:     0,
+					Dimension:       member.Dimension,
+				})
+				break
+			}
+		}
 	}
 
 	reducedSegmentTypedDomainTree := reduceTrees(segmentTypedDomainTrees)

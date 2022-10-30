@@ -109,7 +109,7 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 			}
 		}
 	}
-	return nil, labelPacks
+	return []IndentedLabel{}, labelPacks
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
