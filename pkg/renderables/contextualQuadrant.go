@@ -3,7 +3,7 @@ package renderables
 import (
 	"sort"
 
-	"ecksbee.com/telefacts/internal/graph"
+	myarcs "github.com/joshuanario/arcs"
 )
 
 type PeriodHeaders []LanguagePack
@@ -33,7 +33,7 @@ func getPeriodHeaders(relevantContexts []relevantContext) PeriodHeaders {
 }
 
 func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
-	segmentTypedDomainTrees []graph.LocatorNode, scenarioTypedDomainTrees []graph.LocatorNode) (ContextualMemberGrid,
+	segmentTypedDomainTrees []myarcs.RArc, scenarioTypedDomainTrees []myarcs.RArc) (ContextualMemberGrid,
 	VoidQuadrant) {
 	if len(relevantContexts) <= 0 {
 		return ContextualMemberGrid{}, VoidQuadrant{}
@@ -90,12 +90,12 @@ func getMemberGridAndVoidQuadrant(relevantContexts []relevantContext,
 	return ret, voidQuadrant
 }
 
-func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []graph.LocatorNode,
-	scenarioTypedDomainTrees []graph.LocatorNode) VoidQuadrant {
+func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees []myarcs.RArc,
+	scenarioTypedDomainTrees []myarcs.RArc) VoidQuadrant {
 	segmentExplicitDimensionMap := make(map[string]*RelevantMember)
 	scenarioExplicitDimensionMap := make(map[string]*RelevantMember)
-	segmentTypedDimensionMap := make(map[string]*graph.LocatorNode)
-	scenarioTypedDimensionMap := make(map[string]*graph.LocatorNode)
+	segmentTypedDimensionMap := make(map[string]*myarcs.RArc)
+	scenarioTypedDimensionMap := make(map[string]*myarcs.RArc)
 	allDimensionMap := make(map[string]*Dimension)
 	allTypedDomainMap := make(map[string]*TypedDomain)
 	for i := 0; i < len(relevantContexts); i++ {
@@ -138,8 +138,8 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 	reducedSegmentTypedDomainTree := reduceTrees(segmentTypedDomainTrees)
 	reducedScenarioTypedDomainTree := reduceTrees(scenarioTypedDomainTrees)
 	var dimension *Dimension
-	var makeIndents func(node *graph.LocatorNode, level int, isParenthesized bool)
-	makeIndents = func(node *graph.LocatorNode, level int, isParenthesized bool) {
+	var makeIndents func(node *myarcs.RArc, level int, isParenthesized bool)
+	makeIndents = func(node *myarcs.RArc, level int, isParenthesized bool) {
 		if dimension == nil && node.Locator != "" {
 			mappedDimension, ok := allDimensionMap[node.Locator]
 			if !ok {
@@ -186,10 +186,10 @@ func getVoidQuadrant(relevantContexts []relevantContext, segmentTypedDomainTrees
 	return ret
 }
 
-func reduceTrees(trees []graph.LocatorNode) graph.LocatorNode {
-	ret := graph.LocatorNode{}
+func reduceTrees(trees []myarcs.RArc) myarcs.RArc {
+	ret := myarcs.RArc{}
 	hasNonblankRoots := true
-	dimensions := make([]*graph.LocatorNode, 0, len(trees))
+	dimensions := make([]*myarcs.RArc, 0, len(trees))
 	for _, root := range trees {
 		if root.Locator == "" && len(root.Children) > 0 {
 			dimensions = append(dimensions, root.Children...)
@@ -198,16 +198,16 @@ func reduceTrees(trees []graph.LocatorNode) graph.LocatorNode {
 		}
 	}
 	if !hasNonblankRoots {
-		return graph.LocatorNode{}
+		return myarcs.RArc{}
 	}
 	ret.Order = 0
 	ret.Locator = ""
-	ret.Children = make([]*graph.LocatorNode, 0)
+	ret.Children = make([]*myarcs.RArc, 0)
 	ret = *dedupNodes(dimensions, ret, int(ret.Order))
 	return ret
 }
 
-func dedupNodes(children []*graph.LocatorNode, dst graph.LocatorNode, order int) *graph.LocatorNode {
+func dedupNodes(children []*myarcs.RArc, dst myarcs.RArc, order int) *myarcs.RArc {
 	if children == nil || len(children) <= 0 {
 		return &dst
 	}
@@ -219,18 +219,18 @@ func dedupNodes(children []*graph.LocatorNode, dst graph.LocatorNode, order int)
 	}
 	dedupLocators := dedup(dupLocators)
 	dedupLocators = sort.StringSlice(dedupLocators)
-	dedupChildren := make([]*graph.LocatorNode, 0)
+	dedupChildren := make([]*myarcs.RArc, 0)
 	for _, dedupLocator := range dedupLocators {
 		order++
-		dupGrandchildren := make([]*graph.LocatorNode, 0)
+		dupGrandchildren := make([]*myarcs.RArc, 0)
 		for _, dupChild := range children {
 			if dupChild.Locator == dedupLocator {
-				copied := make([]*graph.LocatorNode, len(dupChild.Children))
+				copied := make([]*myarcs.RArc, len(dupChild.Children))
 				copy(copied, dupChild.Children)
 				dupGrandchildren = append(dupGrandchildren, copied...)
 			}
 		}
-		dstChild := graph.LocatorNode{
+		dstChild := myarcs.RArc{
 			Locator: dedupLocator,
 			Order:   float64(order),
 		}

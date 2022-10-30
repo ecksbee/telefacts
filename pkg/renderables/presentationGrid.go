@@ -6,6 +6,7 @@ import (
 	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/hydratables"
+	myarcs "github.com/joshuanario/arcs"
 )
 
 type IndentedLabel struct {
@@ -54,10 +55,10 @@ func pGrid(schemedEntity string, linkroleURI string, h *hydratables.Hydratable,
 	}, labelRoles, langs, nil
 }
 
-func pArcs(pArcs []hydratables.PresentationArc) []graph.Arc {
-	ret := make([]graph.Arc, 0, len(pArcs))
+func pArcs(pArcs []hydratables.PresentationArc) []myarcs.Arc {
+	ret := make([]myarcs.Arc, 0, len(pArcs))
 	for _, pArc := range pArcs {
-		ret = append(ret, graph.Arc{
+		ret = append(ret, myarcs.Arc{
 			Arcrole: pArc.Arcrole,
 			Order:   pArc.Order,
 			From:    pArc.From,
@@ -83,8 +84,8 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 				pArcs := pArcs(arcs)
 				root := graph.Tree(pArcs, attr.PresentationArcrole)
 				ret := make([]IndentedLabel, 0, len(arcs))
-				var makeIndents func(node *graph.LocatorNode, level int)
-				makeIndents = func(node *graph.LocatorNode, level int) {
+				var makeIndents func(node *myarcs.RArc, level int)
+				makeIndents = func(node *myarcs.RArc, level int) {
 					if len(node.Children) <= 0 {
 						return
 					}
@@ -103,7 +104,7 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 						makeIndents(c, level+1)
 					}
 				}
-				makeIndents(&root, 0)
+				makeIndents(root, 0)
 				return ret, labelPacks
 			}
 		}
@@ -112,8 +113,8 @@ func getIndentedLabels(linkroleURI string, h *hydratables.Hydratable) ([]Indente
 }
 
 func getPresentationContexts(schemedEntity string, h *hydratables.Hydratable,
-	indentedLabels []IndentedLabel) ([]relevantContext, []graph.LocatorNode,
-	[]graph.LocatorNode, []LabelPack) {
+	indentedLabels []IndentedLabel) ([]relevantContext, []myarcs.RArc,
+	[]myarcs.RArc, []LabelPack) {
 	hrefs := make([]string, len(indentedLabels))
 	for i, indentedLabel := range indentedLabels {
 		hrefs[i] = indentedLabel.Href

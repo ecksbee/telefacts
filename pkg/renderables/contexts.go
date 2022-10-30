@@ -5,6 +5,7 @@ import (
 
 	"ecksbee.com/telefacts/internal/graph"
 	"ecksbee.com/telefacts/pkg/hydratables"
+	myarcs "github.com/joshuanario/arcs"
 )
 
 func getContext(instance *hydratables.Instance, contextRef string) *hydratables.Context {
@@ -150,7 +151,7 @@ func stringify(e *Entity) string {
 }
 
 func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
-	hrefs []string) ([]relevantContext, []graph.LocatorNode, []graph.LocatorNode, []LabelPack) {
+	hrefs []string) ([]relevantContext, []myarcs.RArc, []myarcs.RArc, []LabelPack) {
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
 		_, c, err := h.HashQuery(href)
@@ -159,10 +160,10 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 		}
 	}
 	if len(factuaHrefs) <= 0 {
-		return []relevantContext{}, []graph.LocatorNode{}, []graph.LocatorNode{}, []LabelPack{}
+		return []relevantContext{}, []myarcs.RArc{}, []myarcs.RArc{}, []LabelPack{}
 	}
-	segmentTypedDomainTrees := make([]graph.LocatorNode, 0)
-	scenarioTypedDomainTrees := make([]graph.LocatorNode, 0)
+	segmentTypedDomainTrees := make([]myarcs.RArc, 0)
+	scenarioTypedDomainTrees := make([]myarcs.RArc, 0)
 	ret := make([]relevantContext, 0, len(hrefs)*4)
 	labelPacks := make([]LabelPack, 0, len(hrefs)*4)
 	for _, instance := range h.Instances {
@@ -199,12 +200,12 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 }
 
 func getContextualMembers(context *hydratables.Context,
-	h *hydratables.Hydratable) ([]RelevantMember, []graph.LocatorNode,
-	[]graph.LocatorNode, []LabelPack) {
+	h *hydratables.Hydratable) ([]RelevantMember, []myarcs.RArc,
+	[]myarcs.RArc, []LabelPack) {
 	ret := make([]RelevantMember, 0)
 	labelPacks := make([]LabelPack, 0)
-	segmentTypedDomainTrees := make([]graph.LocatorNode, 0)
-	scenarioTypedDomainTrees := make([]graph.LocatorNode, 0)
+	segmentTypedDomainTrees := make([]myarcs.RArc, 0)
+	scenarioTypedDomainTrees := make([]myarcs.RArc, 0)
 	if len(context.Entity.Segment.ExplicitMembers) > 0 {
 		for _, explicitMember := range context.Entity.Segment.ExplicitMembers {
 			member := explicitMember.Member.Href
@@ -235,7 +236,7 @@ func getContextualMembers(context *hydratables.Context,
 				Href:  dimension,
 				Label: dimensionLabel,
 			}, true, h)
-			segmentTypedDomainTrees = append(segmentTypedDomainTrees, graph.Tree(typedDomainArcs, typedDomainArcRole))
+			segmentTypedDomainTrees = append(segmentTypedDomainTrees, *graph.Tree(typedDomainArcs, typedDomainArcRole))
 			labelPacks = append(labelPacks, typedDomainMemberLabels...)
 			ret = append(ret, typedDomainMembers...)
 		}
@@ -270,7 +271,7 @@ func getContextualMembers(context *hydratables.Context,
 				Href:  dimension,
 				Label: dimensionLabel,
 			}, false, h)
-			scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, graph.Tree(typedDomainArcs, typedDomainArcRole))
+			scenarioTypedDomainTrees = append(scenarioTypedDomainTrees, *graph.Tree(typedDomainArcs, typedDomainArcRole))
 			labelPacks = append(labelPacks, typedDomainMemberLabels...)
 			ret = append(ret, typedDomainMembers...)
 		}
