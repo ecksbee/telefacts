@@ -1,7 +1,9 @@
 package cache
 
 import (
+	"encoding/hex"
 	"fmt"
+	"hash/fnv"
 	"path/filepath"
 	"sync"
 
@@ -29,7 +31,36 @@ func NewCache(runDry bool) *gocache.Cache {
 	return appCache
 }
 
-func Marshal(id string, hash string) ([]byte, error) {
+func MarshalExpressable(id string, name string, contextref string) ([]byte, error) {
+	h, err := hydratable(id)
+	if err != nil {
+		return nil, err
+	}
+	hash := fnv.New128a()
+	hash.Write([]byte(id + "/facts/" + name + ":" + contextref))
+	cachekey := hex.EncodeToString(hash.Sum([]byte{}))
+	lock.RLock()
+	if !dry {
+		if x, found := appCache.Get(cachekey); found {
+			ret := x.([]byte)
+			lock.RUnlock()
+			return ret, nil
+		}
+	}
+	lock.RUnlock()
+	byteArr, err := renderables.MarshalExpressable(name, contextref, h)
+	go func() {
+		if dry {
+			return
+		}
+		lock.Lock()
+		defer lock.Unlock()
+		appCache.Set(cachekey, byteArr, gocache.DefaultExpiration)
+	}()
+	return byteArr, err
+}
+
+func MarshalRenderable(id string, hash string) ([]byte, error) {
 	lock.RLock()
 	if !dry {
 		if x, found := appCache.Get(id + "/" + hash); found {
