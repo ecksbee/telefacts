@@ -20,7 +20,10 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 	rsets := sortedRelationshipSets(h)
 	subjects := make([]Subject, 0, len(schemedEntities))
 	networks := map[string]map[string]string{}
-	documentName := h.Folder.EntryFileName
+	documentName := ""
+	if h.Document != nil {
+		documentName = h.Folder.EntryFileName
+	}
 	for _, schemedEntity := range schemedEntities {
 		entityStr := stringify(&schemedEntity)
 		networks[entityStr] = make(map[string]string)
