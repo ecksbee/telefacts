@@ -52,7 +52,16 @@ func TestCatalog_Expressables(t *testing.T) {
 	if c.DocumentName != "cmg-20200331x10q.htm" {
 		t.Fatalf("expected cmg-20200331x10q.htm; outcome %s;\n", c.DocumentName)
 	}
-	if len(c.Expressions) != 502 {
-		t.Fatalf("expected 502 Expressions; outcome %d;\n", len(c.Expressions))
+	data, err = renderables.MarshalExpressable("us-gaap:EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents", "Duration_1_1_2020_To_3_31_2020", h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	e := renderables.Expressable{}
+	err = json.Unmarshal(data, &e)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if e.Href != "http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents" {
+		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents; outcome %s;\n", e.Href)
 	}
 }
