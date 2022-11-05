@@ -15,4 +15,4 @@ Supports the following XBRL extensions:
 
 ~~Does not (and will most likely never) support inline XBRL~~
 
-Telefacts v1.1 now supports inline XBRL!
+Telefacts now supports inline XBRL!
