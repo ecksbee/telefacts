@@ -155,7 +155,7 @@ func getRelevantContexts(schemedEntity string, h *hydratables.Hydratable,
 	factuaHrefs := make([]string, 0, len(hrefs))
 	for _, href := range hrefs {
 		_, c, err := h.HashQuery(href)
-		if err == nil && !c.Abstract {
+		if err == nil && c != nil && !c.Abstract {
 			factuaHrefs = append(factuaHrefs, href)
 		}
 	}
