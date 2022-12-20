@@ -1,10 +1,12 @@
 package serializables
 
 import (
+	"encoding/base64"
 	"encoding/xml"
 	"errors"
 	"fmt"
 	"io/ioutil"
+	"net/http"
 	"os"
 	"path"
 	osFilepath "path/filepath"
@@ -25,6 +27,7 @@ type Folder struct {
 	PresentationLinkbases map[string]PresentationLinkbaseFile
 	DefinitionLinkbases   map[string]DefinitionLinkbaseFile
 	CalculationLinkbases  map[string]CalculationLinkbaseFile
+	Images                map[string]string
 }
 
 func Discover(id string) (*Folder, error) {
@@ -43,7 +46,9 @@ func Discover(id string) (*Folder, error) {
 		PresentationLinkbases: make(map[string]PresentationLinkbaseFile),
 		DefinitionLinkbases:   make(map[string]DefinitionLinkbaseFile),
 		CalculationLinkbases:  make(map[string]CalculationLinkbaseFile),
+		Images:                make(map[string]string),
 	}
+	ret.processImages(workingDir)
 	ext := osFilepath.Ext(entryFileName)
 	switch ext {
 	case ".xhtml", ".htm":
@@ -53,6 +58,9 @@ func Discover(id string) (*Folder, error) {
 			return nil, err
 		}
 		doc := DecodeIxbrlFile(data)
+		if len(ret.Images) > 0 {
+			doc.Bytes = TransformInlineImages(data, ret.Images)
+		}
 		if doc == nil {
 			return nil, fmt.Errorf("failed to decode IXBRL source document")
 		}
@@ -349,4 +357,36 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 		}
 	}
 	wg.Wait()
+}
+
+func (folder *Folder) processImages(workingDir string) {
+	files, err := ioutil.ReadDir(workingDir)
+	if err != nil {
+		return
+	}
+
+	for _, file := range files {
+		if file.IsDir() {
+			continue
+		}
+
+		bytes, err := ioutil.ReadFile(path.Join(workingDir, file.Name()))
+		if err != nil {
+			continue
+		}
+
+		base64Encoding := ""
+		mimeType := http.DetectContentType(bytes)
+
+		switch mimeType {
+		case "image/jpeg":
+			base64Encoding += "data:image/jpeg;base64,"
+		case "image/png":
+			base64Encoding += "data:image/png;base64,"
+		default:
+			continue
+		}
+		base64Encoding += base64.StdEncoding.EncodeToString(bytes)
+		folder.Images[file.Name()] = base64Encoding
+	}
 }

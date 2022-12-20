@@ -12,7 +12,7 @@ import (
 	gocache "github.com/patrickmn/go-cache"
 )
 
-func TestMarshalRenderable_Large_Footnote(t *testing.T) {
+func TestMarshalRenderable_Erroneous_Footnote(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = path.Join(".", "wd")
 	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
