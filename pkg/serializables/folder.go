@@ -57,8 +57,10 @@ func Discover(id string) (*Folder, error) {
 		if err != nil {
 			return nil, err
 		}
-		data = TransformInlineImages(data, ret.Images)
 		doc := DecodeIxbrlFile(data)
+		if len(ret.Images) > 0 {
+			doc.Bytes = TransformInlineImages(data, ret.Images)
+		}
 		if doc == nil {
 			return nil, fmt.Errorf("failed to decode IXBRL source document")
 		}
