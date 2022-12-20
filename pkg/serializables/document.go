@@ -7,7 +7,6 @@ import (
 
 	"ecksbee.com/telefacts/pkg/attr"
 	"github.com/antchfx/xmlquery"
-	// parsexml "github.com/jbowtie/gokogiri/xml"
 )
 
 var INDENT bool

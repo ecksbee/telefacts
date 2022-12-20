@@ -62,3 +62,50 @@ func TestDiscover_Gold(t *testing.T) {
 		t.Fatalf("expected 1 LabelLinkbase; outcome %d;\n", len(f.LabelLinkbases))
 	}
 }
+
+func TestDiscover_Erroneous_Images(t *testing.T) {
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	entryFilePath := "fizz20200502_10k_htm.xml"
+	f, err := serializables.Discover("test_erroneous")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if f.Dir != workingDir {
+		t.Fatalf("expected %s Dir; outcome %s;\n", workingDir, f.Dir)
+	}
+	_, found := f.Instances[entryFilePath]
+	if !found {
+		t.Fatalf("expected %s Instance to be found;\n", entryFilePath)
+	}
+	if len(f.Images) != 18 {
+		t.Fatalf("expected 18 images; outcome %d;\n", len(f.Images))
+	}
+}
+
+func TestDiscover_Image(t *testing.T) {
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_image")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	f, err := serializables.Discover("test_image")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if f.Dir != workingDir {
+		t.Fatalf("expected %s Dir; outcome %s;\n", workingDir, f.Dir)
+	}
+	if len(f.Images) != 1 {
+		t.Fatalf("expected 1 images; outcome %d;\n", len(f.Images))
+	}
+}
