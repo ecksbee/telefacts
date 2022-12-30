@@ -2,7 +2,6 @@ package serializables
 
 import (
 	"encoding/json"
-	"errors"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -42,9 +41,9 @@ func NewFolder(key string, underscore Underscore) (string, error) {
 	id := telefactsId()
 	pathStr := path.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)
-	for errors.Is(err, os.ErrNotExist) {
+	for err == nil {
 		if key != "" {
-			return id.String(), err
+			return id.String(), nil
 		}
 		id = telefactsId()
 		pathStr = path.Join(workingDir, id.String())
@@ -52,7 +51,7 @@ func NewFolder(key string, underscore Underscore) (string, error) {
 	}
 	err = os.Mkdir(pathStr, 0755)
 	if err != nil {
-		if errors.Is(err, os.ErrNotExist) {
+		if _, errr := os.Stat(pathStr); errr == nil {
 			return id.String(), err
 		}
 		return "", err
