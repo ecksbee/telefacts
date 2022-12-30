@@ -25,16 +25,24 @@ func GetEntryFileName(id string) (string, error) {
 	return underscore.Entry, err
 }
 
-func NewFolder(underscore Underscore) (string, error) {
+func NewFolder(key string, underscore Underscore) (string, error) {
 	if WorkingDirectoryPath == "" {
 		return "", fmt.Errorf("empty WorkingDirectoryPath")
 	}
+	telefactsId := func() uuid.UUID {
+		if key == "" {
+			return uuid.New()
+		}
+		var NilUuid uuid.UUID
+		bytes := []byte(key)
+		return uuid.NewMD5(NilUuid, bytes)
+	}
 	workingDir := path.Join(WorkingDirectoryPath, "folders")
-	id := uuid.New()
+	id := telefactsId()
 	pathStr := path.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)
 	for os.IsExist(err) {
-		id = uuid.New()
+		id = telefactsId()
 		pathStr = path.Join(workingDir, id.String())
 		_, err = os.Stat(pathStr)
 	}
