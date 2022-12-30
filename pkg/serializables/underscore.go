@@ -42,6 +42,9 @@ func NewFolder(key string, underscore Underscore) (string, error) {
 	pathStr := path.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)
 	for os.IsExist(err) {
+		if key == "" {
+			return id.String(), err
+		}
 		id = telefactsId()
 		pathStr = path.Join(workingDir, id.String())
 		_, err = os.Stat(pathStr)
