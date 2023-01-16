@@ -68,7 +68,7 @@ func getFactualQuadrant(hrefs []string, relevantContexts []relevantContext,
 		}
 	}
 	for _, footnote := range idMap {
-		arr = append(arr, footnote.CharData)
+		arr = append(arr, footnote.InnerHtml)
 	}
 	return ret, grid, arr
 }

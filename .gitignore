@@ -18,3 +18,6 @@
 .vscode/
 /cmd/telefacts/gts/**
 /cmd/telefacts/wd/**
+/goldlord-midas/**
+/wd/**
+/gts/**

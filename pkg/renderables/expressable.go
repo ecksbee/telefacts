@@ -60,7 +60,7 @@ func MarshalExpressable(name string, contextref string, h *hydratables.Hydratabl
 	footnotes := h.GetFootnotes(hydratedFact)
 	footnoteTexts := make([]string, 0, len(footnotes))
 	for _, footnote := range footnotes {
-		footnoteTexts = append(footnoteTexts, footnote.CharData)
+		footnoteTexts = append(footnoteTexts, footnote.InnerHtml)
 	}
 	return json.Marshal(Expressable{
 		Href:   href,

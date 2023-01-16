@@ -111,7 +111,7 @@ type InstanceFile struct {
 		Footnote []struct {
 			XMLName  xml.Name
 			XMLAttrs []xml.Attr `xml:",any,attr"`
-			CharData string     `xml:",chardata"`
+			XMLInner string     `xml:",innerxml"`
 		} `xml:"footnote"`
 		Loc []struct {
 			XMLAttrs []xml.Attr `xml:",any,attr"`
