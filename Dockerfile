@@ -10,7 +10,7 @@ FROM ghcr.io/ecksbee/goldlord-midas:main as spa
 
 FROM ghcr.io/ecksbee/sec-testdata:main
 COPY --from=builder /mybuild/main /
-COPY --from=spa / /wd/goldlord-midas
+COPY --from=spa / /goldlord-midas
 WORKDIR /
 USER 1000
 EXPOSE 8080

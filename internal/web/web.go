@@ -111,7 +111,7 @@ func NewRouter() http.Handler {
 	if err != nil {
 		panic(err)
 	}
-	conceptnetworkbrowser := http.FileServer(http.Dir((filepath.Join(wd, "wd", "goldlord-midas"))))
+	conceptnetworkbrowser := http.FileServer(http.Dir((filepath.Join(wd, "goldlord-midas"))))
 	r.PathPrefix("/").Handler(http.StripPrefix("/", conceptnetworkbrowser))
 	return r
 }

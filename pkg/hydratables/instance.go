@@ -88,10 +88,10 @@ type FootnoteLink struct {
 }
 
 type Footnote struct {
-	ID       string
-	CharData string
-	Lang     string
-	Label    string
+	ID        string
+	InnerHtml string
+	Lang      string
+	Label     string
 }
 
 type FootnoteLinkLoc struct {
@@ -576,10 +576,10 @@ func hydrateFootnoteLinks(instanceFile *serializables.InstanceFile) []FootnoteLi
 				continue
 			}
 			newFootnote := Footnote{
-				ID:       footnoteidAttr.Value,
-				Label:    footnotelabelAttr.Value,
-				Lang:     footnotelangAttr.Value,
-				CharData: footnote.CharData,
+				ID:        footnoteidAttr.Value,
+				Label:     footnotelabelAttr.Value,
+				Lang:      footnotelangAttr.Value,
+				InnerHtml: footnote.XMLInner,
 			}
 			item.Footnotes = append(item.Footnotes, newFootnote)
 		}
