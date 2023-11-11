@@ -10,6 +10,7 @@ const Verbose = LabelRole("Verbose")
 type LabelPack map[LabelRole]LanguagePack
 
 const PureLabel = Lang("Unlabelled")
+const BriefLabel = Lang("Truncated")
 const English = Lang("en - english")
 const Deutsch = Lang("de - deutsch")
 const Français = Lang("fr - français")

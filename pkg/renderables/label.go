@@ -1,6 +1,8 @@
 package renderables
 
 import (
+	"strings"
+
 	"ecksbee.com/telefacts/pkg/attr"
 	"ecksbee.com/telefacts/pkg/hydratables"
 )
@@ -9,6 +11,10 @@ func GetLabel(h *hydratables.Hydratable, href string) LabelPack {
 	ret := LabelPack{}
 	ret[Default] = make(LanguagePack)
 	ret[Default][PureLabel] = href
+	index := strings.IndexRune(href, '#')
+	if index > -1 {
+		ret[Default][BriefLabel] = href[index:]
+	}
 	ret = appendLabelModifiersFromHref(ret, h, href)
 	return ret
 }
