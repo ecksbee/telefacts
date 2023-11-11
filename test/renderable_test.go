@@ -87,8 +87,8 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 		t.Fatalf("expected 3 LabelRole; outcome %d;\n", len(r.LabelRoles))
 	}
 
-	if len(r.Lang) != 2 {
-		t.Fatalf("expected 2 Lang; outcome %d;\n", len(r.Lang))
+	if len(r.Lang) != 3 {
+		t.Fatalf("expected 3 Lang; outcome %d;\n", len(r.Lang))
 	}
 
 	if r.RelationshipSet.Title != "1001002 - Statement - CONDENSED CONSOLIDATED BALANCE SHEETS" {
@@ -105,7 +105,7 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 
 	iLabel42 := r.PGrid.IndentedLabels[42]
 	if langPack, found := iLabel42.Label[renderables.Default]; iLabel42.Href != `http://xbrl.fasb.org/us-gaap/2020/elts/us-gaap-2020-01-31.xsd#us-gaap_CommonClassBMember` ||
-		!found || len(langPack) != 2 ||
+		!found || len(langPack) != 3 ||
 		langPack[renderables.English] != `Common Class B [Member]` {
 		t.Fatalf("expected Common Class B [Member]; outcome %v;\n", r.PGrid.IndentedLabels[42])
 	}
@@ -213,8 +213,8 @@ func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
 		t.Fatalf("expected 2 LabelRole; outcome %d;\n", len(r.LabelRoles))
 	}
 
-	if len(r.Lang) != 2 {
-		t.Fatalf("expected 2 Lang; outcome %d;\n", len(r.Lang))
+	if len(r.Lang) != 3 {
+		t.Fatalf("expected 3 Lang; outcome %d;\n", len(r.Lang))
 	}
 
 	if r.RelationshipSet.Title != "2429414 - Disclosure - Revenue Recognition - Deferred Revenue and Transaction Price Allocated to the Remaining Performance Obligations (Details)" {
