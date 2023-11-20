@@ -63,7 +63,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 					Sign  rune
 					Scale float64
 				}
-				cMap := make(map[string][]cStruct)
+				cMap := make(map[string][]*cStruct)
 				for _, arc := range arcs {
 					if arc.Arcrole == attr.CalculationArcrole {
 						order := arc.Order
@@ -75,7 +75,7 @@ func getSummationItems(schemedEntity string, linkroleURI string, h *hydratables.
 						}
 						scale := math.Abs(weight)
 						cMap[fromHref] = append(cMap[fromHref],
-							cStruct{
+							&cStruct{
 								Href:  mapCLocatorToHref(linkroleURI, &calculation, arc.To),
 								Order: order,
 								Sign:  sign,

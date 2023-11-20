@@ -38,7 +38,9 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 	rsets := sortedRelationshipSets(h)
 	for _, schemedEntity := range schemedEntities {
 		for _, rset := range rsets {
-			if slug == hash(stringify(&schemedEntity), rset.RoleURI) {
+			eentity := stringify(&schemedEntity)
+			llinkrole := rset.RoleURI
+			if slug == hash(eentity, llinkrole) {
 				var (
 					p          PGrid
 					d          DGrid
@@ -61,7 +63,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					p = localP
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(stringify(&schemedEntity), rset.RoleURI)
+				}(eentity, llinkrole)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
 					localD, lr, ln, localError := dGrid(entity, linkrole, h, h, h, h)
@@ -72,7 +74,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					d = localD
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(stringify(&schemedEntity), rset.RoleURI)
+				}(eentity, llinkrole)
 				go func(entity string, linkrole string) {
 					defer wg.Done()
 					localC, lr, ln, localError := cGrid(entity, linkrole, h, h, h, h)
@@ -83,7 +85,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 					c = localC
 					labelRoles = append(labelRoles, lr...)
 					langs = append(langs, ln...)
-				}(stringify(&schemedEntity), rset.RoleURI)
+				}(eentity, llinkrole)
 				wg.Wait()
 				langs = dedupLang(langs)
 				labelRoles = dedupLabelRole(labelRoles)

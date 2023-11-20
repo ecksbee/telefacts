@@ -27,9 +27,6 @@ func (h *Hydratable) HashQuery(query string) (string, *Concept, error) {
 			namespace = key
 		}
 	}
-	if namespace == "" {
-		return "", nil, fmt.Errorf("base query is not scoped to the folder: %s", base)
-	}
 	if attr.IsValidUrl(base) {
 		schema, err := HydrateGlobalSchema(base)
 		if err != nil {
@@ -49,7 +46,7 @@ func (h *Hydratable) HashQuery(query string) (string, *Concept, error) {
 			return namespace, &candidate, nil
 		}
 	}
-	return namespace, nil, nil
+	return namespace, nil, fmt.Errorf("concept not found %s", query)
 }
 
 func (h *Hydratable) NameQuery(namespace string, localName string) (string, *Concept, error) {
