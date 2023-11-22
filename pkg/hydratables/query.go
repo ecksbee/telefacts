@@ -17,7 +17,7 @@ func (h *Hydratable) HashQuery(query string) (string, *Concept, error) {
 		return "", nil, fmt.Errorf("invalid base query")
 	}
 	fragment := query[i+1:]
-	if len(base) <= 0 {
+	if len(fragment) <= 0 {
 		return "", nil, fmt.Errorf("invalid query fragment")
 	}
 	var namespace string
