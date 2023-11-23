@@ -1,0 +1,945 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<xs:schema
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:oef="http://xbrl.sec.gov/oef/2023"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:country="http://xbrl.sec.gov/country/2023"
+xmlns:dtr="http://www.xbrl.org/2009/dtr"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:us-types="http://fasb.org/us-types/2023"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:srt="http://fasb.org/srt/2023"
+xmlns:country-def="http://xbrl.sec.gov/country-def/2023"
+xmlns:srt-types="http://fasb.org/srt-types/2023"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:us-gaap="http://fasb.org/us-gaap/2023"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dei="http://xbrl.sec.gov/dei/2023"
+xmlns:oef-lab="http://xbrl.sec.gov/oef-lab/2023"
+targetNamespace="http://xbrl.sec.gov/oef-lab/2023"
+elementFormDefault="qualified"
+xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+<xs:annotation>
+<xs:appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://www.xbrl.org/2009/role/negatedLabel" xlink:type="simple" xlink:href="http://www.xbrl.org/lrr/role/negated-2009-12-16.xsd#negatedLabel"/>
+<link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_SecurityExchangeName" xlink:label="SecurityExchangeName"/>
+<link:label xlink:type="resource" xlink:label="label_SecurityExchangeName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Security Exchange Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SecurityExchangeName" xlink:to="label_SecurityExchangeName" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_SecurityExchangeName_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" >Exchange</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SecurityExchangeName" xlink:to="label_SecurityExchangeName_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:label xlink:type="resource" xlink:label="label_EntityInvCompanyType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Entity Investment Company Type</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityInvCompanyType" xlink:to="label_EntityInvCompanyType" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskAxis" xlink:label="RiskAxis"/>
+<link:label xlink:type="resource" xlink:label="label_RiskAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskAxis" xlink:to="label_RiskAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AllRisksMember" xlink:label="AllRisksMember"/>
+<link:label xlink:type="resource" xlink:label="label_AllRisksMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >All Risks [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AllRisksMember" xlink:to="label_AllRisksMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskTextBlock" xlink:label="RiskTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_RiskTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskTextBlock" xlink:to="label_RiskTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskNondiversifiedStatusMember" xlink:label="RiskNondiversifiedStatusMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskNondiversifiedStatusMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Nondiversified Status [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskNondiversifiedStatusMember" xlink:to="label_RiskNondiversifiedStatusMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskLoseMoneyMember" xlink:label="RiskLoseMoneyMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskLoseMoneyMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Lose Money [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskLoseMoneyMember" xlink:to="label_RiskLoseMoneyMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskMoneyMarketFundPriceFluctuatesMember" xlink:label="RiskMoneyMarketFundPriceFluctuatesMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskMoneyMarketFundPriceFluctuatesMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Money Market Fund Price Fluctuates [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskMoneyMarketFundPriceFluctuatesMember" xlink:to="label_RiskMoneyMarketFundPriceFluctuatesMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" xlink:label="RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Money Market Fund May Impose Fees or Suspend Sales [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" xlink:to="label_RiskMoneyMarketFundMayImposeFeesOrSuspendSalesMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskMoneyMarketFundMayNotPreserveDollarMember" xlink:label="RiskMoneyMarketFundMayNotPreserveDollarMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskMoneyMarketFundMayNotPreserveDollarMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Money Market Fund May Not Preserve Dollar [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskMoneyMarketFundMayNotPreserveDollarMember" xlink:to="label_RiskMoneyMarketFundMayNotPreserveDollarMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskMoneyMarketFundSponsorMayNotProvideSupportMember" xlink:label="RiskMoneyMarketFundSponsorMayNotProvideSupportMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskMoneyMarketFundSponsorMayNotProvideSupportMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Money Market Fund Sponsor May Not Provide Support [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskMoneyMarketFundSponsorMayNotProvideSupportMember" xlink:to="label_RiskMoneyMarketFundSponsorMayNotProvideSupportMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskNotInsuredDepositoryInstitutionMember" xlink:label="RiskNotInsuredDepositoryInstitutionMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskNotInsuredDepositoryInstitutionMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Not Insured Depository Institution [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskNotInsuredDepositoryInstitutionMember" xlink:to="label_RiskNotInsuredDepositoryInstitutionMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskNotInsuredMember" xlink:label="RiskNotInsuredMember"/>
+<link:label xlink:type="resource" xlink:label="label_RiskNotInsuredMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Not Insured [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskNotInsuredMember" xlink:to="label_RiskNotInsuredMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngTextBlock" xlink:label="MaterialFundChngTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngTextBlock" xlink:to="label_MaterialFundChngTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngNameTextBlock" xlink:label="MaterialFundChngNameTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngNameTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Name [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngNameTextBlock" xlink:to="label_MaterialFundChngNameTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngObjectivesTextBlock" xlink:label="MaterialFundChngObjectivesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngObjectivesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Objectives [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngObjectivesTextBlock" xlink:to="label_MaterialFundChngObjectivesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngExpensesTextBlock" xlink:label="MaterialFundChngExpensesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngExpensesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Expenses [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngExpensesTextBlock" xlink:to="label_MaterialFundChngExpensesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngStrategiesTextBlock" xlink:label="MaterialFundChngStrategiesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngStrategiesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Strategies [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngStrategiesTextBlock" xlink:to="label_MaterialFundChngStrategiesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngRisksChngTextBlock" xlink:label="MaterialFundChngRisksChngTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngRisksChngTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Risks Change [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngRisksChngTextBlock" xlink:to="label_MaterialFundChngRisksChngTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngAdviserTextBlock" xlink:label="MaterialFundChngAdviserTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngAdviserTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Adviser [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngAdviserTextBlock" xlink:to="label_MaterialFundChngAdviserTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_SummaryOfChngLegendTextBlock" xlink:label="SummaryOfChngLegendTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_SummaryOfChngLegendTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Summary of Change Legend [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SummaryOfChngLegendTextBlock" xlink:to="label_SummaryOfChngLegendTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UpdProspectusPhoneNumber" xlink:label="UpdProspectusPhoneNumber"/>
+<link:label xlink:type="resource" xlink:label="label_UpdProspectusPhoneNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Updated Prospectus Phone Number</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpdProspectusPhoneNumber" xlink:to="label_UpdProspectusPhoneNumber" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UpdProspectusEmailAddress" xlink:label="UpdProspectusEmailAddress"/>
+<link:label xlink:type="resource" xlink:label="label_UpdProspectusEmailAddress" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Updated Prospectus Email Address</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpdProspectusEmailAddress" xlink:to="label_UpdProspectusEmailAddress" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UpdProspectusWebAddress" xlink:label="UpdProspectusWebAddress"/>
+<link:label xlink:type="resource" xlink:label="label_UpdProspectusWebAddress" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Updated Prospectus Web Address</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpdProspectusWebAddress" xlink:to="label_UpdProspectusWebAddress" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountantChngStatementTextBlock" xlink:label="AccountantChngStatementTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AccountantChngStatementTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Accountant Change Statement [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountantChngStatementTextBlock" xlink:to="label_AccountantChngStatementTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountantChngDate" xlink:label="AccountantChngDate"/>
+<link:label xlink:type="resource" xlink:label="label_AccountantChngDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Accountant Change Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountantChngDate" xlink:to="label_AccountantChngDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountantChngDisagreementsTextBlock" xlink:label="AccountantChngDisagreementsTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AccountantChngDisagreementsTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Accountant Change Disagreements [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountantChngDisagreementsTextBlock" xlink:to="label_AccountantChngDisagreementsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlInfoTextBlock" xlink:label="AddlInfoTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AddlInfoTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Information [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlInfoTextBlock" xlink:to="label_AddlInfoTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialFundChngNoticeTextBlock" xlink:label="MaterialFundChngNoticeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialFundChngNoticeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Fund Change Notice [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialFundChngNoticeTextBlock" xlink:to="label_MaterialFundChngNoticeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlInfoPhoneNumber" xlink:label="AddlInfoPhoneNumber"/>
+<link:label xlink:type="resource" xlink:label="label_AddlInfoPhoneNumber" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Information Phone Number</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlInfoPhoneNumber" xlink:to="label_AddlInfoPhoneNumber" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlInfoEmail" xlink:label="AddlInfoEmail"/>
+<link:label xlink:type="resource" xlink:label="label_AddlInfoEmail" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Information Email</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlInfoEmail" xlink:to="label_AddlInfoEmail" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlInfoWebsite" xlink:label="AddlInfoWebsite"/>
+<link:label xlink:type="resource" xlink:label="label_AddlInfoWebsite" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Information Website</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlInfoWebsite" xlink:to="label_AddlInfoWebsite" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesTextBlock" xlink:label="ExpensesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesTextBlock" xlink:to="label_ExpensesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesPaidAmt" xlink:label="ExpensesPaidAmt"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesPaidAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Paid, Amount</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesPaidAmt" xlink:to="label_ExpensesPaidAmt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseRatioPct" xlink:label="ExpenseRatioPct"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseRatioPct" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Ratio, Percent</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseRatioPct" xlink:to="label_ExpenseRatioPct" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesShortPeriodFnTextBlock" xlink:label="ExpensesShortPeriodFnTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesShortPeriodFnTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Short Period Footnote [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesShortPeriodFnTextBlock" xlink:to="label_ExpensesShortPeriodFnTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExtraordinaryExpensesFnTextBlock" xlink:label="ExtraordinaryExpensesFnTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExtraordinaryExpensesFnTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Extraordinary Expenses Footnote [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExtraordinaryExpensesFnTextBlock" xlink:to="label_ExtraordinaryExpensesFnTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesExclExtraordinaryExpensesPct" xlink:label="ExpensesExclExtraordinaryExpensesPct"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesExclExtraordinaryExpensesPct" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Excluding Extraordinary Expenses, Percent</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesExclExtraordinaryExpensesPct" xlink:to="label_ExpensesExclExtraordinaryExpensesPct" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FactorsAffectingPerfTextBlock" xlink:label="FactorsAffectingPerfTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_FactorsAffectingPerfTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Factors Affecting Performance [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FactorsAffectingPerfTextBlock" xlink:to="label_FactorsAffectingPerfTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AcctVal" xlink:label="AcctVal"/>
+<link:label xlink:type="resource" xlink:label="label_AcctVal" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Account Value</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AcctVal" xlink:to="label_AcctVal" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LineGraphAndTableMeasureName" xlink:label="LineGraphAndTableMeasureName"/>
+<link:label xlink:type="resource" xlink:label="label_LineGraphAndTableMeasureName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Line Graph and Table Measure Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LineGraphAndTableMeasureName" xlink:to="label_LineGraphAndTableMeasureName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_NoDeductionOfTaxesTextBlock" xlink:label="NoDeductionOfTaxesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_NoDeductionOfTaxesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >No Deduction of Taxes [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NoDeductionOfTaxesTextBlock" xlink:to="label_NoDeductionOfTaxesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerfTableMarketIndexChngdTextBlock" xlink:label="PerfTableMarketIndexChngdTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerfTableMarketIndexChngdTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Market Index Changed [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerfTableMarketIndexChngdTextBlock" xlink:to="label_PerfTableMarketIndexChngdTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PriorMarketIndexComparisonTextBlock" xlink:label="PriorMarketIndexComparisonTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PriorMarketIndexComparisonTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Prior Market Index Comparison [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PriorMarketIndexComparisonTextBlock" xlink:to="label_PriorMarketIndexComparisonTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PreviousInvestmentAdviserTextBlock" xlink:label="PreviousInvestmentAdviserTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PreviousInvestmentAdviserTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Previous Investment Adviser [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PreviousInvestmentAdviserTextBlock" xlink:to="label_PreviousInvestmentAdviserTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialChngDescriptionTextBlock" xlink:label="MaterialChngDescriptionTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialChngDescriptionTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Change Description [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialChngDescriptionTextBlock" xlink:to="label_MaterialChngDescriptionTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialChngDate" xlink:label="MaterialChngDate"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialChngDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Material Change Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialChngDate" xlink:to="label_MaterialChngDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UpdPerfInfoLocationTextBlock" xlink:label="UpdPerfInfoLocationTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_UpdPerfInfoLocationTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Updated Performance Information Location [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UpdPerfInfoLocationTextBlock" xlink:to="label_UpdPerfInfoLocationTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_InabilityToMeetDistLevelTextBlock" xlink:label="InabilityToMeetDistLevelTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_InabilityToMeetDistLevelTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Inability to Meet Distribution Level [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InabilityToMeetDistLevelTextBlock" xlink:to="label_InabilityToMeetDistLevelTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_DistOfCapitalTextBlock" xlink:label="DistOfCapitalTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_DistOfCapitalTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Distribution of Capital [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DistOfCapitalTextBlock" xlink:to="label_DistOfCapitalTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_EtfPremiumDiscountTextBlock" xlink:label="EtfPremiumDiscountTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_EtfPremiumDiscountTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >ETF Premium Discount [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EtfPremiumDiscountTextBlock" xlink:to="label_EtfPremiumDiscountTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_EtfPremiumNumDays" xlink:label="EtfPremiumNumDays"/>
+<link:label xlink:type="resource" xlink:label="label_EtfPremiumNumDays" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >ETF Premium, Number of Days</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EtfPremiumNumDays" xlink:to="label_EtfPremiumNumDays" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_EtfDiscountNumDays" xlink:label="EtfDiscountNumDays"/>
+<link:label xlink:type="resource" xlink:label="label_EtfDiscountNumDays" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >ETF Discount, Number of Days</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EtfDiscountNumDays" xlink:to="label_EtfDiscountNumDays" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_EtfPurchaseExplanationTextBlock" xlink:label="EtfPurchaseExplanationTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_EtfPurchaseExplanationTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >ETF Purchase Explanation [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EtfPurchaseExplanationTextBlock" xlink:to="label_EtfPurchaseExplanationTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_EtfPastPerfTextBlock" xlink:label="EtfPastPerfTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_EtfPastPerfTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >ETF Past Performance [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EtfPastPerfTextBlock" xlink:to="label_EtfPastPerfTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HoldingsCount" xlink:label="HoldingsCount"/>
+<link:label xlink:type="resource" xlink:label="label_HoldingsCount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Holdings Count</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HoldingsCount" xlink:to="label_HoldingsCount" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AdvisoryFeesPaidAmt" xlink:label="AdvisoryFeesPaidAmt"/>
+<link:label xlink:type="resource" xlink:label="label_AdvisoryFeesPaidAmt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Advisory Fees Paid, Amount</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AdvisoryFeesPaidAmt" xlink:to="label_AdvisoryFeesPaidAmt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlFundStatisticsTextBlock" xlink:label="AddlFundStatisticsTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AddlFundStatisticsTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Fund Statistics [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlFundStatisticsTextBlock" xlink:to="label_AddlFundStatisticsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AddlFundStatisticsSignificanceOrLimitsTextBlock" xlink:label="AddlFundStatisticsSignificanceOrLimitsTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AddlFundStatisticsSignificanceOrLimitsTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Fund Statistics Significance or Limits [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AddlFundStatisticsSignificanceOrLimitsTextBlock" xlink:to="label_AddlFundStatisticsSignificanceOrLimitsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfTotalInv" xlink:label="PctOfTotalInv"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfTotalInv" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Total Investments</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfTotalInv" xlink:to="label_PctOfTotalInv" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfTotalLongExposure" xlink:label="PctOfTotalLongExposure"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfTotalLongExposure" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Total Long Exposure</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfTotalLongExposure" xlink:to="label_PctOfTotalLongExposure" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfTotalShortExposure" xlink:label="PctOfTotalShortExposure"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfTotalShortExposure" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Total Short Exposure</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfTotalShortExposure" xlink:to="label_PctOfTotalShortExposure" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfNetLongExposure" xlink:label="PctOfNetLongExposure"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfNetLongExposure" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Net Long Exposure</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfNetLongExposure" xlink:to="label_PctOfNetLongExposure" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfNetShortExposure" xlink:label="PctOfNetShortExposure"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfNetShortExposure" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Net Short Exposure</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfNetShortExposure" xlink:to="label_PctOfNetShortExposure" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExposureBasisExplanationTextBlock" xlink:label="ExposureBasisExplanationTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExposureBasisExplanationTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Exposure Basis Explanation [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExposureBasisExplanationTextBlock" xlink:to="label_ExposureBasisExplanationTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_CreditQualityExplanationTextBlock" xlink:label="CreditQualityExplanationTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_CreditQualityExplanationTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Credit Quality Explanation [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CreditQualityExplanationTextBlock" xlink:to="label_CreditQualityExplanationTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_CreditRatingsSelectionTextBlock" xlink:label="CreditRatingsSelectionTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_CreditRatingsSelectionTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Credit Ratings Selection [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CreditRatingsSelectionTextBlock" xlink:to="label_CreditRatingsSelectionTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LargestHoldingsTableTextBlock" xlink:label="LargestHoldingsTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_LargestHoldingsTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Largest Holdings [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LargestHoldingsTableTextBlock" xlink:to="label_LargestHoldingsTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderReportLineItems" xlink:label="ShareholderReportLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderReportLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Report [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderReportLineItems" xlink:to="label_ShareholderReportLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountValueTableAbstract" xlink:label="AccountValueTableAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_AccountValueTableAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Account Value Table [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountValueTableAbstract" xlink:to="label_AccountValueTableAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountValueLineItems" xlink:label="AccountValueLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_AccountValueLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Account Value [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountValueLineItems" xlink:to="label_AccountValueLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AccountValueTable" xlink:label="AccountValueTable"/>
+<link:label xlink:type="resource" xlink:label="label_AccountValueTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Account Value [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AccountValueTable" xlink:to="label_AccountValueTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LargestHoldingAxis" xlink:label="LargestHoldingAxis"/>
+<link:label xlink:type="resource" xlink:label="label_LargestHoldingAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Largest Holding [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LargestHoldingAxis" xlink:to="label_LargestHoldingAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderReportTable" xlink:label="ShareholderReportTable"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderReportTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Report [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderReportTable" xlink:to="label_ShareholderReportTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderReportAbstract" xlink:label="ShareholderReportAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderReportAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Report [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderReportAbstract" xlink:to="label_ShareholderReportAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HoldingsTable" xlink:label="HoldingsTable"/>
+<link:label xlink:type="resource" xlink:label="label_HoldingsTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Holdings [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HoldingsTable" xlink:to="label_HoldingsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HoldingsAbstract" xlink:label="HoldingsAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_HoldingsAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Holdings [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HoldingsAbstract" xlink:to="label_HoldingsAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HoldingsLineItems" xlink:label="HoldingsLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_HoldingsLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Holdings [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HoldingsLineItems" xlink:to="label_HoldingsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LineGraphTableTextBlock" xlink:label="LineGraphTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_LineGraphTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Line Graph [Table Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LineGraphTableTextBlock" xlink:to="label_LineGraphTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HoldingsTableTextBlock" xlink:label="HoldingsTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_HoldingsTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Holdings [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HoldingsTableTextBlock" xlink:to="label_HoldingsTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_SalesLoadAxis" xlink:label="SalesLoadAxis"/>
+<link:label xlink:type="resource" xlink:label="label_SalesLoadAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Sales Load [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SalesLoadAxis" xlink:to="label_SalesLoadAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_WithSalesLdMember" xlink:label="WithSalesLoadMember"/>
+<link:label xlink:type="resource" xlink:label="label_WithSalesLoadMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >With Sales Load [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="WithSalesLoadMember" xlink:to="label_WithSalesLoadMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_WithoutSalesLoadMember" xlink:label="WithoutSalesLoadMember"/>
+<link:label xlink:type="resource" xlink:label="label_WithoutSalesLoadMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Without Sales Load [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="WithoutSalesLoadMember" xlink:to="label_WithoutSalesLoadMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AvgAnnlRtrTableTextBlock" xlink:label="AvgAnnlRtrTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AvgAnnlRtrTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return [Table Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AvgAnnlRtrTableTextBlock" xlink:to="label_AvgAnnlRtrTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AvgAnnlRtrPct" xlink:label="AvgAnnlRtrPct"/>
+<link:label xlink:type="resource" xlink:label="label_AvgAnnlRtrPct" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return, Percent</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AvgAnnlRtrPct" xlink:to="label_AvgAnnlRtrPct" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerfInceptionDate" xlink:label="PerfInceptionDate"/>
+<link:label xlink:type="resource" xlink:label="label_PerfInceptionDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Inception Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerfInceptionDate" xlink:to="label_PerfInceptionDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LargestHoldingsDomain" xlink:label="LargestHoldingsDomain"/>
+<link:label xlink:type="resource" xlink:label="label_LargestHoldingsDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Largest Holdings [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LargestHoldingsDomain" xlink:to="label_LargestHoldingsDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_IndustrySectorAxis" xlink:label="IndustrySectorAxis"/>
+<link:label xlink:type="resource" xlink:label="label_IndustrySectorAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Industry Sector [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IndustrySectorAxis" xlink:to="label_IndustrySectorAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_GeographicRegionAxis" xlink:label="GeographicRegionAxis"/>
+<link:label xlink:type="resource" xlink:label="label_GeographicRegionAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Geographic Region [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="GeographicRegionAxis" xlink:to="label_GeographicRegionAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_CreditQualityAxis" xlink:label="CreditQualityAxis"/>
+<link:label xlink:type="resource" xlink:label="label_CreditQualityAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Credit Quality [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CreditQualityAxis" xlink:to="label_CreditQualityAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaturityAxis" xlink:label="MaturityAxis"/>
+<link:label xlink:type="resource" xlink:label="label_MaturityAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maturity [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaturityAxis" xlink:to="label_MaturityAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_IndustrySectorDomain" xlink:label="IndustrySectorDomain"/>
+<link:label xlink:type="resource" xlink:label="label_IndustrySectorDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Industry Sector [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IndustrySectorDomain" xlink:to="label_IndustrySectorDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_GeographicRegionDomain" xlink:label="GeographicRegionDomain"/>
+<link:label xlink:type="resource" xlink:label="label_GeographicRegionDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Geographic Region [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="GeographicRegionDomain" xlink:to="label_GeographicRegionDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_CreditQualityDomain" xlink:label="CreditQualityDomain"/>
+<link:label xlink:type="resource" xlink:label="label_CreditQualityDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Credit Quality [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CreditQualityDomain" xlink:to="label_CreditQualityDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaturityDomain" xlink:label="MaturityDomain"/>
+<link:label xlink:type="resource" xlink:label="label_MaturityDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maturity [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaturityDomain" xlink:to="label_MaturityDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherCategory1Domain" xlink:label="OtherCategory1Domain"/>
+<link:label xlink:type="resource" xlink:label="label_OtherCategory1Domain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Category 1 [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherCategory1Domain" xlink:to="label_OtherCategory1Domain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherCategory2Domain" xlink:label="OtherCategory2Domain"/>
+<link:label xlink:type="resource" xlink:label="label_OtherCategory2Domain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Category 2 [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherCategory2Domain" xlink:to="label_OtherCategory2Domain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ConsumerDiscretionarySectorMember" xlink:label="ConsumerDiscretionarySectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_ConsumerDiscretionarySectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Consumer Discretionary Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ConsumerDiscretionarySectorMember" xlink:to="label_ConsumerDiscretionarySectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ConsumerStaplesSectorMember" xlink:label="ConsumerStaplesSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_ConsumerStaplesSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Consumer Staples Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ConsumerStaplesSectorMember" xlink:to="label_ConsumerStaplesSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_IndustrialSectorMember" xlink:label="IndustrialSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_IndustrialSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Industrial Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IndustrialSectorMember" xlink:to="label_IndustrialSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_CommunicationsSectorMember" xlink:label="CommunicationsSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_CommunicationsSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Communications Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="CommunicationsSectorMember" xlink:to="label_CommunicationsSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaterialsSectorMember" xlink:label="MaterialsSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_MaterialsSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Materials Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaterialsSectorMember" xlink:to="label_MaterialsSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UtilitiesSectorMember" xlink:label="UtilitiesSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_UtilitiesSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Utilities Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UtilitiesSectorMember" xlink:to="label_UtilitiesSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_InformationTechnologySectorMember" xlink:label="InformationTechnologySectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_InformationTechnologySectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Information Technology Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InformationTechnologySectorMember" xlink:to="label_InformationTechnologySectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FundName" xlink:label="FundName"/>
+<link:label xlink:type="resource" xlink:label="label_FundName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Fund Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FundName" xlink:to="label_FundName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ClassName" xlink:label="ClassName"/>
+<link:label xlink:type="resource" xlink:label="label_ClassName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Class Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ClassName" xlink:to="label_ClassName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnlOrSemiAnnlStatementTextBlock" xlink:label="AnnlOrSemiAnnlStatementTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AnnlOrSemiAnnlStatementTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual or Semi-Annual Statement [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnlOrSemiAnnlStatementTextBlock" xlink:to="label_AnnlOrSemiAnnlStatementTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderReportAnnualOrSemiAnnual" xlink:label="ShareholderReportAnnualOrSemiAnnual"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderReportAnnualOrSemiAnnual" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Report Annual or Semi-Annual</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderReportAnnualOrSemiAnnual" xlink:to="label_ShareholderReportAnnualOrSemiAnnual" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PctOfNav" xlink:label="PctOfNav"/>
+<link:label xlink:type="resource" xlink:label="label_PctOfNav" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Percent of Net Asset Value</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PctOfNav" xlink:to="label_PctOfNav" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherCategory2Axis" xlink:label="OtherCategory2Axis"/>
+<link:label xlink:type="resource" xlink:label="label_OtherCategory2Axis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Category 2 [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherCategory2Axis" xlink:to="label_OtherCategory2Axis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherCategory1Axis" xlink:label="OtherCategory1Axis"/>
+<link:label xlink:type="resource" xlink:label="label_OtherCategory1Axis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Category 1 [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherCategory1Axis" xlink:to="label_OtherCategory1Axis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BroadBasedIndexAxis" xlink:label="BroadBasedIndexAxis"/>
+<link:label xlink:type="resource" xlink:label="label_BroadBasedIndexAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Broad Based Index [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BroadBasedIndexAxis" xlink:to="label_BroadBasedIndexAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AdditionalIndexAxis" xlink:label="AdditionalIndexAxis"/>
+<link:label xlink:type="resource" xlink:label="label_AdditionalIndexAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Index [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AdditionalIndexAxis" xlink:to="label_AdditionalIndexAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AdditionalIndexDomain" xlink:label="AdditionalIndexDomain"/>
+<link:label xlink:type="resource" xlink:label="label_AdditionalIndexDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Additional Index [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AdditionalIndexDomain" xlink:to="label_AdditionalIndexDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BroadBasedIndexDomain" xlink:label="BroadBasedIndexDomain"/>
+<link:label xlink:type="resource" xlink:label="label_BroadBasedIndexDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Broad Based Index [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BroadBasedIndexDomain" xlink:to="label_BroadBasedIndexDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ClassAxis" xlink:label="ClassAxis"/>
+<link:label xlink:type="resource" xlink:label="label_ClassAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Class [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ClassAxis" xlink:to="label_ClassAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_UnclassifiedSectorMember" xlink:label="UnclassifiedSectorMember"/>
+<link:label xlink:type="resource" xlink:label="label_UnclassifiedSectorMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Unclassified Sector [Member]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="UnclassifiedSectorMember" xlink:to="label_UnclassifiedSectorMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnlRtrPct" xlink:label="AnnlRtrPct"/>
+<link:label xlink:type="resource" xlink:label="label_AnnlRtrPct" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual Return [Percent]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnlRtrPct" xlink:to="label_AnnlRtrPct" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RisksAbstract" xlink:label="RisksAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_RisksAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risks [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RisksAbstract" xlink:to="label_RisksAbstract" priority="10"/>
+</link:labelLink>
+<link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:label xlink:type="resource" xlink:label="label_AmendmentDescription" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Amendment Description</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AmendmentDescription" xlink:to="label_AmendmentDescription" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:label xlink:type="resource" xlink:label="label_AmendmentFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Amendment Flag</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AmendmentFlag" xlink:to="label_AmendmentFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentCreationDate" xlink:label="DocumentCreationDate"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentCreationDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Document Creation Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentCreationDate" xlink:to="label_DocumentCreationDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentEffectiveDate" xlink:label="DocumentEffectiveDate"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentEffectiveDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Document Effective Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentEffectiveDate" xlink:to="label_DocumentEffectiveDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentInformationDocumentAxis" xlink:label="DocumentInformationDocumentAxis"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentInformationDocumentAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Document [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentInformationDocumentAxis" xlink:to="label_DocumentInformationDocumentAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentDomain" xlink:label="DocumentDomain"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Prospectus</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentDomain" xlink:to="label_DocumentDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentPeriodEndDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Document Period End Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentPeriodEndDate" xlink:to="label_DocumentPeriodEndDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:label xlink:type="resource" xlink:label="label_DocumentType" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Document Type</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DocumentType" xlink:to="label_DocumentType" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:label xlink:type="resource" xlink:label="label_EntityDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Series</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityDomain" xlink:to="label_EntityDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_TradingSymbol" xlink:label="TradingSymbol"/>
+<link:label xlink:type="resource" xlink:label="label_TradingSymbol" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Trading Symbol</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="TradingSymbol" xlink:to="label_TradingSymbol" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_TradingSymbol_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US" >Ticker</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="TradingSymbol" xlink:to="label_TradingSymbol_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:label xlink:type="resource" xlink:label="label_EntityRegistrantName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Registrant Name</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityRegistrantName" xlink:to="label_EntityRegistrantName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:label xlink:type="resource" xlink:label="label_EntityCentralIndexKey" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Entity Central Index Key</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="EntityCentralIndexKey" xlink:to="label_EntityCentralIndexKey" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2023/dei-2023.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:label xlink:type="resource" xlink:label="label_LegalEntityAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Series [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LegalEntityAxis" xlink:to="label_LegalEntityAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:label xlink:type="resource" xlink:label="label_ProspectusTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Prospectus [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProspectusTable" xlink:to="label_ProspectusTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderFeesTableTextBlock" xlink:label="ShareholderFeesTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderFeesTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Fees [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderFeesTableTextBlock" xlink:to="label_ShareholderFeesTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnualFundOperatingExpensesTableTextBlock" xlink:label="AnnualFundOperatingExpensesTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_AnnualFundOperatingExpensesTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual Fund Operating Expenses [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnualFundOperatingExpensesTableTextBlock" xlink:to="label_AnnualFundOperatingExpensesTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleWithRedemptionTableTextBlock" xlink:label="ExpenseExampleWithRedemptionTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleWithRedemptionTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, With Redemption [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleWithRedemptionTableTextBlock" xlink:to="label_ExpenseExampleWithRedemptionTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartTableTextBlock" xlink:label="BarChartTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartTableTextBlock" xlink:to="label_BarChartTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableTextBlock" xlink:label="PerformanceTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableTextBlock" xlink:to="label_PerformanceTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:label="ExpenseExampleNoRedemptionNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionNarrativeTextBlock" xlink:to="label_ExpenseExampleNoRedemptionNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MarketIndexPerformanceTableTextBlock" xlink:label="MarketIndexPerformanceTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MarketIndexPerformanceTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Market Index Performance [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MarketIndexPerformanceTableTextBlock" xlink:to="label_MarketIndexPerformanceTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionTableTextBlock" xlink:label="ExpenseExampleNoRedemptionTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionTableTextBlock" xlink:to="label_ExpenseExampleNoRedemptionTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceMeasureAxis" xlink:label="PerformanceMeasureAxis"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceMeasureAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Measure [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceMeasureAxis" xlink:to="label_PerformanceMeasureAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceMeasureDomain" xlink:label="PerformanceMeasureDomain"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceMeasureDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Before Taxes</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceMeasureDomain" xlink:to="label_PerformanceMeasureDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AfterTaxesOnDistributionsMember" xlink:label="AfterTaxesOnDistributionsMember"/>
+<link:label xlink:type="resource" xlink:label="label_AfterTaxesOnDistributionsMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >After Taxes on Distributions</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AfterTaxesOnDistributionsMember" xlink:to="label_AfterTaxesOnDistributionsMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AfterTaxesOnDistributionsAndSalesMember" xlink:label="AfterTaxesOnDistributionsAndSalesMember"/>
+<link:label xlink:type="resource" xlink:label="label_AfterTaxesOnDistributionsAndSalesMember" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >After Taxes on Distributions and Sales</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AfterTaxesOnDistributionsAndSalesMember" xlink:to="label_AfterTaxesOnDistributionsAndSalesMember" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskReturnHeading" xlink:label="RiskReturnHeading"/>
+<link:label xlink:type="resource" xlink:label="label_RiskReturnHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk/Return [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskReturnHeading" xlink:to="label_RiskReturnHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ObjectiveHeading" xlink:label="ObjectiveHeading"/>
+<link:label xlink:type="resource" xlink:label="label_ObjectiveHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Objective [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ObjectiveHeading" xlink:to="label_ObjectiveHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ObjectivePrimaryTextBlock" xlink:label="ObjectivePrimaryTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ObjectivePrimaryTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Objective, Primary [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ObjectivePrimaryTextBlock" xlink:to="label_ObjectivePrimaryTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ObjectiveSecondaryTextBlock" xlink:label="ObjectiveSecondaryTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ObjectiveSecondaryTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Objective, Secondary [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ObjectiveSecondaryTextBlock" xlink:to="label_ObjectiveSecondaryTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_StrategyHeading" xlink:label="StrategyHeading"/>
+<link:label xlink:type="resource" xlink:label="label_StrategyHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Strategy [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StrategyHeading" xlink:to="label_StrategyHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_StrategyNarrativeTextBlock" xlink:label="StrategyNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_StrategyNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Strategy Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StrategyNarrativeTextBlock" xlink:to="label_StrategyNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_StrategyPortfolioConcentration" xlink:label="StrategyPortfolioConcentration"/>
+<link:label xlink:type="resource" xlink:label="label_StrategyPortfolioConcentration" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Strategy Portfolio Concentration [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StrategyPortfolioConcentration" xlink:to="label_StrategyPortfolioConcentration" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartAndPerformanceTableHeading" xlink:label="BarChartAndPerformanceTableHeading"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartAndPerformanceTableHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart and Performance Table [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartAndPerformanceTableHeading" xlink:to="label_BarChartAndPerformanceTableHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceNarrativeTextBlock" xlink:label="PerformanceNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceNarrativeTextBlock" xlink:to="label_PerformanceNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformancePastDoesNotIndicateFuture" xlink:label="PerformancePastDoesNotIndicateFuture"/>
+<link:label xlink:type="resource" xlink:label="label_PerformancePastDoesNotIndicateFuture" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Past Does Not Indicate Future [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformancePastDoesNotIndicateFuture" xlink:to="label_PerformancePastDoesNotIndicateFuture" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceInformationIllustratesVariabilityOfReturns" xlink:label="PerformanceInformationIllustratesVariabilityOfReturns"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceInformationIllustratesVariabilityOfReturns" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Information Illustrates Variability of Returns [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceInformationIllustratesVariabilityOfReturns" xlink:to="label_PerformanceInformationIllustratesVariabilityOfReturns" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceOneYearOrLess" xlink:label="PerformanceOneYearOrLess"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceOneYearOrLess" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance One Year or Less [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceOneYearOrLess" xlink:to="label_PerformanceOneYearOrLess" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceAdditionalMarketIndex" xlink:label="PerformanceAdditionalMarketIndex"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceAdditionalMarketIndex" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Additional Market Index [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceAdditionalMarketIndex" xlink:to="label_PerformanceAdditionalMarketIndex" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartHeading" xlink:label="BarChartHeading"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartHeading" xlink:to="label_BarChartHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartNarrativeTextBlock" xlink:label="BarChartNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartNarrativeTextBlock" xlink:to="label_BarChartNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartDoesNotReflectSalesLoads" xlink:label="BarChartDoesNotReflectSalesLoads"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartDoesNotReflectSalesLoads" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Does Not Reflect Sales Loads [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartDoesNotReflectSalesLoads" xlink:to="label_BarChartDoesNotReflectSalesLoads" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartReturnsForClassNotOfferedInProspectus" xlink:label="BarChartReturnsForClassNotOfferedInProspectus"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartReturnsForClassNotOfferedInProspectus" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart, Returns for Class Not Offered in Prospectus [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartReturnsForClassNotOfferedInProspectus" xlink:to="label_BarChartReturnsForClassNotOfferedInProspectus" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart, Reason Selected Class Different from Immediately Preceding Period [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" xlink:to="label_BarChartReasonSelectedClassDifferentFromImmediatelyPrecedingPeriod" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnualReturnCaption" xlink:label="AnnualReturnCaption"/>
+<link:label xlink:type="resource" xlink:label="label_AnnualReturnCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual Return Caption [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnualReturnCaption" xlink:to="label_AnnualReturnCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnualReturnColumnName" xlink:label="AnnualReturnColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_AnnualReturnColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual Return, Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnualReturnColumnName" xlink:to="label_AnnualReturnColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AnnualReturnInceptionDate" xlink:label="AnnualReturnInceptionDate"/>
+<link:label xlink:type="resource" xlink:label="label_AnnualReturnInceptionDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Annual Return, Inception Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AnnualReturnInceptionDate" xlink:to="label_AnnualReturnInceptionDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_YearToDateReturnLabel" xlink:label="YearToDateReturnLabel"/>
+<link:label xlink:type="resource" xlink:label="label_YearToDateReturnLabel" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Year to Date Return, Label [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="YearToDateReturnLabel" xlink:to="label_YearToDateReturnLabel" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartYearToDateReturn" xlink:label="BarChartYearToDateReturn"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartYearToDateReturn" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart, Year to Date Return</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartYearToDateReturn" xlink:to="label_BarChartYearToDateReturn" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartYearToDateReturnDate" xlink:label="BarChartYearToDateReturnDate"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartYearToDateReturnDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart, Year to Date Return, Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartYearToDateReturnDate" xlink:to="label_BarChartYearToDateReturnDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_HighestQuarterlyReturnLabel" xlink:label="HighestQuarterlyReturnLabel"/>
+<link:label xlink:type="resource" xlink:label="label_HighestQuarterlyReturnLabel" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Highest Quarterly Return, Label [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="HighestQuarterlyReturnLabel" xlink:to="label_HighestQuarterlyReturnLabel" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartHighestQuarterlyReturn" xlink:label="BarChartHighestQuarterlyReturn"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartHighestQuarterlyReturn" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Highest Quarterly Return</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartHighestQuarterlyReturn" xlink:to="label_BarChartHighestQuarterlyReturn" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartHighestQuarterlyReturnDate" xlink:label="BarChartHighestQuarterlyReturnDate"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartHighestQuarterlyReturnDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Highest Quarterly Return, Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartHighestQuarterlyReturnDate" xlink:to="label_BarChartHighestQuarterlyReturnDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_LowestQuarterlyReturnLabel" xlink:label="LowestQuarterlyReturnLabel"/>
+<link:label xlink:type="resource" xlink:label="label_LowestQuarterlyReturnLabel" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Lowest Quarterly Return, Label [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="LowestQuarterlyReturnLabel" xlink:to="label_LowestQuarterlyReturnLabel" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartLowestQuarterlyReturn" xlink:label="BarChartLowestQuarterlyReturn"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartLowestQuarterlyReturn" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Lowest Quarterly Return</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartLowestQuarterlyReturn" xlink:to="label_BarChartLowestQuarterlyReturn" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartLowestQuarterlyReturnDate" xlink:label="BarChartLowestQuarterlyReturnDate"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartLowestQuarterlyReturnDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Lowest Quarterly Return, Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartLowestQuarterlyReturnDate" xlink:to="label_BarChartLowestQuarterlyReturnDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartClosingTextBlock" xlink:label="BarChartClosingTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartClosingTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Closing [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartClosingTextBlock" xlink:to="label_BarChartClosingTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableHeading" xlink:label="PerformanceTableHeading"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Heading</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableHeading" xlink:to="label_PerformanceTableHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableNarrativeTextBlock" xlink:label="PerformanceTableNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Narrative</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableNarrativeTextBlock" xlink:to="label_PerformanceTableNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableDoesReflectSalesLoads" xlink:label="PerformanceTableDoesReflectSalesLoads"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableDoesReflectSalesLoads" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Does Reflect Sales Loads</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableDoesReflectSalesLoads" xlink:to="label_PerformanceTableDoesReflectSalesLoads" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableMarketIndexChanged" xlink:label="PerformanceTableMarketIndexChanged"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableMarketIndexChanged" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Market Index Changed</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableMarketIndexChanged" xlink:to="label_PerformanceTableMarketIndexChanged" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableUsesHighestFederalRate" xlink:label="PerformanceTableUsesHighestFederalRate"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableUsesHighestFederalRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Uses Highest Federal Rate</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableUsesHighestFederalRate" xlink:to="label_PerformanceTableUsesHighestFederalRate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableNotRelevantToTaxDeferred" xlink:label="PerformanceTableNotRelevantToTaxDeferred"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableNotRelevantToTaxDeferred" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Not Relevant to Tax Deferred</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableNotRelevantToTaxDeferred" xlink:to="label_PerformanceTableNotRelevantToTaxDeferred" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableExplanationAfterTaxHigher" xlink:label="PerformanceTableExplanationAfterTaxHigher"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableExplanationAfterTaxHigher" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Explanation after Tax Higher</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableExplanationAfterTaxHigher" xlink:to="label_PerformanceTableExplanationAfterTaxHigher" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AverageAnnualReturnCaption" xlink:label="AverageAnnualReturnCaption"/>
+<link:label xlink:type="resource" xlink:label="label_AverageAnnualReturnCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return, Caption [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AverageAnnualReturnCaption" xlink:to="label_AverageAnnualReturnCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AverageAnnualReturnColumnName" xlink:label="AverageAnnualReturnColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_AverageAnnualReturnColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return, Column Name [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AverageAnnualReturnColumnName" xlink:to="label_AverageAnnualReturnColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AverageAnnualReturnLabel" xlink:label="AverageAnnualReturnLabel"/>
+<link:label xlink:type="resource" xlink:label="label_AverageAnnualReturnLabel" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return, Label [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AverageAnnualReturnLabel" xlink:to="label_AverageAnnualReturnLabel" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MoneyMarketSevenDayYieldCaption" xlink:label="MoneyMarketSevenDayYieldCaption"/>
+<link:label xlink:type="resource" xlink:label="label_MoneyMarketSevenDayYieldCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Money Market Seven Day Yield, Caption [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MoneyMarketSevenDayYieldCaption" xlink:to="label_MoneyMarketSevenDayYieldCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MoneyMarketSevenDayYieldColumnName" xlink:label="MoneyMarketSevenDayYieldColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_MoneyMarketSevenDayYieldColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Money Market Seven Day Yield Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MoneyMarketSevenDayYieldColumnName" xlink:to="label_MoneyMarketSevenDayYieldColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MoneyMarketSevenDayYieldPhone" xlink:label="MoneyMarketSevenDayYieldPhone"/>
+<link:label xlink:type="resource" xlink:label="label_MoneyMarketSevenDayYieldPhone" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Money Market Seven Day Yield Phone</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MoneyMarketSevenDayYieldPhone" xlink:to="label_MoneyMarketSevenDayYieldPhone" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MoneyMarketSevenDayYield" xlink:label="MoneyMarketSevenDayYield"/>
+<link:label xlink:type="resource" xlink:label="label_MoneyMarketSevenDayYield" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Money Market Seven Day Yield</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MoneyMarketSevenDayYield" xlink:to="label_MoneyMarketSevenDayYield" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MoneyMarketSevenDayTaxEquivalentYield" xlink:label="MoneyMarketSevenDayTaxEquivalentYield"/>
+<link:label xlink:type="resource" xlink:label="label_MoneyMarketSevenDayTaxEquivalentYield" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Money Market Seven Day Tax Equivalent Yield</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MoneyMarketSevenDayTaxEquivalentYield" xlink:to="label_MoneyMarketSevenDayTaxEquivalentYield" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ThirtyDayYieldCaption" xlink:label="ThirtyDayYieldCaption"/>
+<link:label xlink:type="resource" xlink:label="label_ThirtyDayYieldCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Thirty Day Yield Caption [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ThirtyDayYieldCaption" xlink:to="label_ThirtyDayYieldCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ThirtyDayYieldColumnName" xlink:label="ThirtyDayYieldColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_ThirtyDayYieldColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Thirty Day Yield Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ThirtyDayYieldColumnName" xlink:to="label_ThirtyDayYieldColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ThirtyDayYieldPhone" xlink:label="ThirtyDayYieldPhone"/>
+<link:label xlink:type="resource" xlink:label="label_ThirtyDayYieldPhone" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Thirty Day Yield Phone</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ThirtyDayYieldPhone" xlink:to="label_ThirtyDayYieldPhone" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ThirtyDayYield" xlink:label="ThirtyDayYield"/>
+<link:label xlink:type="resource" xlink:label="label_ThirtyDayYield" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Thirty Day Yield</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ThirtyDayYield" xlink:to="label_ThirtyDayYield" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ThirtyDayTaxEquivalentYield" xlink:label="ThirtyDayTaxEquivalentYield"/>
+<link:label xlink:type="resource" xlink:label="label_ThirtyDayTaxEquivalentYield" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Thirty Day Tax Equivalent Yield</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ThirtyDayTaxEquivalentYield" xlink:to="label_ThirtyDayTaxEquivalentYield" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableFootnotesTextBlock" xlink:label="PerformanceTableFootnotesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableFootnotesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Footnotes</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableFootnotesTextBlock" xlink:to="label_PerformanceTableFootnotesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableClosingTextBlock" xlink:label="PerformanceTableClosingTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableClosingTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Closing [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableClosingTextBlock" xlink:to="label_PerformanceTableClosingTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseHeading" xlink:label="ExpenseHeading"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Heading [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseHeading" xlink:to="label_ExpenseHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseNarrativeTextBlock" xlink:label="ExpenseNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseNarrativeTextBlock" xlink:to="label_ExpenseNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseBreakpointDiscounts" xlink:label="ExpenseBreakpointDiscounts"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseBreakpointDiscounts" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Breakpoint Discounts [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseBreakpointDiscounts" xlink:to="label_ExpenseBreakpointDiscounts" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderFeesCaption" xlink:label="ShareholderFeesCaption"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderFeesCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Fees Caption [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderFeesCaption" xlink:to="label_ShareholderFeesCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderFeesColumnName" xlink:label="ShareholderFeesColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderFeesColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Fees Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderFeesColumnName" xlink:to="label_ShareholderFeesColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:label="MaximumCumulativeSalesChargeOverOfferingPrice"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumCumulativeSalesChargeOverOfferingPrice" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Cumulative Sales Charge (as a percentage of Offering Price)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumCumulativeSalesChargeOverOfferingPrice" xlink:to="label_MaximumCumulativeSalesChargeOverOfferingPrice" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumCumulativeSalesChargeOverOther" xlink:label="MaximumCumulativeSalesChargeOverOther"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumCumulativeSalesChargeOverOther" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Cumulative Sales Charge (as a percentage)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumCumulativeSalesChargeOverOther" xlink:to="label_MaximumCumulativeSalesChargeOverOther" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:label="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Sales Charge Imposed on Purchases (as a percentage of Offering Price)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" xlink:to="label_MaximumSalesChargeImposedOnPurchasesOverOfferingPrice" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumDeferredSalesChargeOverOther" xlink:label="MaximumDeferredSalesChargeOverOther"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumDeferredSalesChargeOverOther" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Deferred Sales Charge (as a percentage)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumDeferredSalesChargeOverOther" xlink:to="label_MaximumDeferredSalesChargeOverOther" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumDeferredSalesChargeOverOfferingPrice" xlink:label="MaximumDeferredSalesChargeOverOfferingPrice"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumDeferredSalesChargeOverOfferingPrice" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Deferred Sales Charge (as a percentage of Offering Price)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumDeferredSalesChargeOverOfferingPrice" xlink:to="label_MaximumDeferredSalesChargeOverOfferingPrice" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:label="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Sales Charge on Reinvested Dividends and Distributions (as a percentage)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" xlink:to="label_MaximumSalesChargeOnReinvestedDividendsAndDistributionsOverOther" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RedemptionFeeOverRedemption" xlink:label="RedemptionFeeOverRedemption"/>
+<link:label xlink:type="resource" xlink:label="label_RedemptionFeeOverRedemption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Redemption Fee (as a percentage of Amount Redeemed)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RedemptionFeeOverRedemption" xlink:to="label_RedemptionFeeOverRedemption" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_RedemptionFeeOverRedemption_3" xlink:role="http://www.xbrl.org/2009/role/negatedLabel" xml:lang="en-US" >Redemption Fee (as a percentage of Amount Redeemed)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RedemptionFeeOverRedemption" xlink:to="label_RedemptionFeeOverRedemption_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RedemptionFee" xlink:label="RedemptionFee"/>
+<link:label xlink:type="resource" xlink:label="label_RedemptionFee" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Redemption Fee</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RedemptionFee" xlink:to="label_RedemptionFee" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_RedemptionFee_3" xlink:role="http://www.xbrl.org/2009/role/negatedLabel" xml:lang="en-US" >Redemption Fee</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RedemptionFee" xlink:to="label_RedemptionFee_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExchangeFeeOverRedemption" xlink:label="ExchangeFeeOverRedemption"/>
+<link:label xlink:type="resource" xlink:label="label_ExchangeFeeOverRedemption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Exchange Fee (as a percentage of Amount Redeemed)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExchangeFeeOverRedemption" xlink:to="label_ExchangeFeeOverRedemption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExchangeFee" xlink:label="ExchangeFee"/>
+<link:label xlink:type="resource" xlink:label="label_ExchangeFee" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Exchange Fee</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExchangeFee" xlink:to="label_ExchangeFee" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumAccountFeeOverAssets" xlink:label="MaximumAccountFeeOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumAccountFeeOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Account Fee (as a percentage of Assets)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumAccountFeeOverAssets" xlink:to="label_MaximumAccountFeeOverAssets" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MaximumAccountFee" xlink:label="MaximumAccountFee"/>
+<link:label xlink:type="resource" xlink:label="label_MaximumAccountFee" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Maximum Account Fee</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MaximumAccountFee" xlink:to="label_MaximumAccountFee" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderFeeOther" xlink:label="ShareholderFeeOther"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderFeeOther" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Fee, Other</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderFeeOther" xlink:to="label_ShareholderFeeOther" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OperatingExpensesCaption" xlink:label="OperatingExpensesCaption"/>
+<link:label xlink:type="resource" xlink:label="label_OperatingExpensesCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Operating Expenses Caption [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OperatingExpensesCaption" xlink:to="label_OperatingExpensesCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OperatingExpensesColumnName" xlink:label="OperatingExpensesColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_OperatingExpensesColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Operating Expenses Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OperatingExpensesColumnName" xlink:to="label_OperatingExpensesColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ManagementFeesOverAssets" xlink:label="ManagementFeesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_ManagementFeesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Management Fees (as a percentage of Assets)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ManagementFeesOverAssets" xlink:to="label_ManagementFeesOverAssets" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_DistributionAndService12b1FeesOverAssets" xlink:label="DistributionAndService12b1FeesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_DistributionAndService12b1FeesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Distribution and Service (12b-1) Fees</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DistributionAndService12b1FeesOverAssets" xlink:to="label_DistributionAndService12b1FeesOverAssets" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="DistributionOrSimilarNon12b1FeesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_DistributionOrSimilarNon12b1FeesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Distribution or Similar (Non 12b-1) Fees</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DistributionOrSimilarNon12b1FeesOverAssets" xlink:to="label_DistributionOrSimilarNon12b1FeesOverAssets" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherExpensesOverAssets" xlink:label="OtherExpensesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_OtherExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Expenses (as a percentage of Assets):</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherExpensesOverAssets" xlink:to="label_OtherExpensesOverAssets" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_OtherExpensesOverAssets_3" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xml:lang="en-US" >Other Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherExpensesOverAssets" xlink:to="label_OtherExpensesOverAssets_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component1OtherExpensesOverAssets" xlink:label="Component1OtherExpensesOverAssets"/>
+<link:label id="label_Component1OtherExpensesOverAssets" xlink:type="resource" xlink:label="label_Component1OtherExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Component1 Other Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Component1OtherExpensesOverAssets" xlink:to="label_Component1OtherExpensesOverAssets" priority="0"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component2OtherExpensesOverAssets" xlink:label="Component2OtherExpensesOverAssets"/>
+<link:label id="label_Component2OtherExpensesOverAssets" xlink:type="resource" xlink:label="label_Component2OtherExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Component2 Other Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Component2OtherExpensesOverAssets" xlink:to="label_Component2OtherExpensesOverAssets" priority="0"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component3OtherExpensesOverAssets" xlink:label="Component3OtherExpensesOverAssets"/>
+<link:label id="label_Component3OtherExpensesOverAssets" xlink:type="resource" xlink:label="label_Component3OtherExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Component3 Other Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="Component3OtherExpensesOverAssets" xlink:to="label_Component3OtherExpensesOverAssets" priority="0"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AcquiredFundFeesAndExpensesOverAssets" xlink:label="AcquiredFundFeesAndExpensesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_AcquiredFundFeesAndExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Acquired Fund Fees and Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AcquiredFundFeesAndExpensesOverAssets" xlink:to="label_AcquiredFundFeesAndExpensesOverAssets" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesOverAssets" xlink:label="ExpensesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses (as a percentage of Assets)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesOverAssets" xlink:to="label_ExpensesOverAssets" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesOverAssets_3" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xml:lang="en-US" >Total Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesOverAssets" xlink:to="label_ExpensesOverAssets_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FeeWaiverOrReimbursementOverAssets" xlink:label="FeeWaiverOrReimbursementOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_FeeWaiverOrReimbursementOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Fee Waiver or Reimbursement</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FeeWaiverOrReimbursementOverAssets" xlink:to="label_FeeWaiverOrReimbursementOverAssets" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_FeeWaiverOrReimbursementOverAssets_3" xlink:role="http://www.xbrl.org/2009/role/negatedLabel" xml:lang="en-US" >Fee Waiver or Reimbursement</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FeeWaiverOrReimbursementOverAssets" xlink:to="label_FeeWaiverOrReimbursementOverAssets_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_NetExpensesOverAssets" xlink:label="NetExpensesOverAssets"/>
+<link:label xlink:type="resource" xlink:label="label_NetExpensesOverAssets" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Net Expenses (as a percentage of Assets)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NetExpensesOverAssets" xlink:to="label_NetExpensesOverAssets" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_NetExpensesOverAssets_3" xlink:role="http://www.xbrl.org/2003/role/totalLabel" xml:lang="en-US" >Net Expenses</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NetExpensesOverAssets" xlink:to="label_NetExpensesOverAssets_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesRepresentBothMasterAndFeeder" xlink:label="ExpensesRepresentBothMasterAndFeeder"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesRepresentBothMasterAndFeeder" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Represent Both Master and Feeder [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesRepresentBothMasterAndFeeder" xlink:to="label_ExpensesRepresentBothMasterAndFeeder" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:label="ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Other Expenses Had Extraordinary Expenses Been Included [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" xlink:to="label_ExpensesOtherExpensesHadExtraordinaryExpensesBeenIncluded" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesRestatedToReflectCurrent" xlink:label="ExpensesRestatedToReflectCurrent"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesRestatedToReflectCurrent" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Restated to Reflect Current [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesRestatedToReflectCurrent" xlink:to="label_ExpensesRestatedToReflectCurrent" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleHeading" xlink:label="ExpenseExampleHeading"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleHeading" xlink:to="label_ExpenseExampleHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNarrativeTextBlock" xlink:label="ExpenseExampleNarrativeTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNarrativeTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example Narrative [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNarrativeTextBlock" xlink:to="label_ExpenseExampleNarrativeTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleByYearHeading" xlink:label="ExpenseExampleByYearHeading"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleByYearHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example by Year [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleByYearHeading" xlink:to="label_ExpenseExampleByYearHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleByYearCaption" xlink:label="ExpenseExampleByYearCaption"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleByYearCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example by, Year, Caption [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleByYearCaption" xlink:to="label_ExpenseExampleByYearCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleByYearColumnName" xlink:label="ExpenseExampleByYearColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleByYearColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, By Year, Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleByYearColumnName" xlink:to="label_ExpenseExampleByYearColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleYear01" xlink:label="ExpenseExampleYear01"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleYear01" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, with Redemption, 1 Year</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleYear01" xlink:to="label_ExpenseExampleYear01" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleYear03" xlink:label="ExpenseExampleYear03"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleYear03" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, with Redemption, 3 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleYear03" xlink:to="label_ExpenseExampleYear03" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleYear05" xlink:label="ExpenseExampleYear05"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleYear05" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, with Redemption, 5 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleYear05" xlink:to="label_ExpenseExampleYear05" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleYear10" xlink:label="ExpenseExampleYear10"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleYear10" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, with Redemption, 10 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleYear10" xlink:to="label_ExpenseExampleYear10" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionByYearCaption" xlink:label="ExpenseExampleNoRedemptionByYearCaption"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionByYearCaption" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, By Year, Caption [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionByYearCaption" xlink:to="label_ExpenseExampleNoRedemptionByYearCaption" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionByYearColumnName" xlink:label="ExpenseExampleNoRedemptionByYearColumnName"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionByYearColumnName" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, By Year, Column [Optional Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionByYearColumnName" xlink:to="label_ExpenseExampleNoRedemptionByYearColumnName" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionYear01" xlink:label="ExpenseExampleNoRedemptionYear01"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionYear01" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, 1 Year</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionYear01" xlink:to="label_ExpenseExampleNoRedemptionYear01" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionYear03" xlink:label="ExpenseExampleNoRedemptionYear03"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionYear03" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, 3 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionYear03" xlink:to="label_ExpenseExampleNoRedemptionYear03" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionYear05" xlink:label="ExpenseExampleNoRedemptionYear05"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionYear05" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, 5 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionYear05" xlink:to="label_ExpenseExampleNoRedemptionYear05" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionYear10" xlink:label="ExpenseExampleNoRedemptionYear10"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionYear10" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption, 10 Years</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionYear10" xlink:to="label_ExpenseExampleNoRedemptionYear10" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleClosingTextBlock" xlink:label="ExpenseExampleClosingTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleClosingTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example Closing [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleClosingTextBlock" xlink:to="label_ExpenseExampleClosingTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ProspectusDate" xlink:label="ProspectusDate"/>
+<link:label xlink:type="resource" xlink:label="label_ProspectusDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Prospectus Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProspectusDate" xlink:to="label_ProspectusDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareClassDomain" xlink:label="ShareClassDomain"/>
+<link:label xlink:type="resource" xlink:label="label_ShareClassDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Share Classes</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareClassDomain" xlink:to="label_ShareClassDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PortfolioTurnoverHeading" xlink:label="PortfolioTurnoverHeading"/>
+<link:label xlink:type="resource" xlink:label="label_PortfolioTurnoverHeading" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Portfolio Turnover [Heading]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PortfolioTurnoverHeading" xlink:to="label_PortfolioTurnoverHeading" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PortfolioTurnoverTextBlock" xlink:label="PortfolioTurnoverTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_PortfolioTurnoverTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Portfolio Turnover [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PortfolioTurnoverTextBlock" xlink:to="label_PortfolioTurnoverTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseFootnotesTextBlock" xlink:label="ExpenseFootnotesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseFootnotesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Footnotes [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseFootnotesTextBlock" xlink:to="label_ExpenseFootnotesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleFootnotesTextBlock" xlink:label="ExpenseExampleFootnotesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleFootnotesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example Footnotes [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleFootnotesTextBlock" xlink:to="label_ExpenseExampleFootnotesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:label="FeeWaiverOrReimbursementOverAssetsDateOfTermination"/>
+<link:label xlink:type="resource" xlink:label="label_FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Fee Waiver or Reimbursement over Assets, Date of Termination</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FeeWaiverOrReimbursementOverAssetsDateOfTermination" xlink:to="label_FeeWaiverOrReimbursementOverAssetsDateOfTermination" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PortfolioTurnoverRate" xlink:label="PortfolioTurnoverRate"/>
+<link:label xlink:type="resource" xlink:label="label_PortfolioTurnoverRate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Portfolio Turnover, Rate</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PortfolioTurnoverRate" xlink:to="label_PortfolioTurnoverRate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:label="ExpenseBreakpointMinimumInvestmentRequiredAmount"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Breakpoint, Minimum Investment Required [Amount]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseBreakpointMinimumInvestmentRequiredAmount" xlink:to="label_ExpenseBreakpointMinimumInvestmentRequiredAmount" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:label="PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Footnotes, Reason Performance Information for Class Different from Immediately Preceding Period [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" xlink:to="label_PerformanceTableFootnotesReasonPerformanceInformationForClassDifferentFromImmediatelyPrecedingPeriod" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartFootnotesTextBlock" xlink:label="BarChartFootnotesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartFootnotesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Footnotes [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartFootnotesTextBlock" xlink:to="label_BarChartFootnotesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableOneClassOfAfterTaxShown" xlink:label="PerformanceTableOneClassOfAfterTaxShown"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableOneClassOfAfterTaxShown" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table One Class of after Tax Shown [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableOneClassOfAfterTaxShown" xlink:to="label_PerformanceTableOneClassOfAfterTaxShown" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherExpensesNewFundBasedOnEstimates" xlink:label="OtherExpensesNewFundBasedOnEstimates"/>
+<link:label xlink:type="resource" xlink:label="label_OtherExpensesNewFundBasedOnEstimates" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Expenses, New Fund, Based on Estimates [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherExpensesNewFundBasedOnEstimates" xlink:to="label_OtherExpensesNewFundBasedOnEstimates" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:label="AcquiredFundFeesAndExpensesBasedOnEstimates"/>
+<link:label xlink:type="resource" xlink:label="label_AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Acquired Fund Fees and Expenses, Based on Estimates [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AcquiredFundFeesAndExpensesBasedOnEstimates" xlink:to="label_AcquiredFundFeesAndExpensesBasedOnEstimates" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesDeferredChargesTextBlock" xlink:label="ExpensesDeferredChargesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesDeferredChargesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Deferred Charges [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesDeferredChargesTextBlock" xlink:to="label_ExpensesDeferredChargesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesRangeOfExchangeFeesTextBlock" xlink:label="ExpensesRangeOfExchangeFeesTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesRangeOfExchangeFeesTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Range of Exchange Fees [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesRangeOfExchangeFeesTextBlock" xlink:to="label_ExpensesRangeOfExchangeFeesTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:label="ExpensesNotCorrelatedToRatioDueToAcquiredFundFees"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Not Correlated to Ratio Due to Acquired Fund Fees [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" xlink:to="label_ExpensesNotCorrelatedToRatioDueToAcquiredFundFees" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesExplanationOfNonrecurringAccountFee" xlink:label="ExpensesExplanationOfNonrecurringAccountFee"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesExplanationOfNonrecurringAccountFee" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses Explanation of Nonrecurring Account Fee [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesExplanationOfNonrecurringAccountFee" xlink:to="label_ExpensesExplanationOfNonrecurringAccountFee" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_IndexNoDeductionForFeesExpensesTaxes" xlink:label="IndexNoDeductionForFeesExpensesTaxes"/>
+<link:label xlink:type="resource" xlink:label="label_IndexNoDeductionForFeesExpensesTaxes" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Index No Deduction for Fees, Expenses, or Taxes [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IndexNoDeductionForFeesExpensesTaxes" xlink:to="label_IndexNoDeductionForFeesExpensesTaxes" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceAvailabilityWebSiteAddress" xlink:label="PerformanceAvailabilityWebSiteAddress"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceAvailabilityWebSiteAddress" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Availability Website Address [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceAvailabilityWebSiteAddress" xlink:to="label_PerformanceAvailabilityWebSiteAddress" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceAvailabilityPhone" xlink:label="PerformanceAvailabilityPhone"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceAvailabilityPhone" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Availability Phone [Text]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceAvailabilityPhone" xlink:to="label_PerformanceAvailabilityPhone" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_SupplementToProspectusTextBlock" xlink:label="SupplementToProspectusTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_SupplementToProspectusTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Supplement to Prospectus [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="SupplementToProspectusTextBlock" xlink:to="label_SupplementToProspectusTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNoRedemptionAbstract" xlink:label="ExpenseExampleNoRedemptionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNoRedemptionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example, No Redemption:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNoRedemptionAbstract" xlink:to="label_ExpenseExampleNoRedemptionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ObjectiveSectionAbstract" xlink:label="ObjectiveSectionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ObjectiveSectionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Objective Section:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ObjectiveSectionAbstract" xlink:to="label_ObjectiveSectionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_StrategySectionAbstract" xlink:label="StrategySectionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_StrategySectionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Strategy Section:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StrategySectionAbstract" xlink:to="label_StrategySectionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskSectionAbstract" xlink:label="RiskSectionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_RiskSectionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk Section:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskSectionAbstract" xlink:to="label_RiskSectionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_ProspectusLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Prospectus [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ProspectusLineItems" xlink:to="label_ProspectusLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FormN1aAbstract" xlink:label="FormN1aAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_FormN1aAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Form N-1A:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="FormN1aAbstract" xlink:to="label_FormN1aAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_RiskReturnAbstract" xlink:label="RiskReturnAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_RiskReturnAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Risk/Return:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RiskReturnAbstract" xlink:to="label_RiskReturnAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartAndPerformanceTableSectionAbstract" xlink:label="BarChartAndPerformanceTableSectionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartAndPerformanceTableSectionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart and Performance Table Section:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartAndPerformanceTableSectionAbstract" xlink:to="label_BarChartAndPerformanceTableSectionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartNarrativeAbstract" xlink:label="BarChartNarrativeAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartNarrativeAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Narrative:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartNarrativeAbstract" xlink:to="label_BarChartNarrativeAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartTableAbstract" xlink:label="BarChartTableAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartTableAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Table:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartTableAbstract" xlink:to="label_BarChartTableAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_BarChartClosingAbstract" xlink:label="BarChartClosingAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_BarChartClosingAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Bar Chart Closing:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="BarChartClosingAbstract" xlink:to="label_BarChartClosingAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AverageAnnualReturnAbstract" xlink:label="AverageAnnualReturnAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_AverageAnnualReturnAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Average Annual Return:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="AverageAnnualReturnAbstract" xlink:to="label_AverageAnnualReturnAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_MarketIndexReturnAbstract" xlink:label="MarketIndexReturnAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_MarketIndexReturnAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Market Index Return:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MarketIndexReturnAbstract" xlink:to="label_MarketIndexReturnAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceNarrativeAbstract" xlink:label="PerformanceNarrativeAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceNarrativeAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Narrative:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceNarrativeAbstract" xlink:to="label_PerformanceNarrativeAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableSectionAbstract" xlink:label="PerformanceTableSectionAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableSectionAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Section:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableSectionAbstract" xlink:to="label_PerformanceTableSectionAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PerformanceTableClosingAbstract" xlink:label="PerformanceTableClosingAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_PerformanceTableClosingAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Performance Table Closing:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PerformanceTableClosingAbstract" xlink:to="label_PerformanceTableClosingAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesAbstract" xlink:label="ExpensesAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesAbstract" xlink:to="label_ExpensesAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ShareholderFeesAbstract" xlink:label="ShareholderFeesAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ShareholderFeesAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Shareholder Fees:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ShareholderFeesAbstract" xlink:to="label_ShareholderFeesAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OperatingExpensesAbstract" xlink:label="OperatingExpensesAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_OperatingExpensesAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Operating Expenses:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OperatingExpensesAbstract" xlink:to="label_OperatingExpensesAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_NetExpensesOverAssetsAbstract" xlink:label="NetExpensesOverAssetsAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_NetExpensesOverAssetsAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Net Expenses (as a percentage of Assets):</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="NetExpensesOverAssetsAbstract" xlink:to="label_NetExpensesOverAssetsAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesOverAssetsAbstract" xlink:label="ExpensesOverAssetsAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpensesOverAssetsAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expenses (as a percentage of Assets):</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpensesOverAssetsAbstract" xlink:to="label_ExpensesOverAssetsAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherExpensesOverAssetsAbstract" xlink:label="OtherExpensesOverAssetsAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_OtherExpensesOverAssetsAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Other Expenses over Assets:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="OtherExpensesOverAssetsAbstract" xlink:to="label_OtherExpensesOverAssetsAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseFootnotesAbstract" xlink:label="ExpenseFootnotesAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseFootnotesAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Footnotes:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseFootnotesAbstract" xlink:to="label_ExpenseFootnotesAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleNarrativeAbstract" xlink:label="ExpenseExampleNarrativeAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleNarrativeAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example Narrative:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleNarrativeAbstract" xlink:to="label_ExpenseExampleNarrativeAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleAbstract" xlink:label="ExpenseExampleAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleAbstract" xlink:to="label_ExpenseExampleAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpenseExampleClosingAbstract" xlink:label="ExpenseExampleClosingAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_ExpenseExampleClosingAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Expense Example Closing:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="ExpenseExampleClosingAbstract" xlink:to="label_ExpenseExampleClosingAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_PortfolioTurnoverAbstract" xlink:label="PortfolioTurnoverAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_PortfolioTurnoverAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US" >Portfolio Turnover:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="PortfolioTurnoverAbstract" xlink:to="label_PortfolioTurnoverAbstract" priority="10"/>
+</link:labelLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+</xs:schema>

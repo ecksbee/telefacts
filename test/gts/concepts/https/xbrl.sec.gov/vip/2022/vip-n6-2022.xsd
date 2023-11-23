@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<xs:schema targetNamespace="http://xbrl.sec.gov/vip-n6/2022" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xsi:schemaLocation="http://www.xbrl.org/2003/linkbase http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"
+elementFormDefault="qualified"
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:vip-n6="http://xbrl.sec.gov/vip-n6/2022"
+xmlns:vip="http://xbrl.sec.gov/vip/2022"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+<xs:import namespace="http://xbrl.sec.gov/vip/2022" schemaLocation="vip-2022.xsd"/>
+<xs:annotation>
+<xs:appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/N6" xlink:type="simple" xlink:href="vip-2022.xsd#N6"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/N6TransactionExpenseData" xlink:type="simple" xlink:href="vip-2022.xsd#N6TransactionExpenseData"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/N6OngoingFeesData" xlink:type="simple" xlink:href="vip-2022.xsd#N6OngoingFeesData"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/N6PeriodicChargesData" xlink:type="simple" xlink:href="vip-2022.xsd#N6PeriodicChargesData"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/N6StandardDeathBenefits" xlink:type="simple" xlink:href="vip-2022.xsd#N6StandardDeathBenefitsData"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/BenefitsAvailableN6Data" xlink:type="simple" xlink:href="vip-2022.xsd#BenefitsAvailableN6Data"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/BenefitsDescriptionN6Data" xlink:type="simple" xlink:href="vip-2022.xsd#BenefitsDescriptionN6Data"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/vip/role/CommonDimensions" xlink:type="simple" xlink:href="vip-2022.xsd#CommonDimensions"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitAxis" xlink:label="BenefitAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="BenefitAxis" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AllBenefitsMember" xlink:label="AllBenefitsMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitAxis" xlink:to="AllBenefitsMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_LegalEntityAxis" xlink:label="LegalEntityAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="LegalEntityAxis" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_EntityDomain" xlink:label="EntityDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="LegalEntityAxis" xlink:to="EntityDomain" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ContractAxis" xlink:label="ContractAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ContractAxis" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AllContractsMember" xlink:label="AllContractsMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ContractAxis" xlink:to="AllContractsMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ClassAxis" xlink:label="ClassAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="ClassAxis" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AllClassesMember" xlink:label="AllClassesMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ClassAxis" xlink:to="AllClassesMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyAxis" xlink:label="PortfolioCompanyAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="PortfolioCompanyAxis" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AllPortfolioCompaniesMember" xlink:label="AllPortfolioCompaniesMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompanyAxis" xlink:to="AllPortfolioCompaniesMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GenerationAxis" xlink:label="GenerationAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="GenerationAxis" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_CurrentGenerationMember" xlink:label="CurrentGenerationMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GenerationAxis" xlink:to="CurrentGenerationMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PreviouslyOfferedMember" xlink:label="PreviouslyOfferedMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="GenerationAxis" xlink:to="PreviouslyOfferedMember" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_RiskAxis" xlink:label="RiskAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusTable" xlink:to="RiskAxis" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AllRisksMember" xlink:label="AllRisksMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RiskAxis" xlink:to="AllRisksMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_DocumentType" xlink:label="DocumentType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentType" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_EntityRegistrantName" xlink:label="EntityRegistrantName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityRegistrantName" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_EntityCentralIndexKey" xlink:label="EntityCentralIndexKey"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityCentralIndexKey" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_EntityInvCompanyType" xlink:label="EntityInvCompanyType"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="EntityInvCompanyType" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_DocumentPeriodEndDate" xlink:label="DocumentPeriodEndDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="DocumentPeriodEndDate" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_AmendmentFlag" xlink:label="AmendmentFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AmendmentFlag" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.sec.gov/dei/2022/dei-2022.xsd#dei_AmendmentDescription" xlink:label="AmendmentDescription"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="AmendmentDescription" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_FeeTableTextBlock" xlink:label="FeeTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="FeeTableTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransactionExpensesTableTextBlock" xlink:label="TransactionExpensesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="TransactionExpensesTableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadDescriptionTextBlock" xlink:label="SalesLoadDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="SalesLoadDescriptionTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadWhenDeductedTextBlock" xlink:label="SalesLoadWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="SalesLoadWhenDeductedTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadBasisTextBlock" xlink:label="SalesLoadBasisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="SalesLoadBasisTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadMaximumPercent" xlink:label="SalesLoadMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="SalesLoadMaximumPercent" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadCurrentPercent" xlink:label="SalesLoadCurrentPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="SalesLoadMaximumPercent" xlink:to="SalesLoadCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesDescriptionTextBlock" xlink:label="PremiumTaxesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="PremiumTaxesDescriptionTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesWhenDeductedTextBlock" xlink:label="PremiumTaxesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="PremiumTaxesWhenDeductedTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesBasisTextBlock" xlink:label="PremiumTaxesBasisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="PremiumTaxesBasisTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesMaximumPercent" xlink:label="PremiumTaxesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="PremiumTaxesMaximumPercent" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesCurrentPercent" xlink:label="PremiumTaxesCurrentPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PremiumTaxesMaximumPercent" xlink:to="PremiumTaxesCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeDescriptionTextBlock" xlink:label="DeferredSalesChargeDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="DeferredSalesChargeDescriptionTextBlock" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeWhenDeductedTextBlock" xlink:label="DeferredSalesChargeWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="DeferredSalesChargeWhenDeductedTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeBasisTextBlock" xlink:label="DeferredSalesChargeBasisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="DeferredSalesChargeBasisTextBlock" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeMaximumPercent" xlink:label="DeferredSalesChargeMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="DeferredSalesChargeMaximumPercent" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeCurrentPercent" xlink:label="DeferredSalesChargeCurrentPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="DeferredSalesChargeMaximumPercent" xlink:to="DeferredSalesChargeCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesDescriptionTextBlock" xlink:label="OtherSurrenderFeesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="OtherSurrenderFeesDescriptionTextBlock" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesWhenDeductedTextBlock" xlink:label="OtherSurrenderFeesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="OtherSurrenderFeesWhenDeductedTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesBasisTextBlock" xlink:label="OtherSurrenderFeesBasisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="OtherSurrenderFeesBasisTextBlock" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesMaximumPercent" xlink:label="OtherSurrenderFeesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="OtherSurrenderFeesMaximumPercent" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesCurrentPercent" xlink:label="OtherSurrenderFeesCurrentPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OtherSurrenderFeesMaximumPercent" xlink:to="OtherSurrenderFeesCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesDescriptionTextBlock" xlink:label="TransferFeesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="TransferFeesDescriptionTextBlock" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesWhenDeductedTextBlock" xlink:label="TransferFeesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="TransferFeesWhenDeductedTextBlock" priority="10" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesBasisTextBlock" xlink:label="TransferFeesBasisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="TransferFeesBasisTextBlock" priority="10" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesMaximumPercent" xlink:label="TransferFeesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransactionExpensesTableTextBlock" xlink:to="TransferFeesMaximumPercent" priority="10" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesCurrentPercent" xlink:label="TransferFeesCurrentPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="TransferFeesMaximumPercent" xlink:to="TransferFeesCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadNoteTextBlock" xlink:label="SalesLoadNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="SalesLoadNoteTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesNoteTextBlock" xlink:label="PremiumTaxesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="PremiumTaxesNoteTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeNoteTextBlock" xlink:label="DeferredSalesChargeNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="DeferredSalesChargeNoteTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesNoteTextBlock" xlink:label="OtherSurrenderFeesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="OtherSurrenderFeesNoteTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesNoteTextBlock" xlink:label="TransferFeesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="TransferFeesNoteTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeNoteTextBlock" xlink:label="BaseContractChargeNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="BaseContractChargeNoteTextBlock" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostNoteTextBlock" xlink:label="InsuranceCostNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="InsuranceCostNoteTextBlock" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeNoteTextBlock" xlink:label="InsuranceCostRepresentativeNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="InsuranceCostRepresentativeNoteTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeNoteTextBlock" xlink:label="AnnualMaintenanceFeeNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="AnnualMaintenanceFeeNoteTextBlock" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesNoteTextBlock" xlink:label="MortalityExpenseRiskFeesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="MortalityExpenseRiskFeesNoteTextBlock" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesNoteTextBlock" xlink:label="AdministrativeExpensesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="AdministrativeExpensesNoteTextBlock" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargesNoteTextBlock" xlink:label="OptionalBenefitChargesNoteTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="OptionalBenefitChargesNoteTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PeriodicChargesTableTextBlock" xlink:label="PeriodicChargesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="PeriodicChargesTableTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeDescriptionTextBlock" xlink:label="BaseContractChargeDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="BaseContractChargeDescriptionTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeWhenDeductedTextBlock" xlink:label="BaseContractChargeWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="BaseContractChargeWhenDeductedTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeMinimumPercent" xlink:label="BaseContractChargeMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="BaseContractChargeMinimumPercent" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeMaximumPercent" xlink:label="BaseContractChargeMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="BaseContractChargeMaximumPercent" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostDescriptionTextBlock" xlink:label="InsuranceCostDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostDescriptionTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostWhenDeductedTextBlock" xlink:label="InsuranceCostWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostWhenDeductedTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostMinimumPercent" xlink:label="InsuranceCostMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostMinimumPercent" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostMaximumPercent" xlink:label="InsuranceCostMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostMaximumPercent" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeDescriptionTextBlock" xlink:label="InsuranceCostRepresentativeDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostRepresentativeDescriptionTextBlock" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeWhenDeductedTextBlock" xlink:label="InsuranceCostRepresentativeWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostRepresentativeWhenDeductedTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeMinimumPercent" xlink:label="InsuranceCostRepresentativeMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostRepresentativeMinimumPercent" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeMaximumPercent" xlink:label="InsuranceCostRepresentativeMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostRepresentativeMaximumPercent" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeDescriptionTextBlock" xlink:label="AnnualMaintenanceFeeDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AnnualMaintenanceFeeDescriptionTextBlock" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeWhenDeductedTextBlock" xlink:label="AnnualMaintenanceFeeWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AnnualMaintenanceFeeWhenDeductedTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeMinimumPercent" xlink:label="AnnualMaintenanceFeeMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AnnualMaintenanceFeeMinimumPercent" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeMaximumPercent" xlink:label="AnnualMaintenanceFeeMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AnnualMaintenanceFeeMaximumPercent" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesDescriptionTextBlock" xlink:label="MortalityExpenseRiskFeesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="MortalityExpenseRiskFeesDescriptionTextBlock" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesDescriptionTextBlock" xlink:label="MortalityRiskFeesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesDescriptionTextBlock" xlink:to="MortalityRiskFeesDescriptionTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesDescriptionTextBlock" xlink:label="ExpenseRiskFeesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesDescriptionTextBlock" xlink:to="ExpenseRiskFeesDescriptionTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesWhenDeductedTextBlock" xlink:label="MortalityExpenseRiskFeesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="MortalityExpenseRiskFeesWhenDeductedTextBlock" priority="10" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesWhenDeductedTextBlock" xlink:label="MortalityRiskFeesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesWhenDeductedTextBlock" xlink:to="MortalityRiskFeesWhenDeductedTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesWhenDeductedTextBlock" xlink:label="ExpenseRiskFeesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesWhenDeductedTextBlock" xlink:to="ExpenseRiskFeesWhenDeductedTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesMinimumPercent" xlink:label="MortalityExpenseRiskFeesMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="MortalityExpenseRiskFeesMinimumPercent" priority="10" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesMinimumPercent" xlink:label="MortalityRiskFeesMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesMinimumPercent" xlink:to="MortalityRiskFeesMinimumPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesMinimumPercent" xlink:label="ExpenseRiskFeesMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesMinimumPercent" xlink:to="ExpenseRiskFeesMinimumPercent" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesMaximumPercent" xlink:label="MortalityExpenseRiskFeesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="MortalityExpenseRiskFeesMaximumPercent" priority="10" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesMaximumPercent" xlink:label="MortalityRiskFeesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesMaximumPercent" xlink:to="MortalityRiskFeesMaximumPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesMaximumPercent" xlink:label="ExpenseRiskFeesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="MortalityExpenseRiskFeesMaximumPercent" xlink:to="ExpenseRiskFeesMaximumPercent" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesDescriptionTextBlock" xlink:label="AdministrativeExpensesDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AdministrativeExpensesDescriptionTextBlock" priority="10" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesWhenDeductedTextBlock" xlink:label="AdministrativeExpensesWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AdministrativeExpensesWhenDeductedTextBlock" priority="10" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesMinimumPercent" xlink:label="AdministrativeExpensesMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AdministrativeExpensesMinimumPercent" priority="10" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesMaximumPercent" xlink:label="AdministrativeExpensesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AdministrativeExpensesMaximumPercent" priority="10" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeDescriptionTextBlock" xlink:label="OptionalBenefitChargeDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="OptionalBenefitChargeDescriptionTextBlock" priority="10" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeWhenDeductedTextBlock" xlink:label="OptionalBenefitChargeWhenDeductedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="OptionalBenefitChargeWhenDeductedTextBlock" priority="10" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeMinimumPercent" xlink:label="OptionalBenefitChargeMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="OptionalBenefitChargeMinimumPercent" priority="10" order="27.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeMaximumPercent" xlink:label="OptionalBenefitChargeMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PeriodicChargesTableTextBlock" xlink:to="OptionalBenefitChargeMaximumPercent" priority="10" order="28.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualPortfolioCompanyExpensesTableTextBlock" xlink:label="AnnualPortfolioCompanyExpensesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="AnnualPortfolioCompanyExpensesTableTextBlock" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyExpensesMinimumPercent" xlink:label="PortfolioCompanyExpensesMinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="PortfolioCompanyExpensesMinimumPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyExpensesMaximumPercent" xlink:label="PortfolioCompanyExpensesMaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="PortfolioCompanyExpensesMaximumPercent" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyExpensesTextBlock" xlink:label="PortfolioCompanyExpensesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="PortfolioCompanyExpensesTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BasisOfPercentageTextBlock" xlink:label="BasisOfPercentageTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="BasisOfPercentageTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OfferedStartingDate" xlink:label="OfferedStartingDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="OfferedStartingDate" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OfferedEndingDate" xlink:label="OfferedEndingDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="FeeTableTextBlock" xlink:to="OfferedEndingDate" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PrincipalRisksTableTextBlock" xlink:label="PrincipalRisksTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PrincipalRisksTableTextBlock" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_RiskTextBlock" xlink:label="RiskTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PrincipalRisksTableTextBlock" xlink:to="RiskTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardDeathBenefitsN6TableTextBlock" xlink:label="StandardDeathBenefitsN6TableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="StandardDeathBenefitsN6TableTextBlock" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdditionalInformationStandardDeathBenefitsNoteN6TextBlock" xlink:label="AdditionalInformationStandardDeathBenefitsNoteN6TextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StandardDeathBenefitsN6TableTextBlock" xlink:to="AdditionalInformationStandardDeathBenefitsNoteN6TextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ChargesContractValuesNoteN6TextBlock" xlink:label="ChargesContractValuesNoteN6TextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StandardDeathBenefitsN6TableTextBlock" xlink:to="ChargesContractValuesNoteN6TextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardDeathBenefitTextBlock" xlink:label="StandardDeathBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="StandardDeathBenefitsN6TableTextBlock" xlink:to="StandardDeathBenefitTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherBenefitsAvailableN6TextBlock" xlink:label="OtherBenefitsAvailableN6TextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="OtherBenefitsAvailableN6TextBlock" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsAvailableTableTextBlock" xlink:label="BenefitsAvailableTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsAvailableTableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_NameOfBenefitTextBlock" xlink:label="NameOfBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailableTableTextBlock" xlink:to="NameOfBenefitTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PurposeOfBenefitTextBlock" xlink:label="PurposeOfBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailableTableTextBlock" xlink:to="PurposeOfBenefitTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumDeathBenefitTextBlock" xlink:label="GuaranteedMinimumDeathBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumDeathBenefitTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumWithdrawalTextBlock" xlink:label="GuaranteedMinimumWithdrawalTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumWithdrawalTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumIncomeTextBlock" xlink:label="GuaranteedMinimumIncomeTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumIncomeTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumAccumulationTextBlock" xlink:label="GuaranteedMinimumAccumulationTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumAccumulationTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardBenefitFlag" xlink:label="StandardBenefitFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailableTableTextBlock" xlink:to="StandardBenefitFlag" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitFlag" xlink:label="OptionalBenefitFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailableTableTextBlock" xlink:to="OptionalBenefitFlag" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BriefRestrictionsLimitationsTextBlock" xlink:label="BriefRestrictionsLimitationsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailableTableTextBlock" xlink:to="BriefRestrictionsLimitationsTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsDescriptionTableTextBlock" xlink:label="BenefitsDescriptionTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsDescriptionTableTextBlock" priority="10" order="2.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsDescriptionTableTextBlock" xlink:to="NameOfBenefitTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitStandardOrOptionalTextBlock" xlink:label="BenefitStandardOrOptionalTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsDescriptionTableTextBlock" xlink:to="BenefitStandardOrOptionalTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OperationOfBenefitTextBlock" xlink:label="OperationOfBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsDescriptionTableTextBlock" xlink:to="OperationOfBenefitTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_CalculationMethodOfBenefitTextBlock" xlink:label="CalculationMethodOfBenefitTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsDescriptionTableTextBlock" xlink:to="CalculationMethodOfBenefitTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsLimitationTableTextBlock" xlink:label="BenefitsLimitationTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsLimitationTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_LimitationsRestrictionsRisksTextBlock" xlink:label="LimitationsRestrictionsRisksTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsLimitationTableTextBlock" xlink:to="LimitationsRestrictionsRisksTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompaniesN6TextBlock" xlink:label="PortfolioCompaniesN6TextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="PortfolioCompaniesN6TextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompaniesTableTextBlock" xlink:label="PortfolioCompaniesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="PortfolioCompaniesTableTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyObjectiveTextBlock" xlink:label="PortfolioCompanyObjectiveTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="PortfolioCompanyObjectiveTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyAdviserTextBlock" xlink:label="PortfolioCompanyAdviserTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="PortfolioCompanyAdviserTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_CurrentExpensesPercent" xlink:label="CurrentExpensesPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="CurrentExpensesPercent" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PlatformChargePercent" xlink:label="PlatformChargePercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="PlatformChargePercent" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_CurrentExpensesPlatformChargePercent" xlink:label="CurrentExpensesPlatformChargePercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="CurrentExpensesPlatformChargePercent" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AverageAnnualTotalReturns1YearPercent" xlink:label="AverageAnnualTotalReturns1YearPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="AverageAnnualTotalReturns1YearPercent" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AverageAnnualTotalReturns5YearsPercent" xlink:label="AverageAnnualTotalReturns5YearsPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="AverageAnnualTotalReturns5YearsPercent" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AverageAnnualTotalReturns10YearsPercent" xlink:label="AverageAnnualTotalReturns10YearsPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesTableTextBlock" xlink:to="AverageAnnualTotalReturns10YearsPercent" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsAvailablePortfolioCompaniesTableTextBlock" xlink:label="BenefitsAvailablePortfolioCompaniesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="BenefitsAvailablePortfolioCompaniesTableTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyAvailableWithBenefitFlag" xlink:label="PortfolioCompanyAvailableWithBenefitFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailablePortfolioCompaniesTableTextBlock" xlink:to="PortfolioCompanyAvailableWithBenefitFlag" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitNotAvailablePortfolioCompanyFlag" xlink:label="BenefitNotAvailablePortfolioCompanyFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="BenefitsAvailablePortfolioCompaniesTableTextBlock" xlink:to="BenefitNotAvailablePortfolioCompanyFlag" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TemporaryFeeReductionsCurrentExpensesTextBlock" xlink:label="TemporaryFeeReductionsCurrentExpensesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="TemporaryFeeReductionsCurrentExpensesTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PlatformChargeTextBlock" xlink:label="PlatformChargeTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="PlatformChargeTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusesAvailableTextBlock" xlink:label="ProspectusesAvailableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="ProspectusesAvailableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock" xlink:label="SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInformationAbstract" xlink:label="KeyInformationAbstract"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ProspectusLineItems" xlink:to="KeyInformationAbstract" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyFeesExpensesTextBlock" xlink:label="KeyFeesExpensesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyFeesExpensesTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ChargesForEarlyWithdrawalsTextBlock" xlink:label="ChargesForEarlyWithdrawalsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyFeesExpensesTextBlock" xlink:to="ChargesForEarlyWithdrawalsTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SurrenderChargePeriodYears" xlink:label="SurrenderChargePeriodYears"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ChargesForEarlyWithdrawalsTextBlock" xlink:to="SurrenderChargePeriodYears" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransactionChargesTextBlock" xlink:label="TransactionChargesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyFeesExpensesTextBlock" xlink:to="TransactionChargesTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OngoingFeesAndExpensesTableTextBlock" xlink:label="OngoingFeesAndExpensesTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyFeesExpensesTextBlock" xlink:to="OngoingFeesAndExpensesTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InvestmentOptionsN6MinimumPercent" xlink:label="InvestmentOptionsN6MinimumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OngoingFeesAndExpensesTableTextBlock" xlink:to="InvestmentOptionsN6MinimumPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InvestmentOptionsN6MaximumPercent" xlink:label="InvestmentOptionsN6MaximumPercent"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="OngoingFeesAndExpensesTableTextBlock" xlink:to="InvestmentOptionsN6MaximumPercent" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyRisksTextBlock" xlink:label="KeyRisksTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyRisksTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyFinancialRatingTextBlock" xlink:label="KeyFinancialRatingTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyRisksTextBlock" xlink:to="KeyFinancialRatingTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyContractLapseN6TextBlock" xlink:label="KeyContractLapseN6TextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyRisksTextBlock" xlink:to="KeyContractLapseN6TextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyTaxesTextBlock" xlink:label="KeyTaxesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyTaxesTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInvestmentRestrictionsTextBlock" xlink:label="KeyInvestmentRestrictionsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyInvestmentRestrictionsTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyOptionalBenefitRestrictionsTextBlock" xlink:label="KeyOptionalBenefitRestrictionsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyOptionalBenefitRestrictionsTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInvestmentProfessionalCompensationTextBlock" xlink:label="KeyInvestmentProfessionalCompensationTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyInvestmentProfessionalCompensationTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyExchangesTextBlock" xlink:label="KeyExchangesTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="KeyInformationAbstract" xlink:to="KeyExchangesTextBlock" priority="10" order="7.0"/>
+</link:presentationLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_FeeTableTextBlock" xlink:label="FeeTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="FeeTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransactionExpensesTableTextBlock" xlink:label="TransactionExpensesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="FeeTableTextBlock" xlink:to="TransactionExpensesTableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadNoteTextBlock" xlink:label="SalesLoadNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransactionExpensesTableTextBlock" xlink:to="SalesLoadNoteTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesNoteTextBlock" xlink:label="PremiumTaxesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransactionExpensesTableTextBlock" xlink:to="PremiumTaxesNoteTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeNoteTextBlock" xlink:label="DeferredSalesChargeNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransactionExpensesTableTextBlock" xlink:to="DeferredSalesChargeNoteTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesNoteTextBlock" xlink:label="OtherSurrenderFeesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransactionExpensesTableTextBlock" xlink:to="OtherSurrenderFeesNoteTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesNoteTextBlock" xlink:label="TransferFeesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransactionExpensesTableTextBlock" xlink:to="TransferFeesNoteTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualPortfolioCompanyExpensesTableTextBlock" xlink:label="AnnualPortfolioCompanyExpensesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="FeeTableTextBlock" xlink:to="AnnualPortfolioCompanyExpensesTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BasisOfPercentageTextBlock" xlink:label="BasisOfPercentageTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="BasisOfPercentageTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompanyExpensesTextBlock" xlink:label="PortfolioCompanyExpensesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="AnnualPortfolioCompanyExpensesTableTextBlock" xlink:to="PortfolioCompanyExpensesTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PeriodicChargesTableTextBlock" xlink:label="PeriodicChargesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="FeeTableTextBlock" xlink:to="PeriodicChargesTableTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostNoteTextBlock" xlink:label="InsuranceCostNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostNoteTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeNoteTextBlock" xlink:label="InsuranceCostRepresentativeNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="InsuranceCostRepresentativeNoteTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeNoteTextBlock" xlink:label="AnnualMaintenanceFeeNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AnnualMaintenanceFeeNoteTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeNoteTextBlock" xlink:label="BaseContractChargeNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="BaseContractChargeNoteTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesNoteTextBlock" xlink:label="MortalityExpenseRiskFeesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="MortalityExpenseRiskFeesNoteTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesNoteTextBlock" xlink:label="AdministrativeExpensesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="AdministrativeExpensesNoteTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargesNoteTextBlock" xlink:label="OptionalBenefitChargesNoteTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PeriodicChargesTableTextBlock" xlink:to="OptionalBenefitChargesNoteTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OfferedStartingDate" xlink:label="OfferedStartingDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="FeeTableTextBlock" xlink:to="OfferedStartingDate" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OfferedEndingDate" xlink:label="OfferedEndingDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="FeeTableTextBlock" xlink:to="OfferedEndingDate" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PrincipalRisksTableTextBlock" xlink:label="PrincipalRisksTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PrincipalRisksTableTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardDeathBenefitsN6TableTextBlock" xlink:label="StandardDeathBenefitsN6TableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="StandardDeathBenefitsN6TableTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdditionalInformationStandardDeathBenefitsNoteN6TextBlock" xlink:label="AdditionalInformationStandardDeathBenefitsNoteN6TextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="StandardDeathBenefitsN6TableTextBlock" xlink:to="AdditionalInformationStandardDeathBenefitsNoteN6TextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ChargesContractValuesNoteN6TextBlock" xlink:label="ChargesContractValuesNoteN6TextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="StandardDeathBenefitsN6TableTextBlock" xlink:to="ChargesContractValuesNoteN6TextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherBenefitsAvailableN6TextBlock" xlink:label="OtherBenefitsAvailableN6TextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OtherBenefitsAvailableN6TextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsAvailableTableTextBlock" xlink:label="BenefitsAvailableTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsAvailableTableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsDescriptionTableTextBlock" xlink:label="BenefitsDescriptionTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsDescriptionTableTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsLimitationTableTextBlock" xlink:label="BenefitsLimitationTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="OtherBenefitsAvailableN6TextBlock" xlink:to="BenefitsLimitationTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompaniesN6TextBlock" xlink:label="PortfolioCompaniesN6TextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PortfolioCompaniesN6TextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusesAvailableTextBlock" xlink:label="ProspectusesAvailableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="ProspectusesAvailableTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PortfolioCompaniesTableTextBlock" xlink:label="PortfolioCompaniesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="PortfolioCompaniesTableTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitsAvailablePortfolioCompaniesTableTextBlock" xlink:label="BenefitsAvailablePortfolioCompaniesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="BenefitsAvailablePortfolioCompaniesTableTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TemporaryFeeReductionsCurrentExpensesTextBlock" xlink:label="TemporaryFeeReductionsCurrentExpensesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="TemporaryFeeReductionsCurrentExpensesTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PlatformChargeTextBlock" xlink:label="PlatformChargeTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="PlatformChargeTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock" xlink:label="SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PortfolioCompaniesN6TextBlock" xlink:to="SomePortfolioCompaniesNotAvailableForAllBenefitsTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInformationAbstract" xlink:label="KeyInformationAbstract"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="KeyInformationAbstract" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyFeesExpensesTextBlock" xlink:label="KeyFeesExpensesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyFeesExpensesTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ChargesForEarlyWithdrawalsTextBlock" xlink:label="ChargesForEarlyWithdrawalsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyFeesExpensesTextBlock" xlink:to="ChargesForEarlyWithdrawalsTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SurrenderChargePeriodYears" xlink:label="SurrenderChargePeriodYears"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ChargesForEarlyWithdrawalsTextBlock" xlink:to="SurrenderChargePeriodYears" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransactionChargesTextBlock" xlink:label="TransactionChargesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyFeesExpensesTextBlock" xlink:to="TransactionChargesTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OngoingFeesAndExpensesTableTextBlock" xlink:label="OngoingFeesAndExpensesTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyFeesExpensesTextBlock" xlink:to="OngoingFeesAndExpensesTableTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyRisksTextBlock" xlink:label="KeyRisksTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyRisksTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyFinancialRatingTextBlock" xlink:label="KeyFinancialRatingTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyRisksTextBlock" xlink:to="KeyFinancialRatingTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyContractLapseN6TextBlock" xlink:label="KeyContractLapseN6TextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyContractLapseN6TextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyTaxesTextBlock" xlink:label="KeyTaxesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyTaxesTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInvestmentRestrictionsTextBlock" xlink:label="KeyInvestmentRestrictionsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyInvestmentRestrictionsTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyOptionalBenefitRestrictionsTextBlock" xlink:label="KeyOptionalBenefitRestrictionsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyOptionalBenefitRestrictionsTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyInvestmentProfessionalCompensationTextBlock" xlink:label="KeyInvestmentProfessionalCompensationTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyInvestmentProfessionalCompensationTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_KeyExchangesTextBlock" xlink:label="KeyExchangesTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="KeyInformationAbstract" xlink:to="KeyExchangesTextBlock" priority="10" order="8.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6OngoingFeesData">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InvestmentOptionsN6MaximumPercent" xlink:label="InvestmentOptionsN6MaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InvestmentOptionsN6MaximumPercent" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InvestmentOptionsN6MinimumPercent" xlink:label="InvestmentOptionsN6MinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InvestmentOptionsN6MinimumPercent" priority="10" order="2.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6TransactionExpenseData">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadDescriptionTextBlock" xlink:label="SalesLoadDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="SalesLoadDescriptionTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadWhenDeductedTextBlock" xlink:label="SalesLoadWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="SalesLoadWhenDeductedTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadMaximumPercent" xlink:label="SalesLoadMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="SalesLoadMaximumPercent" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadCurrentPercent" xlink:label="SalesLoadCurrentPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="SalesLoadMaximumPercent" xlink:to="SalesLoadCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesDescriptionTextBlock" xlink:label="PremiumTaxesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PremiumTaxesDescriptionTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesWhenDeductedTextBlock" xlink:label="PremiumTaxesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PremiumTaxesWhenDeductedTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesBasisTextBlock" xlink:label="PremiumTaxesBasisTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PremiumTaxesBasisTextBlock" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesMaximumPercent" xlink:label="PremiumTaxesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PremiumTaxesMaximumPercent" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PremiumTaxesCurrentPercent" xlink:label="PremiumTaxesCurrentPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PremiumTaxesMaximumPercent" xlink:to="PremiumTaxesCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeDescriptionTextBlock" xlink:label="DeferredSalesChargeDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="DeferredSalesChargeDescriptionTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeWhenDeductedTextBlock" xlink:label="DeferredSalesChargeWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="DeferredSalesChargeWhenDeductedTextBlock" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeBasisTextBlock" xlink:label="DeferredSalesChargeBasisTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="DeferredSalesChargeBasisTextBlock" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeMaximumPercent" xlink:label="DeferredSalesChargeMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="DeferredSalesChargeMaximumPercent" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_DeferredSalesChargeCurrentPercent" xlink:label="DeferredSalesChargeCurrentPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="DeferredSalesChargeMaximumPercent" xlink:to="DeferredSalesChargeCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_SalesLoadBasisTextBlock" xlink:label="SalesLoadBasisTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="SalesLoadBasisTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesDescriptionTextBlock" xlink:label="OtherSurrenderFeesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OtherSurrenderFeesDescriptionTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesWhenDeductedTextBlock" xlink:label="OtherSurrenderFeesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OtherSurrenderFeesWhenDeductedTextBlock" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesBasisTextBlock" xlink:label="OtherSurrenderFeesBasisTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OtherSurrenderFeesBasisTextBlock" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesMaximumPercent" xlink:label="OtherSurrenderFeesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OtherSurrenderFeesMaximumPercent" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OtherSurrenderFeesCurrentPercent" xlink:label="OtherSurrenderFeesCurrentPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="OtherSurrenderFeesMaximumPercent" xlink:to="OtherSurrenderFeesCurrentPercent" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesDescriptionTextBlock" xlink:label="TransferFeesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="TransferFeesDescriptionTextBlock" priority="10" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesWhenDeductedTextBlock" xlink:label="TransferFeesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="TransferFeesWhenDeductedTextBlock" priority="10" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesBasisTextBlock" xlink:label="TransferFeesBasisTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="TransferFeesBasisTextBlock" priority="10" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesMaximumPercent" xlink:label="TransferFeesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="TransferFeesMaximumPercent" priority="10" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_TransferFeesCurrentPercent" xlink:label="TransferFeesCurrentPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="TransferFeesMaximumPercent" xlink:to="TransferFeesCurrentPercent" priority="10" order="1.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6PeriodicChargesData">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeDescriptionTextBlock" xlink:label="BaseContractChargeDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BaseContractChargeDescriptionTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeWhenDeductedTextBlock" xlink:label="BaseContractChargeWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BaseContractChargeWhenDeductedTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeMinimumPercent" xlink:label="BaseContractChargeMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BaseContractChargeMinimumPercent" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BaseContractChargeMaximumPercent" xlink:label="BaseContractChargeMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BaseContractChargeMaximumPercent" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostDescriptionTextBlock" xlink:label="InsuranceCostDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostDescriptionTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostWhenDeductedTextBlock" xlink:label="InsuranceCostWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostWhenDeductedTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostMinimumPercent" xlink:label="InsuranceCostMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostMinimumPercent" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostMaximumPercent" xlink:label="InsuranceCostMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostMaximumPercent" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeDescriptionTextBlock" xlink:label="InsuranceCostRepresentativeDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostRepresentativeDescriptionTextBlock" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeWhenDeductedTextBlock" xlink:label="InsuranceCostRepresentativeWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostRepresentativeWhenDeductedTextBlock" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeMinimumPercent" xlink:label="InsuranceCostRepresentativeMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostRepresentativeMinimumPercent" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_InsuranceCostRepresentativeMaximumPercent" xlink:label="InsuranceCostRepresentativeMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="InsuranceCostRepresentativeMaximumPercent" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeDescriptionTextBlock" xlink:label="AnnualMaintenanceFeeDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AnnualMaintenanceFeeDescriptionTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeWhenDeductedTextBlock" xlink:label="AnnualMaintenanceFeeWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AnnualMaintenanceFeeWhenDeductedTextBlock" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeMinimumPercent" xlink:label="AnnualMaintenanceFeeMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AnnualMaintenanceFeeMinimumPercent" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AnnualMaintenanceFeeMaximumPercent" xlink:label="AnnualMaintenanceFeeMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AnnualMaintenanceFeeMaximumPercent" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesDescriptionTextBlock" xlink:label="MortalityExpenseRiskFeesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityExpenseRiskFeesDescriptionTextBlock" priority="10" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesDescriptionTextBlock" xlink:label="MortalityRiskFeesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityRiskFeesDescriptionTextBlock" priority="10" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesDescriptionTextBlock" xlink:label="ExpenseRiskFeesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="ExpenseRiskFeesDescriptionTextBlock" priority="10" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesWhenDeductedTextBlock" xlink:label="MortalityExpenseRiskFeesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityExpenseRiskFeesWhenDeductedTextBlock" priority="10" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesWhenDeductedTextBlock" xlink:label="MortalityRiskFeesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityRiskFeesWhenDeductedTextBlock" priority="10" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesWhenDeductedTextBlock" xlink:label="ExpenseRiskFeesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="ExpenseRiskFeesWhenDeductedTextBlock" priority="10" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesMinimumPercent" xlink:label="MortalityExpenseRiskFeesMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityExpenseRiskFeesMinimumPercent" priority="10" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesMinimumPercent" xlink:label="MortalityRiskFeesMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityRiskFeesMinimumPercent" priority="10" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesMinimumPercent" xlink:label="ExpenseRiskFeesMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="ExpenseRiskFeesMinimumPercent" priority="10" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityExpenseRiskFeesMaximumPercent" xlink:label="MortalityExpenseRiskFeesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityExpenseRiskFeesMaximumPercent" priority="10" order="27.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_MortalityRiskFeesMaximumPercent" xlink:label="MortalityRiskFeesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="MortalityRiskFeesMaximumPercent" priority="10" order="28.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ExpenseRiskFeesMaximumPercent" xlink:label="ExpenseRiskFeesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="ExpenseRiskFeesMaximumPercent" priority="10" order="29.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesDescriptionTextBlock" xlink:label="AdministrativeExpensesDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AdministrativeExpensesDescriptionTextBlock" priority="10" order="30.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesWhenDeductedTextBlock" xlink:label="AdministrativeExpensesWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AdministrativeExpensesWhenDeductedTextBlock" priority="10" order="31.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesMinimumPercent" xlink:label="AdministrativeExpensesMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AdministrativeExpensesMinimumPercent" priority="10" order="32.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_AdministrativeExpensesMaximumPercent" xlink:label="AdministrativeExpensesMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="AdministrativeExpensesMaximumPercent" priority="10" order="33.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeDescriptionTextBlock" xlink:label="OptionalBenefitChargeDescriptionTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OptionalBenefitChargeDescriptionTextBlock" priority="10" order="34.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeWhenDeductedTextBlock" xlink:label="OptionalBenefitChargeWhenDeductedTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OptionalBenefitChargeWhenDeductedTextBlock" priority="10" order="35.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeMinimumPercent" xlink:label="OptionalBenefitChargeMinimumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OptionalBenefitChargeMinimumPercent" priority="10" order="36.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitChargeMaximumPercent" xlink:label="OptionalBenefitChargeMaximumPercent"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OptionalBenefitChargeMaximumPercent" priority="10" order="37.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/N6StandardDeathBenefits">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardDeathBenefitTextBlock" xlink:label="StandardDeathBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="StandardDeathBenefitTextBlock" priority="10" order="2.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/BenefitsAvailableN6Data">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_NameOfBenefitTextBlock" xlink:label="NameOfBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="NameOfBenefitTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_PurposeOfBenefitTextBlock" xlink:label="PurposeOfBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="PurposeOfBenefitTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumDeathBenefitTextBlock" xlink:label="GuaranteedMinimumDeathBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumDeathBenefitTextBlock" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumWithdrawalTextBlock" xlink:label="GuaranteedMinimumWithdrawalTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumWithdrawalTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumIncomeTextBlock" xlink:label="GuaranteedMinimumIncomeTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumIncomeTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_GuaranteedMinimumAccumulationTextBlock" xlink:label="GuaranteedMinimumAccumulationTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="PurposeOfBenefitTextBlock" xlink:to="GuaranteedMinimumAccumulationTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_StandardBenefitFlag" xlink:label="StandardBenefitFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="StandardBenefitFlag" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OptionalBenefitFlag" xlink:label="OptionalBenefitFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OptionalBenefitFlag" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BriefRestrictionsLimitationsTextBlock" xlink:label="BriefRestrictionsLimitationsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BriefRestrictionsLimitationsTextBlock" priority="10" order="6.0"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/vip/role/BenefitsDescriptionN6Data">
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusLineItems" xlink:label="ProspectusLineItems"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_ProspectusTable" xlink:label="ProspectusTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="ProspectusLineItems" xlink:to="ProspectusTable" priority="10" order="1.0" xbrldt:closed="true" xbrldt:contextElement="segment" xbrldt:targetRole="http://xbrl.sec.gov/vip/role/CommonDimensions"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_NameOfBenefitTextBlock" xlink:label="NameOfBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="NameOfBenefitTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_BenefitStandardOrOptionalTextBlock" xlink:label="BenefitStandardOrOptionalTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="BenefitStandardOrOptionalTextBlock" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_OperationOfBenefitTextBlock" xlink:label="OperationOfBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="OperationOfBenefitTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="vip-2022.xsd#vip_CalculationMethodOfBenefitTextBlock" xlink:label="CalculationMethodOfBenefitTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ProspectusLineItems" xlink:to="CalculationMethodOfBenefitTextBlock" priority="10" order="5.0"/>
+</link:definitionLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+</xs:schema>

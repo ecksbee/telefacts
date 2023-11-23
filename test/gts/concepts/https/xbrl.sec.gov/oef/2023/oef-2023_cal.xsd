@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<xs:schema
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:oef="http://xbrl.sec.gov/oef/2023"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:country="http://xbrl.sec.gov/country/2023"
+xmlns:dtr="http://www.xbrl.org/2009/dtr"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:us-types="http://fasb.org/us-types/2023"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:srt="http://fasb.org/srt/2023"
+xmlns:country-def="http://xbrl.sec.gov/country-def/2023"
+xmlns:srt-types="http://fasb.org/srt-types/2023"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:us-gaap="http://fasb.org/us-gaap/2023"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dei="http://xbrl.sec.gov/dei/2023"
+xmlns:oef-cal="http://xbrl.sec.gov/oef-cal/2023"
+targetNamespace="http://xbrl.sec.gov/oef-cal/2023"
+elementFormDefault="qualified"
+xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+<xs:annotation>
+<xs:appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://xbrl.sec.gov/rr/role/OperatingExpensesData" xlink:type="simple" xlink:href="oef-2023.xsd#OperatingExpensesData"/>
+<link:calculationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/rr/role/OperatingExpensesData">
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_NetExpensesOverAssets" xlink:label="NetExpensesOverAssets"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ExpensesOverAssets" xlink:label="ExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetExpensesOverAssets" xlink:to="ExpensesOverAssets" use="optional" priority="10" order="1.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_ManagementFeesOverAssets" xlink:label="ManagementFeesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="ManagementFeesOverAssets" use="optional" priority="10" order="1.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_DistributionAndService12b1FeesOverAssets" xlink:label="DistributionAndService12b1FeesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="DistributionAndService12b1FeesOverAssets" use="optional" priority="10" order="2.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_DistributionOrSimilarNon12b1FeesOverAssets" xlink:label="DistributionOrSimilarNon12b1FeesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="DistributionOrSimilarNon12b1FeesOverAssets" use="optional" priority="10" order="3.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_OtherExpensesOverAssets" xlink:label="OtherExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="OtherExpensesOverAssets" use="optional" priority="10" order="4.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component1OtherExpensesOverAssets" xlink:label="Component1OtherExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component1OtherExpensesOverAssets" use="optional" priority="10" order="1.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component2OtherExpensesOverAssets" xlink:label="Component2OtherExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component2OtherExpensesOverAssets" use="optional" priority="10" order="2.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_Component3OtherExpensesOverAssets" xlink:label="Component3OtherExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="OtherExpensesOverAssets" xlink:to="Component3OtherExpensesOverAssets" use="optional" priority="10" order="3.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_AcquiredFundFeesAndExpensesOverAssets" xlink:label="AcquiredFundFeesAndExpensesOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="ExpensesOverAssets" xlink:to="AcquiredFundFeesAndExpensesOverAssets" use="optional" priority="10" order="5.0" weight="1"/>
+<link:loc xlink:type="locator" xlink:href="oef-2023.xsd#oef_FeeWaiverOrReimbursementOverAssets" xlink:label="FeeWaiverOrReimbursementOverAssets"/>
+<link:calculationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/summation-item" xlink:from="NetExpensesOverAssets" xlink:to="FeeWaiverOrReimbursementOverAssets" use="optional" priority="10" order="2.0" weight="1"/>
+</link:calculationLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+</xs:schema>

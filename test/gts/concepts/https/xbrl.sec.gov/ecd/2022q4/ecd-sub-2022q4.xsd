@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<xs:schema
+xmlns:xs="http://www.w3.org/2001/XMLSchema"
+xmlns:ecd-sub="http://xbrl.sec.gov/ecd-sub/2022q4"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:ecd="http://xbrl.sec.gov/ecd/2022q4"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21"
+xmlns:srt="http://fasb.org/srt/2022"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+targetNamespace="http://xbrl.sec.gov/ecd-sub/2022q4"
+elementFormDefault="qualified"
+xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+<xs:import namespace="http://xbrl.sec.gov/ecd/2022q4" schemaLocation="ecd-2022q4.xsd"/>
+<xs:annotation>
+<xs:appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/ErrCompDisclosure" xlink:type="simple" xlink:href="ecd-2022q4.xsd#ErrCompDisclosure"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/ecd/role/PvpDisclosure" xlink:type="simple" xlink:href="ecd-2022q4.xsd#PvpDisclosure"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/ErrCompDisclosure">
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_RecoveryOfErrCompDisclosureLineItems" xlink:label="RecoveryOfErrCompDisclosureLineItems"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ErrCompRecoveryTable" xlink:label="ErrCompRecoveryTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ErrCompRecoveryTable" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_RestatementDateAxis" xlink:label="RestatementDateAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ErrCompRecoveryTable" xlink:to="RestatementDateAxis" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_IndividualAxis" xlink:label="IndividualAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ErrCompRecoveryTable" xlink:to="IndividualAxis" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="AllIndividualsMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NonNeosMember" xlink:label="NonNeosMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllIndividualsMember" xlink:to="NonNeosMember" priority="10" order="100.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_RestatementDeterminationDate" xlink:label="RestatementDeteriminationDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="RestatementDeteriminationDate" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AggtErrCompAmt" xlink:label="AggtErrCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="AggtErrCompAmt" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ErrCompAnalysisTextBlock" xlink:label="ErrCompAnalysisTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ErrCompAnalysisTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_StkPrcOrTsrEstimationMethodTextBlock" xlink:label="StkPrcOrTsrEstimationMethodTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="StkPrcOrTsrEstimationMethodTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_OutstandingAggtErrCompAmt" xlink:label="OutstandingAggtErrCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="OutstandingAggtErrCompAmt" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AggtErrCompNotYetDeterminedTextBlock" xlink:label="AggtErrCompNotYetDeterminedTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="AggtErrCompNotYetDeterminedTextBlock" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ForgoneRecoveryIndName" xlink:label="ForgoneRecoveryIndName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ForgoneRecoveryIndName" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ForgoneRecoveryDueToExpenseOfEnforcementAmt" xlink:label="ForgoneRecoveryDueToExpenseOfEnforcementAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ForgoneRecoveryDueToExpenseOfEnforcementAmt" order="9.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ForgoneRecoveryDueToViolationOfHomeCountryLawAmt" xlink:label="ForgoneRecoveryDueToViolationOfHomeCountryLawAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ForgoneRecoveryDueToViolationOfHomeCountryLawAmt" order="10.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt" xlink:label="ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ForgoneRecoveryDueToDisqualificationOfTaxBenefitsAmt" order="11.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ForgoneRecoveryExplanationOfImpracticabilityTextBlock" xlink:label="ForgoneRecoveryExplanationOfImpracticabilityTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="ForgoneRecoveryExplanationOfImpracticabilityTextBlock" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_OutstandingRecoveryIndName" xlink:label="OutstandingRecoveryIndName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="OutstandingRecoveryIndName" order="13.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_OutstandingRecoveryCompAmt" xlink:label="OutstandingRecoveryCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="OutstandingRecoveryCompAmt" order="14.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_RestatementDoesNotRequireRecoveryTextBlock" xlink:label="RestatementDoesNotRequireRecoveryTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="RecoveryOfErrCompDisclosureLineItems" xlink:to="RestatementDoesNotRequireRecoveryTextBlock" order="15.0" priority="10"/>
+</link:presentationLink>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/ecd/role/PvpDisclosure">
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_IndividualAxis" xlink:label="IndividualAxis"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AllIndividualsMember" xlink:label="AllIndividualsMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IndividualAxis" xlink:to="AllIndividualsMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PayVsPerformanceDisclosureLineItems" xlink:label="PayVsPerformanceDisclosureLineItems"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PvpTable" xlink:label="PvpTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PvpTable" priority="10" order="1.0"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PvpTable" xlink:to="IndividualAxis" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ExecutiveCategoryAxis" xlink:label="ExecutiveCategoryAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PvpTable" xlink:to="ExecutiveCategoryAxis" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AllExecutiveCategoriesMember" xlink:label="AllExecutiveCategoriesMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ExecutiveCategoryAxis" xlink:to="AllExecutiveCategoriesMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeoMember" xlink:label="PeoMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllExecutiveCategoriesMember" xlink:to="PeoMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NonPeoNeoMember" xlink:label="NonPeoNeoMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AllExecutiveCategoriesMember" xlink:to="NonPeoNeoMember" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_MeasureAxis" xlink:label="MeasureAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PvpTable" xlink:to="MeasureAxis" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AdjToCompAxis" xlink:label="AdjToCompAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PvpTable" xlink:to="AdjToCompAxis" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AllAdjToCompMember" xlink:label="AllAdjToCompMember"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="AdjToCompAxis" xlink:to="AllAdjToCompMember" priority="10" order="1.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PvpTableTextBlock" xlink:label="PvpTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PvpTableTextBlock" priority="10" order="2.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NamedExecutiveOfficersFnTextBlock" xlink:label="NamedExecutiveOfficersFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="NamedExecutiveOfficersFnTextBlock" priority="10" order="4.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AdjToPeoCompFnTextBlock" xlink:label="AdjToPeoCompFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="AdjToPeoCompFnTextBlock" priority="10" order="9.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_EquityValuationAssumptionDifferenceFnTextBlock" xlink:label="EquityValuationAssumptionDifferenceFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="EquityValuationAssumptionDifferenceFnTextBlock" priority="10" order="13.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CompActuallyPaidVsTotalShareholderRtnTextBlock" xlink:label="CompActuallyPaidVsTotalShareholderRtnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CompActuallyPaidVsTotalShareholderRtnTextBlock" priority="10" order="14.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CompActuallyPaidVsNetIncomeTextBlock" xlink:label="CompActuallyPaidVsNetIncomeTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CompActuallyPaidVsNetIncomeTextBlock" priority="10" order="15.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CompActuallyPaidVsCoSelectedMeasureTextBlock" xlink:label="CompActuallyPaidVsCoSelectedMeasureTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CompActuallyPaidVsCoSelectedMeasureTextBlock" priority="10" order="16.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_TotalShareholderRtnVsPeerGroupTextBlock" xlink:label="TotalShareholderRtnVsPeerGroupTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="TotalShareholderRtnVsPeerGroupTextBlock" priority="10" order="17.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_TabularListTableTextBlock" xlink:label="TabularListTableTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="TabularListTableTextBlock" priority="10" order="19.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeerGroupIssuersFnTextBlock" xlink:label="PeerGroupIssuersFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PeerGroupIssuersFnTextBlock" priority="10" order="5.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_ChangedPeerGroupFnTextBlock" xlink:label="ChangedPeerGroupFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="ChangedPeerGroupFnTextBlock" priority="10" order="6.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeoTotalCompAmt" xlink:label="PeoTotalCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PeoTotalCompAmt" priority="10" order="7.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeoActuallyPaidCompAmt" xlink:label="PeoActuallyPaidCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PeoActuallyPaidCompAmt" priority="10" order="8.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NonPeoNeoAvgTotalCompAmt" xlink:label="NonPeoNeoAvgTotalCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="NonPeoNeoAvgTotalCompAmt" priority="10" order="10.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NonPeoNeoAvgCompActuallyPaidAmt" xlink:label="NonPeoNeoAvgCompActuallyPaidAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="NonPeoNeoAvgCompActuallyPaidAmt" priority="10" order="11.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_TotalShareholderRtnAmt" xlink:label="TotalShareholderRtnAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="TotalShareholderRtnAmt" priority="10" order="20.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeerGroupTotalShareholderRtnAmt" xlink:label="PeerGroupTotalShareholderRtnAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PeerGroupTotalShareholderRtnAmt" priority="10" order="21.0"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd#us-gaap_NetIncomeLoss" xlink:label="NetIncomeLoss"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="NetIncomeLoss" priority="10" order="22.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CoSelectedMeasureAmt" xlink:label="CoSelectedMeasureAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CoSelectedMeasureAmt" priority="10" order="23.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_OtherPerfMeasureAmt" xlink:label="OtherPerfMeasureAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="OtherPerfMeasureAmt" priority="10" order="24.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AdjToCompAmt" xlink:label="AdjToCompAmt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="AdjToCompAmt" priority="10" order="25.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_MeasureName" xlink:label="MeasureName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="MeasureName" priority="10" order="27.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_NonGaapMeasureDescriptionTextBlock" xlink:label="NonGaapMeasureDescriptionTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="NonGaapMeasureDescriptionTextBlock" priority="10" order="28.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CoSelectedMeasureName" xlink:label="CoSelectedMeasureName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CoSelectedMeasureName" priority="10" order="3.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_AdjToNonPeoNeoCompFnTextBlock" xlink:label="AdjToNonPeoNeoCompFnTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="AdjToNonPeoNeoCompFnTextBlock" priority="10" order="12.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_PeoName" xlink:label="PeoName"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="PeoName" priority="10" order="26.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_CompActuallyPaidVsOtherMeasureTextBlock" xlink:label="CompActuallyPaidVsOtherMeasureTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="CompActuallyPaidVsOtherMeasureTextBlock" priority="10" order="18.0"/>
+<link:loc xlink:type="locator" xlink:href="ecd-2022q4.xsd#ecd_Additional402vDisclosureTextBlock" xlink:label="Additional402vDisclosureTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="PayVsPerformanceDisclosureLineItems" xlink:to="Additional402vDisclosureTextBlock" priority="10" order="29.0"/>
+</link:presentationLink>
+</link:linkbase>
+</xs:appinfo>
+</xs:annotation>
+</xs:schema>
