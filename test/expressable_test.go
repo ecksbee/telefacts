@@ -65,3 +65,58 @@ func TestCatalog_Expressables(t *testing.T) {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents; outcome %s;\n", e.Href)
 	}
 }
+
+func Test485BPOS_Expressables(t *testing.T) {
+	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
+	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	hydratables.InjectCache(hcache)
+	workingDir := path.Join(".", "wd", "folders", "test_485_ix")
+	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		os.MkdirAll(workingDir, fs.FileMode(0700))
+	}
+	defer func() {
+		os.RemoveAll(workingDir)
+	}()
+	zipFile := path.Join(".", "wd", "test_485_ix.zip")
+	err = unZipTestData(workingDir, zipFile)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	f, err := serializables.Discover("test_485_ix")
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	h, err := hydratables.Hydrate(f)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	data, err := renderables.MarshalCatalog(h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	c := renderables.Catalog{}
+	err = json.Unmarshal(data, &c)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if c.DocumentName != "d394191d485bpos.htm" {
+		t.Fatalf("expected d394191d485bpos.htm; outcome %s;\n", c.DocumentName)
+	}
+	data, err = renderables.MarshalExpressable("rr:PortfolioTurnoverRate", "S000002724Member_InvestorACInstitutionalAndClassRMember", h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	e := renderables.Expressable{}
+	err = json.Unmarshal(data, &e)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	unlabelledFact := (*e.Expression)[renderables.PureLabel]
+	expression := unlabelledFact.Head + unlabelledFact.Core + unlabelledFact.Tail
+	if expression != "1.0200 pure" {
+		t.Fatalf("expected 1.0200; outcome %s;\n", expression)
+	}
+}

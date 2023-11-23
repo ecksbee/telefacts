@@ -1,0 +1,1732 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:shr="http://xbrl.sec.gov/shr/2023"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:country="http://xbrl.sec.gov/country/2023"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:srt="http://fasb.org/srt/2023"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:us-gaap="http://fasb.org/us-gaap/2023"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dei="http://xbrl.sec.gov/dei/2023"
+targetNamespace="http://xbrl.sec.gov/shr/2023"
+elementFormDefault="qualified"
+xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+<import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+<import namespace="http://www.xbrl.org/dtr/type/2022-03-31" schemaLocation="https://www.xbrl.org/dtr/type/2022-03-31/types.xsd"/>
+<import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+<annotation>
+<appinfo>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflRepurchsNrrtvDisclosure" id="IssrOrAfflRepurchsNrrtvDisclosure">
+<link:definition>995501 - Document - Issuer or Affiliate Repurchases Narrative Disclosure, by Program</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrDisclosure" id="IssrRule10b51ArrDisclosure">
+<link:definition>995502 - Document - Issuer Rule 10b5-1 Arrangement Disclosure, by Arrangement</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDisclosure" id="IssrOrAfflRepurchsDisclosure">
+<link:definition>995503 - Document - Issuer or Affiliate Repurchases Disclosure</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsBySecurity" id="IssrOrAfflRepurchsBySecurity">
+<link:definition>995504 - Document - Issuer or Affiliate Repurchases, by Date and Security</link:definition>
+<link:usedOn>link:presentationLink</link:usedOn>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflShrRpPrgmsOnly" id="IssrOrAfflShrRpPrgmsOnly">
+<link:definition>995510 - Document - Issuer or Affiliate Share Repurchase Programs</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrangementsOnly" id="IssrRule10b51ArrangementsOnly">
+<link:definition>995511 - Document - Issuer Rule 10b5-1 Arrangements</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/InsiderPurchsdOrSoldCloseToPlanDisclosure" id="InsidertPurchsdOrSoldCloseToPlanDisclosure">
+<link:definition>995520 - Disclosure - Insider Purchased or Sold Close to Announcement of Repurchase Plan</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails" id="IssrOrAfflRepurchsDetails">
+<link:definition>995530 - Document - Issuer or Affiliate Repurchases, Details</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockTable" id="IssrOrAfflRepurchsStockTable">
+<link:definition>995532 - Document - Issuer or Affiliate Repurchases of Stock Table</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockOnly" id="IssrOrAfflRepurchsStockOnly">
+<link:definition>995534 - Document - Issuer or Affiliate Repurchases, Stock</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsTable" id="IssrOrAfflRepurchsCapitalUnitsTable">
+<link:definition>995536 - Document - Issuer or Affiliate Repurchases of Capital Units Table</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsOnly" id="IssrOrAfflRepurchsCapitalUnitsOnly">
+<link:definition>995538 - Document - Issuer or Affiliate Repurchases, Capital Units</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsTable" id="IssrOrAfflRepurchsWarrantsTable">
+<link:definition>995539 - Document - Issuer or Affiliate Repurchases of Warrants or Rights Table</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsOnly" id="IssrOrAfflRepurchsWarrantsOnly">
+<link:definition>995540 - Document - Issuer or Affiliate Repurchases, Warrants or Rights</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:roleType roleURI="http://xbrl.sec.gov/shr/role/Defaults" id="Defaults">
+<link:definition>995541 - Document - Defaults</link:definition>
+<link:usedOn>link:definitionLink</link:usedOn>
+</link:roleType>
+<link:linkbase id="lnk">
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/all" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#all"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-default"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/domain-member" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#domain-member"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#hypercube-dimension"/>
+<link:arcroleRef arcroleURI="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:type="simple" xlink:href="http://www.xbrl.org/2005/xbrldt-2005.xsd#dimension-domain"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/Defaults" xlink:type="simple" xlink:href="#Defaults"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflShrRpPrgmsOnly" xlink:type="simple" xlink:href="#IssrOrAfflShrRpPrgmsOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrangementsOnly" xlink:type="simple" xlink:href="#IssrRule10b51ArrangementsOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockOnly" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsStockOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsDetails"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsOnly" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsCapitalUnitsOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsOnly" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsWarrantsOnly"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrDisclosure" xlink:type="simple" xlink:href="#IssrRule10b51ArrDisclosure"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsTable" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsCapitalUnitsTable"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDisclosure" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsDisclosure"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockTable" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsStockTable"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsTable" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsWarrantsTable"/>
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflRepurchsNrrtvDisclosure" xlink:type="simple" xlink:href="#IssrOrAfflRepurchsNrrtvDisclosure"/>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockTable">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksAbstract" xlink:label="IssrOrAfflRpsOfStockLineItems"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksTable" xlink:label="IssrOrAfflRpsOfStocksTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="IssrOrAfflRpsOfStocksTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="IssrOrAfflRpsOfStocksTable" xlink:to="StatementClassOfStockAxis" order="1.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockOnly" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRpsLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="IssrOrAfflRpsLineItems" order="2.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDisclosure">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrAbstract" xlink:label="IssrOrAfflRpsDsclsrAbstract"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrTable" xlink:label="IssrOrAfflRpsDsclsrTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="IssrOrAfflRpsDsclsrTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrLineItems" xlink:label="IssrOrAfflRpsDsclsrLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="IssrOrAfflRpsDsclsrLineItems" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:label="InsiderPurchsdOrSldClsToPlanAnncmntFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRpsDsclsrLineItems" xlink:to="InsiderPurchsdOrSldClsToPlanAnncmntFlag" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsTableTextBlock" xlink:label="IssrOrAfflRpsTableTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRpsDsclsrLineItems" xlink:to="IssrOrAfflRpsTableTextBlock" order="3.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsTable">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" xlink:label="fIssrOrAfflRpsOfWarrantsOrRightsLineItems"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:label="IssrOrAfflRpsOfWarrantsOrRightsTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="IssrOrAfflRpsOfWarrantsOrRightsTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfWarrantOrRightAxis" xlink:label="ClassOfWarrantOrRightAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:to="ClassOfWarrantOrRightAxis" order="1.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsOnly" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRpsLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="IssrOrAfflRpsLineItems" order="2.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsTable">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsAbstract" xlink:label="IssrOrAfflRpsOfCapitalUnitsLineItems"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsTable" xlink:label="IssrOrAfflRpsOfCapitalUnitsTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="IssrOrAfflRpsOfCapitalUnitsTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitsByClassAxis" xlink:label="CapitalUnitsByClassAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="IssrOrAfflRpsOfCapitalUnitsTable" xlink:to="CapitalUnitsByClassAxis" order="1.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsOnly" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRpsLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="IssrOrAfflRpsLineItems" order="2.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsDetails">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRepurchsLineItems"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTtlShrs" xlink:label="RpdSctiesTotalShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesTotalShrs" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesAvgPrcPerShr" xlink:label="RpdSctiesAvgPricePerShr"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesAvgPricePerShr" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanShrs" xlink:label="RpdSctiesPblcPlanShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesPblcPlanShrs" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblShrs" xlink:label="RpdSctiesPblcPlanAvailShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesPblcPlanAvailShrs" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblValue" xlink:label="RpdSctiesPblcPlanAvailValue"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesPblcPlanAvailValue" order="5.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktShrs" xlink:label="RpdSctiesOpenMktShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesOpenMktShrs" order="6.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b18SafeHrbrShrs" xlink:label="RpdSctiesRule10b18SafeHrbrShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesRule10b18SafeHrbrShrs" order="7.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b51PlanShrs" xlink:label="RpdSctiesRule10b51PlanShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="RpdSctiesRule10b51PlanShrs" order="8.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsStockOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassAMember" xlink:label="CommonClassAMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CommonClassAMember" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassBMember" xlink:label="CommonClassBMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CommonClassBMember" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CommonClassCMember" xlink:label="CommonClassCMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CommonClassCMember" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CumulativePreferredStockMember" xlink:label="CumulativePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="CumulativePreferredStockMember" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_NoncumulativePreferredStockMember" xlink:label="NoncumulativePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="NoncumulativePreferredStockMember" order="5.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_RedeemablePreferredStockMember" xlink:label="RedeemablePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="RedeemablePreferredStockMember" order="6.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_NonredeemablePreferredStockMember" xlink:label="NonredeemablePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="NonredeemablePreferredStockMember" order="7.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ConvertiblePreferredStockMember" xlink:label="ConvertiblePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="ConvertiblePreferredStockMember" order="8.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_NonredeemableConvertiblePreferredStockMember" xlink:label="NonredeemableConvertiblePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ConvertiblePreferredStockMember" xlink:to="NonredeemableConvertiblePreferredStockMember" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_RedeemableConvertiblePreferredStockMember" xlink:label="RedeemableConvertiblePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ConvertiblePreferredStockMember" xlink:to="RedeemableConvertiblePreferredStockMember" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ContingentConvertiblePreferredStockMember" xlink:label="ContingentConvertiblePreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ConvertiblePreferredStockMember" xlink:to="ContingentConvertiblePreferredStockMember" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_PreferredClassAMember" xlink:label="PreferredClassAMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="PreferredClassAMember" order="9.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_PreferredClassBMember" xlink:label="PreferredClassBMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="PreferredClassBMember" order="10.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesAPreferredStockMember" xlink:label="SeriesAPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesAPreferredStockMember" order="11.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesBPreferredStockMember" xlink:label="SeriesBPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesBPreferredStockMember" order="12.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesCPreferredStockMember" xlink:label="SeriesCPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesCPreferredStockMember" order="13.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesDPreferredStockMember" xlink:label="SeriesDPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesDPreferredStockMember" order="14.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesEPreferredStockMember" xlink:label="SeriesEPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesEPreferredStockMember" order="15.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesFPreferredStockMember" xlink:label="SeriesFPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesFPreferredStockMember" order="16.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesGPreferredStockMember" xlink:label="SeriesGPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesGPreferredStockMember" order="17.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_SeriesHPreferredStockMember" xlink:label="SeriesHPreferredStockMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="ClassOfStockDomain" xlink:to="SeriesHPreferredStockMember" order="18.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsCapitalUnitsOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitsByClassAxis" xlink:label="CapitalUnitsByClassAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitClassDomain" xlink:label="CapitalUnitClassDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="CapitalUnitsByClassAxis" xlink:to="CapitalUnitClassDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitClassAMember" xlink:label="CapitalUnitClassAMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="CapitalUnitClassDomain" xlink:to="CapitalUnitClassAMember" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitClassBMember" xlink:label="CapitalUnitClassBMember"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="CapitalUnitClassDomain" xlink:to="CapitalUnitClassBMember" order="2.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/exh/IssrOrAfflRepurchsWarrantsOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfWarrantOrRightAxis" xlink:label="ClassOfWarrantOrRightAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfWarrantOrRightDomain" xlink:label="ClassOfWarrantOrRightDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="ClassOfWarrantOrRightAxis" xlink:to="ClassOfWarrantOrRightDomain" order="1.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflRepurchsNrrtvDisclosure">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTableAbstract"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTableAbstract" xlink:to="IssrOrAfflRepurchsNrrtvDisclrTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramAxis" xlink:label="ShareRepurchaseProgramAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTable" xlink:to="ShareRepurchaseProgramAxis" order="1.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflShrRpPrgmsOnly" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRepurchsNrrtvDisclrLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTableAbstract" xlink:to="IssrOrAfflRepurchsNrrtvDisclrLineItems" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpPlanObjctvOrRatnlTextBlock" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpdSctiesNotPblcPlanShrs" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpdSctiesNotPblcPlanDescTextBlock" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpdSctiesOpenMktFlag" order="5.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpdSctiesPutOptnObligtnFlag" order="7.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRpPrgmAnnouncementDt" order="8.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRepurchaseProgramAuthorizedAmount1" order="9.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpAmtPrcOrCritTextBlock" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="RpdSctiesTndrOfferFlag" order="6.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="InsiderRpRstrctnsTextBlock" order="15.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="InsiderRpPoliciesProcTextBlock" order="14.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRpPrgmToBeTerminatedFlag" order="13.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRpPrgmExpiredDuringPeriodFlag" order="12.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRepurchaseProgramExpirationDate" order="11.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" order="10.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/Defaults">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StatementClassOfStockAxis" xlink:label="StatementClassOfStockAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfStockDomain" xlink:label="ClassOfStockDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="StatementClassOfStockAxis" xlink:to="ClassOfStockDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfWarrantOrRightAxis" xlink:label="ClassOfWarrantOrRightAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ClassOfWarrantOrRightDomain" xlink:label="ClassOfWarrantOrRightDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="ClassOfWarrantOrRightAxis" xlink:to="ClassOfWarrantOrRightDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitsByClassAxis" xlink:label="CapitalUnitsByClassAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_CapitalUnitClassDomain" xlink:label="CapitalUnitClassDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="CapitalUnitsByClassAxis" xlink:to="CapitalUnitClassDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramAxis" xlink:label="ShareRepurchaseProgramAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramDomain" xlink:label="ShareRepurchaseProgramDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="ShareRepurchaseProgramAxis" xlink:to="ShareRepurchaseProgramDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_DefaultsTable" xlink:label="DefaultsTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DefaultsTable" xlink:to="CapitalUnitsByClassAxis" order="1.0" priority="10"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DefaultsTable" xlink:to="ClassOfWarrantOrRightAxis" order="2.0" priority="10"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DefaultsTable" xlink:to="StatementClassOfStockAxis" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAxis" xlink:label="IssrRule10b51ArrAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DefaultsTable" xlink:to="IssrRule10b51ArrAxis" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDomain" xlink:label="IssrRule10b51ArrDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-default" xlink:from="IssrRule10b51ArrAxis" xlink:to="IssrRule10b51ArrDomain" order="1.0" priority="10"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="DefaultsTable" xlink:to="ShareRepurchaseProgramAxis" order="5.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrDisclosure">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAbstract" xlink:label="IssrRule10b51ArrAbstract"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTable" xlink:label="IssrRule10b5-1ArrTable"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/all" xlink:from="IssrRule10b51ArrAbstract" xlink:to="IssrRule10b5-1ArrTable" order="1.0" xbrldt:contextElement="segment" xbrldt:closed="true" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAxis" xlink:label="IssrRule10b51ArrAxis"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/hypercube-dimension" xlink:from="IssrRule10b5-1ArrTable" xlink:to="IssrRule10b51ArrAxis" order="1.0" xbrldt:targetRole="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrangementsOnly" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrLineItems" xlink:label="IssrRule10b5-1ArrLineItems"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b51ArrAbstract" xlink:to="IssrRule10b5-1ArrLineItems" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptedFlag" xlink:label="IssrRule10b51ArrAdoptedFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51ArrAdoptedFlag" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTrmntdFlag" xlink:label="IssrRule10b51ArrTrmntdFlag"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51ArrTrmntdFlag" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrMtrlTermsTextBlock" xlink:label="MtrlTermsOfIssrRule10b51ArrTextBlock"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="MtrlTermsOfIssrRule10b51ArrTextBlock" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptionDt" xlink:label="IssrRule10b51ArrAdoptionDt"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51ArrAdoptionDt" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTermntnDt" xlink:label="IssrRule10b51ArrTermntnDt"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51ArrTermntnDt" order="5.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDuration" xlink:label="IssrRule10b51ArrDuration"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51ArrDuration" order="6.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51AggtAvlblShrs" xlink:label="IssrRule10b51AggtAvailShrs"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/domain-member" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="IssrRule10b51AggtAvailShrs" order="7.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/10b51/IssrRule10b51ArrangementsOnly">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAxis" xlink:label="IssrRule10b51ArrAxis"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDomain" xlink:label="IssrRule10b51ArrDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="IssrRule10b51ArrAxis" xlink:to="IssrRule10b51ArrDomain" order="1.0" priority="10"/>
+</link:definitionLink>
+<link:definitionLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflShrRpPrgmsOnly">
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramAxis" xlink:label="ShareRepurchaseProgramAxis"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramDomain" xlink:label="ShareRepurchaseProgramDomain"/>
+<link:definitionArc xlink:type="arc" xlink:arcrole="http://xbrl.org/int/dim/arcrole/dimension-domain" xlink:from="ShareRepurchaseProgramAxis" xlink:to="ShareRepurchaseProgramDomain" order="1.0" priority="10"/>
+</link:definitionLink>
+<link:labelLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsTableTextBlock" xlink:label="IssrOrAfflRpTableTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases [Table Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpTableTextBlock" xlink:to="label_IssrOrAfflRpTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTtlShrs" xlink:label="RpdSctiesTotalShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesTotalShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Number of Shares (or Units) Purchased</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesTotalShrs" xlink:to="label_RpdSctiesTotalShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesAvgPrcPerShr" xlink:label="RpdSctiesAvgPricePerShr"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesAvgPricePerShr" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Average Price Paid per Share (or Unit)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesAvgPricePerShr" xlink:to="label_RpdSctiesAvgPricePerShr" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanShrs" xlink:label="RpdSctiesPblcPlanShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Number of Shares (or Units) Purchased Under Publicly Announced Plans or Programs</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesPblcPlanShrs" xlink:to="label_RpdSctiesPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblShrs" xlink:label="RpdSctiesPblcPlanAvailShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesPblcPlanAvailShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Aggregate Maximum Number of Remaining Shares (or Units) that May Yet be Purchased Under Publicly Announced Plans or Programs</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesPblcPlanAvailShrs" xlink:to="label_RpdSctiesPblcPlanAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblValue" xlink:label="RpdSctiesPblcPlanAvailValue"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesPblcPlanAvailValue" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Approximate Dollar Value of Remaining Shares (or Units) that May Yet be Purchased Under Publicly Announced Plans or Programs</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesPblcPlanAvailValue" xlink:to="label_RpdSctiesPblcPlanAvailValue" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktShrs" xlink:label="RpdSctiesOpenMktShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesOpenMktShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Number of Shares (or Units) Purchased on the Open Market</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesOpenMktShrs" xlink:to="label_RpdSctiesOpenMktShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRepurchsNrrtvDisclrLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchase Program Narrative Disclosure [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="label_IssrOrAfflRepurchsNrrtvDisclrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchsNrrtvDisclrTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchase Program Narrative Disclosure [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTable" xlink:to="label_IssrOrAfflRepurchsNrrtvDisclrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:label="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag"/>
+<link:label xlink:type="resource" xlink:label="label_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Insider Purchased or Sold Close to Announcement of Repurchase Plan [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:to="label_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrLineItems" xlink:label="IssrOrAfflRepurchDisclosureLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchDisclosureLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases Disclosure [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchDisclosureLineItems" xlink:to="label_IssrOrAfflRepurchDisclosureLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_RpPlanObjctvOrRatnlTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Objective Or Rationale for Each Repurchase Plan [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpPlanObjctvOrRatnlTextBlock" xlink:to="label_RpPlanObjctvOrRatnlTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_RpAmtPrcOrCritTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Process or Criteria to Determine Repurchase Amount [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpAmtPrcOrCritTextBlock" xlink:to="label_RpAmtPrcOrCritTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesNotPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Number of Securities Repurchased Other Than Through Public Plan</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesNotPblcPlanShrs" xlink:to="label_RpdSctiesNotPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesNotPblcPlanDescTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Nature of Transaction for Securities Repurchased Other Than Through Public Plan [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesNotPblcPlanDescTextBlock" xlink:to="label_RpdSctiesNotPblcPlanDescTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesOpenMktFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Securities Repurchased on Open Market [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesOpenMktFlag" xlink:to="label_RpdSctiesOpenMktFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesPutOptnObligtnFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Securities Repurchased Pursuant to Put Option Obligations [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesPutOptnObligtnFlag" xlink:to="label_RpdSctiesPutOptnObligtnFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b18SafeHrbrShrs" xlink:label="RpdSctiesRule10b18SafeHrbrShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesRule10b18SafeHrbrShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Number of Shares (or Units) Purchased that are Intended to Qualify for the Safe Harbor in Rule 10b-18</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesRule10b18SafeHrbrShrs" xlink:to="label_RpdSctiesRule10b18SafeHrbrShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b51PlanShrs" xlink:label="RpdSctiesRule10b51PlanShrs"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesRule10b51PlanShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Total Number of Shares (or Units) Purchased Pursuant to a Plan that is Intended to Satisfy the Affirmative Defense Conditions of Rule 10b5-1(c)</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesRule10b51PlanShrs" xlink:to="label_RpdSctiesRule10b51PlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:label xlink:type="resource" xlink:label="label_StockRpPrgmAnnouncementDt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Security Repurchase Program Announcement Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRpPrgmAnnouncementDt" xlink:to="label_StockRpPrgmAnnouncementDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:label xlink:type="resource" xlink:label="label_StockRpPrgmExpiredDuringPeriodFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Security Repurchase Program Expired During Period [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRpPrgmExpiredDuringPeriodFlag" xlink:to="label_StockRpPrgmExpiredDuringPeriodFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:label xlink:type="resource" xlink:label="label_StockRpPrgmToBeTerminatedFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Security Repurchase Program to Be Terminated [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRpPrgmToBeTerminatedFlag" xlink:to="label_StockRpPrgmToBeTerminatedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_InsiderRpPoliciesProcTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Insider Repurchase Policies and Procedures [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InsiderRpPoliciesProcTextBlock" xlink:to="label_InsiderRpPoliciesProcTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_InsiderRpRstrctnsTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Insider Repurchase Restrictions [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="InsiderRpRstrctnsTextBlock" xlink:to="label_InsiderRpRstrctnsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrLineItems" xlink:label="IssrRule10b5-1ArrLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b5-1ArrLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangements [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="label_IssrRule10b5-1ArrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTable" xlink:label="IssrRule10b5-1ArrTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b5-1ArrTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangements [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b5-1ArrTable" xlink:to="label_IssrRule10b5-1ArrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptedFlag" xlink:label="IssrRule10b51ArrAdoptedFlag"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrAdoptedFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Adopted [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrAdoptedFlag" xlink:to="label_IssrRule10b51ArrAdoptedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTrmntdFlag" xlink:label="IssrRule10b51ArrTrmntdFlag"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrTrmntdFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Terminated [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrTrmntdFlag" xlink:to="label_IssrRule10b51ArrTrmntdFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrMtrlTermsTextBlock" xlink:label="MtrlTermsOfIssrRule10b51ArrTextBlock"/>
+<link:label xlink:type="resource" xlink:label="label_MtrlTermsOfIssrRule10b51ArrTextBlock" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Material Terms [Text Block]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="MtrlTermsOfIssrRule10b51ArrTextBlock" xlink:to="label_MtrlTermsOfIssrRule10b51ArrTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptionDt" xlink:label="IssrRule10b51ArrAdoptionDt"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrAdoptionDt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Adoption Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrAdoptionDt" xlink:to="label_IssrRule10b51ArrAdoptionDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTermntnDt" xlink:label="IssrRule10b51ArrTermntnDt"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrTermntnDt" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Termination Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrTermntnDt" xlink:to="label_IssrRule10b51ArrTermntnDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDuration" xlink:label="IssrRule10b51ArrDuration"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrDuration" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Duration</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrDuration" xlink:to="label_IssrRule10b51ArrDuration" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51AggtAvlblShrs" xlink:label="IssrRule10b51AggtAvailShrs"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51AggtAvailShrs" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement Aggregate Available Securities</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51AggtAvailShrs" xlink:to="label_IssrRule10b51AggtAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrTable" xlink:label="IssrOrAfflRepurchDisclosureTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchDisclosureTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases Disclosure [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchDisclosureTable" xlink:to="label_IssrOrAfflRepurchDisclosureTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:label xlink:type="resource" xlink:label="label_RpdSctiesTndrOfferFlag" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Securities Repurchased Pursuant to Tender Offer [Flag]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="RpdSctiesTndrOfferFlag" xlink:to="label_RpdSctiesTndrOfferFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRepurchsLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchsLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases [Line Items]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="label_IssrOrAfflRepurchsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_DefaultsTable" xlink:label="DefaultsTable"/>
+<link:label xlink:type="resource" xlink:label="label_DefaultsTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Defaults [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="DefaultsTable" xlink:to="label_DefaultsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAxis" xlink:label="IssrRule10b51ArrAxis"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrAxis" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement [Axis]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrAxis" xlink:to="label_IssrRule10b51ArrAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDomain" xlink:label="IssrRule10b51ArrDomain"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b51ArrDomain" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangement [Domain]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b51ArrDomain" xlink:to="label_IssrRule10b51ArrDomain" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTableAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchsNrrtvDisclrTableAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchase Program Narrative Disclosure [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTableAbstract" xlink:to="label_IssrOrAfflRepurchsNrrtvDisclrTableAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:label xlink:type="resource" xlink:label="label_StockRepurchaseProgramAuthorizedAmount1" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Stock Repurchase Program Authorized Dollar Amount</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRepurchaseProgramAuthorizedAmount1" xlink:to="label_StockRepurchaseProgramAuthorizedAmount1" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:label xlink:type="resource" xlink:label="label_StockRepurchaseProgramExpirationDate" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Stock Repurchase Program Expiration Date</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRepurchaseProgramExpirationDate" xlink:to="label_StockRepurchaseProgramExpirationDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:label xlink:type="resource" xlink:label="label_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Stock Repurchase Program Number of Shares Authorized to be Repurchased</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:to="label_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksTable" xlink:label="IssrOrAfflRpsOfStocksTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsOfStocksTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases of Stocks [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsOfStocksTable" xlink:to="label_IssrOrAfflRpsOfStocksTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsTable" xlink:label="IssrOrAfflRpsOfCapitalUnitsTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsOfCapitalUnitsTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases of Capital Units [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsOfCapitalUnitsTable" xlink:to="label_IssrOrAfflRpsOfCapitalUnitsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:label="IssrOrAfflRpsOfWarrantsOrRightsTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases of Warrants or Rights [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:to="label_IssrOrAfflRpsOfWarrantsOrRightsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksAbstract" xlink:label="IssrOrAfflRpsOfStockLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsOfStockLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases of Stocks [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="label_IssrOrAfflRpsOfStockLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsAbstract" xlink:label="IssrOrAfflRpsOfCapitalUnitsLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases of Capital Units [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="label_IssrOrAfflRpsOfCapitalUnitsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" xlink:label="fIssrOrAfflRpsOfWarrantsOrRightsLineItems"/>
+<link:label xlink:type="resource" xlink:label="label_fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Or Affiliate Repurchases of Warrants or Rights [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="label_fIssrOrAfflRpsOfWarrantsOrRightsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrAbstract" xlink:label="IssrOrAfflRpsDsclsrAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRpsDsclsrAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases Disclosure [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="label_IssrOrAfflRpsDsclsrAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAbstract" xlink:label="IssrRule10b5-1ArrAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_IssrRule10b5-1ArrAbstract" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer Rule 10b5-1 Arrangements [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrRule10b5-1ArrAbstract" xlink:to="label_IssrRule10b5-1ArrAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityTable" xlink:label="IssrOrAfflRepurchasesReportTable"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchasesReportTable_2" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Issuer or Affiliate Repurchases, by Date and Security:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchasesReportTable" xlink:to="label_IssrOrAfflRepurchasesReportTable_2" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchasesReportTable" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases, By Date and Security [Table]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchasesReportTable" xlink:to="label_IssrOrAfflRepurchasesReportTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityAbstract" xlink:label="IssrOrAfflRepurchasesReportAbstract"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchasesReportAbstract" xlink:role="http://www.xbrl.org/2003/role/terseLabel" xml:lang="en-US">Issuer or Affiliate Repurchases, by Date and Security:</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchasesReportAbstract" xlink:to="label_IssrOrAfflRepurchasesReportAbstract" priority="10"/>
+<link:label xlink:type="resource" xlink:label="label_IssrOrAfflRepurchasesReportAbstract_2" xlink:role="http://www.xbrl.org/2003/role/label" xml:lang="en-US">Issuer or Affiliate Repurchases, By Date and Security [Abstract]</link:label>
+<link:labelArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-label" xlink:from="IssrOrAfflRepurchasesReportAbstract" xlink:to="label_IssrOrAfflRepurchasesReportAbstract_2" priority="10"/>
+</link:labelLink>
+<link:referenceLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrLineItems" xlink:label="IssrOrAfflRepurchDisclosureLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureLineItems" xlink:to="reference_IssrOrAfflRepurchDisclosureLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTtlShrs" xlink:label="RpdSctiesTotalShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTotalShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>c</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTotalShrs" xlink:to="reference_RpdSctiesTotalShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesAvgPrcPerShr" xlink:label="RpdSctiesAvgPricePerShr"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesAvgPricePerShr" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>d</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesAvgPricePerShr" xlink:to="reference_RpdSctiesAvgPricePerShr" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanShrs" xlink:label="RpdSctiesPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>e</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanShrs" xlink:to="reference_RpdSctiesPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblShrs" xlink:label="RpdSctiesPblcPlanAvailShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>f</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailShrs" xlink:to="reference_RpdSctiesPblcPlanAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblValue" xlink:label="RpdSctiesPblcPlanAvailValue"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailValue" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>f</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailValue" xlink:to="reference_RpdSctiesPblcPlanAvailValue" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktShrs" xlink:label="RpdSctiesOpenMktShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>g</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktShrs" xlink:to="reference_RpdSctiesOpenMktShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRepurchsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="reference_IssrOrAfflRepurchsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrTable" xlink:label="IssrOrAfflRepurchDisclosureTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureTable" xlink:to="reference_IssrOrAfflRepurchDisclosureTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsTableTextBlock" xlink:label="IssrOrAfflRpTableTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpTableTextBlock" xlink:to="reference_IssrOrAfflRpTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksAbstract" xlink:label="IssrOrAfflRpsOfStockLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStockLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="reference_IssrOrAfflRpsOfStockLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsAbstract" xlink:label="IssrOrAfflRpsOfCapitalUnitsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" xlink:label="fIssrOrAfflRpsOfWarrantsOrRightsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksTable" xlink:label="IssrOrAfflRpsOfStocksTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStocksTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStocksTable" xlink:to="reference_IssrOrAfflRpsOfStocksTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsTable" xlink:label="IssrOrAfflRpsOfCapitalUnitsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsTable" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:label="IssrOrAfflRpsOfWarrantsOrRightsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:to="reference_IssrOrAfflRpsOfWarrantsOrRightsTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrAbstract" xlink:label="IssrOrAfflRpsDsclsrAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsDsclsrAbstract" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="reference_IssrOrAfflRpsDsclsrAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityAbstract" xlink:label="IssrOrAfflRepurchasesBySecurityAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityAbstract_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityAbstract" xlink:to="reference_IssrOrAfflRepurchasesBySecurityAbstract_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityTable" xlink:label="IssrOrAfflRepurchasesBySecurityTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityTable_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityTable" xlink:to="reference_IssrOrAfflRepurchasesBySecurityTable_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b18SafeHrbrShrs" xlink:label="RpdSctiesRule10b18SafeHrbrShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b18SafeHrbrShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>h</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b18SafeHrbrShrs" xlink:to="reference_RpdSctiesRule10b18SafeHrbrShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b51PlanShrs" xlink:label="RpdSctiesRule10b51PlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b51PlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+<ref:Section>Gen. Instr.</ref:Section>
+<ref:Subsection>II</ref:Subsection>
+<ref:Paragraph>i</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b51PlanShrs" xlink:to="reference_RpdSctiesRule10b51PlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:label="InsiderPurchsdOrSldClsToPlanAnncmntFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form F-SR</ref:Name>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:to="reference_InsiderPurchsdOrSldClsToPlanAnncmntFlag" priority="10"/>
+</link:referenceLink>
+<link:referenceLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRepurchsNrrtvDisclrLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTable" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpPlanObjctvOrRatnlTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpPlanObjctvOrRatnlTextBlock" xlink:to="reference_RpPlanObjctvOrRatnlTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpAmtPrcOrCritTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpAmtPrcOrCritTextBlock" xlink:to="reference_RpAmtPrcOrCritTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanShrs" xlink:to="reference_RpdSctiesNotPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanDescTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanDescTextBlock" xlink:to="reference_RpdSctiesNotPblcPlanDescTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktFlag" xlink:to="reference_RpdSctiesOpenMktFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPutOptnObligtnFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPutOptnObligtnFlag" xlink:to="reference_RpdSctiesPutOptnObligtnFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmAnnouncementDt" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmAnnouncementDt" xlink:to="reference_StockRpPrgmAnnouncementDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpPoliciesProcTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpPoliciesProcTextBlock" xlink:to="reference_InsiderRpPoliciesProcTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpRstrctnsTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpRstrctnsTextBlock" xlink:to="reference_InsiderRpRstrctnsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTndrOfferFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTndrOfferFlag" xlink:to="reference_RpdSctiesTndrOfferFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramExpirationDate" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramExpirationDate" xlink:to="reference_StockRepurchaseProgramExpirationDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramAuthorizedAmount1" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramAuthorizedAmount1" xlink:to="reference_StockRepurchaseProgramAuthorizedAmount1" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:to="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmExpiredDuringPeriodFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmExpiredDuringPeriodFlag" xlink:to="reference_StockRpPrgmExpiredDuringPeriodFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmToBeTerminatedFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>v</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmToBeTerminatedFlag" xlink:to="reference_StockRpPrgmToBeTerminatedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form 20-F</ref:Name>
+<ref:Section>16E</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract" xlink:to="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract_3" priority="10"/>
+</link:referenceLink>
+<link:referenceLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrLineItems" xlink:label="IssrOrAfflRepurchDisclosureLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureLineItems" xlink:to="reference_IssrOrAfflRepurchDisclosureLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTtlShrs" xlink:label="RpdSctiesTotalShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTotalShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>C</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTotalShrs" xlink:to="reference_RpdSctiesTotalShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesAvgPrcPerShr" xlink:label="RpdSctiesAvgPricePerShr"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesAvgPricePerShr" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>D</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesAvgPricePerShr" xlink:to="reference_RpdSctiesAvgPricePerShr" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanShrs" xlink:label="RpdSctiesPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>E</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanShrs" xlink:to="reference_RpdSctiesPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblShrs" xlink:label="RpdSctiesPblcPlanAvailShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>F</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailShrs" xlink:to="reference_RpdSctiesPblcPlanAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblValue" xlink:label="RpdSctiesPblcPlanAvailValue"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailValue" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>F</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailValue" xlink:to="reference_RpdSctiesPblcPlanAvailValue" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktShrs" xlink:label="RpdSctiesOpenMktShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>G</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktShrs" xlink:to="reference_RpdSctiesOpenMktShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRepurchsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="reference_IssrOrAfflRepurchsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrTable" xlink:label="IssrOrAfflRepurchDisclosureTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureTable" xlink:to="reference_IssrOrAfflRepurchDisclosureTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsTableTextBlock" xlink:label="IssrOrAfflRpTableTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpTableTextBlock" xlink:to="reference_IssrOrAfflRpTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksAbstract" xlink:label="IssrOrAfflRpsOfStockLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStockLineItems_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="reference_IssrOrAfflRpsOfStockLineItems_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsAbstract" xlink:label="IssrOrAfflRpsOfCapitalUnitsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsLineItems_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsLineItems_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" xlink:label="fIssrOrAfflRpsOfWarrantsOrRightsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksTable" xlink:label="IssrOrAfflRpsOfStocksTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStocksTable_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStocksTable" xlink:to="reference_IssrOrAfflRpsOfStocksTable_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsTable" xlink:label="IssrOrAfflRpsOfCapitalUnitsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsTable_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsTable" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsTable_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:label="IssrOrAfflRpsOfWarrantsOrRightsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfWarrantsOrRightsTable_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:to="reference_IssrOrAfflRpsOfWarrantsOrRightsTable_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrAbstract" xlink:label="IssrOrAfflRpsDsclsrAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsDsclsrAbstract_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="reference_IssrOrAfflRpsDsclsrAbstract_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityAbstract" xlink:label="IssrOrAfflRepurchasesBySecurityAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityAbstract_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityAbstract" xlink:to="reference_IssrOrAfflRepurchasesBySecurityAbstract_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityTable" xlink:label="IssrOrAfflRepurchasesBySecurityTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityTable_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityTable" xlink:to="reference_IssrOrAfflRepurchasesBySecurityTable_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b18SafeHrbrShrs" xlink:label="RpdSctiesRule10b18SafeHrbrShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b18SafeHrbrShrs_3" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>H</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b18SafeHrbrShrs" xlink:to="reference_RpdSctiesRule10b18SafeHrbrShrs_3" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b51PlanShrs" xlink:label="RpdSctiesRule10b51PlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b51PlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>ii</ref:Paragraph>
+<ref:Subparagraph>I</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b51PlanShrs" xlink:to="reference_RpdSctiesRule10b51PlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:label="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:to="reference_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRepurchsNrrtvDisclrLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTable" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpPlanObjctvOrRatnlTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpPlanObjctvOrRatnlTextBlock" xlink:to="reference_RpPlanObjctvOrRatnlTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpAmtPrcOrCritTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpAmtPrcOrCritTextBlock" xlink:to="reference_RpAmtPrcOrCritTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanShrs" xlink:to="reference_RpdSctiesNotPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanDescTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanDescTextBlock" xlink:to="reference_RpdSctiesNotPblcPlanDescTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktFlag" xlink:to="reference_RpdSctiesOpenMktFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPutOptnObligtnFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPutOptnObligtnFlag" xlink:to="reference_RpdSctiesPutOptnObligtnFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmAnnouncementDt" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmAnnouncementDt" xlink:to="reference_StockRpPrgmAnnouncementDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpPoliciesProcTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpPoliciesProcTextBlock" xlink:to="reference_InsiderRpPoliciesProcTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpRstrctnsTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpRstrctnsTextBlock" xlink:to="reference_InsiderRpRstrctnsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTndrOfferFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTndrOfferFlag" xlink:to="reference_RpdSctiesTndrOfferFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramExpirationDate" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramExpirationDate" xlink:to="reference_StockRepurchaseProgramExpirationDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramAuthorizedAmount1" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramAuthorizedAmount1" xlink:to="reference_StockRepurchaseProgramAuthorizedAmount1" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:to="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmExpiredDuringPeriodFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmExpiredDuringPeriodFlag" xlink:to="reference_StockRpPrgmExpiredDuringPeriodFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmToBeTerminatedFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>v</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmToBeTerminatedFlag" xlink:to="reference_StockRpPrgmToBeTerminatedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Form N-CSR</ref:Name>
+<ref:Section>14</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract" xlink:to="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract_2" priority="10"/>
+</link:referenceLink>
+<link:referenceLink xlink:type="extended" xlink:role="http://www.xbrl.org/2003/role/link">
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrLineItems" xlink:label="IssrOrAfflRepurchDisclosureLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureLineItems" xlink:to="reference_IssrOrAfflRepurchDisclosureLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTtlShrs" xlink:label="RpdSctiesTotalShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTotalShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>C</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTotalShrs" xlink:to="reference_RpdSctiesTotalShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesAvgPrcPerShr" xlink:label="RpdSctiesAvgPricePerShr"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesAvgPricePerShr" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>D</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesAvgPricePerShr" xlink:to="reference_RpdSctiesAvgPricePerShr" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanShrs" xlink:label="RpdSctiesPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>E</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanShrs" xlink:to="reference_RpdSctiesPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblShrs" xlink:label="RpdSctiesPblcPlanAvailShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>F</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailShrs" xlink:to="reference_RpdSctiesPblcPlanAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPblcPlanAvlblValue" xlink:label="RpdSctiesPblcPlanAvailValue"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPblcPlanAvailValue" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>F</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPblcPlanAvailValue" xlink:to="reference_RpdSctiesPblcPlanAvailValue" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktShrs" xlink:label="RpdSctiesOpenMktShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>G</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktShrs" xlink:to="reference_RpdSctiesOpenMktShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsLineItems" xlink:label="IssrOrAfflRepurchsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsLineItems" xlink:to="reference_IssrOrAfflRepurchsLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrTable" xlink:label="IssrOrAfflRepurchDisclosureTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchDisclosureTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchDisclosureTable" xlink:to="reference_IssrOrAfflRepurchDisclosureTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsTableTextBlock" xlink:label="IssrOrAfflRpTableTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpTableTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpTableTextBlock" xlink:to="reference_IssrOrAfflRpTableTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksAbstract" xlink:label="IssrOrAfflRpsOfStockLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStockLineItems_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStockLineItems" xlink:to="reference_IssrOrAfflRpsOfStockLineItems_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsAbstract" xlink:label="IssrOrAfflRpsOfCapitalUnitsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsLineItems_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsLineItems" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsLineItems_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" xlink:label="fIssrOrAfflRpsOfWarrantsOrRightsLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="fIssrOrAfflRpsOfWarrantsOrRightsLineItems" xlink:to="reference_fIssrOrAfflRpsOfWarrantsOrRightsLineItems_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfStocksTable" xlink:label="IssrOrAfflRpsOfStocksTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfStocksTable_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfStocksTable" xlink:to="reference_IssrOrAfflRpsOfStocksTable_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfCapitalUnitsTable" xlink:label="IssrOrAfflRpsOfCapitalUnitsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfCapitalUnitsTable_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfCapitalUnitsTable" xlink:to="reference_IssrOrAfflRpsOfCapitalUnitsTable_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:label="IssrOrAfflRpsOfWarrantsOrRightsTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsOfWarrantsOrRightsTable_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsOfWarrantsOrRightsTable" xlink:to="reference_IssrOrAfflRpsOfWarrantsOrRightsTable_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsDsclsrAbstract" xlink:label="IssrOrAfflRpsDsclsrAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpsDsclsrAbstract_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpsDsclsrAbstract" xlink:to="reference_IssrOrAfflRpsDsclsrAbstract_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityAbstract" xlink:label="IssrOrAfflRepurchasesBySecurityAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityAbstract_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityAbstract" xlink:to="reference_IssrOrAfflRepurchasesBySecurityAbstract_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpsBySecurityTable" xlink:label="IssrOrAfflRepurchasesBySecurityTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchasesBySecurityTable_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchasesBySecurityTable" xlink:to="reference_IssrOrAfflRepurchasesBySecurityTable_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b18SafeHrbrShrs" xlink:label="RpdSctiesRule10b18SafeHrbrShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b18SafeHrbrShrs_2" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>H</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b18SafeHrbrShrs" xlink:to="reference_RpdSctiesRule10b18SafeHrbrShrs_2" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesRule10b51PlanShrs" xlink:label="RpdSctiesRule10b51PlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesRule10b51PlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regularion S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+<ref:Sentence>I</ref:Sentence>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesRule10b51PlanShrs" xlink:to="reference_RpdSctiesRule10b51PlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" xlink:label="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>601</ref:Section>
+<ref:Subsection>b</ref:Subsection>
+<ref:Paragraph>26</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" xlink:to="reference_InsiderPurchsdOrSoldCloseToPlanAnncmntFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRepurchsNrrtvDisclrLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrLineItems" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRepurchsNrrtvDisclrTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRepurchsNrrtvDisclrTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRepurchsNrrtvDisclrTable" xlink:to="reference_IssrOrAfflRepurchsNrrtvDisclrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpPlanObjctvOrRatnlTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpPlanObjctvOrRatnlTextBlock" xlink:to="reference_RpPlanObjctvOrRatnlTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpAmtPrcOrCritTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpAmtPrcOrCritTextBlock" xlink:to="reference_RpAmtPrcOrCritTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanShrs" xlink:to="reference_RpdSctiesNotPblcPlanShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesNotPblcPlanDescTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesNotPblcPlanDescTextBlock" xlink:to="reference_RpdSctiesNotPblcPlanDescTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesOpenMktFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesOpenMktFlag" xlink:to="reference_RpdSctiesOpenMktFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesPutOptnObligtnFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesPutOptnObligtnFlag" xlink:to="reference_RpdSctiesPutOptnObligtnFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmAnnouncementDt" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmAnnouncementDt" xlink:to="reference_StockRpPrgmAnnouncementDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpPoliciesProcTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpPoliciesProcTextBlock" xlink:to="reference_InsiderRpPoliciesProcTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_InsiderRpRstrctnsTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>4</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="InsiderRpRstrctnsTextBlock" xlink:to="reference_InsiderRpRstrctnsTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_RpdSctiesTndrOfferFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>2</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="RpdSctiesTndrOfferFlag" xlink:to="reference_RpdSctiesTndrOfferFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramExpirationDate" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramExpirationDate" xlink:to="reference_StockRepurchaseProgramExpirationDate" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramAuthorizedAmount1" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramAuthorizedAmount1" xlink:to="reference_StockRepurchaseProgramAuthorizedAmount1" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:to="reference_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmExpiredDuringPeriodFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>iv</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmExpiredDuringPeriodFlag" xlink:to="reference_StockRpPrgmExpiredDuringPeriodFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_StockRpPrgmToBeTerminatedFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+<ref:Subsection>a</ref:Subsection>
+<ref:Paragraph>3</ref:Paragraph>
+<ref:Subparagraph>v</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="StockRpPrgmToBeTerminatedFlag" xlink:to="reference_StockRpPrgmToBeTerminatedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>703</ref:Section>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract" xlink:to="reference_IssrOrAfflRpPrgmNrrtvDsclsrTableAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrLineItems" xlink:label="IssrRule10b5-1ArrLineItems"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b5-1ArrLineItems" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b5-1ArrLineItems" xlink:to="reference_IssrRule10b5-1ArrLineItems" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTable" xlink:label="IssrRule10b5-1ArrTable"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b5-1ArrTable" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b5-1ArrTable" xlink:to="reference_IssrRule10b5-1ArrTable" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptedFlag" xlink:label="IssrRule10b51ArrAdoptedFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrAdoptedFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrAdoptedFlag" xlink:to="reference_IssrRule10b51ArrAdoptedFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTrmntdFlag" xlink:label="IssrRule10b51ArrTrmntdFlag"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrTrmntdFlag" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrTrmntdFlag" xlink:to="reference_IssrRule10b51ArrTrmntdFlag" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrMtrlTermsTextBlock" xlink:label="MtrlTermsOfIssrRule10b51ArrTextBlock"/>
+<link:reference xlink:type="resource" xlink:label="reference_MtrlTermsOfIssrRule10b51ArrTextBlock" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="MtrlTermsOfIssrRule10b51ArrTextBlock" xlink:to="reference_MtrlTermsOfIssrRule10b51ArrTextBlock" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAdoptionDt" xlink:label="IssrRule10b51ArrAdoptionDt"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrAdoptionDt" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrAdoptionDt" xlink:to="reference_IssrRule10b51ArrAdoptionDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrTermntnDt" xlink:label="IssrRule10b51ArrTermntnDt"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrTermntnDt" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+<ref:Subparagraph>i</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrTermntnDt" xlink:to="reference_IssrRule10b51ArrTermntnDt" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDuration" xlink:label="IssrRule10b51ArrDuration"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrDuration" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+<ref:Subparagraph>ii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrDuration" xlink:to="reference_IssrRule10b51ArrDuration" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51AggtAvlblShrs" xlink:label="IssrRule10b51AggtAvailShrs"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51AggtAvailShrs" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+<ref:Paragraph>1</ref:Paragraph>
+<ref:Subparagraph>iii</ref:Subparagraph>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51AggtAvailShrs" xlink:to="reference_IssrRule10b51AggtAvailShrs" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAbstract" xlink:label="IssrRule10b51ArrAbstract"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrAbstract" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrAbstract" xlink:to="reference_IssrRule10b51ArrAbstract" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrAxis" xlink:label="IssrRule10b51ArrAxis"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrAxis" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrAxis" xlink:to="reference_IssrRule10b51ArrAxis" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="#shr_IssrRule10b51ArrDomain" xlink:label="IssrRule10b51ArrDomain"/>
+<link:reference xlink:type="resource" xlink:label="reference_IssrRule10b51ArrDomain" xlink:role="http://www.xbrl.org/2003/role/presentationRef">
+<ref:Publisher>SEC</ref:Publisher>
+<ref:Name>Regulation S-K</ref:Name>
+<ref:Section>408</ref:Section>
+<ref:Subsection>d</ref:Subsection>
+</link:reference>
+<link:referenceArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/concept-reference" xlink:from="IssrRule10b51ArrDomain" xlink:to="reference_IssrRule10b51ArrDomain" priority="10"/>
+</link:referenceLink>
+</link:linkbase>
+</appinfo>
+</annotation>
+<element name="IssrOrAfflRpPrgmNrrtvDsclsrAbstract" id="shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpPrgmNrrtvDsclsrTable" id="shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" id="shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="RpPlanObjctvOrRatnlTextBlock" id="shr_RpPlanObjctvOrRatnlTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpAmtPrcOrCritTextBlock" id="shr_RpAmtPrcOrCritTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesNotPblcPlanShrs" id="shr_RpdSctiesNotPblcPlanShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesNotPblcPlanDescTextBlock" id="shr_RpdSctiesNotPblcPlanDescTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesOpenMktFlag" id="shr_RpdSctiesOpenMktFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesTndrOfferFlag" id="shr_RpdSctiesTndrOfferFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesPutOptnObligtnFlag" id="shr_RpdSctiesPutOptnObligtnFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="SctyRpPrgmAnncmntDt" id="shr_SctyRpPrgmAnncmntDt" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="SctyRpPrgmExpiredDuringPeriodFlag" id="shr_SctyRpPrgmExpiredDuringPeriodFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="SctyRpPrgmToBeTerminatedFlag" id="shr_SctyRpPrgmToBeTerminatedFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="InsiderRpPoliciesProcTextBlock" id="shr_InsiderRpPoliciesProcTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="InsiderRpRstrctnsTextBlock" id="shr_InsiderRpRstrctnsTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrAbstract" id="shr_IssrRule10b51ArrAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrTable" id="shr_IssrRule10b51ArrTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrAxis" id="shr_IssrRule10b51ArrAxis" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrDomain" id="shr_IssrRule10b51ArrDomain" type="dtr-types:domainItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrLineItems" id="shr_IssrRule10b51ArrLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrAdoptedFlag" id="shr_IssrRule10b51ArrAdoptedFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrTrmntdFlag" id="shr_IssrRule10b51ArrTrmntdFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrMtrlTermsTextBlock" id="shr_IssrRule10b51ArrMtrlTermsTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrAdoptionDt" id="shr_IssrRule10b51ArrAdoptionDt" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrTermntnDt" id="shr_IssrRule10b51ArrTermntnDt" type="xbrli:dateItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51ArrDuration" id="shr_IssrRule10b51ArrDuration" type="xbrli:durationItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrRule10b51AggtAvlblShrs" id="shr_IssrRule10b51AggtAvlblShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsDsclsrAbstract" id="shr_IssrOrAfflRpsDsclsrAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsDsclsrTable" id="shr_IssrOrAfflRpsDsclsrTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsDsclsrLineItems" id="shr_IssrOrAfflRpsDsclsrLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="InsiderPurchsdOrSldClsToPlanAnncmntFlag" id="shr_InsiderPurchsdOrSldClsToPlanAnncmntFlag" type="xbrli:booleanItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsTableTextBlock" id="shr_IssrOrAfflRpsTableTextBlock" type="dtr-types:textBlockItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsBySecurityAbstract" id="shr_IssrOrAfflRpsBySecurityAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsBySecurityTable" id="shr_IssrOrAfflRpsBySecurityTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfStocksAbstract" id="shr_IssrOrAfflRpsOfStocksAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfStocksTable" id="shr_IssrOrAfflRpsOfStocksTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfCapitalUnitsAbstract" id="shr_IssrOrAfflRpsOfCapitalUnitsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfCapitalUnitsTable" id="shr_IssrOrAfflRpsOfCapitalUnitsTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfWarrantsOrRightsAbstract" id="shr_IssrOrAfflRpsOfWarrantsOrRightsAbstract" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsOfWarrantsOrRightsTable" id="shr_IssrOrAfflRpsOfWarrantsOrRightsTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="IssrOrAfflRpsLineItems" id="shr_IssrOrAfflRpsLineItems" type="xbrli:stringItemType" substitutionGroup="xbrli:item" abstract="true" nillable="true" xbrli:periodType="duration"/>
+<element name="RpdSctiesTtlShrs" id="shr_RpdSctiesTtlShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesAvgPrcPerShr" id="shr_RpdSctiesAvgPrcPerShr" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesPblcPlanShrs" id="shr_RpdSctiesPblcPlanShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesPblcPlanAvlblShrs" id="shr_RpdSctiesPblcPlanAvlblShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesPblcPlanAvlblValue" id="shr_RpdSctiesPblcPlanAvlblValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesOpenMktShrs" id="shr_RpdSctiesOpenMktShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" abstract="false" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesRule10b18SafeHrbrShrs" id="shr_RpdSctiesRule10b18SafeHrbrShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<element name="RpdSctiesRule10b51PlanShrs" id="shr_RpdSctiesRule10b51PlanShrs" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant"/>
+<element name="DefaultsTable" id="shr_DefaultsTable" type="xbrli:stringItemType" substitutionGroup="xbrldt:hypercubeItem" abstract="true" nillable="true" xbrli:periodType="duration"/>
+</schema>

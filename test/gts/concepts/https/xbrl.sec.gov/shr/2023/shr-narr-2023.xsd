@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!-- This schema was created by staff of the U.S. Securities and Exchange Commission. -->
+<!-- Data and content created by government employees within the scope of their employment -->
+<!-- are not subject to domestic copyright protection. 17 U.S.C. 105. -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+xmlns:shr="http://xbrl.sec.gov/shr/2023"
+xmlns:link="http://www.xbrl.org/2003/linkbase"
+xmlns:country="http://xbrl.sec.gov/country/2023"
+xmlns:ref="http://www.xbrl.org/2006/ref"
+xmlns:xbrldt="http://xbrl.org/2005/xbrldt"
+xmlns:srt="http://fasb.org/srt/2023"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmlns:xbrli="http://www.xbrl.org/2003/instance"
+xmlns:us-gaap="http://fasb.org/us-gaap/2023"
+xmlns:dtr-types="http://www.xbrl.org/dtr/type/2022-03-31"
+xmlns:xlink="http://www.w3.org/1999/xlink"
+xmlns:dei="http://xbrl.sec.gov/dei/2023"
+xmlns:shr-narr="http://xbrl.sec.gov/shr-narr/2023"
+targetNamespace="http://xbrl.sec.gov/shr-narr/2023"
+elementFormDefault="qualified"
+xsi:schemaLocation="http://www.xbrl.org/2006/ref http://www.xbrl.org/2006/ref-2006-02-27.xsd">
+<annotation>
+<appinfo>
+<link:linkbase id="lnk">
+<link:roleRef roleURI="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflRepurchsNrrtvDisclosure" xlink:type="simple" xlink:href="shr-2023.xsd#IssrOrAfflRepurchsNrrtvDisclosure"/>
+<link:presentationLink xlink:type="extended" xlink:role="http://xbrl.sec.gov/shr/role/narr/IssrOrAfflRepurchsNrrtvDisclosure">
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrAbstract"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrTable"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:to="IssrOrAfflRpPrgmNrrtvDsclsrTable" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramAxis" xlink:label="ShareRepurchaseProgramAxis"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrTable" xlink:to="ShareRepurchaseProgramAxis" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_ShareRepurchaseProgramDomain" xlink:label="ShareRepurchaseProgramDomain"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="ShareRepurchaseProgramAxis" xlink:to="ShareRepurchaseProgramDomain" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:label="IssrOrAfflRpPrgmNrrtvDsclsrLineItems"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrAbstract" xlink:to="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpPlanObjctvOrRatnlTextBlock" xlink:label="RpPlanObjctvOrRatnlTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpPlanObjctvOrRatnlTextBlock" order="1.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpAmtPrcOrCritTextBlock" xlink:label="RpAmtPrcOrCritTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpAmtPrcOrCritTextBlock" order="2.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpdSctiesNotPblcPlanShrs" xlink:label="RpdSctiesNotPblcPlanShrs"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpdSctiesNotPblcPlanShrs" order="3.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpdSctiesNotPblcPlanDescTextBlock" xlink:label="RpdSctiesNotPblcPlanDescTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpdSctiesNotPblcPlanDescTextBlock" order="4.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpdSctiesOpenMktFlag" xlink:label="RpdSctiesOpenMktFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpdSctiesOpenMktFlag" order="5.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpdSctiesTndrOfferFlag" xlink:label="RpdSctiesTndrOfferFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpdSctiesTndrOfferFlag" order="6.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_RpdSctiesPutOptnObligtnFlag" xlink:label="RpdSctiesPutOptnObligtnFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="RpdSctiesPutOptnObligtnFlag" order="7.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_SctyRpPrgmAnncmntDt" xlink:label="StockRpPrgmAnnouncementDt"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRpPrgmAnnouncementDt" order="8.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramAuthorizedAmount1" xlink:label="StockRepurchaseProgramAuthorizedAmount1"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRepurchaseProgramAuthorizedAmount1" order="9.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" xlink:label="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRepurchaseProgramNumberOfSharesAuthorizedToBeRepurchased" order="10.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="https://xbrl.fasb.org/us-gaap/2023/elts/us-gaap-2023.xsd#us-gaap_StockRepurchaseProgramExpirationDate" xlink:label="StockRepurchaseProgramExpirationDate"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRepurchaseProgramExpirationDate" order="11.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_SctyRpPrgmExpiredDuringPeriodFlag" xlink:label="StockRpPrgmExpiredDuringPeriodFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRpPrgmExpiredDuringPeriodFlag" order="12.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_SctyRpPrgmToBeTerminatedFlag" xlink:label="StockRpPrgmToBeTerminatedFlag"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="StockRpPrgmToBeTerminatedFlag" order="13.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_InsiderRpPoliciesProcTextBlock" xlink:label="InsiderRpPoliciesProcTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="InsiderRpPoliciesProcTextBlock" order="14.0" priority="10"/>
+<link:loc xlink:type="locator" xlink:href="shr-2023.xsd#shr_InsiderRpRstrctnsTextBlock" xlink:label="InsiderRpRstrctnsTextBlock"/>
+<link:presentationArc xlink:type="arc" xlink:arcrole="http://www.xbrl.org/2003/arcrole/parent-child" xlink:from="IssrOrAfflRpPrgmNrrtvDsclsrLineItems" xlink:to="InsiderRpRstrctnsTextBlock" order="15.0" priority="10"/>
+</link:presentationLink>
+</link:linkbase>
+</appinfo>
+</annotation>
+</schema>
