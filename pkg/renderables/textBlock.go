@@ -49,8 +49,8 @@ func renderTextBlock(fact *hydratables.Fact, cf ConceptFinder, mf MeasurementFin
 			Core: "error",
 		}
 	}
-	isTextBlock := concept.Type.Space == attr.NONNUM &&
-		concept.Type.Local == attr.TextBlockItemType
+	isTextBlock := concept.Type.Local == attr.TextBlockItemType
+	// concept.Type.Space == attr.NONNUM || concept.Type.Space == "http://www.xbrl.org/dtr/type/2020-01-21" //todo
 	if !isTextBlock {
 		return nil
 	}
