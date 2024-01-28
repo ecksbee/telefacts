@@ -40,7 +40,7 @@ func MarshalRenderable(slug string, h *hydratables.Hydratable) ([]byte, error) {
 		for _, rset := range rsets {
 			eentity := stringify(&schemedEntity)
 			llinkrole := rset.RoleURI
-			if slug == hash(eentity, llinkrole) {
+			if slug == hash(eentity, llinkrole, rset.Title) {
 				var (
 					p          PGrid
 					d          DGrid
