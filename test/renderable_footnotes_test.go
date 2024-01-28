@@ -31,7 +31,7 @@ func TestMarshalRenderable_Erroneous_Footnote(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
-	slug := "06f7b4f73370e6a982e34df6afcff503"
+	slug := "d04179d4c5776ebc8842ee1fbb20f091"
 	data, err := renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())

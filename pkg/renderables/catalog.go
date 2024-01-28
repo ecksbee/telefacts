@@ -28,7 +28,7 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 		entityStr := stringify(&schemedEntity)
 		networks[entityStr] = make(map[string]string)
 		for _, rset := range rsets {
-			hash := hash(entityStr, rset.RoleURI)
+			hash := hash(entityStr, rset.RoleURI, rset.Title)
 			networks[entityStr][rset.RoleURI] = hash
 		}
 		name := schemedEntity.Scheme + "/" + schemedEntity.CharData
@@ -50,8 +50,8 @@ func MarshalCatalog(h *hydratables.Hydratable) ([]byte, error) {
 	})
 }
 
-func hash(schemedEntity string, linkroleURI string) string {
+func hash(schemedEntity string, linkroleURI string, title string) string {
 	h := fnv.New128a()
-	h.Write([]byte(schemedEntity + linkroleURI))
+	h.Write([]byte(schemedEntity + linkroleURI + title))
 	return hex.EncodeToString(h.Sum([]byte{}))
 }

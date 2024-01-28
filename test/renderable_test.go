@@ -41,7 +41,7 @@ func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
-	slug := "37d4e3d950af1aa368ee7940e5885bea"
+	slug := "bde8e195e86119e0ef56096707591d82"
 	data, err := renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -72,7 +72,7 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
-	slug := "883459b49fae34a739704b6db51d6b1d"
+	slug := "18cacc74495a0098202b251879753ab2"
 	data, err := renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -198,7 +198,7 @@ func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 	}
-	slug := "ede1c87be654e31915fece14f9994d47"
+	slug := "a57d920a142d3cef3867d22167db52f6"
 	data, err := renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -348,13 +348,13 @@ func ExampleMarshalCatalog_Hello() {
 	if err != nil {
 		panic("Error: " + err.Error())
 	}
-	slug := "df04370db2715d6f00d8b6c299cb9028"
+	slug := "f5ed7171b09c4487172b60563de820dd"
 	_, err = renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		panic("Error: " + err.Error())
 	}
 	fmt.Println(slug)
-	// Output: df04370db2715d6f00d8b6c299cb9028
+	// Output: f5ed7171b09c4487172b60563de820dd
 }
 
 func ExampleMarshalCatalog_485() {
@@ -375,11 +375,11 @@ func ExampleMarshalCatalog_485() {
 	if err != nil {
 		panic("Error: " + err.Error())
 	}
-	slug := "c227d1537961ed2d508d1149fd2c6b89"
+	slug := "79133e50935a2a5e7c3fcc915137ed9c"
 	_, err = renderables.MarshalRenderable(slug, h)
 	if err != nil {
 		panic("Error: " + err.Error())
 	}
 	fmt.Println(slug)
-	// Output: c227d1537961ed2d508d1149fd2c6b89
+	// Output: 79133e50935a2a5e7c3fcc915137ed9c
 }
