@@ -2,7 +2,7 @@ package serializables
 
 import (
 	"bytes"
-	"path"
+	"path/filepath"
 
 	"golang.org/x/net/html"
 )
@@ -27,7 +27,7 @@ func replace(n *html.Node, images map[string]string) {
 		if n.Data == "img" {
 			for i, myattr := range n.Attr {
 				if myattr.Key == "src" {
-					value := path.Base(myattr.Val)
+					value := filepath.Base(myattr.Val)
 					if data, found := images[value]; found {
 						n.Attr[i].Val = data
 					}

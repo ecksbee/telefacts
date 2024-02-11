@@ -2,7 +2,7 @@ package telefacts_test
 
 import (
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
@@ -12,10 +12,10 @@ import (
 
 func TestHashQuery_Gold(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())

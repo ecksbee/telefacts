@@ -2,16 +2,16 @@ package telefacts_test
 
 import (
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/serializables"
 )
 
 func TestDiscover_Gold(t *testing.T) {
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -64,9 +64,9 @@ func TestDiscover_Gold(t *testing.T) {
 }
 
 func TestDiscover_Erroneous_Images(t *testing.T) {
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -90,9 +90,9 @@ func TestDiscover_Erroneous_Images(t *testing.T) {
 }
 
 func TestDiscover_Image(t *testing.T) {
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_image")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_image")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())

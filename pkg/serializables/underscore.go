@@ -3,9 +3,9 @@ package serializables
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"os"
 	"path"
+	"path/filepath"
 
 	"github.com/google/uuid"
 )
@@ -17,7 +17,7 @@ type Underscore struct {
 
 func GetEntryFileName(id string) (string, error) {
 	underscore := Underscore{}
-	b, err := ioutil.ReadFile(path.Join(WorkingDirectoryPath, "folders", id, "_"))
+	b, err := os.ReadFile(path.Join(WorkingDirectoryPath, "folders", id, "_"))
 	if err != nil {
 		return "", err
 	}
@@ -37,16 +37,16 @@ func NewFolder(key string, underscore Underscore) (string, error) {
 		bytes := []byte(key)
 		return uuid.NewMD5(NilUuid, bytes)
 	}
-	workingDir := path.Join(WorkingDirectoryPath, "folders")
+	workingDir := filepath.Join(WorkingDirectoryPath, "folders")
 	id := telefactsId()
-	pathStr := path.Join(workingDir, id.String())
+	pathStr := filepath.Join(workingDir, id.String())
 	_, err := os.Stat(pathStr)
 	for err == nil {
 		if key != "" {
 			return id.String(), os.ErrExist
 		}
 		id = telefactsId()
-		pathStr = path.Join(workingDir, id.String())
+		pathStr = filepath.Join(workingDir, id.String())
 		_, err = os.Stat(pathStr)
 	}
 	err = os.Mkdir(pathStr, 0755)
@@ -56,7 +56,7 @@ func NewFolder(key string, underscore Underscore) (string, error) {
 		}
 		return "", err
 	}
-	meta := path.Join(pathStr, "_")
+	meta := filepath.Join(pathStr, "_")
 	file, _ := os.OpenFile(meta, os.O_CREATE|os.O_WRONLY, 0755)
 	defer file.Close()
 	encoder := json.NewEncoder(file)

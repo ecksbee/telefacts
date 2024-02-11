@@ -8,7 +8,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
-	"path"
+	"path/filepath"
 	"time"
 
 	"ecksbee.com/telefacts/internal/web"
@@ -35,18 +35,18 @@ func setupServer() *http.Server {
 	appCache := cache.NewCache(false)
 	dir, err := os.Getwd()
 	if err != nil {
-		dir = path.Join(".")
+		dir = filepath.Join(".")
 	}
 	wd := os.Getenv("WD")
 	if wd == "" {
 		wd = dir
 	}
-	serializables.WorkingDirectoryPath = path.Join(wd, "wd")
+	serializables.WorkingDirectoryPath = filepath.Join(wd, "wd")
 	gts := os.Getenv("GTS")
 	if gts == "" {
 		gts = dir
 	}
-	serializables.GlobalTaxonomySetPath = path.Join(gts, "gts")
+	serializables.GlobalTaxonomySetPath = filepath.Join(gts, "gts")
 	hydratables.InjectCache(appCache)
 	hydratables.HydrateEntityNames()
 	hydratables.HydrateFundamentalSchema()

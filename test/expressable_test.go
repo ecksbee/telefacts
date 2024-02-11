@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"io/fs"
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
@@ -15,10 +15,10 @@ import (
 
 func TestCatalog_Expressables(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "wd", "folders", "test_ix")
+	workingDir := filepath.Join(".", "wd", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -26,7 +26,7 @@ func TestCatalog_Expressables(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "wd", "test_ix.zip")
+	zipFile := filepath.Join(".", "wd", "test_ix.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -68,10 +68,10 @@ func TestCatalog_Expressables(t *testing.T) {
 
 func Test485BPOS_Expressables(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "wd", "folders", "test_485_ix")
+	workingDir := filepath.Join(".", "wd", "folders", "test_485_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -79,7 +79,7 @@ func Test485BPOS_Expressables(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "wd", "test_485_ix.zip")
+	zipFile := filepath.Join(".", "wd", "test_485_ix.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
