@@ -5,7 +5,7 @@ retract [v0.0.0, v1.5.3]
 go 1.22
 
 require (
-	github.com/antchfx/xmlquery v1.3.10
+	github.com/antchfx/xmlquery v1.3.18
 	github.com/google/uuid v1.6.0
 	github.com/gorilla/mux v1.8.1
 	github.com/joshuanario/arcs v0.0.0-20221030000450-bf6ace5a19ba
@@ -16,7 +16,7 @@ require (
 )
 
 require (
-	github.com/antchfx/xpath v1.2.0 // indirect
-	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
+	github.com/antchfx/xpath v1.2.4 // indirect
+	github.com/golang/groupcache v0.0.0-20210331224755-41bb18bfe9da // indirect
 	golang.org/x/text v0.14.0 // indirect
 )
