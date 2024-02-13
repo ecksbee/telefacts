@@ -3,7 +3,7 @@ package telefacts_test
 import (
 	"encoding/json"
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
@@ -14,10 +14,10 @@ import (
 
 func TestMarshalRenderable_Erroneous_Footnote(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_erroneous")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())

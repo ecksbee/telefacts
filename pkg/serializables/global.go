@@ -3,10 +3,9 @@ package serializables
 import (
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
 	"net/url"
 	"os"
-	"path"
+	"path/filepath"
 	"strings"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -38,12 +37,12 @@ func UrlToFilename(urlStr string) (string, error) {
 	if len(hostname) <= 0 {
 		return "", fmt.Errorf("empty hostname")
 	}
-	dest = path.Join(dest, hostname)
+	dest = filepath.Join(dest, hostname)
 	var splits = strings.Split(urlPath.Path, "/")
 	for _, split := range splits {
-		dest = path.Join(dest, split)
+		dest = filepath.Join(dest, split)
 	}
-	return path.Join(GlobalTaxonomySetPath, "concepts", dest), nil
+	return filepath.Join(GlobalTaxonomySetPath, "concepts", dest), nil
 }
 
 func DiscoverGlobalFile(urlStr string) ([]byte, error) {
@@ -53,10 +52,10 @@ func DiscoverGlobalFile(urlStr string) ([]byte, error) {
 	}
 	var ret []byte
 	if file, err := os.Stat(dest); err == nil {
-		dirString, _ := path.Split(dest)
+		dirString, _ := filepath.Split(dest)
 		filename := file.Name()
-		filepath := path.Join(dirString, filename)
-		ret, err = ioutil.ReadFile(filepath)
+		globalFilePath := filepath.Join(dirString, filename)
+		ret, err = os.ReadFile(globalFilePath)
 		if err == nil {
 			return ret, nil
 		}
@@ -73,9 +72,9 @@ func DiscoverGlobalSchema(urlStr string) (*SchemaFile, error) {
 }
 
 func DiscoverEntityNames() (map[string]map[string]string, error) {
-	filename := path.Join(WorkingDirectoryPath, "names.json")
+	filename := filepath.Join(WorkingDirectoryPath, "names.json")
 	names := make(map[string]map[string]string)
-	b, err := ioutil.ReadFile(filename)
+	b, err := os.ReadFile(filename)
 	if err != nil {
 		return names, err
 	}

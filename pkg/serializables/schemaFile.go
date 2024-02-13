@@ -3,7 +3,7 @@ package serializables
 import (
 	"bytes"
 	"encoding/xml"
-	"io/ioutil"
+	"os"
 
 	"golang.org/x/net/html/charset"
 )
@@ -75,7 +75,7 @@ func DecodeSchemaFile(xmlData []byte) (*SchemaFile, error) {
 }
 
 func ReadSchemaFile(filepath string) (*SchemaFile, error) {
-	data, err := ioutil.ReadFile(filepath)
+	data, err := os.ReadFile(filepath)
 	if err != nil {
 		return nil, err
 	}

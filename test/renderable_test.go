@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/fs"
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/hydratables"
@@ -16,10 +16,10 @@ import (
 
 func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(".", "wd", "folders", "test_ix")
+	workingDir := filepath.Join(".", "wd", "folders", "test_ix")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -27,7 +27,7 @@ func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "wd", "test_ix.zip")
+	zipFile := filepath.Join(".", "wd", "test_ix.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
@@ -55,10 +55,10 @@ func TestMarshalRenderable_Ix_Narrative(t *testing.T) {
 
 func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -181,10 +181,10 @@ func TestMarshalRenderable_Gold_BalanceSheet(t *testing.T) {
 
 func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_gold")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
@@ -284,9 +284,9 @@ func TestMarshalRenderable_Gold_TypedMember(t *testing.T) {
 
 func hydratableFactory(id string) (*hydratables.Hydratable, error) {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", id)
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", id)
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		return nil, fmt.Errorf(err.Error())
@@ -332,10 +332,10 @@ func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
 
 func ExampleMarshalCatalog_Hello() {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "hello")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "hello")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		panic("Error: " + err.Error())
@@ -359,10 +359,10 @@ func ExampleMarshalCatalog_Hello() {
 
 func ExampleMarshalCatalog_485() {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
-	serializables.WorkingDirectoryPath = path.Join(".", "wd")
-	serializables.GlobalTaxonomySetPath = path.Join(".", "gts")
+	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
+	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
-	workingDir := path.Join(serializables.WorkingDirectoryPath, "folders", "485")
+	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "485")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		panic("Error: " + err.Error())

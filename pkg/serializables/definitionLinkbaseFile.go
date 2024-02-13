@@ -3,7 +3,7 @@ package serializables
 import (
 	"bytes"
 	"encoding/xml"
-	"io/ioutil"
+	"os"
 
 	"golang.org/x/net/html/charset"
 )
@@ -42,7 +42,7 @@ func DecodeDefinitionLinkbaseFile(xmlData []byte) (*DefinitionLinkbaseFile, erro
 }
 
 func ReadDefinitionLinkbaseFile(filepath string) (*DefinitionLinkbaseFile, error) {
-	data, err := ioutil.ReadFile(filepath)
+	data, err := os.ReadFile(filepath)
 	if err != nil {
 		return nil, err
 	}

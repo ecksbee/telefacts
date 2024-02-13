@@ -5,16 +5,15 @@ import (
 	bytesPkg "bytes"
 	"io"
 	"io/fs"
-	"io/ioutil"
 	"os"
-	"path"
+	"path/filepath"
 	"testing"
 
 	"ecksbee.com/telefacts/pkg/serializables"
 )
 
 func TestDecode(t *testing.T) {
-	workingDir := path.Join(".", "wd", "folders", "test_ix_extract")
+	workingDir := filepath.Join(".", "wd", "folders", "test_ix_extract")
 	_, err := os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		os.MkdirAll(workingDir, fs.FileMode(0700))
@@ -22,15 +21,15 @@ func TestDecode(t *testing.T) {
 	defer func() {
 		os.RemoveAll(workingDir)
 	}()
-	zipFile := path.Join(".", "wd", "test_ix_extract.zip")
+	zipFile := filepath.Join(".", "wd", "test_ix_extract.zip")
 	err = unZipTestData(workingDir, zipFile)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 		return
 	}
 	sourceFilePath := "cmg-20200331x10q.htm"
-	filepath := path.Join(workingDir, sourceFilePath)
-	data, err := ioutil.ReadFile(filepath)
+	testFilePath := filepath.Join(workingDir, sourceFilePath)
+	data, err := os.ReadFile(testFilePath)
 	if err != nil {
 		t.Fatalf("Error: " + err.Error())
 		return
@@ -69,7 +68,7 @@ func unzipFile(unzipFile *zipPkg.File) ([]byte, error) {
 }
 
 func writeFile(dest string, data []byte) error {
-	dirString, _ := path.Split(dest)
+	dirString, _ := filepath.Split(dest)
 	_, err := os.Stat(dirString)
 	if os.IsNotExist(err) {
 		err = os.MkdirAll(dirString, 0755)
@@ -90,7 +89,7 @@ func writeFile(dest string, data []byte) error {
 }
 
 func unZipTestData(workingDir string, zipFile string) error {
-	zipBytes, err := ioutil.ReadFile(zipFile)
+	zipBytes, err := os.ReadFile(zipFile)
 	if err != nil {
 		return err
 	}
@@ -103,7 +102,7 @@ func unZipTestData(workingDir string, zipFile string) error {
 		if err != nil {
 			return err
 		}
-		dest := path.Join(workingDir, unzipped.Name)
+		dest := filepath.Join(workingDir, unzipped.Name)
 		err = writeFile(dest, unzipBytes)
 		if err != nil {
 			return err

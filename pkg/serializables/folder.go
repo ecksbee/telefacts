@@ -5,11 +5,10 @@ import (
 	"encoding/xml"
 	"errors"
 	"fmt"
-	"io/ioutil"
 	"net/http"
 	"os"
 	"path"
-	osFilepath "path/filepath"
+	"path/filepath"
 	"sync"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -35,7 +34,7 @@ func Discover(id string) (*Folder, error) {
 	if err != nil {
 		return nil, err
 	}
-	workingDir := path.Join(WorkingDirectoryPath, "folders", id)
+	workingDir := filepath.Join(WorkingDirectoryPath, "folders", id)
 	ret := &Folder{
 		EntryFileName:         entryFileName,
 		Dir:                   workingDir,
@@ -49,11 +48,11 @@ func Discover(id string) (*Folder, error) {
 		Images:                make(map[string]string),
 	}
 	ret.processImages(workingDir)
-	ext := osFilepath.Ext(entryFileName)
+	ext := filepath.Ext(entryFileName)
 	switch ext {
 	case ".xhtml", ".htm":
-		filepath := path.Join(workingDir, entryFileName)
-		data, err := ioutil.ReadFile(filepath)
+		htmFilePath := filepath.Join(workingDir, entryFileName)
+		data, err := os.ReadFile(htmFilePath)
 		if err != nil {
 			return nil, err
 		}
@@ -65,7 +64,7 @@ func Discover(id string) (*Folder, error) {
 			return nil, fmt.Errorf("failed to decode IXBRL source document")
 		}
 		ret.Document = doc
-		extracted := path.Join(workingDir, entryFileName+".xml")
+		extracted := filepath.Join(workingDir, entryFileName+".xml")
 		if _, err := os.Stat(extracted); errors.Is(err, os.ErrNotExist) {
 			return nil, fmt.Errorf("%s does not exists", extracted)
 		}
@@ -78,8 +77,8 @@ func Discover(id string) (*Folder, error) {
 		defer ret.wLock.Unlock()
 		ret.Instances[entryFileName+".xml"] = *instanceFile
 	case ".xbrl", ".xml":
-		filepath := path.Join(workingDir, entryFileName)
-		instanceFile, err := ReadInstanceFile(filepath)
+		xmlFilePath := filepath.Join(workingDir, entryFileName)
+		instanceFile, err := ReadInstanceFile(xmlFilePath)
 		if err != nil {
 			return nil, err
 		}
@@ -115,8 +114,8 @@ func (folder *Folder) schemaRef(file *InstanceFile) {
 				go DiscoverGlobalSchema(hrefAttr.Value)
 				return
 			}
-			filepath := path.Join(folder.Dir, hrefAttr.Value)
-			discoveredSchema, err := ReadSchemaFile(filepath)
+			schemaFilePath := filepath.Join(folder.Dir, hrefAttr.Value)
+			discoveredSchema, err := ReadSchemaFile(schemaFilePath)
 			if err != nil {
 				return
 			}
@@ -174,8 +173,8 @@ func (folder *Folder) includeSchema(file *SchemaFile) {
 				go DiscoverGlobalSchema(schemaLocationAttr.Value)
 				return
 			}
-			filepath := path.Join(folder.Dir, schemaLocationAttr.Value)
-			discoveredSchema, err := ReadSchemaFile(filepath)
+			schemaFilePath := filepath.Join(folder.Dir, schemaLocationAttr.Value)
+			discoveredSchema, err := ReadSchemaFile(schemaFilePath)
 			if err != nil {
 				return
 			}
@@ -240,8 +239,8 @@ func (folder *Folder) importSchema(file *SchemaFile) {
 				go DiscoverGlobalSchema(schemaLocationAttr.Value)
 				return
 			}
-			filepath := path.Join(folder.Dir, schemaLocationAttr.Value)
-			discoveredSchema, err := ReadSchemaFile(filepath)
+			schemaFilePath := filepath.Join(folder.Dir, schemaLocationAttr.Value)
+			discoveredSchema, err := ReadSchemaFile(schemaFilePath)
 			if err != nil {
 				return
 			}
@@ -311,10 +310,10 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 						go DiscoverGlobalFile(hrefAttr.Value)
 						return
 					}
-					filepath := path.Join(folder.Dir, hrefAttr.Value)
+					linkbaseFilePath := filepath.Join(folder.Dir, hrefAttr.Value)
 					switch roleAttr.Value {
 					case attr.PresentationLinkbaseRef:
-						discoveredPre, err := ReadPresentationLinkbaseFile(filepath)
+						discoveredPre, err := ReadPresentationLinkbaseFile(linkbaseFilePath)
 						if err != nil {
 							return
 						}
@@ -323,7 +322,7 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 						folder.wLock.Unlock()
 						break
 					case attr.DefinitionLinkbaseRef:
-						discoveredDef, err := ReadDefinitionLinkbaseFile(filepath)
+						discoveredDef, err := ReadDefinitionLinkbaseFile(linkbaseFilePath)
 						if err != nil {
 							return
 						}
@@ -332,7 +331,7 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 						folder.wLock.Unlock()
 						break
 					case attr.CalculationLinkbaseRef:
-						discoveredCal, err := ReadCalculationLinkbaseFile(filepath)
+						discoveredCal, err := ReadCalculationLinkbaseFile(linkbaseFilePath)
 						if err != nil {
 							return
 						}
@@ -341,7 +340,7 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 						folder.wLock.Unlock()
 						break
 					case attr.LabelLinkbaseRef:
-						discoveredLab, err := ReadLabelLinkbaseFile(filepath)
+						discoveredLab, err := ReadLabelLinkbaseFile(linkbaseFilePath)
 						if err != nil {
 							return
 						}
@@ -360,7 +359,7 @@ func (folder *Folder) linkbaseRefSchema(file *SchemaFile) {
 }
 
 func (folder *Folder) processImages(workingDir string) {
-	files, err := ioutil.ReadDir(workingDir)
+	files, err := os.ReadDir(workingDir)
 	if err != nil {
 		return
 	}
@@ -370,7 +369,7 @@ func (folder *Folder) processImages(workingDir string) {
 			continue
 		}
 
-		bytes, err := ioutil.ReadFile(path.Join(workingDir, file.Name()))
+		bytes, err := os.ReadFile(path.Join(workingDir, file.Name()))
 		if err != nil {
 			continue
 		}
