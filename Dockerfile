@@ -1,4 +1,4 @@
-FROM golang:1.16-alpine as builder
+FROM golang:1.22-alpine as builder
 RUN mkdir /mybuild
 ADD . /mybuild/
 WORKDIR /mybuild/cmd/telefacts
