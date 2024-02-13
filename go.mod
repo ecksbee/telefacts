@@ -12,11 +12,11 @@ require (
 	github.com/joshuanario/digits v0.5.1
 	github.com/klauspost/lctime v0.1.0
 	github.com/patrickmn/go-cache v2.1.0+incompatible
-	golang.org/x/net v0.0.0-20210326220855-61e056675ecf
+	golang.org/x/net v0.21.0
 )
 
 require (
 	github.com/antchfx/xpath v1.2.0 // indirect
 	github.com/golang/groupcache v0.0.0-20200121045136-8c9f03a8e57e // indirect
-	golang.org/x/text v0.3.3 // indirect
+	golang.org/x/text v0.14.0 // indirect
 )
