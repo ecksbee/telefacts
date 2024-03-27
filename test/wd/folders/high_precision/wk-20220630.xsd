@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--XBRL Document Created with Wdesk from Workiva-->
+<!--Copyright 2022 Workiva-->
+<!--r:2d9260e1-dfb9-4dbe-b06c-c1438cfef5ec,g:4cbeb7bd-3489-4615-a50e-fb0de41e2655-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:wk="http://www.workiva.com/20220630" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:dtr-types="http://www.xbrl.org/dtr/type/2020-01-21" xmlns:xbrldt="http://xbrl.org/2005/xbrldt" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://www.workiva.com/20220630">
+  <xs:import namespace="http://fasb.org/srt/2022" schemaLocation="https://xbrl.fasb.org/srt/2022/elts/srt-2022.xsd"/>
+  <xs:import namespace="http://fasb.org/us-gaap/2022" schemaLocation="https://xbrl.fasb.org/us-gaap/2022/elts/us-gaap-2022.xsd"/>
+  <xs:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.xbrl.org/2003/xlink-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd"/>
+  <xs:import namespace="http://www.xbrl.org/dtr/type/2020-01-21" schemaLocation="https://www.xbrl.org/dtr/type/2020-01-21/types.xsd"/>
+  <xs:import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd"/>
+  <xs:import namespace="http://xbrl.sec.gov/dei/2022" schemaLocation="https://xbrl.sec.gov/dei/2022/dei-2022.xsd"/>
+  <xs:annotation>
+    <xs:appinfo>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="wk-20220630_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="wk-20220630_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="wk-20220630_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:type="simple"/>
+      <link:linkbaseRef xmlns:xlink="http://www.w3.org/1999/xlink" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:href="wk-20220630_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:type="simple"/>
+      <link:roleType id="CoverPage" roleURI="http://www.workiva.com/role/CoverPage">
+        <link:definition>0001001 - Document - Cover Page</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONDENSEDCONSOLIDATEDBALANCESHEETS" roleURI="http://www.workiva.com/role/CONDENSEDCONSOLIDATEDBALANCESHEETS">
+        <link:definition>1001002 - Statement - CONDENSED CONSOLIDATED BALANCE SHEETS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONDENSEDCONSOLIDATEDBALANCESHEETSParenthetical" roleURI="http://www.workiva.com/role/CONDENSEDCONSOLIDATEDBALANCESHEETSParenthetical">
+        <link:definition>1002003 - Statement - CONDENSED CONSOLIDATED BALANCE SHEETS (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONDENSEDCONSOLIDATEDSTATEMENTSOFOPERATIONS" roleURI="http://www.workiva.com/role/CONDENSEDCONSOLIDATEDSTATEMENTSOFOPERATIONS">
+        <link:definition>1003004 - Statement - CONDENSED CONSOLIDATED STATEMENTS OF OPERATIONS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONDENSEDCONSOLIDATEDSTATEMENTSOFCOMPREHENSIVELOSS" roleURI="http://www.workiva.com/role/CONDENSEDCONSOLIDATEDSTATEMENTSOFCOMPREHENSIVELOSS">
+        <link:definition>1004005 - Statement - CONDENSED CONSOLIDATED STATEMENTS OF COMPREHENSIVE LOSS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONSOLIDATEDSTATEMENTSOFCHANGESINSTOCKHOLDERSEQUITY" roleURI="http://www.workiva.com/role/CONSOLIDATEDSTATEMENTSOFCHANGESINSTOCKHOLDERSEQUITY">
+        <link:definition>1005006 - Statement - CONSOLIDATED STATEMENTS OF CHANGES IN STOCKHOLDERS' EQUITY</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CONDENSEDCONSOLIDATEDSTATEMENTSOFCASHFLOWS" roleURI="http://www.workiva.com/role/CONDENSEDCONSOLIDATEDSTATEMENTSOFCASHFLOWS">
+        <link:definition>1006007 - Statement - CONDENSED CONSOLIDATED STATEMENTS OF CASH FLOWS</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OrganizationandSignificantAccountingPolicies" roleURI="http://www.workiva.com/role/OrganizationandSignificantAccountingPolicies">
+        <link:definition>2101101 - Disclosure - Organization and Significant Accounting Policies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OrganizationandSignificantAccountingPoliciesPolicies" roleURI="http://www.workiva.com/role/OrganizationandSignificantAccountingPoliciesPolicies">
+        <link:definition>2202201 - Disclosure - Organization and Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="OrganizationandSignificantAccountingPoliciesDetails" roleURI="http://www.workiva.com/role/OrganizationandSignificantAccountingPoliciesDetails">
+        <link:definition>2403401 - Disclosure - Organization and Significant Accounting Policies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SupplementalConsolidatedBalanceSheetInformation" roleURI="http://www.workiva.com/role/SupplementalConsolidatedBalanceSheetInformation">
+        <link:definition>2104102 - Disclosure - Supplemental Consolidated Balance Sheet Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SupplementalConsolidatedBalanceSheetInformationTables" roleURI="http://www.workiva.com/role/SupplementalConsolidatedBalanceSheetInformationTables">
+        <link:definition>2305301 - Disclosure - Supplemental Consolidated Balance Sheet Information (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="SupplementalConsolidatedBalanceSheetInformationAccruedExpensesandOtherCurrentLiabilitiesDetails" roleURI="http://www.workiva.com/role/SupplementalConsolidatedBalanceSheetInformationAccruedExpensesandOtherCurrentLiabilitiesDetails">
+        <link:definition>2406402 - Disclosure - Supplemental Consolidated Balance Sheet Information - Accrued Expenses and Other Current Liabilities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecurities" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecurities">
+        <link:definition>2107103 - Disclosure - Cash Equivalents and Marketable Securities</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecuritiesTables" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecuritiesTables">
+        <link:definition>2308302 - Disclosure - Cash Equivalents and Marketable Securities (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecuritiesScheduleofMarketableSecuritiesDetails" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecuritiesScheduleofMarketableSecuritiesDetails">
+        <link:definition>2409403 - Disclosure - Cash Equivalents and Marketable Securities - Schedule of Marketable Securities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecuritiesScheduleofMarketableSecuritiesDetails_1" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecuritiesScheduleofMarketableSecuritiesDetails_1">
+        <link:definition>2409403 - Disclosure - Cash Equivalents and Marketable Securities - Schedule of Marketable Securities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecuritiesScheduleofContractualMaturitiesDetails" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecuritiesScheduleofContractualMaturitiesDetails">
+        <link:definition>2410404 - Disclosure - Cash Equivalents and Marketable Securities - Schedule of Contractual Maturities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CashEquivalentsandMarketableSecuritiesContinuousUnrealizedLossPositionDetails" roleURI="http://www.workiva.com/role/CashEquivalentsandMarketableSecuritiesContinuousUnrealizedLossPositionDetails">
+        <link:definition>2411405 - Disclosure - Cash Equivalents and Marketable Securities - Continuous Unrealized Loss Position (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurements" roleURI="http://www.workiva.com/role/FairValueMeasurements">
+        <link:definition>2112104 - Disclosure - Fair Value Measurements</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurementsTables" roleURI="http://www.workiva.com/role/FairValueMeasurementsTables">
+        <link:definition>2313303 - Disclosure - Fair Value Measurements (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="FairValueMeasurementsDetails" roleURI="http://www.workiva.com/role/FairValueMeasurementsDetails">
+        <link:definition>2414406 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConvertibleSeniorNotes" roleURI="http://www.workiva.com/role/ConvertibleSeniorNotes">
+        <link:definition>2115105 - Disclosure - Convertible Senior Notes</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConvertibleSeniorNotesTables" roleURI="http://www.workiva.com/role/ConvertibleSeniorNotesTables">
+        <link:definition>2316304 - Disclosure - Convertible Senior Notes (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConvertibleSeniorNotesDetails" roleURI="http://www.workiva.com/role/ConvertibleSeniorNotesDetails">
+        <link:definition>2417407 - Disclosure - Convertible Senior Notes (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConvertibleSeniorNotesSummaryofConvertibleDebtDetails" roleURI="http://www.workiva.com/role/ConvertibleSeniorNotesSummaryofConvertibleDebtDetails">
+        <link:definition>2418408 - Disclosure - Convertible Senior Notes - Summary of Convertible Debt (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="ConvertibleSeniorNotesSummaryofInterestExpenseDetails" roleURI="http://www.workiva.com/role/ConvertibleSeniorNotesSummaryofInterestExpenseDetails">
+        <link:definition>2419409 - Disclosure - Convertible Senior Notes - Summary of Interest Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="CommitmentsandContingencies" roleURI="http://www.workiva.com/role/CommitmentsandContingencies">
+        <link:definition>2120106 - Disclosure - Commitments and Contingencies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensation" roleURI="http://www.workiva.com/role/StockBasedCompensation">
+        <link:definition>2121107 - Disclosure - Stock-Based Compensation</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationTables" roleURI="http://www.workiva.com/role/StockBasedCompensationTables">
+        <link:definition>2322305 - Disclosure - Stock-Based Compensation (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationNarrativeDetails" roleURI="http://www.workiva.com/role/StockBasedCompensationNarrativeDetails">
+        <link:definition>2423410 - Disclosure - Stock-Based Compensation - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationStockBasedCompensationExpenseDetails" roleURI="http://www.workiva.com/role/StockBasedCompensationStockBasedCompensationExpenseDetails">
+        <link:definition>2424411 - Disclosure - Stock-Based Compensation - Stock-Based Compensation Expense (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationStockOptionsDetails" roleURI="http://www.workiva.com/role/StockBasedCompensationStockOptionsDetails">
+        <link:definition>2425412 - Disclosure - Stock-Based Compensation - Stock Options (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationRestrictedStockUnitsDetails" roleURI="http://www.workiva.com/role/StockBasedCompensationRestrictedStockUnitsDetails">
+        <link:definition>2426413 - Disclosure - Stock-Based Compensation - Restricted Stock Units (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="StockBasedCompensationEmployeeStockPurchasePlanDetails" roleURI="http://www.workiva.com/role/StockBasedCompensationEmployeeStockPurchasePlanDetails">
+        <link:definition>2427414 - Disclosure - Stock-Based Compensation - Employee Stock Purchase Plan (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RevenueRecognition" roleURI="http://www.workiva.com/role/RevenueRecognition">
+        <link:definition>2128108 - Disclosure - Revenue Recognition</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RevenueRecognitionTables" roleURI="http://www.workiva.com/role/RevenueRecognitionTables">
+        <link:definition>2329306 - Disclosure - Revenue Recognition (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RevenueRecognitionDisaggregationofRevenueDetails" roleURI="http://www.workiva.com/role/RevenueRecognitionDisaggregationofRevenueDetails">
+        <link:definition>2430415 - Disclosure - Revenue Recognition - Disaggregation of Revenue (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RevenueRecognitionDeferredRevenueandTransactionPriceAllocatedtotheRemainingPerformanceObligationsDetails" roleURI="http://www.workiva.com/role/RevenueRecognitionDeferredRevenueandTransactionPriceAllocatedtotheRemainingPerformanceObligationsDetails">
+        <link:definition>2431416 - Disclosure - Revenue Recognition - Deferred Revenue and Transaction Price Allocated to the Remaining Performance Obligations (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="RevenueRecognitionDeferredRevenueandTransactionPriceAllocatedtotheRemainingPerformanceObligationsDetails_1" roleURI="http://www.workiva.com/role/RevenueRecognitionDeferredRevenueandTransactionPriceAllocatedtotheRemainingPerformanceObligationsDetails_1">
+        <link:definition>2431416 - Disclosure - Revenue Recognition - Deferred Revenue and Transaction Price Allocated to the Remaining Performance Obligations (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NetLossPerShare" roleURI="http://www.workiva.com/role/NetLossPerShare">
+        <link:definition>2132109 - Disclosure - Net Loss Per Share</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NetLossPerShareTables" roleURI="http://www.workiva.com/role/NetLossPerShareTables">
+        <link:definition>2333307 - Disclosure - Net Loss Per Share (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NetLossPerShareEarningsPerShareBasicandDilutedDetails" roleURI="http://www.workiva.com/role/NetLossPerShareEarningsPerShareBasicandDilutedDetails">
+        <link:definition>2434417 - Disclosure - Net Loss Per Share - Earnings Per Share Basic and Diluted (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="NetLossPerShareAntidilutiveSecuritiesExcludedfromComputationofEarningsPerShareDetails" roleURI="http://www.workiva.com/role/NetLossPerShareAntidilutiveSecuritiesExcludedfromComputationofEarningsPerShareDetails">
+        <link:definition>2435418 - Disclosure - Net Loss Per Share - Antidilutive Securities Excluded from Computation of Earnings Per Share (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="Acquisitions" roleURI="http://www.workiva.com/role/Acquisitions">
+        <link:definition>2136110 - Disclosure - Acquisitions</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AcquisitionsTables" roleURI="http://www.workiva.com/role/AcquisitionsTables">
+        <link:definition>2337308 - Disclosure - Acquisitions (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AcquisitionsNarrativeDetails" roleURI="http://www.workiva.com/role/AcquisitionsNarrativeDetails">
+        <link:definition>2438419 - Disclosure - Acquisitions - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="AcquisitionsAssetsAcquiredandLiabilitiesAssumedDetails" roleURI="http://www.workiva.com/role/AcquisitionsAssetsAcquiredandLiabilitiesAssumedDetails">
+        <link:definition>2439420 - Disclosure - Acquisitions - Assets Acquired and Liabilities Assumed (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwill" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwill">
+        <link:definition>2140111 - Disclosure - Intangible Assets and Goodwill</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwillTables" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwillTables">
+        <link:definition>2341309 - Disclosure - Intangible Assets and Goodwill (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwillIntangibleAssetComponentsDetails" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwillIntangibleAssetComponentsDetails">
+        <link:definition>2442421 - Disclosure - Intangible Assets and Goodwill - Intangible Asset Components (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwillNarrativeDetails" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwillNarrativeDetails">
+        <link:definition>2443422 - Disclosure - Intangible Assets and Goodwill - Narrative (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwillAmortizationofIntangibleAssetsbyFiscalYearDetails" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwillAmortizationofIntangibleAssetsbyFiscalYearDetails">
+        <link:definition>2444423 - Disclosure - Intangible Assets and Goodwill - Amortization of Intangible Assets by Fiscal Year (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType id="IntangibleAssetsandGoodwillGoodwillActivityDetails" roleURI="http://www.workiva.com/role/IntangibleAssetsandGoodwillGoodwillActivityDetails">
+        <link:definition>2445424 - Disclosure - Intangible Assets and Goodwill - Goodwill Activity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element id="wk_DebtConversionTermsOneMember" abstract="true" name="DebtConversionTermsOneMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_InsuranceSectorMember" abstract="true" name="InsuranceSectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_OnePointOneTwoFivePercentConvertibleSeniorNotesDue2026OverAllotmentOptionMember" abstract="true" name="OnePointOneTwoFivePercentConvertibleSeniorNotesDue2026OverAllotmentOptionMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_ConsumerDiscretionarySectorMember" abstract="true" name="ConsumerDiscretionarySectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_IncreaseDecreaseInOperatingRightOfUseAsset" abstract="false" name="IncreaseDecreaseInOperatingRightOfUseAsset" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_DebtInstrumentRemainingTerm" abstract="false" name="DebtInstrumentRemainingTerm" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:durationItemType"/>
+  <xs:element id="wk_UtilitySectorMember" abstract="true" name="UtilitySectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_OtherSectorMember" abstract="true" name="OtherSectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_ParsePortApSMember" abstract="true" name="ParsePortApSMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_DebtInstrumentConvertibleThresholdPercentageOfStockTradingPrice" abstract="false" name="DebtInstrumentConvertibleThresholdPercentageOfStockTradingPrice" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:percentItemType"/>
+  <xs:element id="wk_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedContractWithCustomerLiability" abstract="false" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedContractWithCustomerLiability" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_CashCashEquivalentsAndAvailableForSaleDebtSecurities" abstract="false" name="CashCashEquivalentsAndAvailableForSaleDebtSecurities" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_DebtSecuritiesAvailableForSaleFairValueMaturityAllocatedAndSingleMaturityDateAfterYearOneThroughTwo" abstract="false" name="DebtSecuritiesAvailableForSaleFairValueMaturityAllocatedAndSingleMaturityDateAfterYearOneThroughTwo" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_ProfessionalServicesMember" abstract="true" name="ProfessionalServicesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_XBRLProfessionalServicesMember" abstract="true" name="XBRLProfessionalServicesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_OnePointOneTwoFivePercentConvertibleSeniorNotesDue2026Member" abstract="true" name="OnePointOneTwoFivePercentConvertibleSeniorNotesDue2026Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_MaterialsSectorMember" abstract="true" name="MaterialsSectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_DebtConversionTermsTwoMember" abstract="true" name="DebtConversionTermsTwoMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitsEarnedPercentageOfTotalUnitsGranted" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardUnitsEarnedPercentageOfTotalUnitsGranted" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:percentItemType"/>
+  <xs:element id="wk_CashAndCashEquivalentsAndDebtSecuritiesAvailableForSaleAccumulatedGrossUnrealizedLossBeforeTax" abstract="false" name="CashAndCashEquivalentsAndDebtSecuritiesAvailableForSaleAccumulatedGrossUnrealizedLossBeforeTax" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedAndDeferred" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsVestedAndDeferred" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="wk_BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccruedLiabilities" abstract="false" name="BusinessCombinationRecognizedIdentifiableAssetsAcquiredAndLiabilitiesAssumedCurrentLiabilitiesAccruedLiabilities" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsReleasedFromDeferral" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardEquityInstrumentsOtherThanOptionsReleasedFromDeferral" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="wk_DebtInstrumentConvertibleTermsOfConversionDomain" abstract="true" name="DebtInstrumentConvertibleTermsOfConversionDomain" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_EquityIncentivePlan2014Member" abstract="true" name="EquityIncentivePlan2014Member" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_CashCashEquivalentsAndAvailableForSaleDebtSecuritiesAmortizedCost" abstract="false" name="CashCashEquivalentsAndAvailableForSaleDebtSecuritiesAmortizedCost" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_EnergySectorMember" abstract="true" name="EnergySectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_ClientDepositsCurrent" abstract="false" name="ClientDepositsCurrent" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_DebtSecuritiesAvailableForSaleFairValueMaturityAllocatedAndSingleMaturityDateAfterYearTwoThroughFive" abstract="false" name="DebtSecuritiesAvailableForSaleFairValueMaturityAllocatedAndSingleMaturityDateAfterYearTwoThroughFive" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_DiversifiedFinancialsSectorMember" abstract="true" name="DiversifiedFinancialsSectorMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_OtherServicesMember" abstract="true" name="OtherServicesMember" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:domainItemType"/>
+  <xs:element id="wk_SharebasedCompensationArrangementBySharebasedPaymentAwardSharesIssuedInPeriodWeightedAveragePricePerShare" abstract="false" name="SharebasedCompensationArrangementBySharebasedPaymentAwardSharesIssuedInPeriodWeightedAveragePricePerShare" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrli:item" type="dtr-types:perShareItemType"/>
+  <xs:element id="wk_ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfAdditionalSharesAllowableUnderThePlan" abstract="false" name="ShareBasedCompensationArrangementByShareBasedPaymentAwardNumberOfAdditionalSharesAllowableUnderThePlan" nillable="true" xbrli:periodType="instant" substitutionGroup="xbrli:item" type="xbrli:sharesItemType"/>
+  <xs:element id="wk_DebtInstrumentConvertibleIfConvertedValueLowerThanPrincipal" abstract="false" name="DebtInstrumentConvertibleIfConvertedValueLowerThanPrincipal" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_CashAndCashEquivalentsAccumulatedGrossUnrealizedLossBeforeTax" abstract="false" name="CashAndCashEquivalentsAccumulatedGrossUnrealizedLossBeforeTax" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" substitutionGroup="xbrli:item" type="xbrli:monetaryItemType"/>
+  <xs:element id="wk_DebtInstrumentConvertibleTermsOfConversionAxis" abstract="true" name="DebtInstrumentConvertibleTermsOfConversionAxis" nillable="true" xbrli:periodType="duration" substitutionGroup="xbrldt:dimensionItem" type="xbrli:stringItemType"/>
+</xs:schema>
