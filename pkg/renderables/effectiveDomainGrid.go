@@ -109,6 +109,7 @@ func getRootDomains(schemedEntity string, linkroleURI string, h *hydratables.Hyd
 				inclusiveHypercubeNetwork := graph.Tree(dArcs, attr.HasInclusiveHypercubeArcrole)
 				hypercubeDimensionNetwork := graph.Tree(dArcs, attr.HypercubeDimensionArcrole)
 				for _, root := range primaryItemNetwork.Children {
+					indentedItems = make([]PrimaryItem, 0, len(root.Children))
 					makeIndents(root, 0)
 					rootHref := mapDLocatorToHref(linkroleURI, &definition, root.Locator)
 					primaryItemHrefs := []string{}
