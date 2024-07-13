@@ -1,6 +1,7 @@
 package telefacts_test
 
 import (
+	"io/fs"
 	"os"
 	"path/filepath"
 	"testing"
@@ -94,6 +95,19 @@ func TestDiscover_Image(t *testing.T) {
 	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "test_image")
 	_, err := os.Stat(workingDir)
+	if os.IsNotExist(err) {
+		os.MkdirAll(workingDir, fs.FileMode(0700))
+	}
+	defer func() {
+		os.RemoveAll(workingDir)
+	}()
+	zipFile := filepath.Join(".", "wd", "test_image.zip")
+	err = unZipTestData(workingDir, zipFile)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+		return
+	}
+	_, err = os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		t.Fatalf("Error: " + err.Error())
 		return
