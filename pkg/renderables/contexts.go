@@ -112,8 +112,8 @@ func periodMultilingualString(labels LabelPack, context *hydratables.Context) La
 		ret[PureLabel] = start + "/" + end
 		ret[BriefLabel] = ret[PureLabel]
 	} else if context.Period.Instant.CharData != "" {
-		start = context.Period.Instant.CharData
-		ret[PureLabel] = start + "/" + end
+		end = context.Period.Instant.CharData
+		ret[PureLabel] = end
 		ret[BriefLabel] = ret[PureLabel]
 	} else {
 		ret[PureLabel] = ""
