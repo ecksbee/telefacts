@@ -102,6 +102,45 @@ func periodString(context *hydratables.Context) LanguagePack {
 	return ret
 }
 
+func periodMultilingualString(labels LabelPack, context *hydratables.Context) LanguagePack {
+	ret := LanguagePack{}
+	start := ""
+	end := ""
+	if context.Period.Duration.EndDate != "" && context.Period.Duration.StartDate != "" {
+		start = context.Period.Duration.StartDate
+		end = context.Period.Duration.EndDate
+		ret[PureLabel] = start + "/" + end
+		ret[BriefLabel] = ret[PureLabel]
+	} else if context.Period.Instant.CharData != "" {
+		start = context.Period.Instant.CharData
+		ret[PureLabel] = start + "/" + end
+		ret[BriefLabel] = ret[PureLabel]
+	} else {
+		ret[PureLabel] = ""
+		return ret
+	}
+	ret = appendLanguagePackFromPeriod(ret, labels, start, end)
+	return ret
+}
+
+func appendLanguagePackFromPeriod(langPack LanguagePack, labels LabelPack, start string, end string) LanguagePack {
+	ret := langPack
+	for _, item := range labels {
+		for lang := range item {
+			switch lang {
+			case English:
+				ret[English] = formatEnglishDates(start, end)
+				break
+			case Español:
+				ret[Español] = formatSpanishDates(start, end)
+				break
+			default: //noop
+			}
+		}
+	}
+	return ret
+}
+
 func dedupEntities(h *hydratables.Hydratable) []Entity {
 	entities := []Entity{}
 	for _, instance := range h.Instances {

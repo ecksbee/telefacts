@@ -2,7 +2,6 @@ package hydratables
 
 import (
 	"fmt"
-	"math"
 	"strconv"
 
 	"ecksbee.com/telefacts/pkg/attr"
@@ -109,15 +108,16 @@ func hydrateLabelLink(linkbaseFile *serializables.LabelLinkbaseFile) []LabelLink
 			newLink.Locs = append(newLink.Locs, newLoc)
 		}
 		newLink.LabelArcs = make([]LabelArc, 0, len(link.LabelArc))
-		for _, arc := range link.LabelArc {
+		for i, arc := range link.LabelArc {
 			newArc := LabelArc{}
 			ttypeAttr := attr.FindAttr(arc.XMLAttrs, "type")
 			if ttypeAttr == nil || ttypeAttr.Name.Space != attr.XLINK || ttypeAttr.Value != "arc" {
 				continue
 			}
+			order := float64(len(link.LabelArc) + i)
 			orderAttr := attr.FindAttr(arc.XMLAttrs, "order")
-			if orderAttr == nil || orderAttr.Value == "" {
-				continue
+			if orderAttr != nil && orderAttr.Value != "" {
+				order, _ = strconv.ParseFloat(orderAttr.Value, 64)
 			}
 			arcroleAttr := attr.FindAttr(arc.XMLAttrs, "arcrole")
 			if arcroleAttr == nil || arcroleAttr.Name.Space != attr.XLINK || arcroleAttr.Value == "" {
@@ -130,10 +130,6 @@ func hydrateLabelLink(linkbaseFile *serializables.LabelLinkbaseFile) []LabelLink
 			toAttr := attr.FindAttr(arc.XMLAttrs, "to")
 			if toAttr == nil || toAttr.Name.Space != attr.XLINK || toAttr.Value == "" {
 				continue
-			}
-			order, err := strconv.ParseFloat(orderAttr.Value, 64)
-			if err != nil {
-				order = math.MaxFloat64
 			}
 			newArc.Arcrole = arcroleAttr.Value
 			newArc.Order = order
