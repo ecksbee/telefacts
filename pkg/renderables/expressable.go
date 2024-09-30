@@ -32,20 +32,21 @@ func MarshalExpressable(name string, contextref string, h *hydratables.Hydratabl
 		extracted = &instance
 		break
 	}
-	context := getContext(extracted, contextref)
-	period := periodString(context)
-	entity := stringify(&Entity{
-		Scheme:   context.Entity.Identifier.Scheme,
-		CharData: context.Entity.Identifier.CharData,
-	})
 	href, _, err := h.NameQuery(xmlname.Space, xmlname.Local)
 	if err != nil {
 		return nil, err
 	}
+	labels := GetLabel(h, href)
 	hydratedFact := h.FindFact(href, contextref)
 	if hydratedFact == nil {
 		return nil, nil
 	}
+	context := getContext(extracted, contextref)
+	period := periodMultilingualString(labels, context)
+	entity := stringify(&Entity{
+		Scheme:   context.Entity.Identifier.Scheme,
+		CharData: context.Entity.Identifier.CharData,
+	})
 	relevantContexts, segment, scenario, _ := getRelevantContexts(entity, h, []string{
 		href,
 	})
@@ -64,7 +65,7 @@ func MarshalExpressable(name string, contextref string, h *hydratables.Hydratabl
 	}
 	return json.Marshal(Expressable{
 		Href:   href,
-		Labels: GetLabel(h, href),
+		Labels: labels,
 		Context: struct {
 			Period LanguagePack
 			VoidQuadrant

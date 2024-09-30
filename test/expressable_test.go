@@ -64,6 +64,15 @@ func TestCatalog_Expressables(t *testing.T) {
 	if e.Href != "http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents" {
 		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_EffectOfExchangeRateOnCashCashEquivalentsRestrictedCashAndRestrictedCashEquivalents; outcome %s;\n", e.Href)
 	}
+	if e.Context.Period[renderables.PureLabel] != "2020-01-01/2020-03-31" {
+		t.Fatalf("expected 2020-01-01/2020-03-31; outcome %s;\n", e.Context.Period[renderables.PureLabel])
+	}
+	if e.Context.Period[renderables.BriefLabel] != "2020-01-01/2020-03-31" {
+		t.Fatalf("expected 2020-01-01/2020-03-31; outcome %s;\n", e.Context.Period[renderables.BriefLabel])
+	}
+	if e.Context.Period[renderables.English] != "3 months ended March 31, 2020" {
+		t.Fatalf("expected 3 months ended March 31, 2020; outcome %s;\n", e.Context.Period[renderables.English])
+	}
 }
 
 func Test485BPOS_Expressables(t *testing.T) {

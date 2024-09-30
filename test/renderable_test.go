@@ -335,8 +335,16 @@ func ExampleMarshalCatalog_Hello() {
 	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
 	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
 	hydratables.InjectCache(hcache)
+	zipFile := filepath.Join(".", "wd", "hello.zip")
 	workingDir := filepath.Join(serializables.WorkingDirectoryPath, "folders", "hello")
-	_, err := os.Stat(workingDir)
+	defer func() {
+		os.RemoveAll(workingDir)
+	}()
+	err := unZipTestData(workingDir, zipFile)
+	if err != nil {
+		panic("Error: " + err.Error())
+	}
+	_, err = os.Stat(workingDir)
 	if os.IsNotExist(err) {
 		panic("Error: " + err.Error())
 	}
