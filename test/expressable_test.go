@@ -73,6 +73,27 @@ func TestCatalog_Expressables(t *testing.T) {
 	if e.Context.Period[renderables.English] != "3 months ended March 31, 2020" {
 		t.Fatalf("expected 3 months ended March 31, 2020; outcome %s;\n", e.Context.Period[renderables.English])
 	}
+	data, err = renderables.MarshalExpressable("us-gaap:StockholdersEquity", "As_Of_12_31_2018_us-gaap_StatementEquityComponentsAxis_us-gaap_AccumulatedNetUnrealizedInvestmentGainLossMember", h)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	e2 := renderables.Expressable{}
+	err = json.Unmarshal(data, &e2)
+	if err != nil {
+		t.Fatalf("Error: " + err.Error())
+	}
+	if e2.Href != "http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_StockholdersEquity" {
+		t.Fatalf("expected http://xbrl.fasb.org/us-gaap/2019/elts/us-gaap-2019-01-31.xsd#us-gaap_StockholdersEquity; outcome %s;\n", e2.Href)
+	}
+	if e2.Context.Period[renderables.PureLabel] != "2018-12-31" {
+		t.Fatalf("expected 2018-12-31; outcome %s;\n", e2.Context.Period[renderables.PureLabel])
+	}
+	if e2.Context.Period[renderables.BriefLabel] != "2018-12-31" {
+		t.Fatalf("expected 2018-12-31; outcome %s;\n", e2.Context.Period[renderables.BriefLabel])
+	}
+	if e2.Context.Period[renderables.English] != "as of December 31, 2018" {
+		t.Fatalf("expected as of December 31, 2018; outcome %s;\n", e2.Context.Period[renderables.English])
+	}
 }
 
 func Test485BPOS_Expressables(t *testing.T) {
