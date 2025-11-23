@@ -52,41 +52,9 @@ func HydrateEmbeddedPresentationLinkbase(file *serializables.SchemaFile, fileNam
 	}
 	ret := PresentationLinkbase{}
 	ret.FileName = fileName
-	ret.RoleRefs = hydrateEmbeddedPresentationLinkbaseRoleRefs(file)
+	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
 	ret.PresentationLinks = hydrateEmbeddedPresentationLink(file)
 	return &ret, nil
-}
-
-func hydrateEmbeddedPresentationLinkbaseRoleRefs(schemaFile *serializables.SchemaFile) []RoleRef {
-	ret := make([]RoleRef, 0)
-	for _, annotation := range schemaFile.Annotation {
-		for _, appInfo := range annotation.Appinfo {
-			for _, linkbase := range appInfo.EmbeddedLinkbase {
-				for _, roleRef := range linkbase.RoleRef {
-					if roleRef.XMLName.Space != attr.LINK {
-						continue
-					}
-					roleURIAttr := attr.FindAttr(roleRef.XMLAttrs, "roleURI")
-					if roleURIAttr == nil || roleURIAttr.Value == "" {
-						continue
-					}
-					hrefAttr := attr.FindAttr(roleRef.XMLAttrs, "href")
-					if hrefAttr == nil || hrefAttr.Value == "" {
-						continue
-					}
-					if hrefAttr.Name.Space != attr.XLINK {
-						continue
-					}
-					newRoleRef := RoleRef{
-						RoleURI: roleURIAttr.Value,
-						Href:    hrefAttr.Value,
-					}
-					ret = append(ret, newRoleRef)
-				}
-			}
-		}
-	}
-	return ret
 }
 
 func hydratePresentationLinkbaseRoleRefs(linkbaseFile *serializables.PresentationLinkbaseFile) []RoleRef {

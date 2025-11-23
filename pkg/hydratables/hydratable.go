@@ -33,10 +33,13 @@ func Hydrate(folder *serializables.Folder) (*Hydratable, error) {
 		}
 		ret.Schemas[filename] = *entry
 		embeddedPresentation, err := HydrateEmbeddedPresentationLinkbase(&file, filename)
-		if err != nil {
-			return nil, err
+		if err == nil {
+			ret.PresentationLinkbases[filename] = *embeddedPresentation
 		}
-		ret.PresentationLinkbases[filename] = *embeddedPresentation
+		embeddedDefinition, err := HydrateEmbeddedDefinitionLinkbase(&file, filename)
+		if err == nil {
+			ret.DefinitionLinkbases[filename] = *embeddedDefinition
+		}
 	}
 	for filename, file := range folder.PresentationLinkbases {
 		entry, err := HydratePresentationLinkbase(&file, filename)

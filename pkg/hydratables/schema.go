@@ -216,6 +216,38 @@ func hydrateConcepts(file *serializables.SchemaFile, fileName string) []Concept 
 	return ret
 }
 
+func hydrateEmbeddedLinkbaseRoleRefs(schemaFile *serializables.SchemaFile) []RoleRef {
+	ret := make([]RoleRef, 0)
+	for _, annotation := range schemaFile.Annotation {
+		for _, appInfo := range annotation.Appinfo {
+			for _, linkbase := range appInfo.EmbeddedLinkbase {
+				for _, roleRef := range linkbase.RoleRef {
+					if roleRef.XMLName.Space != attr.LINK {
+						continue
+					}
+					roleURIAttr := attr.FindAttr(roleRef.XMLAttrs, "roleURI")
+					if roleURIAttr == nil || roleURIAttr.Value == "" {
+						continue
+					}
+					hrefAttr := attr.FindAttr(roleRef.XMLAttrs, "href")
+					if hrefAttr == nil || hrefAttr.Value == "" {
+						continue
+					}
+					if hrefAttr.Name.Space != attr.XLINK {
+						continue
+					}
+					newRoleRef := RoleRef{
+						RoleURI: roleURIAttr.Value,
+						Href:    hrefAttr.Value,
+					}
+					ret = append(ret, newRoleRef)
+				}
+			}
+		}
+	}
+	return ret
+}
+
 type Stack []*Concept
 
 // IsEmpty: check if stack is empty
