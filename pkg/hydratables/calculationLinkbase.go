@@ -43,6 +43,20 @@ func HydrateCalculationLinkbase(file *serializables.CalculationLinkbaseFile, fil
 	return &ret, nil
 }
 
+func HydrateEmbeddedCalculationLinkbase(file *serializables.SchemaFile, fileName string) (*CalculationLinkbase, error) {
+	if len(fileName) <= 0 {
+		return nil, fmt.Errorf("empty file name")
+	}
+	if file == nil {
+		return nil, fmt.Errorf("empty file")
+	}
+	ret := CalculationLinkbase{}
+	ret.FileName = fileName
+	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
+	ret.CalculationLinks = hydrateEmbeddedCalculationLink(file)
+	return &ret, nil
+}
+
 func hydrateCalculationLinkbaseRoleRefs(linkbaseFile *serializables.CalculationLinkbaseFile) []RoleRef {
 	ret := make([]RoleRef, 0, len(linkbaseFile.RoleRef))
 	for _, roleRef := range linkbaseFile.RoleRef {
@@ -67,6 +81,91 @@ func hydrateCalculationLinkbaseRoleRefs(linkbaseFile *serializables.CalculationL
 		ret = append(ret, newRoleRef)
 	}
 	return ret
+}
+
+func hydrateEmbeddedCalculationLink(schemaFile *serializables.SchemaFile) []CalculationLink {
+	ret := make([]CalculationLink, 0)
+	for _, annotation := range schemaFile.Annotation {
+		for _, appInfo := range annotation.Appinfo {
+			for _, linkbase := range appInfo.EmbeddedLinkbase {
+				for _, link := range linkbase.CalculationLink {
+					typeAttr := attr.FindAttr(link.XMLAttrs, "type")
+					if typeAttr == nil || typeAttr.Name.Space != attr.XLINK || typeAttr.Value != "extended" {
+						continue
+					}
+					roleAttr := attr.FindAttr(link.XMLAttrs, "role")
+					if roleAttr == nil || roleAttr.Value == "" {
+						continue
+					}
+					newLink := CalculationLink{}
+					newLink.Role = roleAttr.Value
+					newLink.Locs = make([]Loc, 0, len(link.Loc))
+					for _, loc := range link.Loc {
+						newLoc := Loc{}
+						ttypeAttr := attr.FindAttr(loc.XMLAttrs, "type")
+						if ttypeAttr == nil || ttypeAttr.Name.Space != attr.XLINK || ttypeAttr.Value != "locator" {
+							continue
+						}
+						labelAttr := attr.FindAttr(loc.XMLAttrs, "label")
+						if labelAttr == nil || labelAttr.Name.Space != attr.XLINK || labelAttr.Value == "" {
+							continue
+						}
+						hrefAttr := attr.FindAttr(loc.XMLAttrs, "href")
+						if hrefAttr == nil || hrefAttr.Value == "" {
+							continue
+						}
+						newLoc.Href = hrefAttr.Value
+						newLoc.Label = labelAttr.Value
+						newLink.Locs = append(newLink.Locs, newLoc)
+					}
+					newLink.CalculationArcs = make([]CalculationArc, 0, len(link.CalculationArc))
+					for _, arc := range link.CalculationArc {
+						newArc := CalculationArc{}
+						ttypeAttr := attr.FindAttr(arc.XMLAttrs, "type")
+						if ttypeAttr == nil || ttypeAttr.Name.Space != attr.XLINK || ttypeAttr.Value != "arc" {
+							continue
+						}
+						orderAttr := attr.FindAttr(arc.XMLAttrs, "order")
+						if orderAttr == nil || orderAttr.Value == "" {
+							continue
+						}
+						arcroleAttr := attr.FindAttr(arc.XMLAttrs, "arcrole")
+						if arcroleAttr == nil || arcroleAttr.Name.Space != attr.XLINK || arcroleAttr.Value == "" {
+							continue
+						}
+						fromAttr := attr.FindAttr(arc.XMLAttrs, "from")
+						if fromAttr == nil || fromAttr.Name.Space != attr.XLINK || fromAttr.Value == "" {
+							continue
+						}
+						toAttr := attr.FindAttr(arc.XMLAttrs, "to")
+						if toAttr == nil || toAttr.Name.Space != attr.XLINK || toAttr.Value == "" {
+							continue
+						}
+						weightAttr := attr.FindAttr(arc.XMLAttrs, "weight")
+						if weightAttr == nil || weightAttr.Value == "" {
+							continue
+						}
+						order, err := strconv.ParseFloat(orderAttr.Value, 64)
+						if err != nil {
+							order = math.MaxFloat64
+						}
+						weight, err := strconv.ParseFloat(weightAttr.Value, 64)
+						if err != nil {
+							weight = 0.0
+						}
+						newArc.Arcrole = arcroleAttr.Value
+						newArc.Order = order
+						newArc.From = fromAttr.Value
+						newArc.To = toAttr.Value
+						newArc.Weight = weight
+						newLink.CalculationArcs = append(newLink.CalculationArcs, newArc)
+					}
+					ret = append(ret, newLink)
+				}
+			}
+		}
+	}
+	return dedupCalculationLink(ret)
 }
 
 func hydrateCalculationLink(linkbaseFile *serializables.CalculationLinkbaseFile) []CalculationLink {

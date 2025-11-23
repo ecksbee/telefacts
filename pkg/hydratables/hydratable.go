@@ -40,6 +40,10 @@ func Hydrate(folder *serializables.Folder) (*Hydratable, error) {
 		if err == nil {
 			ret.DefinitionLinkbases[filename] = *embeddedDefinition
 		}
+		embeddedCalculation, err := HydrateEmbeddedCalculationLinkbase(&file, filename)
+		if err == nil {
+			ret.CalculationLinkbases[filename] = *embeddedCalculation
+		}
 	}
 	for filename, file := range folder.PresentationLinkbases {
 		entry, err := HydratePresentationLinkbase(&file, filename)
