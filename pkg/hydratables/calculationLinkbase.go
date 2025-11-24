@@ -54,6 +54,9 @@ func HydrateEmbeddedCalculationLinkbase(file *serializables.SchemaFile, fileName
 	ret.FileName = fileName
 	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
 	ret.CalculationLinks = hydrateEmbeddedCalculationLink(file)
+	if len(ret.RoleRefs) <= 0 && len(ret.CalculationLinks) <= 0 {
+		return nil, nil
+	}
 	return &ret, nil
 }
 

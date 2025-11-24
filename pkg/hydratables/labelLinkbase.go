@@ -60,6 +60,9 @@ func HydrateEmbeddedLabelLinkbase(file *serializables.SchemaFile, fileName strin
 	ret.FileName = fileName
 	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
 	ret.LabelLink = hydrateEmbeddedLabelLink(file)
+	if len(ret.RoleRefs) <= 0 && len(ret.LabelLink) <= 0 {
+		return nil, nil
+	}
 	return &ret, nil
 }
 

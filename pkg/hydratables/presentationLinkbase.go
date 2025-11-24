@@ -54,6 +54,9 @@ func HydrateEmbeddedPresentationLinkbase(file *serializables.SchemaFile, fileNam
 	ret.FileName = fileName
 	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
 	ret.PresentationLinks = hydrateEmbeddedPresentationLink(file)
+	if len(ret.RoleRefs) <= 0 && len(ret.PresentationLinks) <= 0 {
+		return nil, nil
+	}
 	return &ret, nil
 }
 

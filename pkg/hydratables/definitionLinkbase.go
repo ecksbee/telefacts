@@ -57,6 +57,9 @@ func HydrateEmbeddedDefinitionLinkbase(file *serializables.SchemaFile, fileName 
 	ret.FileName = fileName
 	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
 	ret.DefinitionLinks = hydrateEmbeddedDefinitionLink(file)
+	if len(ret.RoleRefs) <= 0 && len(ret.DefinitionLinks) <= 0 {
+		return nil, nil
+	}
 	return &ret, nil
 }
 
