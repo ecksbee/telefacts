@@ -330,7 +330,7 @@ func BenchmarkMarshalRenderable_Gold_EquityTable(b *testing.B) {
 	bencmarkMarshalRenderable(slug, h, b)
 }
 
-func ExampleMarshalCatalog_Hello() {
+func Example_marshalCatalogHello() {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
 	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")
@@ -365,7 +365,7 @@ func ExampleMarshalCatalog_Hello() {
 	// Output: f5ed7171b09c4487172b60563de820dd
 }
 
-func ExampleMarshalCatalog_485() {
+func Example_marshalCatalog485() {
 	hcache := gocache.New(gocache.NoExpiration, gocache.NoExpiration)
 	serializables.WorkingDirectoryPath = filepath.Join(".", "wd")
 	serializables.GlobalTaxonomySetPath = filepath.Join(".", "gts")

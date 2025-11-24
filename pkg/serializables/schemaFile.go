@@ -53,6 +53,67 @@ type SchemaFile struct {
 					CharData string     `xml:",chardata"`
 				} `xml:"usedOn"`
 			} `xml:"roleType"`
+			EmbeddedLinkbase []struct {
+				XMLName  xml.Name
+				XMLAttrs []xml.Attr `xml:",any,attr"`
+				RoleRef  []struct {
+					XMLName  xml.Name
+					XMLAttrs []xml.Attr `xml:",any,attr"`
+				} `xml:"roleRef"`
+				PresentationLink []struct {
+					XMLName  xml.Name
+					XMLAttrs []xml.Attr `xml:",any,attr"`
+					Loc      []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"loc"`
+					PresentationArc []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"presentationArc"`
+				} `xml:"presentationLink"`
+				DefinitionLink []struct {
+					XMLName  xml.Name
+					XMLAttrs []xml.Attr `xml:",any,attr"`
+					Loc      []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"loc"`
+					DefinitionArc []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"definitionArc"`
+				} `xml:"definitionLink"`
+				CalculationLink []struct {
+					XMLName  xml.Name
+					XMLAttrs []xml.Attr `xml:",any,attr"`
+					Loc      []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"loc"`
+					CalculationArc []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"calculationArc"`
+				} `xml:"calculationLink"`
+				LabelLink []struct {
+					XMLName  xml.Name
+					XMLAttrs []xml.Attr `xml:",any,attr"`
+					Loc      []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"loc"`
+					Label []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+						CharData string     `xml:",chardata"`
+					} `xml:"label"`
+					LabelArc []struct {
+						XMLName  xml.Name
+						XMLAttrs []xml.Attr `xml:",any,attr"`
+					} `xml:"labelArc"`
+				} `xml:"labelLink"`
+			} `xml:"linkbase"`
 		} `xml:"appinfo"`
 	} `xml:"annotation"`
 	Element []struct {

@@ -49,6 +49,23 @@ func HydrateLabelLinkbase(file *serializables.LabelLinkbaseFile, fileName string
 	return &ret, nil
 }
 
+func HydrateEmbeddedLabelLinkbase(file *serializables.SchemaFile, fileName string) (*LabelLinkbase, error) {
+	if len(fileName) <= 0 {
+		return nil, fmt.Errorf("empty file name")
+	}
+	if file == nil {
+		return nil, fmt.Errorf("empty file")
+	}
+	ret := LabelLinkbase{}
+	ret.FileName = fileName
+	ret.RoleRefs = hydrateEmbeddedLinkbaseRoleRefs(file)
+	ret.LabelLink = hydrateEmbeddedLabelLink(file)
+	if len(ret.RoleRefs) <= 0 && len(ret.LabelLink) <= 0 {
+		return nil, nil
+	}
+	return &ret, nil
+}
+
 func hydrateLabelLinkbaseRoleRefs(linkbaseFile *serializables.LabelLinkbaseFile) []RoleRef {
 	ret := make([]RoleRef, 0, len(linkbaseFile.RoleRef))
 	for _, roleRef := range linkbaseFile.RoleRef {
@@ -71,6 +88,99 @@ func hydrateLabelLinkbaseRoleRefs(linkbaseFile *serializables.LabelLinkbaseFile)
 			Href:    hrefAttr.Value,
 		}
 		ret = append(ret, newRoleRef)
+	}
+	return ret
+}
+func hydrateEmbeddedLabelLink(schemaFile *serializables.SchemaFile) []LabelLink {
+	ret := make([]LabelLink, 0)
+	for _, annotation := range schemaFile.Annotation {
+		for _, appInfo := range annotation.Appinfo {
+			for _, linkbase := range appInfo.EmbeddedLinkbase {
+				for _, link := range linkbase.LabelLink {
+					typeAttr := attr.FindAttr(link.XMLAttrs, "type")
+					if typeAttr == nil || typeAttr.Name.Space != attr.XLINK || typeAttr.Value != "extended" {
+						continue
+					}
+					roleAttr := attr.FindAttr(link.XMLAttrs, "role")
+					if roleAttr == nil || roleAttr.Value == "" {
+						continue
+					}
+					newLink := LabelLink{}
+					newLink.Role = roleAttr.Value
+					newLink.Locs = make([]Loc, 0, len(link.Loc))
+					for _, loc := range link.Loc {
+						newLoc := Loc{}
+						ttypeAttr := attr.FindAttr(loc.XMLAttrs, "type")
+						if ttypeAttr == nil || ttypeAttr.Name.Space != attr.XLINK || ttypeAttr.Value != "locator" {
+							continue
+						}
+						labelAttr := attr.FindAttr(loc.XMLAttrs, "label")
+						if labelAttr == nil || labelAttr.Name.Space != attr.XLINK || labelAttr.Value == "" {
+							continue
+						}
+						hrefAttr := attr.FindAttr(loc.XMLAttrs, "href")
+						if hrefAttr == nil || hrefAttr.Value == "" {
+							continue
+						}
+						newLoc.Href = hrefAttr.Value
+						newLoc.Label = labelAttr.Value
+						newLink.Locs = append(newLink.Locs, newLoc)
+					}
+					newLink.LabelArcs = make([]LabelArc, 0, len(link.LabelArc))
+					for i, arc := range link.LabelArc {
+						newArc := LabelArc{}
+						ttypeAttr := attr.FindAttr(arc.XMLAttrs, "type")
+						if ttypeAttr == nil || ttypeAttr.Name.Space != attr.XLINK || ttypeAttr.Value != "arc" {
+							continue
+						}
+						order := float64(len(link.LabelArc) + i)
+						orderAttr := attr.FindAttr(arc.XMLAttrs, "order")
+						if orderAttr != nil && orderAttr.Value != "" {
+							order, _ = strconv.ParseFloat(orderAttr.Value, 64)
+						}
+						arcroleAttr := attr.FindAttr(arc.XMLAttrs, "arcrole")
+						if arcroleAttr == nil || arcroleAttr.Name.Space != attr.XLINK || arcroleAttr.Value == "" {
+							continue
+						}
+						fromAttr := attr.FindAttr(arc.XMLAttrs, "from")
+						if fromAttr == nil || fromAttr.Name.Space != attr.XLINK || fromAttr.Value == "" {
+							continue
+						}
+						toAttr := attr.FindAttr(arc.XMLAttrs, "to")
+						if toAttr == nil || toAttr.Name.Space != attr.XLINK || toAttr.Value == "" {
+							continue
+						}
+						newArc.Arcrole = arcroleAttr.Value
+						newArc.Order = order
+						newArc.From = fromAttr.Value
+						newArc.To = toAttr.Value
+						newLink.LabelArcs = append(newLink.LabelArcs, newArc)
+					}
+					newLink.Labels = make([]LabelLinkLabel, 0, len(link.Label))
+					for _, label := range link.Label {
+						newLabel := LabelLinkLabel{}
+						labelAttr := attr.FindAttr(label.XMLAttrs, "label")
+						if labelAttr == nil || labelAttr.Value == "" || labelAttr.Name.Space != attr.XLINK {
+							continue
+						}
+						roleAttr := attr.FindAttr(label.XMLAttrs, "role")
+						if roleAttr == nil || roleAttr.Value == "" || roleAttr.Name.Space != attr.XLINK {
+							continue
+						}
+						langAttr := attr.FindAttr(label.XMLAttrs, "lang")
+						if langAttr == nil || langAttr.Value == "" {
+							continue
+						}
+						newLabel.Label = labelAttr.Value
+						newLabel.Role = roleAttr.Value
+						newLabel.Lang = langAttr.Value
+						newLabel.CharData = label.CharData
+						newLink.Labels = append(newLink.Labels, newLabel)
+					}
+					ret = append(ret, newLink)
+				}
+			}
+		}
 	}
 	return ret
 }
