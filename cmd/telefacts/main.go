@@ -18,6 +18,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Copyright (c) ECKSBEE FOUNDATION")
 	var ctx = context.Background()
 	srv := setupServer()
 	go func() {
