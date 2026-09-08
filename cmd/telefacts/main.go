@@ -18,6 +18,7 @@ import (
 )
 
 func main() {
+	fmt.Println("Copyright (c) ECKSBEE FOUNDATION")
 	var ctx = context.Background()
 	srv := setupServer()
 	go func() {
@@ -53,7 +54,7 @@ func setupServer() *http.Server {
 	hydratables.HydrateUnitTypeRegistry()
 	r := web.NewRouter()
 
-	fmt.Println("telefacts<-0.0.0.0:8080")
+	fmt.Printf("telefacts is running on http://localhost:8080\n")
 	return &http.Server{
 		Addr:         "0.0.0.0:8080",
 		WriteTimeout: time.Second * 15,
